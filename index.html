@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<!--
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable="no", width=device-width, height=device-height, target-densitydpi=device-dpi" />
+-->
+<meta name="viewport"
+content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable="no"/>
+
+<link rel="stylesheet" type="text/css" href="css/index.css" />
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<!-- Include the jQuery library -->
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<!-- Include the jQuery Mobile library -->
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+
+
+
+	<div data-role="page" id="page_login" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div id="header_top">
+				<img class="icon" alt="" src="img/menu.png">
+			</div>
+			<h2 class="header_title">Velkommen</h2>
+		</div>
+
+		<h2 class="content_title">Logg inn</h2>
+
+		<div id="login_frame">
+			<table class="table_width">
+				<tr>
+					<td class="form_icon_width"><img class="icon" alt=""
+						src="img/icon_login_username.png"></td>
+					<td><input type="email" name="username" placeholder="epost"
+						id="basic"></td>
+
+				</tr>
+				<tr>
+					<td class="form_icon_width"><img class="icon" alt=""
+						src="img/icon_login_password.png"></td>
+					<td><input type="password" name="username"
+						placeholder="passord"></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td class="form_icon_width"></td>
+					<td>
+						<button data-corners="true" data-shadow="true">Logg inn</button>
+					</td>
+					<td><a href="#page_register1" data-transition="slide">Registrer
+							bruker <br>eller organisasjon
+					</a></td>
+				</tr>
+
+			</table>
+		</div>
+
+		<footer class="fixed_footer">
+			<table>
+				<tr>
+					<td><img  class="footer_menu_icon navmenu_me" alt=""
+						src="img/icon_menu_footer_me.png"></td>
+					<td><img class="footer_menu_icon navmenu_overview" alt=""
+						src="img/icon_menu_footer_overview.png"></td>
+					<td><img class="footer_menu_icon navmenu_friends" alt=""
+						src="img/icon_menu_footer_friends.png"></td>
+					<td><img class="footer_menu_icon navmenu_settings" alt=""
+						src="img/icon_menu_footer_settings.png"></td>
+				</tr>
+			</table>
+		</footer>
+
+	</div>
+
+
+	<div data-role="page" id="page_register1">
+		<div id="header_div" class="boxshadow">
+			<div id="header_top">
+				<img class="icon" alt="" src="img/menu.png">
+			</div>
+			<h2>Registrering</h2>
+		</div>
+<!--
+        <div class="register_type">
+			<table style="width: 100%;">
+				<tr>
+					<td class="half_width">Ny bruker</td>
+					<td class="half_width">Ny organisasjon</td>
+				</tr>
+			</table>
+		</div>
+-->
+		<div data-role="navbar">
+        <ul>
+            <li><a href="#"  class="ui-btn-active">Ny Bruker</a></li>
+            <li><a href="#">Organisasjon</a></li>
+        </ul>
+    </div><!-- /navbar -->
+
+		<div class="portrait">
+			Portrettbilde
+
+			<div class="logodiv">
+				<h4>Velg bilde</h4>
+			</div>
+
+		</div>
+
+		<div id="register_form">
+			<table class="table_width">
+				<tr>
+					<td class="form_icon_width"><img alt="Blue dot"
+						src="img/icon_blue.png"></td>
+					<td><input type="text" name="name" placeholder="Navn"
+						id="in_name"></td>
+				</tr>
+				<tr>
+					<td class="form_icon_width"><img alt="Blue dot"
+						src="img/icon_blue.png"></td>
+					<td><input type="tel" name="phone" placeholder="Telefon"
+						id="in_phone"></td>
+				</tr>
+				<tr>
+					<td class="form_icon_width"><img alt="Blue dot"
+						src="img/icon_blue.png"></td>
+					<td><input type="email" name="email" placeholder="Epost"
+						id="in_email"></td>
+				</tr>
+				<tr>
+					<td class="form_icon_width"><img alt="Blue dot"
+						src="img/icon_blue.png"></td>
+					<td><input type="password" name="password"
+						placeholder="Passord" id="in_password"></td>
+				</tr>
+				<tr>
+					<td class="form_icon_width"><img alt="Blue dot"
+						src="img/icon_blue.png"></td>
+					<td><input type="password" name="password_repeat"
+						placeholder="Gjenta passord" id="in_password_repeat"></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td class="form_icon_width"></td>
+					<td><a class="ui-btn" href="#page_login"
+						data-transition="slide" data-direction="reverse">Avbryt</a></td>
+					<td>
+						<!-- 						<button onclick="validate()">Neste</button> --> <a
+						class="ui-btn" href="#page_register2" data-transition="slide">
+							Neste</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="bottom_filler"></div>
+
+
+		<footer class="fixed_footer">
+			<table>
+				<tr>
+					<td><img class="footer_menu_icon" alt="Me-icon"
+						src="img/icon_menu_footer_me.png"></td>
+					<td><img class="footer_menu_icon" alt="Overview-icon"
+						src="img/icon_menu_footer_overview.png"></td>
+					<td><img class="footer_menu_icon" alt="Friends-icon"
+						src="img/icon_menu_footer_friends.png"></td>
+					<td><img class="footer_menu_icon" alt="Settings-icon"
+						src="img/icon_menu_footer_settings.png"></td>
+
+				</tr>
+			</table>
+		</footer>
+<!--
+        <div data-role="navbar" >
+            <ul>
+                <li><a href="#" class="ui-btn-active">One</a></li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+                <li><a href="#">Four</a></li>
+            </ul>
+        </div> 
+-->
+        
+
+	</div>
+
+	<div data-role="page" id="page_register2">
+		<div id="header_div" class="boxshadow">
+			<div id="header_top">
+				<img class="icon" alt="" src="img/menu.png">
+			</div>
+			<h2>Kredittinformasjon</h2>
+		</div>
+
+		<div id="register_form">
+			<table class="table_width">
+
+				<tr>
+					<td class="form_icon_width"><img alt=""
+						src="img/icon_blue.png"></td>
+					<td><input type="number" name="visanumber"
+						placeholder="Kortnummer" id="in_visa_number"></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td class="form_icon_width"><img alt=""
+						src="img/icon_blue.png"></td>
+					<td><select name="visa_expire_year" id="in_visa_expire_year">
+							<optgroup label="Utløpsår">
+
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+							</optgroup>
+
+					</select></td>
+					<td><select name="visa_expire_month"
+						id="in_visa_expire_month">
+							<optgroup label="Utløpsmåned">
+
+								<option value="jan">Januar</option>
+								<option value="feb">Februar</option>
+								<option value="mar">Mars</option>
+								<option value="apr">April</option>
+								<option value="may">Mai</option>
+								<option value="jun">Juni</option>
+								<option value="jul">Juli</option>
+								<option value="aug">August</option>
+								<option value="sep">September</option>
+								<option value="oct">Oktober</option>
+								<option value="nov">November</option>
+								<option value="dec">Desember</option>
+							</optgroup>
+
+					</select></td>
+
+				</tr>
+				<tr>
+					<td class="form_icon_width"><img alt=""
+						src="img/icon_blue.png"></td>
+					<td style="width: 50pt"><input type="number" name="visa_ccv"
+						placeholder="CCV" id="in_visa_ccv"></td>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td class="form_icon_width"></td>
+					<td><a class="ui-btn" href="#page_register1"
+						data-transition="slide" data-direction="reverse">Tilbake</a></td>
+					<td>
+						<button onclick="validate()">Neste</button> 
+						<!--<a class="ui-btn" href="#" data-transition="slide">	Neste</a> -->
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="bottom_filler"></div>
+
+
+		<footer class="fixed_footer">
+			<table>
+				<tr>
+					<td><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_me.png"></td>
+					<td><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_overview.png"></td>
+					<td><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_friends.png"></td>
+					<td><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_settings.png"></td>
+
+				</tr>
+			</table>
+		</footer>
+        
+
+	</div>
+    
+    <div data-role="page" id="page_register3">
+    	<div id="header_div" class="boxshadow">
+			<div id="header_top">
+				<img class="icon" alt="" src="img/menu.png">
+			</div>
+			<h2>Månedlige trekk</h2>
+		</div>
+        
+    
+    </div>
+
+
+
+
+</body>
+<script src="cordova.js"></script>
+<script charset="UTF-8" src="js/index.js" ></script>
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
