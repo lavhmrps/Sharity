@@ -1,3 +1,4 @@
+// clicking  the menu-icon invokes this function
 $(document).ready(function() {
 
 	$(".icon").click(function() {
@@ -6,48 +7,31 @@ $(document).ready(function() {
 
 });
 
-$(document).ready(function() {
-
-	$("#page2").click(function() {
-		parent.history.back();
-	});
-
-});
 
 function goBack() {
 	window.history.go(-1);
 }
 
-function toPage2() {
-	window.location.href = "page2.html";
-}
-function toRegister1() {
-	window.location.href = "pages/register1.html";
-}
-
-$(document)
-		.on(
-				"click",
-				".show-page-loading-msg",
-				function() {
-					var $this = $(this), theme = $this.jqmData("theme")
-							|| $.mobile.loader.prototype.options.theme, msgText = $this
-							.jqmData("msgtext")
-							|| $.mobile.loader.prototype.options.text, textVisible = $this
-							.jqmData("textvisible")
-							|| $.mobile.loader.prototype.options.textVisible, textonly = !!$this
-							.jqmData("textonly");
-					html = $this.jqmData("html") || "";
-					$.mobile.loading('show', {
-						text : msgText,
-						textVisible : textVisible,
-						theme : theme,
-						textonly : textonly,
-						html : html
-					});
-				}).on("click", ".hide-page-loading-msg", function() {
-			$.mobile.loading("hide");
-		});
+// displays a loading-spinner when clicking an item with class="show-page-loading-msg"
+$(document).on("click",".show-page-loading-msg",function() {
+	var $this = $(this), theme = $this.jqmData("theme")
+			|| $.mobile.loader.prototype.options.theme, msgText = $this
+			.jqmData("msgtext")
+			|| $.mobile.loader.prototype.options.text, textVisible = $this
+			.jqmData("textvisible")
+			|| $.mobile.loader.prototype.options.textVisible, textonly = !!$this
+			.jqmData("textonly");
+	html = $this.jqmData("html") || "";
+	$.mobile.loading('show', {
+		text : msgText,
+		textVisible : textVisible,
+		theme : theme,
+		textonly : textonly,
+		html : html
+	});
+}).on("click", ".hide-page-loading-msg", function() {
+	$.mobile.loading("hide");
+});
 
 $(document).on("click", "#page2", function() {
 	window.history.go(-1);
