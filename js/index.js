@@ -26,6 +26,7 @@ function toRegister1() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 $(document).on("click", ".show-page-loading-msg", function () {
     var $this = $(this), theme = $this.jqmData("theme")
             || $.mobile.loader.prototype.options.theme, msgText = $this
@@ -45,6 +46,8 @@ $(document).on("click", ".show-page-loading-msg", function () {
 }).on("click", ".hide-page-loading-msg", function () {
     $.mobile.loading("hide");
 =======
+=======
+>>>>>>> Lagt til alt man trenger for å se appen(html/css/js/img)
 $(document).on("click",".show-page-loading-msg",function() {
 					var $this = $(this), theme = $this.jqmData("theme")
 							|| $.mobile.loader.prototype.options.theme, msgText = $this
@@ -177,6 +180,43 @@ $(".radio_amount").click(function(){
 });
 
 
+<<<<<<< HEAD
+=======
+// Store registration-data
+var data = {
+    firstname : '',
+    lastname : '',
+	email : '',
+	phone : '',
+	adress : '',
+	zip : '',
+	monthly_amount: '',
+	cardnr : '',
+	expire_year : '',
+	expire_month : '',
+	ccv : ''
+};
+
+
+function toRegister2()
+{
+	data.firstname = $("#in_firstname").val();
+	data.lastname = $("#in_lastname").val();	
+	data.email = $("#in_email").val();
+	data.phone= $("#in_phone").val();
+	data.adress = $("#in_adress").val();
+	data.zip = $("#in_zip").val();
+		
+	$.mobile.changePage("#page_register2",{transition: "slide"});
+};
+
+$(".radio_amount").click(function(){
+	$("#in_custom_amount").val("");
+	$("#in_custom_amount").blur();
+});
+
+
+>>>>>>> Lagt til alt man trenger for å se appen(html/css/js/img)
 function uncheckRadiobuttons(){
 	$("input[type='radio']").attr("checked",false).checkboxradio("refresh");
 }
@@ -215,6 +255,125 @@ function toSummary()
 	
 	$.mobile.changePage("#page_reg_summary",{transition:"slide"});
 };
+<<<<<<< HEAD
+=======
+
+
+$(document).on("pageinit", "#page_reg_summary", function()
+{
+
+	$("#reg_summary_name").append(data.firstname + " " + data.lastname);
+	$("#reg_summary_email").append(data.email);
+	$("#reg_summary_phone").append(data.phone);
+	$("#reg_summary_address").append(data.adress);
+	$("#reg_summary_zip").append(data.zip);
+	$("#reg_summary_monthly_amount").append(data.monthly_amount);
+	$("#reg_summary_visanr").append(data.cardnr);
+	$("#reg_summary_exp_year").append(data.expire_year);
+	$("#reg_summary_exp_month").append(data.expire_month);
+	$("#reg_summary_ccv").append(data.ccv);
+
+});
+
+function reloadPage(){
+	$.mobile.changePage("#page_login");
+	location.reload();
+}
+
+
+
+$('#ferdig').click(function () 
+{
+	var firstname = $("#in_firstname").val();
+	var lastname = $("#in_lastname").val();
+	var email = $("#in_email").val();
+	var phone = $("#in_phone").val();
+	var adress = $("#in_adress").val();
+	var zip = $("#in_zip").val();
+	var cardnr = $("#in_visa_number").val();
+	var password = $("#in_password").val();
+	var password_repeat = $("#in_password_repeat").val();
+
+	if(password != password_repeat || password == null || password == "")
+	{
+		alert("Ugyldig passord");
+		return false;
+	}
+
+	var userJSON = 
+	{
+		"firstname":firstname,
+		"lastname":lastname, 
+		"email" : email, 
+		"phone"  : phone, 
+		"adress" : adress,
+		"zip" : zip,
+		"password" : password,
+		"cardnr" : cardnr
+		 
+	};
+
+	var jsonstringUser = JSON.stringify(userJSON);
+	var urlUser = "http://student.cs.hioa.no/~s188081/DBtest/www/save.php";
+
+	$.ajax(
+	{ 
+		type: 'POST', 
+		url: urlUser, 
+		data: 
+		{
+			'user': jsonstringUser 
+		},
+		success: function(msg)
+		{
+			alert(msg);
+		}	
+	});
+              
+	var monthdrop = document.getElementById("in_visa_expire_month");
+	var exp_month = monthdrop.options[monthdrop.selectedIndex].value; //date of expiration
+
+	var yeardrop = document.getElementById("in_visa_expire_year");
+	var exp_year = yeardrop.options[yeardrop.selectedIndex].value; //date of expiration
+	var ccv = $("#in_visa_ccv").val();
+
+	if(cardnr == "")
+	{
+
+	}else
+	{
+		var cardJSON =
+		{
+			"cardnr" : cardnr,
+			"name" : firstname + " " + lastname,
+			"month" : exp_month,
+			"year" : exp_year,
+			"CCV" : ccv
+		};
+
+		var jsonstringCard = JSON.stringify(cardJSON);
+		var urlCard = "http://student.cs.hioa.no/~s188081/DBtest/www/insert_card.php";
+
+		$.ajax(
+		{ 
+			type: 'POST', 
+			url: urlCard, 
+			data: 
+			{
+				'card': jsonstringCard 
+			},
+			success: function(msg)
+			{
+				alert(msg);
+			}	
+		});
+
+	}
+	//alert(JSON.stringify(userJSON)); 
+
+	return false;
+});
+>>>>>>> Lagt til alt man trenger for å se appen(html/css/js/img)
 
 
 $(document).on("pageinit", "#page_reg_summary", function()
