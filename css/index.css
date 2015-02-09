@@ -1,7 +1,6 @@
 body {
 	width: 100%;
 }
-
 #header_div {
 	position: relative;
 	width: 100%;
@@ -33,6 +32,19 @@ body {
 
 .content_title {
 	margin-left: 35pt;
+}
+
+.input_underscored {
+	box-shadow: none;
+/* 	-webkit-border-radius: 3pt; */
+	border: none;
+	border-bottom: thin solid black;
+	background: #fafafa;
+	font-size: large;
+	padding-left: 5pt;
+}
+.input_underscored:FOCUS{
+	outline:none;
 }
 
 .ui-input-text.ui-custom {
@@ -69,12 +81,17 @@ body {
 }
 
 .table_width {
+	width: 95%;
+	margin: auto;
+}
+
+.table_width_85{
 	width: 85%;
-	margin:auto;
+	margin: auto;
 }
 
 .form_icon_width {
-	width: 50pt;
+	width: 35pt;
 	float: left;
 	text-align: center;
 }
@@ -100,12 +117,16 @@ footer {
 }
 
 .bottom_filler {
-	height: 50pt;
+	min-height: 50pt;
 }
 
 /* Register1 */
 .half_width {
 	width: 50%;
+}
+
+.midplus_width{
+	width: 75%;
 }
 
 .register_type {
@@ -124,65 +145,24 @@ footer {
 }
 
 .main_content {
+	width:90%;
+	margin:auto;
 	margin-top: 30pt;
 }
 
-#radiotable
-{
-	
+#radiotable {
 	height: 200pt;
-	border:thin solid black;
-}
-.table_col_l{
-	float:left;
+	border: thin solid black;
 }
 
-.table_col_r{
-	float:right;
+.table_col_l {
+	float: left;
 }
 
+.table_col_r {
+	float: right;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.padding_left_10{
+	padding-left:10pt;
+}

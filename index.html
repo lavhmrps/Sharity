@@ -29,9 +29,7 @@
 
 	<div data-role="page" id="page_login" data-theme="a">
 		<div id="header_div" class="boxshadow">
-			<div id="header_top">
-				<img class="icon" alt="" src="img/menu.png">
-			</div>
+			<div page-role="header" id="header_top"></div>
 			<h2 class="header_title">Velkommen</h2>
 		</div>
 
@@ -42,15 +40,15 @@
 				<tr>
 					<td class="form_icon_width"><img class="icon" alt=""
 						src="img/icon_login_username.png"></td>
-					<td><input type="email" name="username" placeholder="epost"
-						id="basic"></td>
+					<td><input data-role="none" class="input_underscored"
+						type="email" name="username" placeholder="Epost"></td>
 
 				</tr>
 				<tr>
 					<td class="form_icon_width"><img class="icon" alt=""
 						src="img/icon_login_password.png"></td>
-					<td><input type="password" name="username"
-						placeholder="passord"></td>
+					<td><input data-role="none" class="input_underscored"
+						type="password" name="username" placeholder="Passord"></td>
 				</tr>
 			</table>
 			<table>
@@ -67,157 +65,256 @@
 			</table>
 		</div>
 
-		<footer class="fixed_footer">
-			<table>
-				<tr>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></td>
-
-				</tr>
-			</table>
+		<footer data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li id="footer_me"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_me.png"></li>
+					<li id="footer_overview"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_overview.png"></li>
+					<li id="footer_friends"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_friends.png"></li>
+					<li id="footer_settings"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_settings.png"></li>
+				</ul>
+			</div>
 		</footer>
 
 	</div>
 
 
 	<div data-role="page" id="page_register1">
+
+
 		<div id="header_div" class="boxshadow">
-			<div id="header_top">
-				<img class="icon" alt="" src="img/menu.png">
-			</div>
+			<div id="header_top"></div>
 			<h2>Registrering</h2>
 		</div>
-		<div class="register_type">
-			<table style="width: 100%;">
-				<tr>
-					<td class="half_width">Ny bruker</td>
-					<td class="half_width">Ny organisasjon</td>
-				</tr>
-			</table>
-		</div>
-		<div class="portrait">
-			Portrettbilde
+		<div data-role="tabs">
 
-			<div class="logodiv">
-				<p>Velg bilde!</p>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#register1a" class="ui-btn-active">Ny bruker</a></li>
+					<li><a href="#register1b">Organisasjon</a></li>
+				</ul>
 			</div>
 
+			<div class="portrait">
+				Portrettbilde
+
+				<div class="logodiv">
+					<p>Velg bilde!</p>
+				</div>
+
+			</div>
+			<div id="register1a">
+
+				<div class="main_content">
+					<table class="table_width">
+						<colspan style="font-weight:bold">Opprett en ny bruker</colspan>
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="text" name="firstname" placeholder="Fornavn"
+								id="in_firstname"></td>
+						</tr>
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="text" name="lastname" placeholder="Etternavn"
+								id="in_lastname"></td>
+						</tr>
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="email" name="email" placeholder="Epost" id="in_email"></td>
+						</tr>
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="tel" name="phone" placeholder="Telefon" id="in_phone"></td>
+						</tr>
+
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="text" name="adress" placeholder="Adresse" id="in_adress"></td>
+						</tr>
+
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="text" name="zip" placeholder="Postnummer" id="in_zip"></td>
+						</tr>
+
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="password" name="password" placeholder="Passord"
+								id="in_password"></td>
+						</tr>
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="password" name="password_repeat"
+								placeholder="Gjenta passord" id="in_password_repeat"></td>
+						</tr>
+					</table>
+
+					<table class="table_width">
+						<tr>
+							<td>
+								<button onclick="reloadPage()">Avbryt</button>
+							<td>
+								<button onclick="toRegister2()">Fortsett</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+
+			<div id="register1b">
+
+				<div class="main_content">
+					<table class="table_width">
+						<colspan style="font-weight:bold">Opprett en
+						organisasjon</colspan>
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="text" name="org_name" placeholder="Firmanavn"
+								id="in_orgname"></td>
+						</tr>
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="text" name="lastname"
+								placeholder="Kategori/område/virksomhet" id="in_category"></td>
+						</tr>
+
+						<tr>
+							<td class="form_icon_width"></td>
+							<td>
+								<table>
+									<tr>
+										<colspan style="font-weight: bold">Administrator</colspan>
+									</tr>
+									<tr>
+										<td>Navn</td>
+										<td><input data-role="none"
+											class="input_underscored midplus_width" type="text"
+											name="org_name" placeholder="Navn" id="in_admin_name"></td>
+									</tr>
+									<tr>
+										<td>Epost</td>
+										<td><input data-role="none"
+											class="input_underscored midplus_width" type="email"
+											name="email" placeholder="Epost" id="in_admin_email"></td>
+									</tr>
+									<tr>
+										<td>Passord</td>
+										<td><input data-role="none"
+											class="input_underscored midplus_width" type="password"
+											placeholder="Passord" id="in_admin_pw"></td>
+									</tr>
+									<tr>
+										<td>Passord</td>
+										<td><input data-role="none"
+											class="input_underscored midplus_width" type="password"
+											placeholder="Passord" id="in_admin_pw_rep"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="text" name="orgnr" placeholder="Org. nr" id="in_orgnr"></td>
+						</tr>
+
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="text" name="orgform" placeholder="Organisnasjonsform"
+								id="in_orgform"></td>
+						</tr>
+
+						<tr>
+							<td class="form_icon_width"><img alt=""
+								src="img/icon_blue.png"></td>
+							<td><input data-role="none" class="input_underscored"
+								type="text" name="address" placeholder="Adresse"
+								id="in_org_address"></td>
+						</tr>
+						<table class="table_width">
+							<tr>
+								<td class="form_icon_width"><img alt=""
+									src="img/icon_blue.png"></td>
+								<td><input data-role="none" class="input_underscored"
+									style="width: 50%" type="text" name="password_repeat"
+									placeholder="Postnr" id="in_org_address_zip"></td>
+								<td><input data-role="none" class="input_underscored "
+									type="text" name="password_repeat" placeholder="Poststed"
+									style="width: 65%" id="in_org_address_city"></td>
+							</tr>
+						</table>
+					</table>
+
+					<table class="table_width">
+						<tr>
+							<td>
+								<button onclick="#">Avbryt</button>
+							<td>
+								<button onclick="#">Fortsett</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
 
-		<div class="main_content">
-			<table class="table_width">
-				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
-					<td><input type="text" name="firstname" placeholder="Fornavn"
-						id="in_firstname"></td>
-				</tr>
-				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
-					<td><input type="text" name="lastname" placeholder="Etternavn"
-						id="in_lastname"></td>
-				</tr>
-				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
-					<td><input type="email" name="email" placeholder="Epost"
-						id="in_email"></td>
-				</tr>
-				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
-					<td><input type="tel" name="phone" placeholder="Telefon"
-						id="in_phone"></td>
-				</tr>
-
-				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
-					<td><input type="text" name="adress" placeholder="Adresse"
-						id="in_adress"></td>
-				</tr>
-
-				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
-					<td><input type="text" name="zip" placeholder="Postnummer"
-						id="in_zip"></td>
-				</tr>
-
-				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
-					<td><input type="password" name="password"
-						placeholder="Passord" id="in_password"></td>
-				</tr>
-				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
-					<td><input type="password" name="password_repeat"
-						placeholder="Gjenta passord" id="in_password_repeat"></td>
-				</tr>
-			</table>
-<!-- 			<table> -->
-<!-- 				<tr> -->
-<!-- 					<td class="form_icon_width"></td> -->
-<!-- 					<td><a class="ui-btn" href="#page_login" -->
-<!-- 						data-transition="slide" data-direction="reverse">Avbryt</a></td> -->
-<!-- 					<td> -->
-<!-- 						<button onclick="toRegister2()">Neste</button>  -->
-<!-- 					</td> -->
-<!-- 				</tr> -->
-<!-- 			</table> -->
-
-			<table class="table_width">
-				<tr>
-					<td>
-						<button onclick="reloadPage()">Avbryt</button>
-					<td>
-						<button onclick="toRegister2()">Fullfør</button>
-					</td>
-				</tr>
-			</table>
-		</div>
-
-		<div class="bottom_filler"></div>
-
-
-		<footer class="fixed_footer">
-			<table>
-				<tr>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></td>
-				</tr>
-			</table>
+		<footer data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li id="footer_me"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_me.png"></li>
+					<li id="footer_overview"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_overview.png"></li>
+					<li id="footer_friends"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_friends.png"></li>
+					<li id="footer_settings"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_settings.png"></li>
+				</ul>
+			</div>
 		</footer>
+
 	</div>
 
 	<div data-role="page" id="page_register2">
 		<div id="header_div" class="boxshadow">
-			<div id="header_top">
-				<img class="icon" alt="" src="img/menu.png">
-			</div>
+			<div id="header_top"></div>
 			<h2>Månedlige trekk</h2>
 		</div>
 		<div class="main_content">
 
-			<table class="table_width">
-				<fieldset>
-					<legend>Velg et beløp</legend>
+			<table class="table_width_85">
+				<th style="font-weight: bold">Velg et beløp</th>
 
+				<fieldset data-role="controlgroup">
 					<tr>
 						<td><input class="radio_amount" type="radio"
 							name="in_monthly_amount" id="amount1" value="20"> <label
@@ -236,13 +333,19 @@
 					</tr>
 				</fieldset>
 			</table>
-			<table class="table_width"
+			<br>
+
+			<table class="table_width_85">
 				<tr>
-					<td style="width: 50%"><input type="tel"
+					<td style="width: 50%"><input data-role="none"
+						class="input_underscored" style="width: 90%" type="tel"
 						id="in_custom_amount" name="in_monthly_amount"
 						placeholder="Egendefinert" onfocus="uncheckRadiobuttons()"></td>
-					<td>kr</td>
+					<td style="text-align: left">kr</td>
 				</tr>
+			</table>
+			<br>
+			<table class="table_width_85">
 				<tr>
 					<td><a class="ui-btn" href="#page_reg_summary"
 						data-transition="slide">Hopp over
@@ -254,22 +357,19 @@
 			</table>
 		</div>
 
-
-		<div class="bottom_filler"></div>
-		<footer class="fixed_footer">
-			<table>
-				<tr>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></td>
-
-				</tr>
-			</table>
+		<footer data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li id="footer_me"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_me.png"></li>
+					<li id="footer_overview"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_overview.png"></li>
+					<li id="footer_friends"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_friends.png"></li>
+					<li id="footer_settings"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_settings.png"></li>
+				</ul>
+			</div>
 		</footer>
 
 
@@ -277,20 +377,19 @@
 
 	<div data-role="page" id="page_register3">
 		<div id="header_div" class="boxshadow">
-			<div id="header_top">
-				<img class="icon" alt="" src="img/menu.png">
-			</div>
+			<div id="header_top"></div>
 			<h2>Kredittinformasjon</h2>
 		</div>
 
 		<div class="main_content">
+		<h4 style="width:100%; text-align: center">Legg inn kort</h4>
 			<table>
-
 				<tr>
 					<td class="form_icon_width"><img alt=""
 						src="img/icon_blue.png"></td>
-					<td><input type="number" name="visanumber"
-						placeholder="Kortnummer" id="in_visa_number"></td>
+					<td><input data-role="none" class="input_underscored"
+						type="number" name="visanumber" placeholder="Kortnummer"
+						id="in_visa_number"></td>
 				</tr>
 			</table>
 			<table>
@@ -327,101 +426,97 @@
 					</select></td>
 
 				</tr>
+			</table><br>
+			<table>
 				<tr>
 					<td class="form_icon_width"><img alt=""
 						src="img/icon_blue.png"></td>
-					<td style="width: 50pt"><input type="number" name="visa_ccv"
+					<td><input data-role="none"
+						class="input_underscored half_width" type="number" name="visa_ccv"
 						placeholder="CCV" id="in_visa_ccv"></td>
 					</td>
 				</tr>
-			</table>
-			<table>
+			</table><br>
+			<table class="table_width_85">
 				<tr>
-					<td class="form_icon_width"></td>
-					<td><a class="ui-btn" href="#page_register2"
-						data-transition="slide" data-direction="reverse">Tilbake</a></td>
+					<td class="half_width"><button onclick="back()" data-transition="slide"
+							data-direction="reverse">
+							Tilbake</a></td>
 					<td>
-						<button onclick="toSummary()">Neste</button> <!--					<a id="ferdig" class="ui-btn" href="#page_reg_summary" data-transition="slide">	Neste</a> 
-                    -->
-					</td>
+						<button onclick="toSummary()">Neste</button>
 				</tr>
 			</table>
+
 		</div>
-
-		<div class="bottom_filler"></div>
-		<footer class="fixed_footer">
-			<table>
-				<tr>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></td>
-
-				</tr>
-			</table>
+		<footer data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li id="footer_me"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_me.png"></li>
+					<li id="footer_overview"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_overview.png"></li>
+					<li id="footer_friends"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_friends.png"></li>
+					<li id="footer_settings"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_settings.png"></li>
+				</ul>
+			</div>
 		</footer>
 	</div>
 
 	<div data-role="page" id="page_reg_summary">
 		<div id="header_div" class="boxshadow">
-			<div id="header_top">
-				<img class="icon" alt="" src="img/menu.png">
-			</div>
+			<div id="header_top"></div>
 			<h2>Oppsummering</h2>
 		</div>
 
 		<div class="main_content">
-			<table class=table_width>
+			<table class=table_width" >
 				<tr>
 					<td>Navn</td>
-					<td><span id="reg_summary_name"></span></td>
+					<td><span id="reg_summary_name" class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>Epost</td>
-					<td><span id="reg_summary_email"></span></td>
+					<td><span id="reg_summary_email" class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>Telefon</td>
-					<td><span id="reg_summary_phone"></span></td>
+					<td><span id="reg_summary_phone" class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>Adresse</td>
-					<td><span id="reg_summary_address"></span></td>
+					<td><span id="reg_summary_address" class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>Postnr</td>
-					<td><span id="reg_summary_zip"></span></td>
+					<td><span id="reg_summary_zip" class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>Månedlig trekk</td>
-					<td><span id="reg_summary_monthly_amount"></span></td>
+					<td><span id="reg_summary_monthly_amount" class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>Kortnr</td>
-					<td><span id="reg_summary_visanr"></span></td>
+					<td><span id="reg_summary_visanr" class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>Utløpsår</td>
-					<td><span id="reg_summary_exp_year"></span></td>
+					<td><span id="reg_summary_exp_year" class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>Utløpsmåned</td>
-					<td><span id="reg_summary_exp_month"></span></td>
+					<td><span id="reg_summary_exp_month" class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>CCV</td>
-					<td><span id="reg_summary_ccv"></span></td>
+					<td><span id="reg_summary_ccv" class="padding_left_10"></span></td>
 				</tr>
 
-			</table>
+			</table><br>
 			<table class="table_width">
 				<tr>
 					<td>
-<!-- 						<a class="ui-btn" href="#page_login">Avbryt</a></td> -->
 						<button onclick="reloadPage()">Avbryt</button>
 					<td>
 						<button onclick="#">Neste</button>
@@ -429,23 +524,20 @@
 				</tr>
 			</table>
 		</div>
-		
 
-		<div class="bottom_filler"></div>
-		<footer class="fixed_footer">
-			<table>
-				<tr>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></td>
-					<td><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></td>
-
-				</tr>
-			</table>
+		<footer data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li id="footer_me"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_me.png"></li>
+					<li id="footer_overview"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_overview.png"></li>
+					<li id="footer_friends"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_friends.png"></li>
+					<li id="footer_settings"><img class="footer_menu_icon" alt=""
+						src="img/icon_menu_footer_settings.png"></li>
+				</ul>
+			</div>
 		</footer>
 	</div>
 
@@ -458,6 +550,29 @@
 <script src="cordova.js"></script>
 <script charset="UTF-8" src="js/index.js"></script>
 <script>
-// 
+
+
 </script>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
