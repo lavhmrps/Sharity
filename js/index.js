@@ -286,15 +286,15 @@ $('#ferdig')
 					return false;
 				});
 
-$("#footer_me").click(function() {
+$(".footer_me").click(function() {
 	alert("me");
 });
-$("#footer_overview").click(function() {
+$(".footer_overview").click(function() {
 	alert("overview");
 });
-$("#footer_friends").click(function() {
+$(".footer_friends").click(function() {
 	alert("friends");
 });
-$("#footer_settings").click(function() {
+$(".footer_settings").click(function() {
 	alert("settings");
 });
