@@ -255,11 +255,12 @@ section{
 	margin-top:10pt;
 	line-height:20pt;
 	background-color:#F3F3F3;
-	width:50%;
+	width:75%;
 	float:left; 
 	outline:none;
 	box-shadow:none;
 	border:none;
+	font-size:small;
 }
 
 input.search:focus{
