@@ -55,7 +55,8 @@
 				<tr>
 					<td class="form_icon_width"></td>
 					<td>
-						<button data-corners="true" data-shadow="true" onclick="toOverview1()">Logg inn</button>
+						<button data-corners="true" data-shadow="true" onclick="toOverview1()">Logg inn</button> 
+				
 					</td>
 					<td><a href="#page_register1" data-transition="slide">Registrer
 							bruker <br>eller organisasjon
@@ -553,7 +554,9 @@
 
 function toOverview1()
 {
-	$.mobile.changePage("overview1.html");
+// 	$.mobile.changePage("./overview1.html");
+// 	$.mobile.changePage('./overview1.html', { reloadPage: true, transition: "slideup"} );
+	window.location.href = "overview1.html";
 }
 
 
