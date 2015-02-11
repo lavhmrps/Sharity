@@ -28,10 +28,9 @@
 
 
 	<div data-role="page" id="page_login" data-theme="a">
-    	<header data-role="header"></header>
 		<div id="header_div" class="boxshadow">
-			<div page-role="header" id="header_top"></div>
-			<h2 class="header_title">Velkommen</h2>
+			<div page-role="header" class="header_top"></div>
+			<h2>Velkommen</h2>
 		</div>
 
 		<h2 class="content_title">Logg inn</h2>
@@ -56,7 +55,7 @@
 				<tr>
 					<td class="form_icon_width"></td>
 					<td>
-						<button data-corners="true" data-shadow="true">Logg inn</button>
+						<button data-corners="true" data-shadow="true" onclick="toOverview1()">Logg inn</button>
 					</td>
 					<td><a href="#page_register1" data-transition="slide">Registrer
 							bruker <br>eller organisasjon
@@ -82,13 +81,13 @@
 		</footer>
 
 	</div>
-
-
+    
+    
 	<div data-role="page" id="page_register1">
 
 	    <header data-role="header"></header>
 		<div id="header_div" class="boxshadow">
-			<div id="header_top"></div>
+			<div class="header_top"></div>
 			<h2>Registrering</h2>
 		</div>
 		<div data-role="tabs">
@@ -308,7 +307,7 @@
 	<div data-role="page" id="page_register2">
 	    <header data-role="header"></header>
 		<div id="header_div" class="boxshadow">
-			<div id="header_top"></div>
+			<div class="header_top"></div>
 			<h2>Månedlige trekk</h2>
 		</div>
 		<div class="main_content">
@@ -331,7 +330,7 @@
 							for="amount3">100 kr</label></td>
 						<td><input class="radio_amount" type="radio"
 							name="in_monthly_amount" id="amount4" value="200"> <label
-							for="amount4">100 kr</label></td>
+							for="amount4">200 kr</label></td>
 					</tr>
 				</fieldset>
 			</table>
@@ -380,7 +379,7 @@
 	<div data-role="page" id="page_register3">
 	    <header data-role="header"></header>
 		<div id="header_div" class="boxshadow">
-			<div id="header_top"></div>
+			<div class="header_top"></div>
 			<h2>Kredittinformasjon</h2>
 		</div>
 
@@ -470,7 +469,7 @@
 	<div data-role="page" id="page_reg_summary">
 	    <header data-role="header"></header>
 		<div id="header_div" class="boxshadow">
-			<div id="header_top"></div>
+			<div class="header_top"></div>
 			<h2>Oppsummering</h2>
 		</div>
 
@@ -551,6 +550,11 @@
 <script src="cordova.js"></script>
 <script charset="UTF-8" src="js/index.js"></script>
 <script>
+
+function toOverview1()
+{
+	$.mobile.changePage("overview1.html");
+}
 
 
 </script>
