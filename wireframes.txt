@@ -8,7 +8,7 @@ månedlig trekk				V
 kortinformasjon				V
 oppsummering				V (trenger bedre css)
 
-startside / oversikt			x
+startside / oversikt		v (under utvikling)
 organisasjon				x
 prosjekt				x
 nyheter org/prosjekt			x
