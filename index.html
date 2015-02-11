@@ -19,8 +19,14 @@
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
 <!-- Include the jQuery Mobile library -->
-<script
-	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- Include the js for register user script -->
+<script src="js/register_user.js"></script>
+	
+<!-- Include script for login-->
+<script src="js/login.js"></script>
+
 
 </head>
 <body>
@@ -37,22 +43,19 @@
 				<tr>
 					<td class="form_icon_width"><img class="icon" alt=""
 						src="img/icon_login_username.png"></td>
-					<td><input data-role="none" class="input_underscored"
-						type="email" name="username" placeholder="Epost"></td>
-
+					<td><input data-role="none" class="input_underscored" type="email" name="username" placeholder="Epost" id="username"></td>
 				</tr>
 				<tr>
 					<td class="form_icon_width"><img class="icon" alt=""
 						src="img/icon_login_password.png"></td>
-					<td><input data-role="none" class="input_underscored"
-						type="password" name="username" placeholder="Passord"></td>
+					<td><input data-role="none" class="input_underscored" type="password" name="username" placeholder="Passord" id="password"></td>
 				</tr>
 			</table>
 			<table>
 				<tr>
 					<td class="form_icon_width"></td>
 					<td>
-						<button data-corners="true" data-shadow="true" onclick="toOverview1()">Logg inn</button> 
+						<button data-corners="true" data-shadow="true" onclick="login()">Logg inn</button> 
 				
 					</td>
 					<td><a href="#page_register1" data-transition="slide">Registrer
@@ -472,7 +475,7 @@
 		</div>
 
 		<div class="main_content">
-			<table class=table_width" >
+			<table class="table_width" >
 				<tr>
 					<td>Navn</td>
 					<td><span id="reg_summary_name" class="padding_left_10"></span></td>
@@ -520,7 +523,7 @@
 					<td>
 						<button onclick="reloadPage()">Avbryt</button>
 					<td>
-						<button onclick="#">Neste</button>
+						<button id="register_user" onClick="register_user()">Registrer</button>
 					</td>
 				</tr>
 			</table>
