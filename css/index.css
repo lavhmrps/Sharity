@@ -26,13 +26,18 @@ body {
 }
 
 #header_div h2 {
-	text-align: center;
+	margin-left: 75pt;
 	color: white;
 }
 
 .content_title {
 	margin-left: 35pt;
 }
+
+.menu_icon{
+	width:20pt;
+	margin:17pt 0 0 10pt; 
+	position: absolute;
 
 .input_underscored {
 	box-shadow: none;
