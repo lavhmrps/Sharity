@@ -9,7 +9,10 @@
 <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
 <meta name="viewport"
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-
+<link rel="stylesheet" type="text/css"
+	href="http://fonts.googleapis.com/css?family=Comfortaa">
+<link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700'
+	rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 <!-- Include jQuery Mobile stylesheets -->
 <link rel="stylesheet"
@@ -24,95 +27,63 @@
 
 </head>
 <body>
-
-
-
-	<div data-role="page" id="page_login" data-theme="a">
-    	<div id="header_div" class="boxshadow">
+	<div data-role="page" id="page_overview1" data-theme="a">
+		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
-            <img src="img/menu.png" class="menu_icon">
-			<h2>Sharity</h2>
+			<img src="img/menu.png" class="menu_icon">
+			<h2>Oversikt</h2>
 		</div>
-        
-        
-        <div class="main_content">
-        <section>
-        <div class="content_box1 layer">
-            <div class="content_box1l box_inner">
-              <h6 class="box_text grey">Sortermargin</h6>
-              <h5 class="box_text blue">Organisasjoner</h5>
-            </div>
-            <div class="content_box1r box_inner">
-                <h6 class="box_text grey">Område</h6>
-                <h5 class="box_text blue">Alle</h5>
-            </div>
-            <div class="content_box1b">
-           
-                <div class="content_box1b_icon">
-                    <img src="img/icon_search.png"  class="icon">
-                </div>
-           
-                <div>
-                    <!--<h6 class="grey">Søk blandt alle organisasjoner og prosjekter</h6>-->
-                    <form class="ui-filterable" >
-     					<input id="myFilter" data-type="search" data-role="none" class="search" placeholder="Søk organisasjoner og prosjekter">
-    				</form>
-                </div>
-            </div>
-        
-        </div>
-        </section>
-        <section>
-        <h5>Litt forskjellige typer lister</h5>
-            <ul data-role="listview" data-filter="true" data-input="#myFilter" data-inset="true">
-            	<li><a href="#">Amnesty</a></li>
-                <li><a href="#">PLAN Norge</a></li>
-                <li><a href="#">Redd Barna</a></li>
-                <li><a href="#">Røde Kors</a></li>
-                <li><a href="#">Leger uten grenser</a></li>
-                <li><a href="#">SOS Barnebyer</a></li>
-                <li><a href="#"><img src="img/us.png" alt="USA" class="ui-li-icon">USA</a></li>
-              	<li><a href="#"><img src="img/gb.png" alt="Great Britain" class="ui-li-icon">Great Britain</a></li>
-              	<li><a href="#"><img src="img/finland.png" alt="Finland" class="ui-li-icon">Finland</a></li>
-              	<li><a href="#"><img src="img/germany.png" alt="Germany" class="ui-li-icon">Germany</a></li>
-              	<li><a href="#"><img src="img/france.png" alt="France" class="ui-li-icon">France</a></li>
-                <li><a href="#adelePage">Adele</a></li>
-      			<li><a href="#billyPage">Billy</a></li>
-                 <li>
-                    <a href="#">
-                    <img src="img/chrome.png" >
-                    <h5>Google Chrome</h5>
-                    <p>Google Chrome is a free, open-source web browser. Released in 2008.</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                    <img src="img/firefox.png">
-                    <h6>Mozilla Firefox</h6>
-                    <p>Firefox is a web browser from Mozilla. Released in 2004.</p>
-                    </a>
-                  </li>
-            </ul>
-        </section>
-        
-        <div data-role="panel" id="adelePage"> 
-            <h2>Adele Pitt</h2>
-            <p>Phone number: 773-528-7483</p>
-            <p>Address: 121 N. LaSalle Street
-            <br>Chicago, Illinois 60602 USA</p>
-            <p>Email: thebestadelepitt@gmail.com</p>
-            <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-b ui-icon-delete ui-btn-icon-left">Close</a>
-  		</div> 
-      <div data-role="panel" id="billyPage"> 
-            <h2>Billy Smith</h2>
-            <p>Phone number: 212-330-5200</p>
-            <p>Address: 350 Fifth Avenue
-            <br>New York, NY 10118-3299 USA</p>
-            <p>Email: theoneandonlybilly@gmail.com</p>
-            <a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-b ui-icon-delete ui-btn-icon-left">Close</a>
-      </div> 
-        
-        </div>
+
+
+		<div class="main_content">
+			<div class="content_box1 layer">
+				<div class="content_box1l box_inner">
+					<h6 class="box_text grey">Sorter</h6>
+					<h5 class="box_text blue">Organisasjoner</h5>
+				</div>
+				<div class="content_box1r box_inner">
+					<h6 class="box_text grey">Område</h6>
+					<h5 class="box_text blue">Alle</h5>
+				</div>
+				<div class="content_box1b">
+
+					<div class="content_box1b_icon">
+						<img src="img/icon_search.png" class="icon">
+					</div>
+
+					<div>
+						<!--<h6 class="grey">Søk blandt alle organisasjoner og prosjekter</h6>-->
+						<form class="ui-filterable">
+							<input id="myFilter" data-type="search" data-role="none"
+								class="search" placeholder="Søk organisasjoner og prosjekter">
+						</form>
+					</div>
+				</div>
+
+			</div>
+			<div class="listdiv">
+
+				<h5>Anbefalinger</h5>
+				<ul data-role="listview" data-filter="true" data-input="#myFilter"
+					data-inset="true">
+					<li><a href="#"><h5>Redd Barna</h5>
+							<p>Vi jobber med barns rettigheter</p></a></li>
+
+					<li><a href="#">
+							<h5>Amnesty</h5>
+							<p>Amnesty International krever frihet, rettferdighet og
+								likeverd for alle.</p>
+					</a></li>
+					<li><a href="#">
+							<h5>Røde Kors</h5>
+							<p>Verdens største frivillige humanitære hjelpeorganisasjon.</p>
+					</a></li>
+					
+				</ul>
+			</div>
+			
+			<div class="somespace"></div>
+		</div>
 
 
 
@@ -121,12 +92,12 @@
 				<ul>
 					<li class="footer_me"><img class="footer_menu_icon" alt=""
 						src="img/icon_menu_footer_me.png"></li>
-					<li class="footer_overview"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></li>
-					<li class="footer_friends"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></li>
+					<li class="footer_overview"><img class="footer_menu_icon"
+						alt="" src="img/icon_menu_footer_overview.png"></li>
+					<li class="footer_friends"><img class="footer_menu_icon"
+						alt="" src="img/icon_menu_footer_friends.png"></li>
+					<li class="footer_settings"><img class="footer_menu_icon"
+						alt="" src="img/icon_menu_footer_settings.png"></li>
 				</ul>
 			</div>
 		</footer>
@@ -138,8 +109,7 @@
 <script src="cordova.js"></script>
 <script charset="UTF-8" src="js/index.js"></script>
 <script>
-
-
+	
 </script>
 </html>
 
