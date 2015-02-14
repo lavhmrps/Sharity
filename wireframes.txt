@@ -1,19 +1,23 @@
 ﻿Oversikt wireframes fremgang (App)
 
-login					V
+login						V
 registrer			
-	-bruker				V
+	-bruker					V
 	-organisasjon			V
 månedlig trekk				V
 kortinformasjon				V
 oppsummering				V (trenger bedre css)
 
-startside / oversikt		v (under utvikling)
-organisasjon				x
-prosjekt				x
-nyheter org/prosjekt			x
+startside / oversikt		V
+organisasjon				V
+organisasjon med 1 prosjekt	V
+prosjekt					V
+nyheter org/prosjekt		x
 person profil				x
 venner
-	-oversikt			x
-	-legg til			x
+	-oversikt				x
+	-legg til				x
 innstillinger				x
+.
+.
+det er kommet flere sider å lage...
