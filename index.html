@@ -33,54 +33,70 @@
 </head>
 <body>
 	<div data-role="page" id="page_login" data-theme="a">
-		<div id="header_div" class="boxshadow">
+		<div id="header_div">
 			<div page-role="header" class="header_top"></div>
-			<h2>Velkommen</h2>
+			<span style="font-size: xx-large; color: white; margin-left: 5%;">Logg
+				inn</span>
 		</div>
 
 
 		<div class="main_content">
-			<h2>Logg inn</h2>
-			<br>
-			<table class="table_width">
-				<tr style="height: 60pt">
-					<td class="form_icon_width"><img class="icon" alt=""
-						src="img/icon_login_username.png"></td>
+			<table>
+				<tr>
+					<td><img class="icon" alt="" src="img/icon_white.png"></td>
 					<td><input data-role="none" class="input_underscored"
 						type="email" name="username" placeholder="Epost" id="username"></td>
-				</tr style="height: 60pt">
+				</tr>
 				<tr>
-					<td class="form_icon_width"><img class="icon" alt=""
-						src="img/icon_login_password.png"></td>
+					<td><img class="icon" alt="" src="img/icon_white.png"></td>
 					<td><input data-role="none" class="input_underscored"
 						type="password" name="username" placeholder="Passord"
 						id="password"></td>
 				</tr>
-			</table><br>
+			</table>
 			<table>
 				<tr>
-					<td class="form_icon_width"></td>
+					<td style="width: 40pt"></td>
 					<td>
-						<button data-corners="true" data-shadow="true" onclick="login()">Logg
-							inn</button>
+						<button data-corners="false" data-shadow="false" onclick="login()"
+							style="width: 100pt; font-weight: bold" class="btn_white blue">LOGG
+							INN</button>
 
 
 					</td>
-					<td><a href="#page_register1" data-transition="slide">Registrer
-							bruker <br>eller organisasjon
-					</a></td>
+					<td><button data-corners="false" data-shadow="false"
+							onclick="toRegister1()" data-transition="slide"
+							style="width: 100pt; font-weight: bold" class="btn_white blue">
+							NY BRUKER</button></td>
 				</tr>
 
-			</table><br><br>
-			<h4>Sidenavigering (develop)</h4>
-			<ul data-role="listview" data-filter="true" data-input="#myFilter"
-				data-inset="true" style="width:70% !important">
-				<li><a href="overview1.html" class="show-page-loading-msg">Oversikt</a></li>
-				<li><a href="organisation.html" class="show-page-loading-msg">Organisasjon</a></li>
-				<li><a href="org_single_project.html" class="show-page-loading-msg">Org med ett prosjekt</a></li>
-				<li><a href="project.html" class="show-page-loading-msg">Prosjekt</a></li>
-			
-			</ul>
+			</table>
+
+			<div class="somespace"></div>
+			<div class="somespace"></div>
+
+			<span style="font-size: xx-large; color: white;">Organisasjoner</span>
+
+			<button data-corners="false" data-shadow="false"
+				onclick="toRegister1()" data-transition="slide"
+				style="width: 150pt; font-weight: bold; margin-left: 40pt;"
+				class="btn_white blue">NY ORGANISASJON</button>
+
+			<div class="develop">
+				<span style="font-size: large; color: white;">Sidenavigering</span>
+				<ul data-role="listview" data-filter="true" data-input="#myFilter"
+					data-inset="true" style="width: 70% !important">
+					<li><a href="pages/overview1.html" rel="external"
+						class="show-page-loading-msg">Oversikt</a></li>
+					<li><a href="pages/organisation.html" data-ajax="false"
+						class="show-page-loading-msg">Organisasjon</a></li>
+					<li><a href="pages/org_single_project.html" rel="external"
+						class="show-page-loading-msg">Org med ett prosjekt</a></li>
+					<li><a href="pages/project.html" data-ajax="false"
+						class="show-page-loading-msg">Prosjekt</a></li>
+
+				</ul>
+			</div>
 			<div class="somespace"></div>
 		</div>
 
@@ -92,14 +108,15 @@
 		<!-- 		<header data-role="header"></header> -->
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
-			<h2>Registrering</h2>
+			<p>Registrering</p>
 		</div>
-		<div data-role="tabs">
+		<div data-role="tabs" id="tabs" style="margin: 0; padding: 0">
 
-			<div data-role="navbar">
+			<div data-role="navbar" style="margin: 0; padding: 0;">
 				<ul>
-					<li><a href="#register1a" class="ui-btn-active">Ny bruker</a></li>
-					<li><a href="#register1b">Organisasjon</a></li>
+					<li><a href="#register1a" class="navlink ui-btn-active">Ny
+							bruker</a></li>
+					<li><a href="#register1b" class="navlink">Ny organisasjon</a></li>
 				</ul>
 			</div>
 
@@ -107,78 +124,56 @@
 				Portrettbilde
 
 				<div class="logodiv_right">
-					<p>Velg bilde!</p>
+					<p>Velg bilde</p>
 				</div>
 
 			</div>
 			<div id="register1a">
 
 				<div class="main_content">
-					<table class="table_width">
-						<colspan style="font-weight:bold">Opprett en ny bruker</colspan>
+					<table>
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
-								type="text" name="firstname" placeholder="Fornavn"
-								id="in_firstname"></td>
+								type="text" name="fullname" placeholder="Fullt navn"
+								id="in_fullname"></td>
 						</tr>
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="text" name="lastname" placeholder="Etternavn"
-								id="in_lastname"></td>
-						</tr>
-						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="email" name="email" placeholder="Epost" id="in_email"></td>
-						</tr>
-						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="tel" name="phone" placeholder="Telefon" id="in_phone"></td>
 						</tr>
 
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
-								type="text" name="adress" placeholder="Adresse" id="in_adress"></td>
+								type="email" name="email" placeholder="Epost" id="in_email"></td>
 						</tr>
 
-						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="text" name="zip" placeholder="Postnummer" id="in_zip"></td>
-						</tr>
 
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="password" name="password" placeholder="Passord"
 								id="in_password"></td>
 						</tr>
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="password" name="password_repeat"
 								placeholder="Gjenta passord" id="in_password_repeat"></td>
 						</tr>
 					</table>
 
-					<table class="table_width">
+					<table>
 						<tr>
+							<td style="width: 40pt"></td>
 							<td>
-								<button onclick="reloadPage()">Avbryt</button>
+								<button data-corners="false" data-shadow="false"
+									onclick="reloadPage()" style="width: 100pt;" class="btn_white">AVBRYT</button>
 							<td>
-								<button onclick="toRegister2()">Fortsett</button>
+								<button data-corners="false" data-shadow="false"
+									onclick="toRegister2()" style="width: 100pt" class="btn_blue">NESTE</button>
 							</td>
 						</tr>
 					</table>
@@ -189,30 +184,27 @@
 			<div id="register1b">
 
 				<div class="main_content">
-					<table class="table_width">
-						<colspan style="font-weight:bold">Opprett en
-						organisasjon</colspan>
+					<table>
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="text" name="org_name" placeholder="Firmanavn"
 								id="in_orgname"></td>
 						</tr>
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="text" name="lastname"
 								placeholder="Kategori/område/virksomhet" id="in_category"></td>
 						</tr>
 
 						<tr>
-							<td class="form_icon_width"></td>
+							<td></td>
 							<td>
 								<table>
 									<tr>
-										<colspan style="font-weight: bold">Administrator</colspan>
+										<td></td>
+										<td><h4>Admin</h4></td>
 									</tr>
 									<tr>
 										<td>Navn</td>
@@ -236,38 +228,34 @@
 										<td>Passord</td>
 										<td><input data-role="none"
 											class="input_underscored midplus_width" type="password"
-											placeholder="Passord" id="in_admin_pw_rep"></td>
+											placeholder="Gjenta passord" id="in_admin_pw_rep"></td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="text" name="orgnr" placeholder="Org. nr" id="in_orgnr"></td>
 						</tr>
 
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="text" name="orgform" placeholder="Organisnasjonsform"
 								id="in_orgform"></td>
 						</tr>
 
 						<tr>
-							<td class="form_icon_width"><img alt=""
-								src="img/icon_blue.png"></td>
+							<td><img alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="text" name="address" placeholder="Adresse"
 								id="in_org_address"></td>
 						</tr>
-						<table class="table_width">
+						<table>
 							<tr>
-								<td class="form_icon_width"><img alt=""
-									src="img/icon_blue.png"></td>
+								<td><img alt="" src="img/icon_blue.png"></td>
 								<td><input data-role="none" class="input_underscored"
 									style="width: 50%" type="text" name="password_repeat"
 									placeholder="Postnr" id="in_org_address_zip"></td>
@@ -278,7 +266,7 @@
 						</table>
 					</table>
 
-					<table class="table_width">
+					<table>
 						<tr>
 							<td>
 								<button onclick="#">Avbryt</button>
@@ -297,12 +285,17 @@
 		<!-- 		<header data-role="header"></header> -->
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
-			<h2>Månedlige trekk</h2>
+			<img src="img/arrow_left.png"
+				class="show-page-loading-msg menu_icon back_icon">
+			<p>Månedlige trekk</p>
 		</div>
 		<div class="main_content">
-
-			<table class="table_width_85">
-				<th style="font-weight: bold">Velg et beløp</th>
+			<p>But I must explain to you how all this mistaken idea of
+				denouncing pleasure and praising pain was born and I will give you a
+				complete account of the system, and expound the actual teachings of
+				the great explorer of the truth, the master-builder of human
+				happiness.</p>
+			<table>
 
 				<fieldset data-role="controlgroup">
 					<tr>
@@ -325,7 +318,7 @@
 			</table>
 			<br>
 
-			<table class="table_width_85">
+			<table>
 				<tr>
 					<td style="width: 50%"><input data-role="none"
 						class="input_underscored" style="width: 90%" type="tel"
@@ -335,16 +328,34 @@
 				</tr>
 			</table>
 			<br>
-			<table class="table_width_85">
+			<!-- 			<table> -->
+			<!-- 				<tr> -->
+			<!-- 					<td style="width: 40pt"></td> -->
+			<!-- 					<td><a class="ui-btn" href="#page_reg_summary" -->
+			<!-- 						data-transition="slide" style="width: 80pt">HOPP OVER</a></td> -->
+			<!-- 					<td><button data-corners="false" data-shadow="false" -->
+			<!-- 							onclick="toRegister3()" class="btn_blue" style="width: 100pt">NESTE</button></td> -->
+			<!-- 				</tr> -->
+			<!-- 			</table> -->
+
+			<table>
 				<tr>
-					<td><a class="ui-btn" href="#page_reg_summary"
-						data-transition="slide">Hopp over
-							</button></td>
-					<td><button onclick="toRegister3()">Fortsett</button></td>
+					<td style="width: 40pt"></td>
+					<td>
+						<button data-corners="false" data-shadow="false"
+							onclick="toSummary()" style="width: 100pt; font-weight: bold"
+							class="btn_white">HOPP OVER</button>
+
+
+					</td>
+					<td><button data-corners="false" data-shadow="false"
+							onclick="toRegister3()" data-transition="slide"
+							style="width: 100pt; font-weight: bold" class="btn_blue">
+							NESTE</button></td>
 				</tr>
-			</table>
 
 			</table>
+
 		</div>
 
 
@@ -354,15 +365,16 @@
 		<!-- 		<header data-role="header"></header> -->
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
-			<h2>Kredittinformasjon</h2>
+			<img src="img/arrow_left.png"
+				class="show-page-loading-msg menu_icon back_icon">
+			<p>Kredittinformasjon</p>
 		</div>
 
 		<div class="main_content">
-			<h4 style="width: 100%; text-align: center">Legg inn kort</h4>
 			<table>
+
 				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
+					<td><img alt="" src="img/icon_blue.png"></td>
 					<td><input data-role="none" class="input_underscored"
 						type="number" name="visanumber" placeholder="Kortnummer"
 						id="in_visa_number"></td>
@@ -370,8 +382,7 @@
 			</table>
 			<table>
 				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
+					<td><img alt="" src="img/icon_blue.png"></td>
 					<td><select name="visa_expire_year" id="in_visa_expire_year">
 							<optgroup label="Utløpsår">
 
@@ -406,8 +417,7 @@
 			<br>
 			<table>
 				<tr>
-					<td class="form_icon_width"><img alt=""
-						src="img/icon_blue.png"></td>
+					<td><img alt="" src="img/icon_blue.png"></td>
 					<td><input data-role="none"
 						class="input_underscored half_width" type="number" name="visa_ccv"
 						placeholder="CCV" id="in_visa_ccv"></td>
@@ -415,13 +425,15 @@
 				</tr>
 			</table>
 			<br>
-			<table class="table_width_85">
+			<table>
 				<tr>
-					<td class="half_width"><button onclick="back()"
-							data-transition="slide" data-direction="reverse">
-							Tilbake</a></td>
+					<td style="width: 40pt;"></td>
+					<td><button data-corners="false" data-shadow="false"
+							onclick="back()" data-transition="slide" data-direction="reverse"
+							style="width: 100pt;">Tilbake</button></td>
 					<td>
-						<button onclick="toSummary()">Neste</button>
+						<button data-corners="false" data-shadow="false"
+							onclick="toSummary()" class="btn_blue" style="width: 100pt;">Neste</button>
 				</tr>
 			</table>
 
@@ -432,61 +444,57 @@
 		<!-- 		<header data-role="header"></header> -->
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
-			<h2>Oppsummering</h2>
+			<img src="img/arrow_left.png"
+				class="show-page-loading-msg menu_icon back_icon">
+			<p>Oppsummering</p>
 		</div>
 
 		<div class="main_content">
-			<table class="table_width">
+			<table id="oppsummering">
 				<tr>
-					<td>Navn</td>
-					<td><span id="reg_summary_name" class="padding_left_10"></span></td>
+					<td style="width:100pt" >Navn</td>
+					<td id ="reg_summary_name" ></td>
 				</tr>
 				<tr>
-					<td>Epost</td>
-					<td><span id="reg_summary_email" class="padding_left_10"></span></td>
+					<td >Telefon</td>
+					<td id ="reg_summary_phone" ></td>
 				</tr>
 				<tr>
-					<td>Telefon</td>
-					<td><span id="reg_summary_phone" class="padding_left_10"></span></td>
+					<td >Epost</td>
+					<td id ="reg_summary_email" ></td>
 				</tr>
 				<tr>
-					<td>Adresse</td>
-					<td><span id="reg_summary_address" class="padding_left_10"></span></td>
+					<td >Månedlig trekk</td>
+					<td id ="reg_summary_monthly_amount" ></td>
 				</tr>
 				<tr>
-					<td>Postnr</td>
-					<td><span id="reg_summary_zip" class="padding_left_10"></span></td>
+					<td >Kortnr</td>
+					<td id ="reg_summary_visanr" ></td>
 				</tr>
 				<tr>
-					<td>Månedlig trekk</td>
-					<td><span id="reg_summary_monthly_amount"
-						class="padding_left_10"></span></td>
+					<td >Utløpsår</td>
+					<td id ="reg_summary_exp_year" ></td>
 				</tr>
 				<tr>
-					<td>Kortnr</td>
-					<td><span id="reg_summary_visanr" class="padding_left_10"></span></td>
+					<td >Utløpsmåned</td>
+					<td id ="reg_summary_exp_month" ></td>
 				</tr>
 				<tr>
-					<td>Utløpsår</td>
-					<td><span id="reg_summary_exp_year" class="padding_left_10"></span></td>
-				</tr>
-				<tr>
-					<td>Utløpsmåned</td>
-					<td><span id="reg_summary_exp_month" class="padding_left_10"></span></td>
-				</tr>
-				<tr>
-					<td>CCV</td>
-					<td><span id="reg_summary_ccv" class="padding_left_10"></span></td>
+					<td >CCV</td>
+					<td id ="reg_summary_ccv" ></td>
 				</tr>
 
 			</table>
 			<br>
-			<table class="table_width">
+			<table>
 				<tr>
+					<td style="width: 40pt;"></td>
 					<td>
-						<button onclick="reloadPage()">Avbryt</button>
+						<button data-corners="false" data-shadow="false"
+							onclick="reloadPage()" style="width: 100pt;">Avbryt</button>
 					<td>
-						<button id="register_user" onClick="register_user()">Registrer</button>
+						<button data-corners="false" data-shadow="false"
+							id="register_user" onClick="register_user()" style="width: 100pt;" class="btn_blue">Registrer</button>
 					</td>
 				</tr>
 			</table>
@@ -501,13 +509,6 @@
 <script charset="UTF-8" src="js/index.js"></script>
 <script>
 
-function develop()
-{
-// 	$.mobile.changePage("./overview1.html");
-// 	$.mobile.changePage('./overview1.html', { reloadPage: true, transition: "slideup"} );
-// 	window.location.href = "overview1.html";
-	window.location.href="organisation.html";
-}
 
 
 </script>

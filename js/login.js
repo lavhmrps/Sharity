@@ -1,5 +1,6 @@
 function login(){
 
+
             var username = $('#username').val();
             var password = $('#password').val();
 
@@ -13,6 +14,7 @@ function login(){
                   success : function(data){
                         console.log(data);
                         if(data == "true"){
+                        	alert("true");
                               toOverview1();
                         }else{
                               alert("Wrong email/password combination");
