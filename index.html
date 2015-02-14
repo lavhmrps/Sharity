@@ -11,6 +11,7 @@
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
 <link rel="stylesheet" type="text/css" href="css/index.css" />
+
 <!-- Include jQuery Mobile stylesheets -->
 <link rel="stylesheet"
 	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
@@ -19,11 +20,12 @@
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
 <!-- Include the jQuery Mobile library -->
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 <!-- Include the js for register user script -->
 <script src="js/register_user.js"></script>
-	
+
 <!-- Include script for login-->
 <script src="js/login.js"></script>
 
@@ -36,57 +38,58 @@
 			<h2>Velkommen</h2>
 		</div>
 
-		<h2 class="content_title">Logg inn</h2>
 
-		<div id="login_frame">
+		<div class="main_content">
+			<h2>Logg inn</h2>
+			<br>
 			<table class="table_width">
-				<tr>
+				<tr style="height: 60pt">
 					<td class="form_icon_width"><img class="icon" alt=""
 						src="img/icon_login_username.png"></td>
-					<td><input data-role="none" class="input_underscored" type="email" name="username" placeholder="Epost" id="username"></td>
-				</tr>
+					<td><input data-role="none" class="input_underscored"
+						type="email" name="username" placeholder="Epost" id="username"></td>
+				</tr style="height: 60pt">
 				<tr>
 					<td class="form_icon_width"><img class="icon" alt=""
 						src="img/icon_login_password.png"></td>
-					<td><input data-role="none" class="input_underscored" type="password" name="username" placeholder="Passord" id="password"></td>
+					<td><input data-role="none" class="input_underscored"
+						type="password" name="username" placeholder="Passord"
+						id="password"></td>
 				</tr>
-			</table>
+			</table><br>
 			<table>
 				<tr>
 					<td class="form_icon_width"></td>
 					<td>
-						<button data-corners="true" data-shadow="true" onclick="login()">Logg inn</button> 
-				
+						<button data-corners="true" data-shadow="true" onclick="login()">Logg
+							inn</button>
+
+
 					</td>
 					<td><a href="#page_register1" data-transition="slide">Registrer
 							bruker <br>eller organisasjon
 					</a></td>
 				</tr>
 
-			</table>
+			</table><br><br>
+			<h4>Sidenavigering (develop)</h4>
+			<ul data-role="listview" data-filter="true" data-input="#myFilter"
+				data-inset="true" style="width:70% !important">
+				<li><a href="overview1.html" class="show-page-loading-msg">Oversikt</a></li>
+				<li><a href="organisation.html" class="show-page-loading-msg">Organisasjon</a></li>
+				<li><a href="org_single_project.html" class="show-page-loading-msg">Org med ett prosjekt</a></li>
+				<li><a href="project.html" class="show-page-loading-msg">Prosjekt</a></li>
+			
+			</ul>
+			<div class="somespace"></div>
 		</div>
 
-		<footer data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></li>
-					<li class="footer_overview"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></li>
-					<li class="footer_friends"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></li>
-				</ul>
-			</div>
-		</footer>
-
 	</div>
-    
-    
+
+
 	<div data-role="page" id="page_register1">
 
-	    <header data-role="header"></header>
+		<!-- 		<header data-role="header"></header> -->
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
 			<h2>Registrering</h2>
@@ -103,7 +106,7 @@
 			<div class="portrait">
 				Portrettbilde
 
-				<div class="logodiv">
+				<div class="logodiv_right">
 					<p>Velg bilde!</p>
 				</div>
 
@@ -288,25 +291,10 @@
 			</div>
 		</div>
 
-		<footer data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></li>
-					<li class="footer_overview"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></li>
-					<li class="footer_friends"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></li>
-				</ul>
-			</div>
-		</footer>
-
 	</div>
 
 	<div data-role="page" id="page_register2">
-	    <header data-role="header"></header>
+		<!-- 		<header data-role="header"></header> -->
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
 			<h2>Månedlige trekk</h2>
@@ -359,33 +347,18 @@
 			</table>
 		</div>
 
-		<footer data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></li>
-					<li class="footer_overview"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></li>
-					<li class="footer_friends"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></li>
-				</ul>
-			</div>
-		</footer>
-
 
 	</div>
 
 	<div data-role="page" id="page_register3">
-	    <header data-role="header"></header>
+		<!-- 		<header data-role="header"></header> -->
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
 			<h2>Kredittinformasjon</h2>
 		</div>
 
 		<div class="main_content">
-		<h4 style="width:100%; text-align: center">Legg inn kort</h4>
+			<h4 style="width: 100%; text-align: center">Legg inn kort</h4>
 			<table>
 				<tr>
 					<td class="form_icon_width"><img alt=""
@@ -429,7 +402,8 @@
 					</select></td>
 
 				</tr>
-			</table><br>
+			</table>
+			<br>
 			<table>
 				<tr>
 					<td class="form_icon_width"><img alt=""
@@ -439,11 +413,12 @@
 						placeholder="CCV" id="in_visa_ccv"></td>
 					</td>
 				</tr>
-			</table><br>
+			</table>
+			<br>
 			<table class="table_width_85">
 				<tr>
-					<td class="half_width"><button onclick="back()" data-transition="slide"
-							data-direction="reverse">
+					<td class="half_width"><button onclick="back()"
+							data-transition="slide" data-direction="reverse">
 							Tilbake</a></td>
 					<td>
 						<button onclick="toSummary()">Neste</button>
@@ -451,31 +426,17 @@
 			</table>
 
 		</div>
-		<footer data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></li>
-					<li class="footer_overview"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></li>
-					<li class="footer_friends"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></li>
-				</ul>
-			</div>
-		</footer>
 	</div>
 
 	<div data-role="page" id="page_reg_summary">
-	    <header data-role="header"></header>
+		<!-- 		<header data-role="header"></header> -->
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
 			<h2>Oppsummering</h2>
 		</div>
 
 		<div class="main_content">
-			<table class="table_width" >
+			<table class="table_width">
 				<tr>
 					<td>Navn</td>
 					<td><span id="reg_summary_name" class="padding_left_10"></span></td>
@@ -498,7 +459,8 @@
 				</tr>
 				<tr>
 					<td>Månedlig trekk</td>
-					<td><span id="reg_summary_monthly_amount" class="padding_left_10"></span></td>
+					<td><span id="reg_summary_monthly_amount"
+						class="padding_left_10"></span></td>
 				</tr>
 				<tr>
 					<td>Kortnr</td>
@@ -517,7 +479,8 @@
 					<td><span id="reg_summary_ccv" class="padding_left_10"></span></td>
 				</tr>
 
-			</table><br>
+			</table>
+			<br>
 			<table class="table_width">
 				<tr>
 					<td>
@@ -529,20 +492,6 @@
 			</table>
 		</div>
 
-		<footer data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_me.png"></li>
-					<li class="footer_overview"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_overview.png"></li>
-					<li class="footer_friends"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_friends.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon" alt=""
-						src="img/icon_menu_footer_settings.png"></li>
-				</ul>
-			</div>
-		</footer>
 	</div>
 
 	</div>
@@ -552,11 +501,12 @@
 <script charset="UTF-8" src="js/index.js"></script>
 <script>
 
-function toOverview1()
+function develop()
 {
 // 	$.mobile.changePage("./overview1.html");
 // 	$.mobile.changePage('./overview1.html', { reloadPage: true, transition: "slideup"} );
-	window.location.href = "overview1.html";
+// 	window.location.href = "overview1.html";
+	window.location.href="organisation.html";
 }
 
 
