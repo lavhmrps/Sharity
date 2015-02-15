@@ -10,23 +10,37 @@ $(".back_icon").click(function() {
 	window.history.go(-1);
 });
 
-function goBack() {
-	window.history.go(-1);
-}
 function toRegister1() {
 	$.mobile.changePage("#page_register1", {
 		transition : "slide"
 	});
+	$("#stepstogo").empty().append("4");
 }
+
+$("#nav_register1a").click(function() {
+	$(".portrait").show();
+	$("#stepstogo").empty().append("4");
+});
+
+$("#nav_register1b").click(function() {
+	$(".portrait").hide();
+	$("#stepstogo").empty().append("3");
+});
 
 // The inputfield in focus gets a blue border-bottom
 $(".input_underscored").focus(function() {
+	// .. but not if at loginpage
+	if ($.mobile.activePage.attr('id') == "page_login")
+		return;
 	$(this).css("border-bottom", "thin solid #006dfe");
 });
 
 // If the imputfield is empty after having had focus -> gets a red border-bottom
 // else, it gets a black border-bottom
 $(".input_underscored").blur(function() {
+	// .. but not if at loginpage
+	if ($.mobile.activePage.attr('id') == "page_login")
+		return;
 
 	var text = $(this).val();
 	if (text == "") {
@@ -112,11 +126,22 @@ var data = {
 	phone : '',
 	adress : '',
 	zip : '',
-	monthly_amount : '',
+	monthly_amount : '0',
 	cardnr : '',
 	expire_year : '',
 	expire_month : '',
 	ccv : ''
+};
+
+// store Organisation-data
+var orgdata = {
+	owner : '',
+	orgname : '',
+	email : '',
+	category : '',
+	orginfo : '',
+	website : '',
+	orgnr : ''
 };
 
 function toRegister2() {
@@ -127,6 +152,16 @@ function toRegister2() {
 	data.phone = $("#in_phone").val();
 
 	$.mobile.changePage("#page_register2", {
+		transition : "slide"
+	});
+};
+
+function toRegister2b() {
+	orgdata.owner = $("#in_org_owner").val();
+	orgdata.orgname = $("#in_org_name").val();
+	orgdata.email = $("#in_org_email").val();
+
+	$.mobile.changePage("#page_register2b", {
 		transition : "slide"
 	});
 };
@@ -184,16 +219,73 @@ function toSummary() {
 	});
 };
 
+function toSummaryB() {
+	orgdata.category = $("#in_org_category").val();
+	orgdata.orginfo = $("#in_org_about").val();
+	orgdata.website = $("#in_org_website").val();
+	orgdata.orgnr = $("#in_org_nr").val();
+
+	$.mobile.changePage("#page_reg_summaryB", {
+		transition : "slide"
+	});
+
+	// var output = orgdata.owner + "\n" + orgdata.orgname + "\n" +
+	// orgdata.email
+	// + "\n" + orgdata.category + "\n" + orgdata.orginfo + "\n"
+	// + orgdata.website + "\n" + orgdata.orgnr;
+	// alert(output);
+
+}
+enableSubmit = function enableSubmit(val) {
+	var sbmt = document.getElementById("register_user");
+	var org_sbmt = document.getElementById("register_org");
+
+	if (val.checked == true) {
+		sbmt.disabled = false;
+		org_sbmt.disabled = false;
+	} else {
+		sbmt.disabled = true;
+		org_sbmt.disabled = true;
+	}
+}
+
 $(document).on("pageinit", "#page_reg_summary", function() {
+
+	var val = document.getElementById("cb_accept_user_conditions");
+	var sbmt = document.getElementById("register_user");
+
+	if (val.checked == true) {
+		sbmt.disabled = false;
+	} else {
+		sbmt.disabled = true;
+	}
 
 	$("#reg_summary_name").append(data.fullname);
 	$("#reg_summary_phone").append(data.phone);
 	$("#reg_summary_email").append(data.email);
-	$("#reg_summary_monthly_amount").append(data.monthly_amount);
+	$("#reg_summary_monthly_amount").append(data.monthly_amount + " kr.");
 	$("#reg_summary_visanr").append(data.cardnr);
-	$("#reg_summary_exp_year").append(data.expire_year);
-	$("#reg_summary_exp_month").append(data.expire_month);
-	$("#reg_summary_ccv").append(data.ccv);
+
+});
+
+$(document).on("pageinit", "#page_reg_summaryB", function() {
+	
+	var val = document.getElementById("cb_accept_conditions");
+	var org_sbmt = document.getElementById("register_org");
+
+	if (val.checked == true) {
+		org_sbmt.disabled = false;
+	} else {
+		org_sbmt.disabled = true;
+	}
+
+	$("#org_summary_owner").append(orgdata.owner);
+	$("#org_summary_orgname").append("sharityapp.no/" + orgdata.orgname);
+	$("#org_summary_email").append(orgdata.email);
+	$("#org_summary_category").append(orgdata.category);
+	$("#org_summary_org_about").append("Beskrivelse: " + orgdata.orginfo);
+	$("#org_summary_website").append(orgdata.website);
+	$("#org_summary_orgnr").append(orgdata.orgnr);
 
 });
 

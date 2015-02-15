@@ -18,7 +18,7 @@ body {
 	width: 100%;
 }
 
-#page_login{
+#page_login {
 	background: #006dfe;
 }
 
@@ -29,11 +29,12 @@ body {
 	background: #006dfe;
 	color: white;
 }
-#header_div h2 {
-	color:white;
-	margin-left:5%;
 
+#header_div h2 {
+	color: white;
+	margin-left: 5%;
 }
+
 #header_div p {
 	margin-left: 75pt;
 	color: white;
@@ -51,8 +52,8 @@ body {
 }
 
 .icon {
-	width: 25pt;
-	height: 25pt;
+	width: 23pt;
+	height: 23pt;
 }
 
 .menu_icon {
@@ -64,7 +65,7 @@ body {
 }
 
 .input_underscored {
-	width: 90%;
+	width: 100%;
 	box-shadow: none;
 	/* 	-webkit-border-radius: 3pt; */
 	border: none;
@@ -81,14 +82,14 @@ body {
 	border-bottom: thin solid #69a9fe;
 	background: #006dfe;
 	box-shadow: none;
-	color:white;
+	color: white;
 	font-size: large;
 }
-#page_login ::-webkit-input-placeholder {
-   color: white;
-   font-size: large;
-}
 
+#page_login ::-webkit-input-placeholder {
+	color: white;
+	font-size: large;
+}
 
 .input_underscored:FOCUS {
 	outline: none;
@@ -213,8 +214,8 @@ table tr td input {
 
 .padding_left_10 {
 	width: 100%;
-	margin-left:0pt;
-	border:thin solid black;
+	margin-left: 0pt;
+	border: thin solid black;
 }
 /* Overview1 */
 .content_box1 {
@@ -284,7 +285,6 @@ table tr td input {
 .blue {
 	color: #006dfe !important;
 }
-
 
 .btn_blue {
 	background: #006dfe !important;
@@ -367,7 +367,7 @@ h2.orgname {
 
 .ui-btn-active {
 	color: #006dfe !important;
-	text-decoration:none !important;
+	text-decoration: none !important;
 	background: none !important;
 	background-color: #f6f6f6 !important;
 	outline: none !important;
@@ -378,42 +378,64 @@ h2.orgname {
 	font-size: large !important;
 }
 
-.develop{
+.develop {
 	margin-top: 50pt;
 }
 
 input[type="radio"] {
-    display: none;
+	display: none;
 }
+
 .ui-radio label {
-    height:20pt;
-    line-height: 26pt;
-    padding-left: 35pt;
+	height: 20pt;
+	line-height: 26pt;
+	padding-left: 35pt;
 }
+
 .ui-radio .ui-btn.ui-radio-off:after {
-    background: #fafafa;
-    width: 15pt;
-    height: 15pt;
-    border: 2px solid #6E7983;
-}
-.ui-radio .ui-btn.ui-radio-on:after {
-    color: #006dfe;
-    width: 15pt;
-    height: 15pt;
-    border: 0;
-}
-.ui-radio .ui-btn.ui-radio-off{
 	background: #fafafa;
-	outline:none !important;
-	border:none !important;
+	width: 15pt;
+	height: 15pt;
+	border: 2px solid #6E7983;
 }
 
-.ui-radio .ui-btn.ui-radio-on{
-	outline:none !important;
-	border:none !important;
+.ui-radio .ui-btn.ui-radio-on:after {
+	color: #006dfe;
+	width: 15pt;
+	height: 15pt;
+	border: 0;
 }
 
+.ui-radio .ui-btn.ui-radio-off {
+	background: #fafafa;
+	outline: none !important;
+	border: none !important;
+}
+
+.ui-radio .ui-btn.ui-radio-on {
+	outline: none !important;
+	border: none !important;
+}
 
 #oppsummering tr td {
 	height: 30pt;
+}
+
+.greyline {
+	width: 100%;
+	margin: 20pt 0 20pt 0;
+	border-bottom: thin solid #d2d2d2;
+}
+
+.ui-checkbox .ui-btn.ui-checkbox-off {
+	border: none;
+	background: #fafafa;
+}
+.ui-checkbox .ui-btn.ui-checkbox-on {
+	border: none;
+	background: #fafafa;
+}
+
+.table_btns{
+	margin-top: 30pt;
 }
