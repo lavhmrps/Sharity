@@ -1,9 +1,5 @@
 $(document).ready(function() {
-
-	$(".icon").click(function() {
-		// do something...
-	});
-
+	$(".dots").dotdotdot();
 });
 
 $(".back_icon").click(function() {
@@ -172,6 +168,10 @@ $(".radio_amount").click(function() {
 	$("#in_custom_amount").css("border-bottom", "thin solid #d2d2d2");
 });
 
+function uncheckRadiobuttonsDonate() {
+	$("input[name='in_donate_amount']").attr("checked", false).checkboxradio("refresh");
+}
+
 function uncheckRadiobuttons() {
 	$("input[type='radio']").attr("checked", false).checkboxradio("refresh");
 }
@@ -183,10 +183,10 @@ function toRegister3() {
 	custom_val = $("#in_custom_amount").val();
 
 	if (radio_val == undefined && custom_val == "") {
-		alert("Velg beløp");
+		alert("Velg belï¿½p");
 		return;
 	} else if (isNaN(custom_val)) {
-		alert("Ugyldig beløp");
+		alert("Ugyldig belï¿½p");
 		return;
 	} else if (radio_val == undefined)
 		data.monthly_amount = custom_val;
@@ -194,7 +194,7 @@ function toRegister3() {
 	else
 		data.monthly_amount = radio_val;
 
-	// alert("Beløp: "+data.monthly_amount);
+	// alert("Belï¿½p: "+data.monthly_amount);
 	$.mobile.changePage("#page_register3", {
 		transition : "slide"
 	});
@@ -306,3 +306,8 @@ $(".footer_friends").click(function() {
 $(".footer_settings").click(function() {
 	alert("settings");
 });
+
+$(".li_container").click(function(){
+	$.mobile.changePage("project.html");
+});
+

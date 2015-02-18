@@ -1,15 +1,15 @@
-/* @font-face { */
-/* 	font-family: CircularBook; */
-/* 	src: loca(CircularStd-Book); */
-/* } */
+@font-face {
+	font-family: CircularBook;
+	src: local(CircularStd-Book);
+}
 
-/* @font-face { */
-/* 	font-family: CircularBook; */
-/* 	src: loca(CircularStd-Bold); */
-/* 	font-weight: bold; */
-/* } */
+@font-face {
+	font-family: CircularBook;
+	src: local(CircularStd-Bold);
+	font-weight: bold;
+}
 * {
-	font-family: 'Circular Std Book', Calibri, Arial !important;
+	font-family: CircularBook, Circular Std Book,Calibri, Arial,Sans-serif !important;
 	margin: 0;
 	padding: 0;
 }
@@ -356,6 +356,11 @@ h2.orgname {
 	color: white !important;
 	padding: 10pt !important;
 	font-size: large !important;
+	outline:none !important;
+	border:none;
+}
+.btn_single_project_donate:active{
+	background:#4CAF50 !important;
 }
 
 .navlink {
@@ -438,4 +443,14 @@ input[type="radio"] {
 
 .table_btns{
 	margin-top: 30pt;
+}
+
+.a_nostyle{
+	color:black;
+	text-decoration: none;
+}
+
+a.nostyle{
+	text-decoration: none;
+	color:black;
 }

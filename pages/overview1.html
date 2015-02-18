@@ -9,10 +9,9 @@
 <meta name="viewport"
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
+<!-- Include the Local stylesheets -->
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
-<!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" type="text/css" href="../css/list_overview.css">
 
 <!-- Include the jQuery library -->
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -20,6 +19,16 @@
 <!-- Include the jQuery Mobile library -->
 <script
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- Include the jQuery Dotdotdot library -->
+<script src="../js/jquery.dotdotdot.js"></script>
+<script charset="UTF-8" src="../js/index.js"></script>
+
+
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
 </head>
 <body>
@@ -60,28 +69,67 @@
 			<div class="listdiv">
 
 				<h5>Anbefalinger</h5>
-				<ul data-role="listview" data-filter="true" data-input="#myFilter"
-					data-inset="true">
-					<li><a href="#"><h5>Redd Barna</h5>
-							<p>Vi jobber med barns rettigheter</p></a></li>
-
-					<li><a href="#">
-							<h5>Amnesty</h5>
-							<p>Amnesty International krever frihet, rettferdighet og
-								likeverd for alle.</p>
-					</a></li>
-					<li><a href="#">
-							<h5>Røde Kors</h5>
-							<p>Verdens største frivillige humanitære hjelpeorganisasjon.</p>
-					</a></li>
-					
+				<ul data-role="none" >
+					<li>
+						<a href="organisation.html" rel="external" class="show-page-loading-msg">
+							<div class="li_container">
+								<div class="li_left">
+									<div class="circle">
+										logo
+									</div>
+								</div>
+								<div class="li_mid">
+									<span class="li_org_name">Organisasjonsnavn</span>
+									<span class="li_num_projects">3 prosjekter</span>
+								</div>
+								<div class="li_right">
+									<img src="../img/li_arrow_r_grey.png">
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="organisation.html" rel="external" class="show-page-loading-msg">
+							<div class="li_container">
+								<div class="li_left">
+									<div class="circle">
+										logo
+									</div>
+								</div>
+								<div class="li_mid">
+									<span class="li_org_name">Organisasjonsnavn</span>
+									<span class="li_num_projects">3 prosjekter</span>
+								</div>
+								<div class="li_right">
+									<img src="../img/li_arrow_r_grey.png">
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="organisation.html" rel="external" class="show-page-loading-msg">
+							<div class="li_container">
+								<div class="li_left">
+									<div class="circle">
+										logo
+									</div>
+								</div>
+								<div class="li_mid">
+									<span class="li_org_name">Organisasjonsnavn</span>
+									<span class="li_num_projects">3 prosjekter</span>
+								</div>
+								<div class="li_right">
+									<img src="../img/li_arrow_r_grey.png">
+								</div>
+							</div>
+						</a>
+					</li>
+			
 				</ul>
 			</div>
-			
-			<div class="somespace"></div>
+
 		</div>
-
-
+		<div class="somespace"></div>
 
 		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
@@ -103,7 +151,7 @@
 
 </body>
 <script src="cordova.js"></script>
-<script charset="UTF-8" src="js/index.js"></script>
+
 <script>
 	
 </script>

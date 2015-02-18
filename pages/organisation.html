@@ -8,10 +8,11 @@
 <meta name="msapplication-tap-highlight" content="no" />
 <meta name="viewport"
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+<!-- Include the local stylesheets -->
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
-<!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../css/list_organisation.css">
 
 <!-- Include the jQuery library -->
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -19,6 +20,15 @@
 <!-- Include the jQuery Mobile library -->
 <script
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- Include the jQuery Dotdotdot library -->
+<script src="../js/jquery.dotdotdot.min.js"></script>
+<script src="../js/index.js"></script>
+
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
 </head>
 <body>
@@ -48,34 +58,90 @@
 
 			<div class="listdiv">
 				<h3>Pågående prosjekter</h3>
-				<ul data-role="listview" data-inset="true">
-					<li><a href="#">Prosjekt 1</a></li>
-					<li><a href="#">Prosjekt 2</a></li>
-					<li><a href="#">Prosjekt 3</a></li>
-				</ul>
+				<ul data-role="none" data-inset="true" id="list_organisation">
+					<li><a href="project.html" rel="external"
+						class="show-page-loading-msg">
+							<div class="li_container">
+								<div class="li_left">
+									<div class="li_circ"></div>
+								</div>
+
+								<div class="li_mid dots">
+									<span class="li_heading">Prosjektnavn</span> <span
+										class="li_text"></span>
+								</div>
+					</a>
+						<div class="li_right">
+							<!-- 								<button data-role="none" onclick="toDonation()" class="li_btn_donate">DONÉR</button> -->
+							<a data-role="none" href="donate.html" rel="external"
+								class="li_btn_donate">DONÉR</a>
+						</div>
 			</div>
+			</li>
+			<li><a href="project.html" rel="external"
+				class="show-page-loading-msg">
+					<div class="li_container">
+						<div class="li_left">
+							<div class="li_circ"></div>
+						</div>
 
+						<div class="li_mid dots">
+							<span class="li_heading">Prosjektnavn</span> <span
+								class="li_text"></span>
+						</div>
+			</a>
+				<div class="li_right">
+					<!-- 								<button data-role="none" onclick="toDonation()" class="li_btn_donate">DONÉR</button> -->
+					<a data-role="none" href="donate.html" rel="external"
+						class="li_btn_donate">DONÉR</a>
+				</div>
 		</div>
-		<div class="somespace">
-		
-		</div>
+		</li>
+		<li><a href="project.html" rel="external"
+			class="show-page-loading-msg">
+				<div class="li_container">
+					<div class="li_left">
+						<div class="li_circ"></div>
+					</div>
 
-
-		<footer data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img class="footer_menu_icon" alt=""
-						src="../img/icon_menu_footer_me.png"></li>
-					<li class="footer_overview"><img class="footer_menu_icon"
-						alt="" src="../img/icon_menu_footer_overview.png"></li>
-					<li class="footer_friends"><img class="footer_menu_icon"
-						alt="" src="../img/icon_menu_footer_friends.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon"
-						alt="" src="../img/icon_menu_footer_settings.png"></li>
-				</ul>
+					<div class="li_mid dots">
+						<span class="li_heading">Prosjektnavn</span> <span class="li_text"></span>
+					</div>
+		</a>
+			<div class="li_right">
+				<!--<button data-role="none" onclick="toDonation()" class="li_btn_donate">DONÉR</button>-->
+				<a data-role="none" href="donate.html" rel="external"
+					class="li_btn_donate">DONÉR</a>
 			</div>
-		</footer>
+	</div>
+	</li>
+	</ul>
+	</div>
+
+	</div>
+	<div class="somespace"></div>
+
+
+	<footer data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="footer_me"><img class="footer_menu_icon" alt=""
+					src="../img/icon_menu_footer_me.png"></li>
+				<li class="footer_overview"><img class="footer_menu_icon"
+					alt="" src="../img/icon_menu_footer_overview.png"></li>
+				<li class="footer_friends"><img class="footer_menu_icon" alt=""
+					src="../img/icon_menu_footer_friends.png"></li>
+				<li class="footer_settings"><img class="footer_menu_icon"
+					alt="" src="../img/icon_menu_footer_settings.png"></li>
+			</ul>
+		</div>
+	</footer>
 	</div>
 
 </body>
+
+<script>
+	
+</script>
+
 </html>

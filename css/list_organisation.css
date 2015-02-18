@@ -1,0 +1,117 @@
+body {
+	margin-top: 100pt;
+}
+
+
+#list_organisation {
+	width: 100%;
+	background: #fff;
+	list-style: none;
+	border-bottom: none;
+}
+
+#list_organisation li {
+	height: 60pt;
+}
+
+.li_container {
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	box-sizing: border-box;
+	border-bottom: thin solid #f2f2f2;
+}
+
+.li_left, .li_mid, .li_right {
+	background: #fff;
+	position: relative;
+	height: 100%;
+	float: left;
+	box-sizing: border-box;
+}
+
+.li_left {
+	width: 15%;
+}
+
+.li_mid {
+	width: 60%;
+	padding: 15pt 3pt 5pt 5pt;
+	color:#000;
+}
+
+.li_right {
+	width: 25%;
+}
+
+.li_circ {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 95%;
+	height: 60%;
+	background: #d2d2d2;
+	border-radius: 50%;
+}
+
+.li_circ img {
+	border-radius: 50%;
+	width: 100%;
+}
+
+.li_heading {
+	font-size: large;
+	display: block;
+	font-weight: normal;
+	color: #404040;
+}
+
+
+.li_text {
+	font-size: small;
+	font-family: Circular Std Book,monospace,Calibri,Arial,Sans-serif !important;
+	font-weight: normal;
+}
+
+.txt_grey {
+	color: #9b9b9b;
+}
+
+/* li_right */
+
+.li_btn_donate {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	border: none;
+	width: 70pt;
+	height: 20pt;
+	margin: auto;
+	background: #20a623;
+	color: white;
+	font-size: small;
+	box-shadow: 0 0 2pt 0 #777;
+}
+
+a.li_btn_donate{
+	text-decoration: none !important;
+	color:white !important;
+	font-weight: normal !important;
+	font-family: Circular Std Book,monospace,Calibri,Arial,Sans-serif !important;
+	text-shadow:none;
+	line-height: 20pt;
+	text-align: center;
+}
+
+.li_btn_donate:focus {
+	outline: none;
+}
+
+.li_btn_donate:active {
+	background: #4CAF50;
+}
+
+

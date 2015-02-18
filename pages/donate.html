@@ -32,24 +32,53 @@
 	<div data-role="page" id="page_organisation" data-theme="a">
 		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
-			<img src="../img/menu.png" class="menu_icon">
-			<p >Sidetittel</p>
+			<img src="../img/arrow_left.png" class="menu_icon">
+			<p >Doner</p>
 		</div>
-
-<!-- For toppbilde  -->
-<!-- 	<div class="portrait"> -->
-<!-- 			Bakgrunnsbilde / toppbilde -->
-<!-- Rund logo (90pt venstre nede)
-<!-- 		<div class="logodiv_left">Org. logo</div> -->
-<!-- Rund logo (60pt høyre nede)  -->
-<!-- 		<div class="logodiv_right">Velg bilde</div> -->
-<!-- 	</div> -->
 
 		<div class="main_content">
-<!-- 		Her kommer innhold -->
+				<table>
+
+				<fieldset data-role="controlgroup" >
+					<tr>
+						<td><input class="radio_amount" type="radio"
+							name="in_donate_amount" id="donate_amount1" value="20" > <label
+							for="donate_amount1">20 kr</label></td>
+						<td><input class="radio_amount" type="radio"
+							name="in_donate_amount" id="donate_amount2" value="50"> <label
+							for="donate_amount2">50 kr</label></td>
+					</tr>
+					<tr>
+						<td><input class="radio_amount" type="radio"
+							name="in_donate_amount" id="donate_amount3" value="100"> <label
+							for="donate_amount3">100 kr</label></td>
+						<td><input class="radio_amount" type="radio"
+							name="in_donate_amount" id="donate_amount4" value="200"> <label
+							for="donate_amount4">200 kr</label></td>
+					</tr>
+				</fieldset>
+			</table>
+			<table>
+				<tr>
+					<td style="width: 40%;"><input data-role="none"
+						class="input_underscored" style="width: 80%;margin-left:10pt;" type="tel"
+						id="in_custom_amount" name="in_donate_amount"
+						placeholder="Velg" onfocus="uncheckRadiobuttonsDonate()"></td>
+					<td style="text-align: left">NOK</td>
+				</tr>
+			</table>
+				<div class="somespace"></div>
+				<h5>Betalingsfrekvens</h5>
+				<fieldset data-role="none" style="border-bottom:thin solid #d2d2d2;border-top:thin solid #d2d2d2;margin-top:10pt;">
+					<input type="radio" name="donation_freq" id="donation_freq_once" >
+					<label for="donation_freq_once">Engangsbeløp</label>
+					<input type="radio" name="donation_freq" id="donation_freq_monthly" >
+					<label for="donation_freq_monthly">Fast trekk</label>
+				</fieldset>
+				<div class="somespace"></div>
+				<button data-role="none" class="btn_single_project_donate">DONÉR BELØP</button>
 		</div>
 		
-<!-- Lager litt plass før footer -->
 		<div class="somespace"></div>
 
 

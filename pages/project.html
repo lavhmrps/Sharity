@@ -8,11 +8,11 @@
 <meta name="msapplication-tap-highlight" content="no" />
 <meta name="viewport"
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-<!-- Lokal css -->
+	
+
+<!-- Include the local stylesheets -->
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
-<!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" type="text/css" href="../css/list_project.css">
 
 <!-- Include the jQuery library -->
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -21,6 +21,14 @@
 <script
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
+<!-- Include the jQuery Dotdotdot library -->
+<script src="../js/jquery.dotdotdot.min.js"></script>
+<script src="../js/index.js"></script>
+
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
 </head>
 <body>
@@ -52,19 +60,72 @@
 			<h2>Boko-haram angrep</h2>
 			<p class="ingress">Væpnet, islamistisk gruppe med base i
 				Nord-Nigeria. Gjennomfører terrorangrep i islams navn mot sivile og
+				militære mål.Væpnet, islamistisk gruppe med base i
+				Nord-Nigeria. Gjennomfører terrorangrep i islams navn mot sivile og
 				militære mål.</p>
 
 			<div class="listdiv">
 				<h3>Siste Nyheter</h3>
-				<ul data-role="listview" data-inset="true">
-					<li><a href="#"><p class="grey">2. feb 2015</p>
-							<p>Rett etter midnatt natt til søndag angrep Boko Haram
-								regionshovedstaden Maiduguri</p></a></li>
-					<li><a href="#"><p class="grey">22. jan 2015</p>
-							<p>Har det siste året også operert i Kamerun</p></a></li>
-					<li><a href="#"><p class="grey">15. jan 2015</p>
-							<p>Nigerias president Goodluck Jonathan har erklært full krig
-								mot gruppen</p></a></li>
+				
+				<ul data-role="none" >
+					<li>
+						<a href="news.html" rel="external" class="show-page-loading-msg">
+							<div class="li_container">
+								<div class="li_left">
+									<div class="circle">
+										
+									</div>
+								</div>
+								<div class="li_mid dots">
+										<span class="li_date">2. feb 2015</span>
+										<span class="li_text">Malala Yousafzai, the Pakistani schoolgirl shot in the head by the Taliban, has criticised Nigerian and world leaders for not doing enough to free hundreds of schoolgirls kidnapped 300 days ago by Boko Haram.</span>
+								</div>
+								<div class="li_right">
+									<img src="../img/li_arrow_r_grey.png">
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="news.html" rel="external" class="show-page-loading-msg">
+							<div class="li_container">
+								<div class="li_left">
+									<div class="circle">
+										
+									</div>
+								</div>
+								<div class="li_mid dots">
+									<div class="li_mid_content">
+										<span class="li_date">19. jan 2015</span>
+										<span class="li_text">Boko Haram fighters have carried out their first known fatal attack in Chad, killing several people including a local chief, according to residents and security forces.</span>
+									</div>
+								</div>
+								<div class="li_right">
+									<img src="../img/li_arrow_r_grey.png">
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="news.html" rel="external" class="show-page-loading-msg">
+							<div class="li_container">
+								<div class="li_left">
+									<div class="circle">
+										
+									</div>
+								</div>
+								<div class="li_mid dots">
+									<div class="li_mid_content">
+										<span class="li_date">28. des 2014</span>
+										<span class="li_text">Niger’s parliament has unanimously approved the deployment of troops to northern Nigeria as part of a regional offensive against Islamist militant group Boko Haram, which has launched several cross-border attacks in recent days.</span>
+									</div>
+								</div>
+								<div class="li_right">
+									<img src="../img/li_arrow_r_grey.png">
+								</div>
+							</div>
+						</a>
+					</li>
 				</ul>
 			</div>
 
@@ -92,5 +153,9 @@
 
 </body>
 <script src="cordova.js"></script>
-<script charset="UTF-8" src="js/index.js"></script>
+<script>
+$(document).ready(function(){
+	$(".dots").dotdotdot();
+})
+</script>
 </html>

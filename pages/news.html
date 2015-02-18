@@ -8,24 +8,20 @@
 <meta name="msapplication-tap-highlight" content="no" />
 <meta name="viewport"
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-	
-<!-- Lokal css -->
+
+<!-- 	Local css -->
 <link rel="stylesheet" type="text/css" href="../css/index.css" />
 
 <!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
 <!-- Include the jQuery library -->
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
 <!-- Include the jQuery Mobile library -->
-<script	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-<!-- Include the jQuery Dotdotdot library -->
-<script src="../js/jquery.dotdotdot.min.js"></script>
-
-<!-- Include the local js -->
-<script src="../js/index.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 </head>
 <body>
@@ -33,23 +29,44 @@
 		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
 			<img src="../img/menu.png" class="menu_icon">
-			<p >Sidetittel</p>
+			<p>Org.navn</p>
+		</div>
+		<div class="portrait">
+			Bakgrunnsbilde / toppbilde
+
+			<div class="logodiv_left">Org. logo</div>
+
+		</div>
+		<div class="top_links">
+			<a href="#">Nyheter</a> <a href="#">Om organisasjonen</a>
 		</div>
 
-<!-- For toppbilde  -->
-<!-- 	<div class="portrait"> -->
-<!-- 			Bakgrunnsbilde / toppbilde -->
-<!-- Rund logo (90pt venstre nede)
-<!-- 		<div class="logodiv_left">Org. logo</div> -->
-<!-- Rund logo (60pt høyre nede)  -->
-<!-- 		<div class="logodiv_right">Velg bilde</div> -->
-<!-- 	</div> -->
+		<div class="space_btn">
+			<button class="ui-btn btn_single_project_donate" data-role="none"
+				onclick="#">DONÉR</button>
+		</div>
 
 		<div class="main_content">
-<!-- 		Her kommer innhold -->
+			<h4 class="grey">Kategori for Org./Prosjekt</h4>
+			<h2 class="orgname">Navn på Org./Prosjekt</h2>
+			<p class="ingress">Leger Uten Grenser er en nøytral og uavhengig
+				medisinsk hjelpeorganisasjon som redder liv og lindrer nød. Vi
+				hjelper dem som trenger det mest – uansett hvem, uansett hvor,
+				uansett hvorfor.</p>
+
+			<div class="listdiv">
+				<h3>Siste nyheter</h3>
+				<ul data-role="listview" data-inset="true">
+					<li><a href="#"><p class="grey">2. feb 2015</p>
+							<p>Hjelper overlevende etter Boko-haram angrep</p></a></li>
+					<li><a href="#"><p class="grey">22. jan 2015</p>
+							<p>Tsjad: forventet levealder 51 år</p></a></li>
+					<li><a href="#"><p class="grey">15. jan 2015</p>
+							<p>Svangerskap og fødsel dreper 800 kvinner hver dag</p></a></li>
+				</ul>
+			</div>
+
 		</div>
-		
-<!-- Lager litt plass før footer -->
 		<div class="somespace"></div>
 
 
