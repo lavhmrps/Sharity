@@ -1,134 +1,91 @@
-Dagbok -Gruppe 32
+Dagbok
+-Gruppe 32
 
 
 
-Dato uvisst (i 2014): Dannet bachelorgruppe. Søkte om oppgave fra diverse
-bedrifter. Fikk oppgave hos Simplenæss. Hadde møte med Tony, sjef i Simplenæss.
-Registrerte gruppen som bachelorgruppe på nettet og valgte gruppeleder (Pål
-Morten). Samlet oss og lagde en prosjektskisse sammen, og lastet den opp på
-gruppesiden.
+Dato uvisst (i 2014):
+Dannet bachelorgruppe.
+Søkte om oppgave fra diverse bedrifter.
+Fikk oppgave hos Simplenæss.
+Hadde møte med Tony, sjef i Simplenæss.
+Registrerte gruppen som bachelorgruppe på nettet og valgte gruppeleder (Pål Morten).
+Samlet oss og lagde en prosjektskisse sammen, og lastet den opp på gruppesiden.
 
 
-05.01.15: Skype-samtale(grunnet geografiske avstander) med 3 av 4 medlemmer hvor
-vi diskuterer forprosjektrapport, sender mail til Simplenæss med forespørsel om
-et møte, og så smått startet på forprosjektrapporten.
+05.01.15:
+Skype-samtale(grunnet geografiske avstander) med 3 av 4 medlemmer hvor vi diskuterer forprosjektrapport, sender mail til Simplenæss med forespørsel om et møte, og så smått startet på forprosjektrapporten. 
 
 
-19.01.15: Møte med Simplenæss v/ Tony Næss. Vi har fått informasjon som gjør at
-vi kan utarbeide et forprosjekt. Vi har fått i oppgave å finne et passende
-programmeringsspråk. Vi har også fått vite mer om hvilke krav som vil stilles
-til produktet som skal utvikles. Etter dialog med Kirsten Ribu (Heretter nevnt
-som veileder) skal vi også sende en kopi av avtalen mellom simplenæss og HiOA.
+19.01.15:
+Møte med Simplenæss v/ Tony Næss. Vi har fått informasjon som gjør at vi kan utarbeide et forprosjekt. Vi har fått i oppgave å finne et passende programmeringsspråk. Vi har også fått vite mer om hvilke krav som vil stilles til produktet som skal utvikles. Etter dialog med Kirsten Ribu (Heretter nevnt som veileder) skal vi også sende en kopi av avtalen mellom simplenæss og HiOA.
 
-Vi har valgt Benjamin Aarstad Nygård som prosjekleder (Heretter nevnt som
-prosjektleder) og Pål Morten Eid som gruppeleder (Heretter nevnt som
-gruppeleder), Vegard Lokreim vil fra dags dato ha hovedansvaret for back-end
-fremdrift, mens Magnus Lunde vil ha tilsvarende ansvar for front-end.
+Vi har valgt Benjamin Aarstad Nygård som prosjekleder (Heretter nevnt som prosjektleder) og Pål Morten Eid som gruppeleder (Heretter nevnt som gruppeleder), Vegard Lokreim vil fra dags dato ha hovedansvaret for back-end fremdrift, mens Magnus Lunde vil ha tilsvarende ansvar for front-end.
 
 Vi jobber også aktivt med å ferdigstille forprosjektrapporten.
 
 
-29.01.15: Møte med Simplenæss v/ Tony Næss og Ole Jørgen (Kommunikatør). Blitt
-introdusert for wireframes og har nå grunnlag for å starte utvikling av Sharity
-App. Har gått gjennom funksjonalitet og kommet frem til at vi også skal lage en
-CRM webapp som organisasjoner forholder seg til. Vi har fått i opggave å sette
-opp et teknologikart over appen samt CRM siden.  Vi har fastsatt firster for
-prosessene som skal foregå og har kommet frem til at vi skal være ferdig med
-front-end og back-end omtrent 13. mars, give or take. Vi skal sette opp faser
-innad de gitte prosessene som (ferdigstille frontend/backend, testing osv).
-Begynner programmering av basisfunksjonalitet på mandag 2. februar.
-Teknologikart for appen er påbegynt samt databasearkitektur. Innlveringer til
-Simplenæss leveres via Basecamp snarest mulig.
+29.01.15:
+Møte med Simplenæss v/ Tony Næss og Ole Jørgen (Kommunikatør). Blitt introdusert for wireframes og har nå grunnlag for å starte utvikling av Sharity App. Har gått gjennom funksjonalitet og kommet frem til at vi også skal lage en CRM webapp som organisasjoner forholder seg til. Vi har fått i opggave å sette opp et teknologikart over appen samt CRM siden.  Vi har fastsatt firster for prosessene som skal foregå og har kommet frem til at vi skal være ferdig med front-end og back-end omtrent 13. mars, give or take. Vi skal sette opp faser innad de gitte prosessene som (ferdigstille frontend/backend, testing osv). Begynner programmering av basisfunksjonalitet på mandag 2. februar.
+Teknologikart for appen er påbegynt samt databasearkitektur.
+Innlveringer til Simplenæss leveres via Basecamp snarest mulig.
 
 
-03.02.15 Benjamin: Front-end registrering og login i CRM er påbegynt, men
-avventer litt siden vi venter på wireframes fra oppdragsgiver. Bruker ventetiden
-på å sette meg inn i bootstrap så det skal bli enkelere å lage responsive sider.
+03.02.15
+Benjamin:
+Front-end registrering og login i CRM er påbegynt, men avventer litt siden vi venter på wireframes fra oppdragsgiver. Bruker ventetiden på å sette meg inn i bootstrap så det skal bli enkelere å lage responsive sider.
  
 
-04.02.15 Vegard: Jeg har programmert ferdig registrering av bruker med
-registrering av betalingskort. Jeg har lagt inn en sjekk om brukeren har lagt
-inn kortnummer, dersom dette ikke er gjort, registreres det ikke noe kort og
-ingenting går inn i ‘Card’ tabellen, dersom brukeren skriver inn kortnummer
-legges informasjon inn i databasen. Jeg har satt opp en egen server-backend fil
-for registrering av kort som heter: «insert_card.php», denne filen ligger på
-skolens server: http://student.cs.hioa.no/~s188081/insert_card.php.  Jeg er i
-skrivende stund usikker på hvordan vi skal behandle kortinformasjon da dette på
-nåværende tidspunkt er veldig lite hensiktsmessig mtp sikkerhet.
+04.02.15
+Vegard:
+Jeg har programmert ferdig registrering av bruker med registrering av betalingskort. Jeg har lagt inn en sjekk om brukeren har lagt inn kortnummer, dersom dette ikke er gjort, registreres det ikke noe kort og ingenting går inn i ‘Card’ tabellen, dersom brukeren skriver inn kortnummer legges informasjon inn i databasen. Jeg har satt opp en egen server-backend fil for registrering av kort som heter: «insert_card.php», denne filen ligger på skolens server: http://student.cs.hioa.no/~s188081/insert_card.php.  Jeg er i skrivende stund usikker på hvordan vi skal behandle kortinformasjon da dette på nåværende tidspunkt er veldig lite hensiktsmessig mtp sikkerhet.
 
-Jeg mangler fortsatt litt validering av brukerinput, men dette er noe jeg skal
-fikse ila morgendagen, eventuelle valideringer jeg glemmer VIL vi fange opp når
-vi starter på blackbox-test-fasen vår. ettersom jeg er ferdig med grovarbeidet
-(dvs ferdig med det som skal gjøres) før frist, starter jeg på morgendagens
-tema: Innlogging for backend. Jeg ser det er en del som må tas opp på neste
-gruppemøte med tanke på hva som skal lagres i databasens tabeller og hvordan
-dette skal behandles.
+Jeg mangler fortsatt litt validering av brukerinput, men dette er noe jeg skal fikse ila morgendagen, eventuelle valideringer jeg glemmer VIL vi fange opp når vi starter på blackbox-test-fasen vår. ettersom jeg er ferdig med grovarbeidet (dvs ferdig med det som skal gjøres) før frist, starter jeg på morgendagens tema: Innlogging for backend. Jeg ser det er en del som må tas opp på neste gruppemøte med tanke på hva som skal lagres i databasens tabeller og hvordan dette skal behandles. 
 
-07.02.15 Benjamin: Forms for å legge inn prosjekter og å sende inn nyheter er
-laget for CRMet, back-end mangler foreløpig.
+07.02.15
+Benjamin:
+Forms for å legge inn prosjekter og å sende inn nyheter er laget for CRMet, back-end mangler foreløpig.
 
-Magnus: Har fullført HTML/CSS/JS for layout til login og registrering i
-mobilapp. Jobbet mye med inputkontroll ved valg av månedlig trekk som skulle
-velges ved enten radioknapper eller input i tekstfelter. Det tok en del til å få
-dem til å bli eksklusive valg.
+Magnus:
+Har fullført HTML/CSS/JS for layout til login og registrering i mobilapp. Jobbet mye med inputkontroll ved valg av månedlig trekk som skulle velges ved enten radioknapper eller input i tekstfelter. Det tok en del til å få dem til å bli eksklusive valg.
 
-08.02.15 Vegard: Ferdig med innlogging av bruker, php-server-back-end er lastet
-opp på skolens server. Jeg er ikke ferdig med videresending til min profil da
-denne siden ikke er ferdig back-end-messig. Jeg starter med å programmere
-server-backend for ”min profil” siden tidligst mandag. Innad i gruppen har vi
-ingått enighet om å revurdere og omstrukturere datbasearkitekturen da den pr. I
-dag ikke er optimal. Vi har selvsagt forståelse for at dette er naturlig da vi
-oppdagere nye behov og løsninger etterhvert som vi bruker databasen aktivt.
-Dette er noe jeg har tenkt å starte på tidligst onsdag. Endringene er ikke
-vesentlige men vil gjøre det litt mer effektivt med tanke på registrering
-(preventere to like epostadresser i database osv). Vi har også sett oss nødt til
-å definere fremmednøkkler da dette gjør fjerning fra database mer effektivt. Alt
-dette er på forhånd klarert med Benjamin og Magnus, dvs vi har flertall for
-endring innad i gruppen.
+08.02.15
+Vegard:
+Ferdig med innlogging av bruker, php-server-back-end er lastet opp på skolens server. Jeg er ikke ferdig med videresending til min profil da denne siden ikke er ferdig back-end-messig. Jeg starter med å programmere server-backend for ”min profil” siden tidligst mandag. Innad i gruppen har vi ingått enighet om å revurdere og omstrukturere datbasearkitekturen da den pr. I dag ikke er optimal. Vi har selvsagt forståelse for at dette er naturlig da vi oppdagere nye behov og løsninger etterhvert som vi bruker databasen aktivt. Dette er noe jeg har tenkt å starte på tidligst onsdag. Endringene er ikke vesentlige men vil gjøre det litt mer effektivt med tanke på registrering (preventere to like epostadresser i database osv). Vi har også sett oss nødt til å definere fremmednøkkler da dette gjør fjerning fra database mer effektivt. Alt dette er på forhånd klarert med Benjamin og Magnus, dvs vi har flertall for endring innad i gruppen.
 
-Benjamin: Vi har hatt trøbbel med å koble oss til dotnet-serveren. Derfor har
-jeg tatt ned gruppehjemmesiden fra dotnet.cs.hioa.no, gjort om kode slik at det
-ble en php-side og lastet det opp på
-http://student.cs.hioa.no/~s188081/Gruppe32/index.php (Vegard sitt
-hjemmeområde).
+Benjamin:
+Vi har hatt trøbbel med å koble oss til dotnet-serveren.
+Derfor har jeg tatt ned gruppehjemmesiden fra dotnet.cs.hioa.no, gjort om kode slik at det ble en php-side og lastet det opp på http://student.cs.hioa.no/~s188081/Gruppe32/index.php (Vegard sitt hjemmeområde).
 
-09.02.15 Gruppemøte over skype på kvelden for å høre hvordan gruppemedlemmene
-ligger an i de forskjellige oppgavene de har blitt tildelt, om de trenger hjelp,
-evt. om noen kan bidra i andre deler også.
+09.02.15
+Gruppemøte over skype på kvelden for å høre hvordan gruppemedlemmene ligger an i de forskjellige oppgavene de har blitt tildelt, om de trenger hjelp, evt. om noen kan bidra i andre deler også.
 
-Magnus: Lagt til registrering for organisasjoner, stylet inputbokser til å se ut
-som oppdragsgiver ville. Ordnet xCode for iOs-koding med phonegap og native
-funksjoner.
+Magnus:
+Lagt til registrering for organisasjoner, stylet inputbokser til å se ut som oppdragsgiver ville. Ordnet xCode for iOs-koding med phonegap og native funksjoner.
 
 
-10.02.15 Magnus: Har laget oversiktssiden (ikke ferdig) med søkefunksjon og
-lister. I tillegg prøvd å finne ut hvordan man får til plugins for native
-funksjoner med cordova og phonegap uten særlig resultat. Utenom å ha funnet ut
-masse som ikke fungerer..
+10.02.15
+Magnus:
+Har laget oversiktssiden (ikke ferdig) med søkefunksjon og lister. I tillegg prøvd å finne ut hvordan man får til plugins for native funksjoner med cordova og phonegap uten særlig resultat. Utenom å ha funnet ut masse som ikke fungerer..
 
-11.02.15 Hadde et møte med veileder Kirsten Ribu hvor vi diskuterte forskjellige
-ting. Blant annet forklarte vi litt om hvordan prosjektet skulle bli og i den
-anledning lurte vi litt på hva som skal til for å oppnå en god karakter og ulike
-løsninger vi kunne prøve å få til. Pål var syk denne dagen og hadde ikke
-mulighet til å møte.
+11.02.15
+Hadde et møte med veileder Kirsten Ribu hvor vi diskuterte forskjellige ting.
+Blant annet forklarte vi litt om hvordan prosjektet skulle bli og i den anledning lurte vi litt på hva som skal til for å oppnå en god karakter og ulike løsninger vi kunne prøve å få til.
+Pål var syk denne dagen og hadde ikke mulighet til å møte.
 
-12.02.15 Møte med Tony: Revurderte strukturen i gruppen, Magnus og Pål skal
-jobbe med front-end til app, Vegard og Benjamin skal jobbe med å ferdigstille
-CRM. Deretter settes alle ressurser til å ferdigstille app.
+12.02.15
+Møte med Tony: Revurderte strukturen i gruppen, Magnus og Pål skal jobbe med front-end til app, Vegard og Benjamin skal jobbe med å ferdigstille CRM. Deretter settes alle ressurser til å ferdigstille app.
 
-Benjamin og Vegard: Back-end til registreringsformsene er lagt inn og testet opp
-mot database.
+Benjamin og Vegard:
+Back-end til registreringsformsene er lagt inn og testet opp mot database. 
 
-13.02.15 Magnus: Laget 3 nye sider i appen (Organisasjoner, Organisasjoner med
-kun ett prosjekt og Prosjekter). Også en del småfikling på de andre sidene,
-bl.a. Login siden har fått navigering til de andre sidene (for enkel tilgang
-under utviklingen). Css er oppdatert med riktig fargeprofil og det er lagt til
-riktig font (men ikke fått den til å virke i app enda). Har lagt ut en
-standardlayout-side man kan kopiere opp å bare legge til hovedinnhold,
-header/footer etc er ferdige. 
+13.02.15
+Magnus:
+Laget 3 nye sider i appen (Organisasjoner, Organisasjoner med kun ett prosjekt og Prosjekter). Også en del småfikling på de andre sidene, bl.a. Login siden har fått navigering til de andre sidene (for enkel tilgang under utviklingen). Css er oppdatert med riktig fargeprofil og det er lagt til riktig font (men ikke fått den til å virke i app enda). Har lagt ut en standardlayout-side man kan kopiere opp å bare legge til hovedinnhold, header/footer etc er ferdige
 
-14.02.15 Magnus: Fullført all registrering av både
-bruker og organisasjon. Lagt til css for oppsummering, dynamisk sjekk om input
-er fylt inn eller ikke. Riktig font virker nå i app. I oppsummering er det lagt
-til at man ikke kan opprettte bruker/organisasjon uten å ha godkjent
-brukervilkårene.
+14.02.15
+Magnus:
+Fullført all registrering av både bruker og organisasjon. Lagt til css for oppsummering, dynamisk sjekk om input er fylt inn eller ikke. Riktig font virker nå i app. I oppsummering er det lagt til at man ikke kan opprettte bruker/organisasjon uten å ha godkjent brukervilkårene.
+
+17.02.15
+Magnus:
+Nye sider: Oversikt, Organisasjon, Organisasjon med ett prosjekt, Prosjekt, Doner. CSS for lister for de forskjellige sidene. 
