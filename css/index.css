@@ -64,6 +64,14 @@ body {
 	margin-left: 10pt;
 }
 
+.mail_icon {
+	position: absolute;
+	width: 25pt;
+	height: 25pt;
+	margin-top: 20pt;
+	right: 10pt;
+}
+
 .input_underscored {
 	width: 100%;
 	box-shadow: none;
@@ -453,4 +461,18 @@ input[type="radio"] {
 a.nostyle{
 	text-decoration: none;
 	color:black;
+}
+
+article{
+	width: 95%;
+	margin:auto;
+	margin-bottom: 35pt;
+}
+
+section h2.blue{
+	margin: 15pt 0  5pt 0;
+}
+
+section h4{
+	margin: 5pt;
 }
