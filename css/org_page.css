@@ -89,11 +89,16 @@ table {
 }
 
 table tr td {
+	position:relative;
 	height: 40pt;
 }
 
 .footer_menu_icon {
 	width: 100%;
+}
+.footer_menu_icon_holo {
+	background:white;
+	width: 99%;	
 }
 
 .main_content {
@@ -237,3 +242,6 @@ section h2.blue {
 	line-height: 15pt;
 }
 
+.footer_active{
+	background:#fafafa;
+}
