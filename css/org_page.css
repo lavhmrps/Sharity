@@ -52,7 +52,7 @@ body {
 
 .portrait {
 	position: relative;
-	margin:auto;
+	margin: auto;
 	height: 100pt;
 	background-color: #d2d2d2;
 	color: white;
@@ -89,16 +89,17 @@ table {
 }
 
 table tr td {
-	position:relative;
+	position: relative;
 	height: 40pt;
 }
 
 .footer_menu_icon {
 	width: 100%;
 }
+
 .footer_menu_icon_holo {
-	background:white;
-	width: 99%;	
+	background: white;
+	width: 99%;
 }
 
 .main_content {
@@ -116,6 +117,7 @@ table tr td {
 	line-height: 100%;
 	background: #f2f2f2;
 }
+
 .content_box1l {
 	box-sizing: border-box;
 	border-right: thin solid #eee;
@@ -135,13 +137,14 @@ table tr td {
 	position: relative;
 	text-align: center;
 	height: 35%;
-	line-height:40pt;
+	line-height: 40pt;
 	box-sizing: border-box;
-	border-bottom:thin solid #eee;
+	border-bottom: thin solid #eee;
 }
 
 .container_top {
-	position: relative; height : 50%;
+	position: relative;
+	height: 50%;
 	box-sizing: border-box;
 	height: 50%;
 	text-align: center;
@@ -202,8 +205,8 @@ table tr td {
 	min-height: 20pt;
 }
 
-section{
-	margin:20pt 0;
+section {
+	margin: 20pt 0;
 }
 
 article {
@@ -221,27 +224,28 @@ section h2.blue {
 .bottom {
 	position: absolute;
 	bottom: 0;
-	left:0;
-	right:0;
-}
-.top{
-	position: absolute;
-	top: 0;
-	left:0;
-	right:0;
+	left: 0;
+	right: 0;
 }
 
-.big{
-	font-size:xx-large;
+.top {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.big {
+	font-size: xx-large;
 	line-height: 25pt;
 	font-weight: bold;
 }
 
-.medium{
-	font-size:large;
+.medium {
+	font-size: large;
 	line-height: 15pt;
 }
 
-.footer_active{
-	background:#fafafa;
+.footer_active {
+	background: #fafafa;
 }
