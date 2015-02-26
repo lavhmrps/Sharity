@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+<!-- Lokal css -->
+<link rel="stylesheet" type="text/css" href="../css/org_settings.css" />
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<!-- Include the jQuery library -->
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<!-- Include the jQuery Mobile library -->
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+	<div data-role="page" id="page_org_settings" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div class="header_top"></div>
+			<img alt="Projects-icon" src="../img/menu_projects.png"
+				class="menu_projects_icon">
+			<p>Innstillinger</p>
+		</div>
+
+		<div class="main_content">
+		FASE 2...
+
+		</div>
+
+		<!-- Lager litt plass før footer -->
+		<div class="somespace"></div>
+
+
+	<footer data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_org_page"><img class="footer_menu_icon_holo"
+						alt="" src="../img/icon_menu_footer_site_holo.png"></li>
+					<li class="footer_org_activities"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_activities_holo.png"></li>
+					<li class="footer_org_statistics"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_statistics_holo.png"></li>
+					<li class="footer_org_settings"><img
+						class="footer_menu_icon_holo footer_active" alt=""
+						src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<script>
+
+
+	$(".footer_org_page").click(function() {
+		window.location.href = "org_page.html";
+	});
+
+	$(".footer_org_activities").click(function() {
+		window.location.href = "org_activities.html";
+	});
+
+	$(".footer_org_statistics").click(function() {
+		window.location.href = "org_statistics.html";
+	});
+
+	$(".footer_org_settings").click(function() {
+		location.reload();
+	});
+</script>
+</html>

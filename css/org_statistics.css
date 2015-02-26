@@ -48,7 +48,7 @@ body {
 }
 
 .layer {
-	box-shadow: 0pt 0pt 1pt 0pt #d2d2d2;
+	box-shadow: 0pt 0pt 1pt 0pt #9b9b9b;
 }
 
 
@@ -112,32 +112,53 @@ table tr td {
 	color: #9b9b9b !important;
 }
 
-.red_notif {
-	width: 18pt;
-	height: 18pt;
-	border-radius: 50%;
-	background: #f63218;
-	color: white;
-	text-align: center;
-	line-height: 18pt;
-	font-size: small;
-	padding: 0 1pt;
+.green {
+	color: #20a623 !important;
 }
 
-.red_notif_footer {
-	top: 20pt;
-	float: right;
-	width: 18pt;
-	height: 18pt;
-	border-radius: 50%;
-	background: #f63218;
-	color: white;
-	text-align: center;
-	line-height: 18pt;
-	font-size: small;
-	padding: 0 1pt;
-	z-index: 10;
+.content_box1 {
+	position: relative;
+	height: 120pt;
+	margin: auto;
+	border: thin solid #eee;
+	line-height: 100%;
 }
+
+
+.content_box1l {
+	box-sizing: border-box;
+	border-right: thin solid #eee;
+	width: 50%;
+	height: 55%;
+	float: left;
+}
+
+.content_box1r {
+	width: 50%;
+	height: 55%;
+	float: right;
+}
+
+.content_box_top {
+	position: relative;
+	text-align: center;
+	height: 60%;
+	font-size: 30pt;
+	line-height: 40pt;
+}
+
+.content_box_bottom {
+	position: relative;
+	text-align: center;
+	height: 40%;
+}
+
+.greyline {
+	width: 100%;
+	margin: 5pt 0 5pt 0;
+	border-bottom: thin solid #d2d2d2;
+}
+
 
 .somespace {
 	min-height: 20pt;
@@ -145,6 +166,14 @@ table tr td {
 
 section {
 	margin: 20pt 0;
+}
+
+section span{
+	display:block;
+	margin-left:5%;
+}
+.number{
+	font-weight: bold;
 }
 
 .clickable:ACTIVE {

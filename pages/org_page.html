@@ -31,7 +31,7 @@
 
 </head>
 <body>
-	<div data-role="page" id="page_organisation" data-theme="a">
+	<div data-role="page" id="page_org_page" data-theme="a">
 		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
 			<p>Side</p>
@@ -82,16 +82,17 @@
 			</section>
 
 			<section>
-			
+
 				<h2>Siste nytt</h2>
-				
+
 				<div class="portrait">Bakgrunnsbilde</div>
 				<article>
-				<h2 class="blue">Tittel på nyhet</h2>
-				
-				<p>lablablablab a balba lba llblablabl ablblabl
-					albal ba lba lablb lb lab lab lab labd lab ba lbb bblblabdlbalb bl
-					bab ab ablb a</p></article>
+					<h2 class="blue">Tittel på nyhet</h2>
+
+					<p>lablablablab a balba lba llblablabl ablblabl albal ba lba
+						lablb lb lab lab lab labd lab ba lbb bblblabdlbalb bl bab ab ablb
+						a</p>
+				</article>
 
 			</section>
 
@@ -101,18 +102,21 @@
 		<!-- Lager litt plass før footer -->
 		<div class="somespace"></div>
 
-
 		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
-					<li class="footer_site"><img class="footer_menu_icon_holo footer_active" alt=""
+					<li class="footer_org_page"><img
+						class="footer_menu_icon_holo footer_active" alt=""
 						src="../img/icon_menu_footer_site_holo.png"></li>
-					<li class="footer_activities"><img class="footer_menu_icon_holo"
-						alt="" src="../img/icon_menu_footer_activities_holo.png"></li>
-					<li class="footer_statistics"><img class="footer_menu_icon_holo"
-						alt="" src="../img/icon_menu_footer_statistics_holo.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon_holo"
-						alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					<li class="footer_org_activities"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_activities_holo.png"></li>
+					<li class="footer_org_statistics"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_statistics_holo.png"></li>
+					<li class="footer_org_settings"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_settings_holo.png"></li>
 				</ul>
 			</div>
 		</footer>
@@ -120,6 +124,20 @@
 
 </body>
 <script>
+	$(".footer_org_page").click(function() {
+		location.reload();
+	});
 
+	$(".footer_org_activities").click(function() {
+		window.location.href = "org_activities.html";
+	});
+
+	$(".footer_org_statistics").click(function() {
+		window.location.href = "org_statistics.html";
+	});
+
+	$(".footer_org_settings").click(function() {
+		window.location.href = "org_settings.html";
+	});
 </script>
 </html>

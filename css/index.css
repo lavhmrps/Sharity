@@ -85,6 +85,10 @@ body {
 	box-shadow: none;
 }
 
+.input_underscored:FOCUS {
+	outline: none;
+}
+
 #page_login .input_underscored {
 	width: 90%;
 	box-shadow: none;
@@ -100,10 +104,6 @@ body {
 #page_login ::-webkit-input-placeholder {
 	color: white;
 	font-size: large;
-}
-
-.input_underscored:FOCUS {
-	outline: none;
 }
 
 .logodiv_right {
@@ -223,7 +223,7 @@ table tr td input {
 	margin-left: 0pt;
 	border: thin solid black;
 }
-/* Overview1 */
+
 .content_box1 {
 	position: relative;
 	height: 120pt;
@@ -381,6 +381,8 @@ h2.orgname {
 	padding: 10pt !important;
 	font-size: large !important;
 	outline: none !important;
+	text-align:center;
+	text-decoration:none;
 	border: none;
 }
 
@@ -548,5 +550,5 @@ section h4 {
 }
 
 .footer_active {
-	background: #fafafa !important;
+	background: #eee;
 }

@@ -40,7 +40,7 @@ $(".input_underscored").blur(function() {
 
 	var text = $(this).val();
 	if (text == "") {
-		$(this).css("border-bottom", "thin solid red");
+		$(this).css("border-bottom", "thin solid #f63218");
 	} else
 		$(this).css("border-bottom", "thin solid #000");
 
@@ -98,20 +98,6 @@ function validate() {
 			+ "\nUtlopsmaned: " + visa_expire_month + "\nCCV: " + visa_ccv);
 }
 
-$(document).on("click", ".navmenu_me", function() {
-	alert("ME clicked");
-});
-
-$(document).on("click", ".navmenu_overview", function() {
-	alert("Overview clicked ");
-});
-
-$(document).on("click", ".navmenu_friends", function() {
-	alert("Friends clicked ");
-});
-$(document).on("click", ".navmenu_settings", function() {
-	alert("Settings clicked ");
-});
 
 // Store registration-data
 var data = {
@@ -183,10 +169,10 @@ function toRegister3() {
 	custom_val = $("#in_custom_amount").val();
 
 	if (radio_val == undefined && custom_val == "") {
-		alert("Velg belï¿½p");
+		alert("Velg beløp");
 		return;
 	} else if (isNaN(custom_val)) {
-		alert("Ugyldig belï¿½p");
+		alert("Ugyldig beløp");
 		return;
 	} else if (radio_val == undefined)
 		data.monthly_amount = custom_val;
@@ -194,7 +180,7 @@ function toRegister3() {
 	else
 		data.monthly_amount = radio_val;
 
-	// alert("Belï¿½p: "+data.monthly_amount);
+	// alert("Beløp: "+data.monthly_amount);
 	$.mobile.changePage("#page_register3", {
 		transition : "slide"
 	});
@@ -293,21 +279,3 @@ function reloadPage() {
 	$.mobile.changePage("#page_login");
 	location.reload();
 }
-
-$(".footer_me").click(function() {
-	alert("me");
-});
-$(".footer_overview").click(function() {
-	alert("overview");
-});
-$(".footer_friends").click(function() {
-	alert("friends");
-});
-$(".footer_settings").click(function() {
-	alert("settings");
-});
-
-$(".li_container").click(function(){
-	$.mobile.changePage("project.html");
-});
-

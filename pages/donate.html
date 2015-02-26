@@ -8,41 +8,38 @@
 <meta name="msapplication-tap-highlight" content="no" />
 <meta name="viewport"
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-	
+
 <!-- Lokal css -->
-<link rel="stylesheet" type="text/css" href="../css/index.css" />
+<link rel="stylesheet" type="text/css" href="../css/donate.css" />
 
 <!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
 <!-- Include the jQuery library -->
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
 <!-- Include the jQuery Mobile library -->
-<script	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-<!-- Include the jQuery Dotdotdot library -->
-<script src="../js/jquery.dotdotdot.min.js"></script>
-
-<!-- Include the local js -->
-<script src="../js/index.js"></script>
 
 </head>
 <body>
-	<div data-role="page" id="page_organisation" data-theme="a">
+	<div data-role="page" id="page_donate" data-theme="a">
 		<div id="header_div" class="boxshadow">
-			<div page-role="header" class="header_top"></div>
+			<div class="header_top"></div>
 			<img src="../img/arrow_left.png" class="menu_icon">
-			<p >Doner</p>
+			<p>Donér</p>
 		</div>
 
 		<div class="main_content">
+			<fieldset data-role="none">
 				<table>
 
-				<fieldset data-role="controlgroup" >
 					<tr>
 						<td><input class="radio_amount" type="radio"
-							name="in_donate_amount" id="donate_amount1" value="20" > <label
+							name="in_donate_amount" id="donate_amount1" value="20"> <label
 							for="donate_amount1">20 kr</label></td>
 						<td><input class="radio_amount" type="radio"
 							name="in_donate_amount" id="donate_amount2" value="50"> <label
@@ -50,37 +47,42 @@
 					</tr>
 					<tr>
 						<td><input class="radio_amount" type="radio"
-							name="in_donate_amount" id="donate_amount3" value="100"> <label
-							for="donate_amount3">100 kr</label></td>
+							name="in_donate_amount" id="donate_amount3" value="100">
+							<label for="donate_amount3">100 kr</label></td>
 						<td><input class="radio_amount" type="radio"
-							name="in_donate_amount" id="donate_amount4" value="200"> <label
-							for="donate_amount4">200 kr</label></td>
+							name="in_donate_amount" id="donate_amount4" value="200">
+							<label for="donate_amount4">200 kr</label></td>
 					</tr>
-				</fieldset>
-			</table>
+				</table>
+			</fieldset>
 			<table>
 				<tr>
 					<td style="width: 40%;"><input data-role="none"
-						class="input_underscored" style="width: 80%;margin-left:10pt;" type="tel"
-						id="in_custom_amount" name="in_donate_amount"
+						class="input_underscored" style="width: 80%; margin-left: 10pt;"
+						type="tel" id="in_custom_amount" name="in_donate_amount"
 						placeholder="Velg" onfocus="uncheckRadiobuttonsDonate()"></td>
 					<td style="text-align: left">NOK</td>
 				</tr>
 			</table>
-				<div class="somespace"></div>
-				<h5>Betalingsfrekvens</h5>
-				<fieldset data-role="none" style="border-bottom:thin solid #d2d2d2;border-top:thin solid #d2d2d2;margin-top:10pt;">
-					<input type="radio" name="donation_freq" id="donation_freq_once" >
-					<label for="donation_freq_once">Engangsbeløp</label>
-					<input type="radio" name="donation_freq" id="donation_freq_monthly" >
-					<label for="donation_freq_monthly">Fast trekk</label>
-				</fieldset>
-				<div class="somespace"></div>
-				<button data-role="none" class="btn_single_project_donate">DONÉR BELØP</button>
-		</div>
-		
-		<div class="somespace"></div>
+			<div class="somespace"></div>
+			<h5>Betalingsfrekvens</h5>
+			<fieldset data-role="none"
+				style="border-bottom: thin solid #d2d2d2; border-top: thin solid #d2d2d2; margin-top: 10pt;">
+				<input type="radio" name="donation_freq" id="donation_freq_once">
+				<label for="donation_freq_once">Engangsbeløp</label> <input
+					type="radio" name="donation_freq" id="donation_freq_monthly">
+				<label for="donation_freq_monthly">Fast trekk</label>
+			</fieldset>
 
+			<div class="somespace"></div>
+
+			<button data-role="none" class="btn_single_project_donate"
+				onclick="#">DONÉR BELØP</button>
+		
+
+		<div class="somespace"></div>
+		<div class="somespace"></div>
+		<div class="somespace"></div>
 
 		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
@@ -97,6 +99,19 @@
 			</div>
 		</footer>
 	</div>
-
+</div>
 </body>
+
+<script>
+	$(".radio_amount").click(function() {
+		$("#in_custom_amount").val("");
+		$("#in_custom_amount").blur();
+		$("#in_custom_amount").css("border-bottom", "thin solid #d2d2d2");
+	});
+
+	function uncheckRadiobuttonsDonate() {
+		$("input[name='in_donate_amount']").attr("checked", false)
+				.checkboxradio("refresh");
+	}
+</script>
 </html>

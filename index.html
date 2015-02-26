@@ -84,15 +84,31 @@
 			<div class="develop">
 				<span style="font-size: large; color: white;">Sidenavigering</span>
 				<ul data-role="listview" data-filter="true" data-input="#myFilter"
-					data-inset="true" style="width: 70% !important">
+					data-inset="true">
 					<li><a href="pages/overview1.html" rel="external"
 						class="show-page-loading-msg">Oversikt</a></li>
-					<li><a href="pages/organisation.html" data-ajax="false"
+					<li><a href="pages/organisation.html" rel="external"
 						class="show-page-loading-msg">Organisasjon</a></li>
 					<li><a href="pages/org_single_project.html" rel="external"
 						class="show-page-loading-msg">Org med ett prosjekt</a></li>
-					<li><a href="pages/project.html" data-ajax="false"
+					<li><a href="pages/project.html" rel="external"
 						class="show-page-loading-msg">Prosjekt</a></li>
+					<li><a href="pages/mystatistics.html" rel="external"
+						class="show-page-loading-msg">Statistikk</a></li>
+					<li><a href="pages/organisation_news.html" rel="external"
+						class="show-page-loading-msg">Org - nyheter</a></li>
+					<li><a href="pages/project_news.html" rel="external"
+						class="show-page-loading-msg">Prosjekt - nyheter</a></li>
+					<li><a href="pages/org_page.html" rel="external"
+						class="show-page-loading-msg">Organisasjon-side</a></li>
+					<li><a href="pages/org_activities.html" rel="external"
+						class="show-page-loading-msg">Org-Aktiviteter</a></li>
+					<li><a href="pages/org_donations.html" rel="external"
+						class="show-page-loading-msg">Org-Donasjoner</a></li>
+					<li><a href="pages/org_statistics.html" rel="external"
+						class="show-page-loading-msg">Org-Statistikk</a></li>
+					<li><a href="pages/org_settings.html" rel="external"
+						class="show-page-loading-msg">Org-Inntillinger</a></li>
 
 				</ul>
 			</div>
@@ -138,7 +154,8 @@
 				<div class="main_content">
 					<table>
 						<tr>
-							<td style="width: 40pt;"><img class="icon" alt="" src="img/icon_blue.png"></td>
+							<td style="width: 40pt;"><img class="icon" alt=""
+								src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="text" name="fullname" placeholder="Fullt navn"
 								id="in_fullname"></td>
@@ -188,20 +205,21 @@
 
 			<div id="register1b">
 
-				<div class="main_content">					
+				<div class="main_content">
 					<table>
 						<tr>
-							<td style="width: 40pt;"><img alt="grey dot" src="img/icon_blue.png" class="icon"></td>
+							<td style="width: 40pt;"><img alt="grey dot"
+								src="img/icon_blue.png" class="icon"></td>
 							<td><input data-role="none" class="input_underscored"
 								type="text" name="org_owner" placeholder="Eier"
 								id="in_org_owner"></td>
 						</tr>
 						<tr>
 							<td><img alt="grey dot" src="img/icon_blue.png" class="icon"></td>
-							<td><span style="line-height: 25pt">sharityapp.no/</span><input data-role="none"
-								class="input_underscored" style="width: 58%; padding-left: 5pt; float:right;"
-								type="text" name="org_name" placeholder="din organisasjon"
-								id="in_org_name"></td>
+							<td><span style="line-height: 25pt">sharityapp.no/</span><input
+								data-role="none" class="input_underscored"
+								style="width: 58%; padding-left: 5pt; float: right;" type="text"
+								name="org_name" placeholder="din organisasjon" id="in_org_name"></td>
 						</tr>
 						<tr>
 							<td><img alt="grey dot" src="img/icon_blue.png" class="icon"></td>
@@ -258,9 +276,9 @@
 				complete account of the system, and expound the actual teachings of
 				the great explorer of the truth, the master-builder of human
 				happiness.</p>
-			<table>
+			<fieldset data-role="controlgroup">
+				<table>
 
-				<fieldset data-role="controlgroup">
 					<tr>
 						<td><input class="radio_amount" type="radio"
 							name="in_monthly_amount" id="amount1" value="20"> <label
@@ -277,8 +295,8 @@
 							name="in_monthly_amount" id="amount4" value="200"> <label
 							for="amount4">200 kr</label></td>
 					</tr>
-				</fieldset>
-			</table>
+				</table>
+			</fieldset>
 			<br>
 
 			<table>
@@ -507,13 +525,12 @@
 					<td id="reg_summary_visanr"></td>
 				</tr>
 			</table>
-			<input type="checkbox" name="cb_send_receipts"
-				id="cb_send_receipts"> <label
-				for="cb_send_receipts">Send meg kvitteringer</label> 
-			<input type="checkbox" name="cb_accept_user_conditions"
-				id="cb_accept_user_conditions" onClick="enableSubmit(this)"> <label
-				for="cb_accept_user_conditions">Godkjenn brukervilkår</label> <a
-				href="#" style="margin-left: 31pt">Les brukervilkår</a>
+			<input type="checkbox" name="cb_send_receipts" id="cb_send_receipts">
+			<label for="cb_send_receipts">Send meg kvitteringer</label> <input
+				type="checkbox" name="cb_accept_user_conditions"
+				id="cb_accept_user_conditions" onClick="enableSubmit(this)">
+			<label for="cb_accept_user_conditions">Godkjenn brukervilkår</label>
+			<a href="#" style="margin-left: 31pt">Les brukervilkår</a>
 
 
 			<table class="table_btns">
@@ -586,9 +603,9 @@
 			</table>
 			<div class="greyline"></div>
 			<input type="checkbox" name="cb_accept_conditions"
-				id="cb_accept_conditions" onclick="enableSubmit(this)"> <label for="cb_accept_conditions">Godkjenn
-				brukervilkår</label> <a href="#" style="margin-left: 31pt">Les
-				brukervilkår</a>
+				id="cb_accept_conditions" onclick="enableSubmit(this)"> <label
+				for="cb_accept_conditions">Godkjenn brukervilkår</label> <a href="#"
+				style="margin-left: 31pt">Les brukervilkår</a>
 			<table class="table_btns">
 				<tr>
 					<td style="width: 40pt;"></td>
@@ -596,8 +613,8 @@
 							onclick="reloadPage()" data-transition="slide"
 							data-direction="reverse" style="width: 100pt;">AVBRYT</button></td>
 					<td>
-						<button data-corners="false" data-shadow="false" onclick="#" id="register_org"
-							class="btn_blue" style="width: 100pt;">OPPRETT</button>
+						<button data-corners="false" data-shadow="false" onclick="#"
+							id="register_org" class="btn_blue" style="width: 100pt;">OPPRETT</button>
 				</tr>
 			</table>
 

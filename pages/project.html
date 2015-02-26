@@ -35,8 +35,7 @@
 	<div data-role="page" id="page_project" data-theme="a">
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
-			<img src="../img/arrow_left.png"
-				class="show-page-loading-msg menu_icon back_icon">
+			<img src="../img/arrow_left.png" class="menu_icon back_btn">
 			<p>Navn på prosjekt</p>
 		</div>
 
@@ -48,8 +47,10 @@
 			</div>
 		</div>
 		<div class="space_btn">
-			<button class="ui-btn btn_single_project_donate" data-role="none"
-				onclick="#">DONÉR</button>
+			<!-- 			<button class="ui-btn btn_single_project_donate" data-role="none" -->
+			<!-- 				onclick="#">DONÉR</button> -->
+			<a href="donate.html" rel="external"
+				class="btn_single_project_donate show-page-loading-msg">DONÉR</a>
 		</div>
 		<div class="main_content">
 
@@ -153,8 +154,12 @@
 </body>
 <script src="cordova.js"></script>
 <script>
-$(document).ready(function(){
-	$(".dots").dotdotdot();
-})
+	$(document).ready(function() {
+		$(".dots").dotdotdot();
+	})
+
+	$(".back_btn").click(function() {
+		window.history.go(-1);
+	});
 </script>
 </html>
