@@ -2,7 +2,6 @@ body {
 	margin-top: 100pt;
 }
 
-
 #list_organisation {
 	width: 100%;
 	background: #fff;
@@ -22,7 +21,7 @@ body {
 	border-bottom: thin solid #f2f2f2;
 }
 
-.li_left, .li_mid, .li_right {
+.li_left,.li_mid,.li_right {
 	background: #fff;
 	position: relative;
 	height: 100%;
@@ -35,13 +34,13 @@ body {
 }
 
 .li_mid {
-	width: 60%;
+	width: 55%;
 	padding: 15pt 3pt 5pt 5pt;
-	color:#000;
+	color: #000;
 }
 
 .li_right {
-	width: 25%;
+	width: 30%;
 }
 
 .li_circ {
@@ -51,8 +50,8 @@ body {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	width: 95%;
-	height: 60%;
+	width: 30pt;
+	height: 30pt;
 	background: #d2d2d2;
 	border-radius: 50%;
 }
@@ -64,15 +63,16 @@ body {
 
 .li_heading {
 	font-size: large;
+	line-height:26pt;
 	display: block;
 	font-weight: normal;
 	color: #404040;
 }
 
-
 .li_text {
 	font-size: small;
-	font-family: Circular Std Book,monospace,Calibri,Arial,Sans-serif !important;
+	font-family: Circular Std Book, monospace, Calibri, Arial,
+		Sans-serif !important;
 	font-weight: normal;
 }
 
@@ -81,7 +81,6 @@ body {
 }
 
 /* li_right */
-
 .li_btn_donate {
 	position: absolute;
 	top: 0;
@@ -96,12 +95,13 @@ body {
 	box-shadow: 0 0 2pt 0 #777;
 }
 
-a.li_btn_donate{
+a.li_btn_donate {
 	text-decoration: none !important;
-	color:white !important;
+	color: white !important;
 	font-weight: normal !important;
-	font-family: Circular Std Book,monospace,Calibri,Arial,Sans-serif !important;
-	text-shadow:none;
+	font-family: Circular Std Book, monospace, Calibri, Arial,
+		Sans-serif !important;
+	text-shadow: none;
 	line-height: 20pt;
 	text-align: center;
 }
@@ -113,5 +113,3 @@ a.li_btn_donate{
 .li_btn_donate:active {
 	background: #4CAF50;
 }
-
-
