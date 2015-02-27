@@ -8,13 +8,10 @@
 	src: local(CircularStd-Bold);
 	font-weight: bold;
 }
-
 * {
-	font-family: CircularBook, Circular Std Book, Calibri, Arial,
-		Sans-serif !important;
+	font-family: CircularBook, Circular Std Book,Calibri, Arial,Sans-serif !important;
 	margin: 0;
 	padding: 0;
-	text-shadow: none !important;
 }
 
 body {
@@ -39,7 +36,7 @@ body {
 }
 
 #header_div p {
-	margin-left: 50pt;
+	margin-left: 75pt;
 	color: white;
 	font-size: x-large;
 }
@@ -85,10 +82,6 @@ body {
 	box-shadow: none;
 }
 
-.input_underscored:FOCUS {
-	outline: none;
-}
-
 #page_login .input_underscored {
 	width: 90%;
 	box-shadow: none;
@@ -104,6 +97,10 @@ body {
 #page_login ::-webkit-input-placeholder {
 	color: white;
 	font-size: large;
+}
+
+.input_underscored:FOCUS {
+	outline: none;
 }
 
 .logodiv_right {
@@ -161,6 +158,11 @@ table tr td input {
 	line-height: 25pt;
 }
 
+/* footer { */
+/* 	width: 100%; */
+/* 	height: 40pt; */
+/* 	background: #EAEFEA; */
+/* } */
 .footer_menu_icon {
 	width: 100%;
 }
@@ -223,12 +225,12 @@ table tr td input {
 	margin-left: 0pt;
 	border: thin solid black;
 }
-
+/* Overview1 */
 .content_box1 {
 	position: relative;
 	height: 120pt;
 	margin: auto;
-	border: thin solid #eee;
+	border: thin solid #999;
 	line-height: 100%;
 }
 
@@ -239,8 +241,7 @@ table tr td input {
 }
 
 .content_box1l {
-	box-sizing: border-box;
-	border-right: thin solid #eee;
+	border-right: thin solid #9b9b9b;
 	width: 50%;
 	height: 55%;
 	float: left;
@@ -258,23 +259,9 @@ table tr td input {
 	height: 45%;
 	bottom: 0;
 	border: none;
-	border-top: thin solid #eee;
+	border-top: thin solid #9b9b9b;
 	background-color: #F3F3F3;
 	line-height: 100%;
-}
-
-.content_box_top {
-	position: relative;
-	text-align: center;
-	height: 60%;
-	font-size: 30pt;
-	line-height: 40pt;
-}
-
-.content_box_bottom {
-	position: relative;
-	text-align: center;
-	height: 40%;
 }
 
 .content_box1b_icon {
@@ -307,14 +294,11 @@ table tr td input {
 	color: #006dfe !important;
 }
 
-.green {
-	color: #20a623 !important;
-}
-
 .btn_blue {
 	background: #006dfe !important;
 	color: white !important;
 	font-weight: normal !important;
+	text-shadow: none !important;
 }
 
 .btn_white {
@@ -380,22 +364,18 @@ h2.orgname {
 	color: white !important;
 	padding: 10pt !important;
 	font-size: large !important;
-	outline: none !important;
-	text-align:center;
-	text-decoration:none;
-	border: none;
+	outline:none !important;
+	border:none;
 }
-
-.btn_single_project_donate:active {
-	background: #4CAF50 !important;
+.btn_single_project_donate:active{
+	background:#4CAF50 !important;
 }
 
 .navlink {
 	height: 25pt !important;
 	line-height: 25pt !important;
 	font-size: large !important;
-	/* 	font-weight: normal !important; */
-	text-shadow: none ! important;
+	font-weight: normal !important;
 }
 
 .ui-btn-active {
@@ -464,91 +444,35 @@ input[type="radio"] {
 	border: none;
 	background: #fafafa;
 }
-
 .ui-checkbox .ui-btn.ui-checkbox-on {
 	border: none;
 	background: #fafafa;
 }
 
-.table_btns {
+.table_btns{
 	margin-top: 30pt;
 }
 
-.a_nostyle {
-	color: black;
+.a_nostyle{
+	color:black;
 	text-decoration: none;
 }
 
-a.nostyle {
+a.nostyle{
 	text-decoration: none;
-	color: black;
+	color:black;
 }
 
-article {
+article{
 	width: 95%;
-	margin: auto;
+	margin:auto;
 	margin-bottom: 35pt;
-	margin-top: 20pt;
 }
 
-section h2.blue {
-	margin: 5pt 0;
+section h2.blue{
+	margin: 15pt 0  5pt 0;
 }
 
-section h4 {
+section h4{
 	margin: 5pt;
-}
-
-#mystats_title {
-	position: relative;
-	width: 100%;
-	height: 80pt;
-	border-bottom: thin solid #eee;
-}
-
-#mystats_title_container {
-	height: 50pt;
-	width: 85%;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	margin-left: 15%;
-}
-
-.mystats_logo {
-	float: left;
-	width: 50pt;
-	height: 50pt;
-	border-radius: 50%;
-	background: #9b9b9b;
-	margin-right: 5pt;
-}
-
-#mystats_title_name {
-	float: left;
-	font-size: x-large;
-	line-height: 50pt;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 75%;
-}
-
-#mystats_activities {
-	width: 100%;
-	height: 40pt;
-}
-
-.clickable:ACTIVE {
-	background: #eee;
-}
-
-.footer_menu_icon_holo {
-	background: white;
-	width: 99%;
-}
-
-.footer_active {
-	background: #eee;
 }
