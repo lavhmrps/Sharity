@@ -1,0 +1,160 @@
+.circlegrey{
+	position: absolute;
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	height:35pt;
+	width: 35pt;
+	border-radius: 50%;
+	background: #9b9b9b;
+	color:white;
+	line-height: 35pt;
+	font-size: small;
+	text-align: center;
+}
+
+.circleblue{
+	position: absolute;
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	height:35pt;
+	width: 35pt;
+	border-radius: 50%;
+	background: #006dfe;
+	color:white;
+	line-height: 35pt;
+	font-size: large;
+	text-align: center;
+}
+
+.circlebluelittle{
+	position: absolute;
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:-130%;
+	height:18pt;
+	width: 18pt;
+	border-radius: 50%;
+	background: #006dfe;
+	color:white;
+	line-height: 18pt;
+	font-size: small;
+	text-align: center;
+}
+
+.li_friends{
+	margin:0;
+	padding:0;
+	top:30%;
+	border:none;
+	position:relative;
+	font-size: x-large;
+	color: #404040;
+	font-family: Circular Std Book,Calibri,Sans-serif !important;
+	font-weight: normal;
+}
+
+.li_contacts{
+	margin:0;
+	padding:0;
+	bottom:-76%;
+	right:-13%;
+	border:none;
+	position:relative;
+	font-size: normal;
+	color: #404040;
+	font-family: Circular Std Book,Calibri,Sans-serif !important;
+	font-weight: normal;
+}
+
+.listdiv ul{
+	margin:0;
+	padding:0;
+
+}
+
+.listdiv li{
+	height: 70pt;
+	border-bottom: thin solid #f2f2f2;
+	list-style: none;
+}
+
+.li_container{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-bottom: 1px solid #f2f2f2;
+}
+
+.li_left, .li_right, .li_mid{
+	height:100%;
+	float:left;
+	box-sizing:border-box;
+	background: #fff;
+}
+
+.li_left{
+	position: relative;
+	width:7%;
+}
+
+.li_mid{	
+	width:86%;
+	padding: 5pt 0 5pt 5pt;
+
+}
+
+.li_right{
+	position:relative;
+	width:7%;
+}
+
+
+.li_left_contacts, .li_right_contacts, .li_mid_contacts{
+	height:100%;
+	float:left;
+	box-sizing:border-box;
+	background: #fff;
+}
+
+.li_left_contacts{
+	position: relative;
+	width:10%;
+}
+
+.li_mid_contacts{	
+	width:80%;
+	padding: 5pt 0 5pt 5pt;
+
+}
+
+.li_right_contacts{
+	position:relative;
+	width:10%;
+}
+
+.li_left img{
+	height: 100%;
+	border-radius: 50%;
+}
+
+.li_right img{
+	margin:0;
+	padding:0;
+	border:none;
+	position:absolute;
+	margin: auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	color:white;
+}
+
