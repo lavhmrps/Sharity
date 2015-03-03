@@ -1,0 +1,202 @@
+@font-face {
+	font-family: CircularBook;
+	src: local(CircularStd-Book);
+}
+
+@font-face {
+	font-family: CircularBook;
+	src: local(CircularStd-Bold);
+	font-weight: bold;
+}
+
+* {
+	font-family: CircularBook, Circular Std Book, Calibri, Arial,
+		Sans-serif !important;
+	margin: 0;
+	padding: 0;
+	text-shadow: none !important;
+}
+
+body {
+	width: 100%;
+}
+
+#header_div {
+	width: 100%;
+	height: 75pt;
+	line-height: 50pt;
+	background: #006dfe;
+	color: white;
+}
+
+#header_div p {
+	margin-left: 45pt;
+	color: white;
+	font-size: x-large;
+}
+
+.menu_projects_icon {
+	position: absolute;
+	height: 12pt;
+	margin-top: 20pt;
+	right: 10pt;
+}
+
+.boxshadow {
+	box-shadow: 0pt 0pt 1pt #888;
+}
+
+.layer {
+	box-shadow: 0pt 0pt 1pt 0pt #d2d2d2;
+}
+
+.header_top {
+	width: 100%;
+	height: 25pt;
+	background-color: #0057cb;
+}
+
+.menu_icon {
+	position: absolute;
+	width: 25pt;
+	height: 25pt;
+	margin-top: 12pt;
+	margin-left: 10pt;
+}
+
+#mystats_title {
+	position: relative;
+	width: 100%;
+	height: 80pt;
+	border-bottom: thin solid #eee;
+}
+
+#mystats_title_container {
+	position: relative; height : 50pt;
+	width: 85%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	margin-left: 15%;
+	height: 50pt;
+}
+
+.mystats_logo {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto; float : left;
+	width: 40pt;
+	height: 40pt;
+	border-radius: 50%;
+	background: #9b9b9b;
+	float: left;
+}
+
+#mystats_title_name {
+	float: left;
+	margin-left: 45pt;
+	line-height: 50pt;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 75%;
+	font-size: x-large;
+}
+
+#mystats_activities {
+	width: 100%;
+	height: 40pt;
+}
+
+.content_box1 {
+	position: relative;
+	height: 120pt;
+	margin: auto;
+	border: thin solid #eee;
+	line-height: 100%;
+}
+
+.content_box1l {
+	box-sizing: border-box;
+	border-right: thin solid #eee;
+	width: 50%;
+	height: 55%;
+	float: left;
+}
+
+.content_box1r {
+	width: 50%;
+	height: 55%;
+	float: right;
+}
+
+.content_box_top {
+	position: relative;
+	text-align: center;
+	height: 60%;
+	font-size: 30pt;
+	line-height: 40pt;
+}
+
+.content_box_bottom {
+	position: relative;
+	text-align: center;
+	height: 40%;
+}
+
+table {
+	width: 100%;
+	border: thin solid #eee;
+	background: #f2f2f2;
+	border-collapse: collapse;
+}
+
+.border-bottom {
+	border-bottom: thin solid #d2d2d2;
+}
+
+table tr td {
+	position: relative;
+	height: 40pt;
+}
+
+.footer_menu_icon {
+	width: 100%;
+}
+
+.footer_menu_icon_holo {
+	background: white;
+	width: 99%;
+}
+
+.main_content {
+	width: 90%;
+	margin: auto;
+	margin-top: 30pt;
+}
+
+.grey {
+	color: #9b9b9b !important;
+}
+
+.green {
+	color: #20a623 !important;
+}
+
+.somespace {
+	min-height: 20pt;
+}
+
+section {
+	margin: 20pt 0;
+}
+
+.clickable:ACTIVE {
+	background: #eee;
+}
+
+.footer_active {
+	background: #eee;
+}

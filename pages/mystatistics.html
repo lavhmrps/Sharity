@@ -10,7 +10,7 @@
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
 <!-- Lokal css -->
-<link rel="stylesheet" type="text/css" href="../css/index.css" />
+<link rel="stylesheet" type="text/css" href="../css/mystatistics.css" />
 
 <!-- Include jQuery Mobile stylesheets -->
 <link rel="stylesheet"
@@ -26,14 +26,11 @@
 <!-- Include the jQuery Dotdotdot library -->
 <script src="../js/jquery.dotdotdot.min.js"></script>
 
-<!-- Include the local js -->
-<script src="../js/index.js"></script>
-
 </head>
 <body>
 	<div data-role="page" id="page_mystatistics" data-theme="a">
 		<div id="header_div" class="boxshadow">
-			<div page-role="header" class="header_top"></div>
+			<div class="header_top"></div>
 			<img src="../img/menu.png" class="menu_icon">
 			<p>Min statistikk</p>
 		</div>
@@ -110,14 +107,14 @@
 		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
 				<ul>
-					<li class="footer_site"><img class="footer_menu_icon_holo" alt=""
-						src="../img/icon_menu_footer_site_holo.png"></li>
-					<li class="footer_activities"><img class="footer_menu_icon_holo"
-						alt="" src="../img/icon_menu_footer_activities_holo.png"></li>
-					<li class="footer_statistics"><img class="footer_menu_icon_holo footer_active"
-						alt="" src="../img/icon_menu_footer_statistics_holo.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon_holo"
-						alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					<li class="footer_me"><img class="footer_menu_icon" alt=""
+						src="../img/icon_menu_footer_me.png"></li>
+					<li class="footer_overview"><img class="footer_menu_icon"
+						alt="" src="../img/icon_menu_footer_overview.png"></li>
+					<li class="footer_friends"><img class="footer_menu_icon"
+						alt="" src="../img/icon_menu_footer_friends.png"></li>
+					<li class="footer_settings"><img class="footer_menu_icon"
+						alt="" src="../img/icon_menu_footer_settings.png"></li>
 				</ul>
 			</div>
 		</footer>
@@ -125,5 +122,19 @@
 
 </body>
 <script>
+$(".footer_me").click(function() {
+	window.location.href = "";
+});
+
+$(".footer_overview").click(function() {
+	window.location.href = "overview1.html";
+});
+$(".footer_friends").click(function() {
+	window.location.href = "my_friends.html";
+});
+
+$(".footer_settings").click(function() {
+	window.location.href = "";
+});
 </script>
 </html>

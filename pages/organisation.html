@@ -10,7 +10,7 @@
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
 <!-- Include the local stylesheets -->
-<link rel="stylesheet" type="text/css" href="../css/index.css" />
+<link rel="stylesheet" type="text/css" href="../css/overview.css" />
 <link rel="stylesheet" type="text/css"
 	href="../css/list_organisation.css">
 
@@ -23,7 +23,6 @@
 
 <!-- Include the jQuery Dotdotdot library -->
 <script src="../js/jquery.dotdotdot.min.js"></script>
-<script src="../js/index.js"></script>
 
 
 <!-- Include jQuery Mobile stylesheets -->
@@ -142,8 +141,22 @@
 	</div>
 </body>
 
-<script>
-	
+<<script>
+$(".footer_me").click(function() {
+	window.location.href = "";
+});
+
+$(".footer_overview").click(function() {
+	window.location.href = "overview.html";
+});
+
+$(".footer_friends").click(function() {
+	window.location.href = "my_friends.html";
+});
+
+$(".footer_settings").click(function() {
+	window.location.href = "";
+});
 </script>
 
 </html>

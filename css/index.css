@@ -499,46 +499,6 @@ section h4 {
 	margin: 5pt;
 }
 
-#mystats_title {
-	position: relative;
-	width: 100%;
-	height: 80pt;
-	border-bottom: thin solid #eee;
-}
-
-#mystats_title_container {
-	height: 50pt;
-	width: 85%;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	margin-left: 15%;
-}
-
-.mystats_logo {
-	float: left;
-	width: 50pt;
-	height: 50pt;
-	border-radius: 50%;
-	background: #9b9b9b;
-	margin-right: 5pt;
-}
-
-#mystats_title_name {
-	float: left;
-	font-size: x-large;
-	line-height: 50pt;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	max-width: 75%;
-}
-
-#mystats_activities {
-	width: 100%;
-	height: 40pt;
-}
 
 .clickable:ACTIVE {
 	background: #eee;
