@@ -5,7 +5,7 @@
 }
 
 .listdiv li{
-	height: 70pt;
+	height: 53pt;
 	border-bottom: thin solid #f2f2f2;
 	list-style: none;
 }
@@ -28,18 +28,18 @@
 
 .li_left{
 	position: relative;
-	width:15%;
+	width:65%;
 }
 
 .li_mid{	
-	width:70%;
+	width:3%;
 	padding: 5pt 0 5pt 5pt;
 
 }
 
 .li_right{
 	position:relative;
-	width:15%;
+	width:32%;
 }
 
 .li_left img{
@@ -54,7 +54,7 @@
 	top:0;
 	bottom:0;
 	left:0%;
-	right:-20%;
+	right:-27%;
 	height:20pt;
 	width: 20pt;
 	border-radius: 50%;
@@ -63,12 +63,13 @@
 	line-height: 20pt;
 	font-size: small;
 	text-align: center;
+	display: inline-block;
 }
 
 .li_text{
 	margin:0;
 	padding:0;
-	top:40%;
+	top:32%;
 	border:none;
 	position:relative;
 	margin-left: 7pt;
@@ -84,9 +85,10 @@
 	top:0;
 	bottom:0;
 	left:0;
-	right:-50%;
+	right:-67%;
 	border:none;
 	position:absolute;
 	margin: auto;
 	color:white;
+	display: inline-block;
 }

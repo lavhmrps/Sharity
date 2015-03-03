@@ -40,6 +40,12 @@ body {
 	width:50%;
 }
 
+.header_left p{
+	margin-left: 20pt;
+	color: white;
+	font-size: x-large;
+}
+
 .header_right{
 	position:relative;
 	width:50%;
@@ -47,20 +53,8 @@ body {
 
 .header_right p{
 	text-align: right;
-	margin-right: 5%;
-}
-
-
-
-.header_div h2 {
-	color: white;
-	margin-left: 5%;
-}
-
-#header_div p {
-	margin-left: 25pt;
-	color: white;
-	font-size: x-large;
+	margin-right: 20pt;
+	font-size: large;
 }
 
 .boxshadow {
@@ -81,7 +75,7 @@ body {
 	margin-left: 10pt;
 }
 .main_content_main{
-	width: 98%;
+	width: 94%;
 	margin: auto;
 	background-color: white;
 }
