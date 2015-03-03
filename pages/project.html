@@ -11,7 +11,7 @@
 
 
 <!-- Include the local stylesheets -->
-<link rel="stylesheet" type="text/css" href="../css/index.css" />
+<link rel="stylesheet" type="text/css" href="../css/project.css" />
 <link rel="stylesheet" type="text/css" href="../css/list_project.css">
 
 <!-- Include the jQuery library -->
@@ -151,14 +151,29 @@
 	</div>
 
 </body>
-<script src="cordova.js"></script>
 <script>
 	$(document).ready(function() {
 		$(".dots").dotdotdot();
-	})
+	});
 
 	$(".back_btn").click(function() {
 		window.history.go(-1);
+	});
+
+	$(".footer_me").click(function() {
+		window.location.href = "";
+	});
+
+	$(".footer_overview").click(function() {
+		window.location.href = "overview.html";
+	});
+
+	$(".footer_friends").click(function() {
+		window.location.href = "my_friends.html";
+	});
+
+	$(".footer_settings").click(function() {
+		window.location.href = "";
 	});
 </script>
 </html>
