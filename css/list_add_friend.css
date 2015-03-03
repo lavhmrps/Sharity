@@ -34,38 +34,37 @@
 
 .circlebluelittle{
 	position: absolute;
-	margin:auto;
-	top:0;
-	bottom:0;
-	left:0;
-	right:-130%;
-	height:18pt;
-	width: 18pt;
+	margin-left: 5pt;
+	top: 44%;
+	height:12pt;
+	width: 12pt;
 	border-radius: 50%;
 	background: #006dfe;
 	color:white;
-	line-height: 18pt;
-	font-size: small;
+	line-height: 12pt;
+	font-size: 10px;
 	text-align: center;
+	display: inline-block;
 }
 
 .li_friends{
 	margin:0;
 	padding:0;
-	top:30%;
+	top:38%;
 	border:none;
 	position:relative;
-	font-size: x-large;
+	font-size: large;
 	color: #404040;
 	font-family: Circular Std Book,Calibri,Sans-serif !important;
 	font-weight: normal;
+	display: inline-block;
 }
 
 .li_contacts{
 	margin:0;
 	padding:0;
 	bottom:-76%;
-	right:-13%;
+	right:-4%;
 	border:none;
 	position:relative;
 	font-size: normal;
@@ -102,18 +101,18 @@
 
 .li_left{
 	position: relative;
-	width:7%;
+	width:20%;
 }
 
 .li_mid{	
-	width:86%;
+	width:70%;
 	padding: 5pt 0 5pt 5pt;
 
 }
 
 .li_right{
 	position:relative;
-	width:7%;
+	width:10%;
 }
 
 
@@ -126,11 +125,11 @@
 
 .li_left_contacts{
 	position: relative;
-	width:10%;
+	width:40%;
 }
 
 .li_mid_contacts{	
-	width:80%;
+	width:50%;
 	padding: 5pt 0 5pt 5pt;
 
 }
@@ -157,4 +156,3 @@
 	right:0;
 	color:white;
 }
-
