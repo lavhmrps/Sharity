@@ -53,11 +53,10 @@
 									</div>
 								</div>
 								<div class="li_mid_left dots">
-										<span class="li_friends">Pål Morten Eid</span>
-										
+									<span class="li_friends">Pål Morten Eid</span>		
 								</div>
 								<div class="li_mid_right donations">
-										<span class="li_donations">2000</span>
+									<span class="li_donations">2000</span>
 								</div>
 								<div class="li_right">
 									<img src="../img/li_arrow_r_grey.png">
@@ -181,17 +180,10 @@
 						</a>
 					</li>
 				</ul>
-				
 			</div>
-			</div>
-	</div>
+		</div>	
 
-
-
-
-		<!-- Lager litt plass før footer -->
 		<div class="somespace"></div>
-
 
 		<footer data-role="footer" data-position="fixed">
 			<div data-role="navbar">
@@ -208,12 +200,21 @@
 			</div>
 		</footer>
 	</div>
-
 </body>
-<script src="cordova.js"></script>
 <script>
-$(document).ready(function(){
-	$(".dots").dotdotdot();
-})
+$(".footer_me").click(function() {
+	window.location.href = "";
+});
+
+$(".footer_overview").click(function() {
+	window.location.href = "overview.html";
+});
+$(".footer_friends").click(function() {
+	window.location.href = "my_friends.html";
+});
+
+$(".footer_settings").click(function() {
+	window.location.href = "";
+});
 </script>
 </html>
