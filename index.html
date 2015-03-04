@@ -77,9 +77,9 @@
 			<span style="font-size: xx-large; color: white;">Organisasjoner</span>
 
 			<button data-corners="false" data-shadow="false"
-				onclick="toRegister1()" data-transition="slide"
+				onclick="toRegister1b()" data-transition="slide"
 				style="width: 150pt; font-weight: bold; margin-left: 40pt;"
-				class="btn_white blue">NY ORGANISASJON</button>
+				class="btn_white blue" id="newOrg">NY ORGANISASJON</button>
 
 			<div class="develop">
 				<span style="font-size: large; color: white;">Sidenavigering</span>
@@ -108,8 +108,7 @@
 					<li><a href="pages/org_statistics.html" rel="external"
 						class="show-page-loading-msg">Org-Statistikk</a></li>
 					<li><a href="pages/org_settings.html" rel="external"
-						class="show-page-loading-msg">Org-Inntillinger</a></li>
-						
+						class="show-page-loading-msg">Org-Innstillinger</a></li>
 					<li><a href="pages/project_meny.html" rel="external"
 						class="show-page-loading-msg">Prosjekt meny</a></li>
 					<li><a href="pages/add_friend.html" rel="external"
@@ -329,8 +328,7 @@
 					</td>
 					<td><button data-corners="false" data-shadow="false"
 							onclick="toRegister3()" data-transition="slide"
-							style="width: 100pt; font-weight: bold" class="btn_blue">
-							NESTE</button></td>
+							style="width: 100pt; font-weight: bold" class="btn_blue">NESTE</button></td>
 				</tr>
 
 			</table>
@@ -630,11 +628,12 @@
 
 
 </body>
-<script src="cordova.js"></script>
 <script charset="UTF-8" src="js/index.js"></script>
 <script>
+
 if($("#cb_accept_user_contidions").checked()==false)
 	$("#register_user").this().input.disabled=true;
+	
 </script>
 </html>
 

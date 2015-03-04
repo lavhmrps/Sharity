@@ -6,18 +6,37 @@ $(".back_icon").click(function() {
 	window.history.go(-1);
 });
 
+//Goes to register NewUser and activating the correct tab
 function toRegister1() {
 	$.mobile.changePage("#page_register1", {
 		transition : "slide"
 	});
 	$("#stepstogo").empty().append("4");
+	$( "#tabs" ).tabs( "option", "active", 0 );
+	$("#nav_register1b").removeClass("ui-btn-active");
+	$("#nav_register1a").addClass("ui-btn-active");
+	
 }
 
+// Goes to register NewOrganisation and activating the correct tab
+function toRegister1b() {
+	$.mobile.changePage("#page_register1", {
+		transition : "slide"
+	});
+	$("#stepstogo").empty().append("3");
+	// Activate the Org panel
+	$( "#tabs" ).tabs( "option", "active", 1 );
+	$("#nav_register1a").removeClass("ui-btn-active");
+	$("#nav_register1b").addClass("ui-btn-active");
+}
+
+// Setting steps-to-go to 4 if register NewUser
 $("#nav_register1a").click(function() {
 	$(".portrait").show();
 	$("#stepstogo").empty().append("4");
 });
 
+//Setting steps-to-go to 3 if register NewOrganisation
 $("#nav_register1b").click(function() {
 	$(".portrait").hide();
 	$("#stepstogo").empty().append("3");
@@ -31,7 +50,7 @@ $(".input_underscored").focus(function() {
 	$(this).css("border-bottom", "thin solid #006dfe");
 });
 
-// If the imputfield is empty after having had focus -> gets a red border-bottom
+// If the inputfield is empty after having had focus -> gets a red border-bottom
 // else, it gets a black border-bottom
 $(".input_underscored").blur(function() {
 	// .. but not if at loginpage
@@ -46,6 +65,7 @@ $(".input_underscored").blur(function() {
 
 });
 
+// Visual spinner when loading new page
 $(document)
 		.on(
 				"click",
@@ -70,10 +90,12 @@ $(document)
 			$.mobile.loading("hide");
 		});
 
+// Hiding footer when typing
 $(document).on("focus", "input", function() {
 	$.mobile.activePage.find("footer").hide();
 });
 
+// Show footer when finished typing
 $(document).on("blur", "input", function() {
 	$.mobile.activePage.find("footer").show();
 });
@@ -126,6 +148,7 @@ var orgdata = {
 	orgnr : ''
 };
 
+// Saving User-data and moving to Register-page 2
 function toRegister2() {
 	data.fullname = $("#in_fullname").val();
 	data.firstname = $("#in_firstname").val();
@@ -138,6 +161,7 @@ function toRegister2() {
 	});
 };
 
+//Saving Organisation-data and moving to Register-page 2
 function toRegister2b() {
 	orgdata.owner = $("#in_org_owner").val();
 	orgdata.orgname = $("#in_org_name").val();
@@ -148,28 +172,33 @@ function toRegister2b() {
 	});
 };
 
+// When choosing a amount from radiobutton, the custom input resets to "" and unfocusing it
 $(".radio_amount").click(function() {
 	$("#in_custom_amount").val("");
 	$("#in_custom_amount").blur();
 	$("#in_custom_amount").css("border-bottom", "thin solid #d2d2d2");
 });
 
+// Unchecking radiobuttons with nametag 'in_donate_amount' (when custom amount has focus)
 function uncheckRadiobuttonsDonate() {
 	$("input[name='in_donate_amount']").attr("checked", false).checkboxradio("refresh");
 }
 
+// Unchecking all radio buttons
 function uncheckRadiobuttons() {
 	$("input[type='radio']").attr("checked", false).checkboxradio("refresh");
 }
 
+// Stores donation-amount and continue to register-page 3
 function toRegister3() {
-	var radio_val = "default";
+	var radio_val;
 	radio_val = $(" input[name='in_monthly_amount']:checked").val();
 	var custom_val = "default2"
 	custom_val = $("#in_custom_amount").val();
 
 	if (radio_val == undefined && custom_val == "") {
 		alert("Velg beløp");
+		
 		return;
 	} else if (isNaN(custom_val)) {
 		alert("Ugyldig beløp");
