@@ -24,6 +24,21 @@
 <script src="../js/jquery.dotdotdot.js"></script>
 
 
+<script type="text/javascript">
+	
+
+	$(document).ready(function(){
+
+
+		if(localStorage.getItem('userID') != null){
+			alert("Logget inn som: " + localStorage.getItem('userID') );
+		}
+	});
+
+
+</script>
+
+
 
 <!-- Include jQuery Mobile stylesheets -->
 <link rel="stylesheet"
@@ -35,7 +50,7 @@
 		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
 			<img src="../img/menu.png" class="menu_icon">
-			<p>Sharity</p>
+			<p id = "header_check">Sharity</p>
 		</div>
 
 

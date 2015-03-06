@@ -28,6 +28,8 @@
 <!-- Include script for login-->
 <script src="js/login.js"></script>
 
+<script type="text/javascript" src="js/checkLogin.js"></script>
+
 
 </head>
 <body>
@@ -44,12 +46,12 @@
 				<tr>
 					<td><img class="icon" alt="" src="img/icon_white.png"></td>
 					<td><input data-role="none" class="input_underscored"
-						type="email" name="username" placeholder="Epost" id="username"></td>
+						type="email" name="login_username" placeholder="Epost" id="username"></td>
 				</tr>
 				<tr>
 					<td><img class="icon" alt="" src="img/icon_white.png"></td>
 					<td><input data-role="none" class="input_underscored"
-						type="password" name="username" placeholder="Passord"
+						type="password" name="login_password" placeholder="Passord"
 						id="password"></td>
 				</tr>
 			</table>
@@ -57,7 +59,7 @@
 				<tr>
 					<td style="width: 40pt"></td>
 					<td>
-						<button data-corners="false" data-shadow="false" onclick="login()"
+						<button data-corners="false" data-shadow="false" name="loginUser"
 							style="width: 100pt; font-weight: bold" class="btn_white blue">LOGG
 							INN</button>
 
