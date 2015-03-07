@@ -3,6 +3,8 @@
 <html>
 <head>
 
+	<input type="file" name="reg_user_image" style="display:none; outline: 0 none; z-index:-222;"/>
+
 <meta charset="utf-8" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="msapplication-tap-highlight" content="no" />
@@ -155,14 +157,16 @@
 			</div>
 
 			<div class="portrait">
-				Portrettbilde
-
-				<div class="logodiv_right">
-					<input type="file" name="reg_user_image" style="display:none;"/>
+				<img src="img/default.png" alt="Portrettbilde" style="height:100%; width:100%" name="preview"/>
+				<div class="logodiv_right" name="trigger_pick_image">
+					
 					<p>Velg bilde</p>
+					
 				</div>
+				
 
 			</div>
+
 			<div id="register1a">
 
 				<div class="main_content">
@@ -504,7 +508,7 @@
 			</p>
 		</div>
 
-		<div class="portrait">Portrettbilde</div>
+		<div class="portrait"><img src="img/default.png" alt="Portrettbilde" style="height:100%; width:100%" name="preview"/></div>
 
 		<div class="main_content">
 			<table>

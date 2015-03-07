@@ -10,6 +10,29 @@ $(document).ready(function(){
 		ccv : '',
 		password : ''
 	};
+
+	$("img[name=preview]").hide();
+
+	$('#clear').click(function(){
+		var image = $("#file_background");
+		image.replaceWith( image = image.clone( true ) );
+	});
+
+
+
+	$("input[name=reg_user_image]").change(function(){
+		previewImage(this);
+	});
+
+
+
+
+	$("div[name=trigger_pick_image]").click(function(){
+		$("input[name=reg_user_image]").trigger('click');
+
+	});
+
+
 	$('button[name=reg_user_personalia_done]').click(function(){
 		globalData.name = $("input[name=reg_user_name]").val();
 		globalData.email = $("input[name=reg_user_email]").val();
@@ -152,24 +175,34 @@ function insertUser(){
 		data : data,
 		success : function(response){
 			if(response === "OK"){
+
+				try{
+					var image = $('input[name=reg_user_image]').prop('files')[0];
+				}catch(error){
+					alert(error.message);
+				}
+				if(image != undefined){
+					insertImage(image);
+				}
 				//alert("USER SATT INN!  insertUser.js button[name=reg_user_complete.click]");
 				if(localStorage['is_register_credit_card'] == 1){
 					//alert("legger til kort");
 					insertCardAndUpdateUser();
 				}else if(localStorage['is_register_credit_card'] == 0){
 					
-					globalData = null;
-				//clearInput()
-					window.location.replace("#page_login");
+
+					$.mobile.changePage("#page_login", {
+						transition : "slide"
+					});
+				}
+			}else{
+				alert(response + ", noe gikk galt, insertUser() insertUser.js");
 			}
-		}else{
-			alert(response + ", noe gikk galt, insertUser() insertUser.js");
+		},
+		error : function(response){
+			alert(response + ", error:  insertUser() insertUser.js");
 		}
-	},
-	error : function(response){
-		alert(response + ", error:  insertUser() insertUser.js");
-	}
-});
+	});
 }
 
 function insertCardAndUpdateUser(){
@@ -216,13 +249,69 @@ function updateUser(){
 		data : {"update" : sql},
 		success : function(response){
 			if(response == "OK"){
-				globalData = null;
-				//clearInput()
-				window.location.replace("#page_login");
+				$.mobile.changePage("#page_login", {
+					transition : "slide"
+				});
 
 			}
 		}
 	});
+}
+
+
+function previewImage(input) {
+	if (input.files && input.files[0]) {
+		var fileReader = new FileReader();
+
+		fileReader.onload = function (e) {
+			$('img[name=preview]').attr('src', e.target.result);
+			$("img[name=preview]").show();
+		}
+
+		fileReader.readAsDataURL(input.files[0]);
+	}
+}
+
+function insertImage(image){	
+	
+
+	var urlLocalstorage = getURLphpBackendlocalStorageJStoPHP();
+	$.ajax({
+		type : "POST",
+		url : urlLocalstorage,
+		dataType : "text",
+		data : {"userEmailToInsertImage" : globalData.email},
+		success : function(response){
+			alert(response);
+		},
+		error : function(response){
+			alert("showProject.js : showProject() : ajax request error: "  +  response.message);
+		}
+	});
+	
+
+	var urlInsertImage = getURLphpBackendInsertImageUser();
+
+	var form_data_image = new FormData();
+	form_data_image.append('image', image);
+	$.ajax({
+		url: urlInsertImage, // point to server-side PHP script
+		datatype: 'text', // what to expect back from the PHP script, if anything
+		cache: false,
+		contentType: false,
+		processData: false,
+		data: form_data_image,
+		type: 'POST',
+		success: function(response){
+			alert("insertProject.js ajax request success Bakgrunnsbilde: " + response);
+		},
+		error : function(response){
+			alert(" insertProject.js : insertBackground ajax request ERROR: " + response);
+			console.log(response.message);
+		}
+	});
+
+
 }
 
 });

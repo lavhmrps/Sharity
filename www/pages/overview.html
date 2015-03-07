@@ -31,8 +31,17 @@
 
 
 		if(localStorage.getItem('userID') != null){
-			alert("Logget inn som: " + localStorage.getItem('userID') );
+			alert(localStorage.getItem('userID'));
+			//sjekk om email / userID fortsatt finnes i databasen
+		}else{
+			window.location.replace("../index.html");
+			alert("Logg inn ditt beist!");
 		}
+
+		$('button[name=logut]').click(function(){
+			localStorage.removeItem("userID");
+			window.location.replace("../index.html");
+ 		});
 	});
 
 
@@ -50,7 +59,9 @@
 		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
 			<img src="../img/menu.png" class="menu_icon">
+			<!--<button name="logut">Logg ut</button>-->
 			<p id = "header_check">Sharity</p>
+
 		</div>
 
 

@@ -12,3 +12,11 @@ function getURLphpBackendInsertCard(){
 function getURLphpBackendUpdateUser(){
 	return phpBackend + "updateUser.php";
 }
+
+function getURLphpBackendInsertImageUser(){
+	return phpBackend + "insertImageUser.php";
+}
+
+function getURLphpBackendlocalStorageJStoPHP(){
+	return phpBackend + "localStorageJStoPHP.php";
+}
