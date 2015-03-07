@@ -30,6 +30,11 @@
 
 <script type="text/javascript" src="js/checkLogin.js"></script>
 
+<script type="text/javascript" src="js/insertUser.js"></script>
+
+<script type="text/javascript" src="js/urls.js"></script>
+
+
 
 </head>
 <body>
@@ -153,6 +158,7 @@
 				Portrettbilde
 
 				<div class="logodiv_right">
+					<input type="file" name="reg_user_image" style="display:none;"/>
 					<p>Velg bilde</p>
 				</div>
 
@@ -165,32 +171,32 @@
 							<td style="width: 40pt;"><img class="icon" alt=""
 								src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
-								type="text" name="fullname" placeholder="Fullt navn"
+								type="text" name="reg_user_name" placeholder="Fullt navn"
 								id="in_fullname"></td>
 						</tr>
 						<tr>
 							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
-								type="tel" name="phone" placeholder="Telefon" id="in_phone"></td>
+								type="tel" name="reg_user_phone" placeholder="Telefon" id="in_phone"></td>
 						</tr>
 
 						<tr>
 							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
-								type="email" name="email" placeholder="Epost" id="in_email"></td>
+								type="email" name="reg_user_email" placeholder="Epost" id="in_email"></td>
 						</tr>
 
 
 						<tr>
 							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
-								type="password" name="password" placeholder="Passord"
+								type="password" name="reg_user_password" placeholder="Passord"
 								id="in_password"></td>
 						</tr>
 						<tr>
 							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
 							<td><input data-role="none" class="input_underscored"
-								type="password" name="password_repeat"
+								type="password" name="reg_user_password_repeat"
 								placeholder="Gjenta passord" id="in_password_repeat"></td>
 						</tr>
 					</table>
@@ -203,7 +209,7 @@
 									onclick="reloadPage()" style="width: 100pt;" class="btn_white">AVBRYT</button>
 							<td>
 								<button data-corners="false" data-shadow="false"
-									onclick="toRegister2()" style="width: 100pt" class="btn_blue">NESTE</button>
+									name="reg_user_personalia_done" style="width: 100pt" class="btn_blue">NESTE</button>
 							</td>
 						</tr>
 					</table>
@@ -323,13 +329,13 @@
 					<td style="width: 40pt"></td>
 					<td>
 						<button data-corners="false" data-shadow="false"
-							onclick="toSummary()" style="width: 100pt; font-weight: bold"
+							name="reg_user_skip_creditcard" style="width: 100pt; font-weight: bold"
 							class="btn_white">HOPP OVER</button>
 
 
 					</td>
 					<td><button data-corners="false" data-shadow="false"
-							onclick="toRegister3()" data-transition="slide"
+							 name="reg_user_donation_done" data-transition="slide"
 							style="width: 100pt; font-weight: bold" class="btn_blue">NESTE</button></td>
 				</tr>
 
@@ -421,38 +427,38 @@
 				<tr>
 					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
 					<td><input data-role="none" class="input_underscored"
-						type="number" name="visanumber" placeholder="Kortnummer"
+						type="tel" name="reg_user_visa_number" placeholder="Kortnummer"
 						id="in_visa_number"></td>
 				</tr>
 			</table>
 			<table>
 				<tr>
 					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					<td><select name="visa_expire_year" id="in_visa_expire_year">
+					
+					<td><select name="reg_user_visa_expire_month" id="in_visa_expire_month">
+							<optgroup label="Utløpsmåned">
+								<option value="1">Januar</option>
+								<option value="2">Februar</option>
+								<option value="3">Mars</option>
+								<option value="4">April</option>
+								<option value="5">Mai</option>
+								<option value="6">Juni</option>
+								<option value="7">Juli</option>
+								<option value="8">August</option>
+								<option value="9">September</option>
+								<option value="10">Oktober</option>
+								<option value="11">November</option>
+								<option value="12">Desember</option>
+							</optgroup>
+
+					</select></td>
+					<td><select name="reg_user_visa_expire_year" id="in_visa_expire_year">
 							<optgroup label="Utløpsår">
 
 								<option value="2015">2015</option>
 								<option value="2016">2016</option>
 								<option value="2017">2017</option>
 								<option value="2018">2018</option>
-							</optgroup>
-
-					</select></td>
-					<td><select name="visa_expire_month" id="in_visa_expire_month">
-							<optgroup label="Utløpsmåned">
-
-								<option value="01">Januar</option>
-								<option value="02">Februar</option>
-								<option value="03">Mars</option>
-								<option value="04">April</option>
-								<option value="05">Mai</option>
-								<option value="06">Juni</option>
-								<option value="07">Juli</option>
-								<option value="08">August</option>
-								<option value="09">September</option>
-								<option value="10">Oktober</option>
-								<option value="11">November</option>
-								<option value="12">Desember</option>
 							</optgroup>
 
 					</select></td>
@@ -464,7 +470,7 @@
 				<tr>
 					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
 					<td><input data-role="none"
-						class="input_underscored half_width" type="number" name="visa_ccv"
+						class="input_underscored half_width" type="tel" name="reg_user_visa_ccv"
 						placeholder="CCV" id="in_visa_ccv"></td>
 					</td>
 				</tr>
@@ -478,7 +484,7 @@
 							style="width: 100pt;">Tilbake</button></td>
 					<td>
 						<button data-corners="false" data-shadow="false"
-							onclick="toSummary()" class="btn_blue" style="width: 100pt;">Neste</button>
+							name="reg_user_credit_card_done" class="btn_blue" style="width: 100pt;">Neste</button>
 				</tr>
 			</table>
 
@@ -505,15 +511,15 @@
 				<tr>
 					<td style="width: 50pt"><img alt="" src="img/icon_blue.png"
 						class="icon"></td>
-					<td id="reg_summary_name"></td>
+					<td id="reg_summary_name" name="reg_user_sumary_name"></td>
 				</tr>
 				<tr>
 					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					<td id="reg_summary_phone"></td>
+					<td id="reg_summary_phone" name="reg_user_sumary_phone"></td>
 				</tr>
 				<tr>
 					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					<td id="reg_summary_email"></td>
+					<td id="reg_summary_email" name="reg_user_sumary_email"></td>
 				</tr>
 			</table>
 			<div class="greyline"></div>
@@ -521,7 +527,7 @@
 				<tr>
 					<td style="width: 50pt"><img alt="" src="img/icon_blue.png"
 						class="icon"></td>
-					<td id="reg_summary_monthly_amount"></td>
+					<td id="reg_summary_monthly_amount" name="reg_user_sumary_monthly_amount"></td>
 				</tr>
 			</table>
 			<div class="greyline"></div>
@@ -529,7 +535,7 @@
 				<tr>
 					<td style="width: 50pt"><img alt="" src="img/icon_blue.png"
 						class="icon"></td>
-					<td id="reg_summary_visanr"></td>
+					<td id="reg_summary_visanr" name="reg_user_sumary_visa_number"></td>
 				</tr>
 			</table>
 			<input type="checkbox" name="cb_send_receipts" id="cb_send_receipts">
@@ -548,7 +554,7 @@
 							onclick="reloadPage()" style="width: 100pt;">AVBRYT</button>
 					<td>
 						<button data-corners="false" data-shadow="false"
-							id="register_user" onClick="register_user()"
+							id="register_user" name="reg_user_complete"
 							style="width: 130pt;" class="btn_blue">OPPRETT BRUKER</button>
 					</td>
 				</tr>

@@ -1,25 +1,23 @@
 $(document).ready(function(){
 	
-	$('button[name=loginUser]').click(function(event){
-		alert("TRY LOGIN");
+	$('button[name=loginUser]').click(function(event){	
 	
 	var email = $('input[name=login_username]').val();
 	var password = $('input[name=login_password]').val();
 
-	var combinationJSON = {
+	var json = {
 		"email" : email,
 		"password" : password
 	};
 
-	combinationJSON = JSON.stringify(combinationJSON);
+	json = JSON.stringify(json);
 
-	alert(combinationJSON);
 
 	$.ajax({
 		type : "POST",
 		datatype : "text",
 		url : "http://localhost/SharityCRM/phpBackend/checkLogin.php",
-		data : {"userLoginApp" : combinationJSON},
+		data : {"userLoginApp" : json},
 		success: function(response){
 			if(response == "OK"){
 

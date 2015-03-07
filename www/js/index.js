@@ -61,34 +61,34 @@ $(".input_underscored").blur(function() {
 	if (text == "") {
 		$(this).css("border-bottom", "thin solid #f63218");
 	} else
-		$(this).css("border-bottom", "thin solid #000");
+	$(this).css("border-bottom", "thin solid #000");
 
 });
 
 // Visual spinner when loading new page
 $(document)
-		.on(
-				"click",
-				".show-page-loading-msg",
-				function() {
-					var $this = $(this), theme = $this.jqmData("theme")
-							|| $.mobile.loader.prototype.options.theme, msgText = $this
-							.jqmData("msgtext")
-							|| $.mobile.loader.prototype.options.text, textVisible = $this
-							.jqmData("textvisible")
-							|| $.mobile.loader.prototype.options.textVisible, textonly = !!$this
-							.jqmData("textonly");
-					html = $this.jqmData("html") || "";
-					$.mobile.loading('show', {
-						text : msgText,
-						textVisible : textVisible,
-						theme : theme,
-						textonly : textonly,
-						html : html
-					});
-				}).on("click", ".hide-page-loading-msg", function() {
-			$.mobile.loading("hide");
+.on(
+	"click",
+	".show-page-loading-msg",
+	function() {
+		var $this = $(this), theme = $this.jqmData("theme")
+		|| $.mobile.loader.prototype.options.theme, msgText = $this
+		.jqmData("msgtext")
+		|| $.mobile.loader.prototype.options.text, textVisible = $this
+		.jqmData("textvisible")
+		|| $.mobile.loader.prototype.options.textVisible, textonly = !!$this
+		.jqmData("textonly");
+		html = $this.jqmData("html") || "";
+		$.mobile.loading('show', {
+			text : msgText,
+			textVisible : textVisible,
+			theme : theme,
+			textonly : textonly,
+			html : html
 		});
+	}).on("click", ".hide-page-loading-msg", function() {
+		$.mobile.loading("hide");
+	});
 
 // Hiding footer when typing
 $(document).on("focus", "input", function() {
@@ -115,9 +115,9 @@ function validate() {
 	var visa_ccv = document.getElementById("in_visa_ccv").value;
 
 	alert("Navn: " + name + "\nTelefon: " + phone + "\nEpost: " + email
-			+ "\nPassord: " + password + "\nPassord_rep: " + password_rep
-			+ "\nKortnr: " + visa_number + "\nUtlopsar: " + visa_expire_year
-			+ "\nUtlopsmaned: " + visa_expire_month + "\nCCV: " + visa_ccv);
+		+ "\nPassord: " + password + "\nPassord_rep: " + password_rep
+		+ "\nKortnr: " + visa_number + "\nUtlopsar: " + visa_expire_year
+		+ "\nUtlopsmaned: " + visa_expire_month + "\nCCV: " + visa_ccv);
 }
 
 
@@ -204,7 +204,7 @@ function toRegister3() {
 		alert("Ugyldig beløp");
 		return;
 	} else if (radio_val == undefined)
-		data.monthly_amount = custom_val;
+	data.monthly_amount = custom_val;
 
 	else
 		data.monthly_amount = radio_val;
