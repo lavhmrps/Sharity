@@ -10,7 +10,7 @@ $(document).ready(function(){
 		ccv : '',
 		password : ''
 	};
-
+	
 	$("img[name=preview]").hide();
 
 	$('#clear').click(function(){
@@ -31,6 +31,8 @@ $(document).ready(function(){
 		$("input[name=reg_user_image]").trigger('click');
 
 	});
+
+
 
 
 	$('button[name=reg_user_personalia_done]').click(function(){
@@ -132,8 +134,6 @@ $('button[name=reg_user_credit_card_done]').click(function(){
  	});
  });
 
-
-
 $('button[name=reg_user_skip_creditcard]').click(function(){
 	localStorage['is_register_credit_card'] = 0;
 	$('td[name= reg_user_sumary_name]').text(globalData.name);
@@ -147,7 +147,6 @@ $('button[name=reg_user_skip_creditcard]').click(function(){
 		transition : "slide"
 	});
 });
-
 
 $('button[name=reg_user_complete]').click(function(){
 	insertUser();
@@ -190,8 +189,12 @@ function insertUser(){
 					insertCardAndUpdateUser();
 				}else if(localStorage['is_register_credit_card'] == 0){
 					
+<<<<<<< Updated upstream
 
 					$.mobile.changePage("#page_login", {
+=======
+					$.mobile.changePage("#page_register3", {
+>>>>>>> Stashed changes
 						transition : "slide"
 					});
 				}
@@ -249,7 +252,13 @@ function updateUser(){
 		data : {"update" : sql},
 		success : function(response){
 			if(response == "OK"){
+<<<<<<< Updated upstream
 				$.mobile.changePage("#page_login", {
+=======
+				globalData = null;
+				//clearInput()
+				$.mobile.changePage("#page_register3", {
+>>>>>>> Stashed changes
 					transition : "slide"
 				});
 
