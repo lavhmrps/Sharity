@@ -29,8 +29,8 @@ $(document).ready(function(){
 
 	$("div[name=trigger_pick_image]").click(function(){
 		$("input[name=reg_user_image]").trigger('click');
-
 	});
+
 
 
 
@@ -56,33 +56,32 @@ $(document).ready(function(){
 		if(globalData.phone.trim() == ""){
 			emptyInput += "Telefonnummer, ";
 			ok = 0;
+			//sjekk også om telefonnummer er 8 siffer
+		}
+		if(password !== password_repeat){
+			emptyInput += "passord stemmer ikke, ";
+			ok = 0;
+		}		
+		if(password.trim() == ""){
+			emptyInput += "Passord1 er tomt, ";
+			ok = 0;
+		}
+		if(password_repeat.trim() == ""){
+			emptyInput +="Passord repeat er tomt";
+			ok = 0;
+		}
 
-		//sjekk også om telefonnummer er 8 siffer
-	}
-	if(password !== password_repeat){
-		emptyInput += "passord stemmer ikke, ";
-		ok = 0;
-	}		
-	if(password.trim() == ""){
-		emptyInput += "Passord1 er tomt, ";
-		ok = 0;
-	}
-	if(password_repeat.trim() == ""){
-		emptyInput +="Passord repeat er tomt";
-		ok = 0;
-	}
-
-	if(ok == 0){
-		alert(emptyInput);
-		return false;
-	}else{
-		globalData.password = $("input[name=reg_user_password]").val();
-	}
-	
-	$.mobile.changePage("#page_register2", {
-		transition : "slide"
+		if(ok == 0){
+			alert(emptyInput);
+			return false;
+		}else{
+			globalData.password = $("input[name=reg_user_password]").val();
+		}
+		
+		$.mobile.changePage("#page_register2", {
+			transition : "slide"
+		});
 	});
-});
 
 $('button[name=reg_user_donation_done]').click(function(){
 	
@@ -189,12 +188,9 @@ function insertUser(){
 					insertCardAndUpdateUser();
 				}else if(localStorage['is_register_credit_card'] == 0){
 					
-<<<<<<< Updated upstream
 
-					$.mobile.changePage("#page_login", {
-=======
 					$.mobile.changePage("#page_register3", {
->>>>>>> Stashed changes
+
 						transition : "slide"
 					});
 				}
@@ -240,7 +236,7 @@ function insertCardAndUpdateUser(){
 	});
 }
 function updateUser(){
-	
+
 	var sql = "UPDATE User SET cardnr = '" + globalData.visa_number + "' WHERE email = '" + globalData.email + "'";
 
 	var url = getURLphpBackendUpdateUser();
@@ -252,13 +248,9 @@ function updateUser(){
 		data : {"update" : sql},
 		success : function(response){
 			if(response == "OK"){
-<<<<<<< Updated upstream
-				$.mobile.changePage("#page_login", {
-=======
-				globalData = null;
 				//clearInput()
 				$.mobile.changePage("#page_register3", {
->>>>>>> Stashed changes
+
 					transition : "slide"
 				});
 
@@ -282,7 +274,7 @@ function previewImage(input) {
 }
 
 function insertImage(image){	
-	
+
 
 	var urlLocalstorage = getURLphpBackendlocalStorageJStoPHP();
 	$.ajax({
@@ -297,7 +289,7 @@ function insertImage(image){
 			alert("showProject.js : showProject() : ajax request error: "  +  response.message);
 		}
 	});
-	
+
 
 	var urlInsertImage = getURLphpBackendInsertImageUser();
 

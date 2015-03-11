@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 
 	<input type="file" name="reg_user_image" style="display:none; outline: 0 none; z-index:-222;"/>
 
-<meta charset="utf-8" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="msapplication-tap-highlight" content="no" />
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
 <!-- Original meta for view
 <meta name="viewport"
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
@@ -21,14 +20,14 @@
 
 <!-- Include jQuery Mobile stylesheets -->
 <link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
 <!-- Include the jQuery library -->
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
 <!-- Include the jQuery Mobile library -->
 <script
-	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 <!-- Include the js for register user script -->
 <script src="js/register_user.js"></script>
@@ -49,39 +48,38 @@
 	<div data-role="page" id="page_login" data-theme="a">
 		<div id="header_div">
 			<div class="header_top"></div>
-			<span style="font-size: xx-large; color: white; margin-left: 5%;">Logg
-				inn</span>
+			<span style="font-size: xx-large; color: white; margin-left: 5%;">Logg inn</span>
 		</div>
-
-
 		<div class="main_content">
 			<table>
 				<tr>
-					<td><img class="icon" alt="" src="img/icon_white.png"></td>
-					<td><input data-role="none" class="input_underscored"
-						type="email" name="login_username" placeholder="Epost" id="username"></td>
+					<td>
+						<img class="icon" alt="" src="img/icon_white.png">
+					</td>
+					<td>
+						<input data-role="none" class="input_underscored" type="email" name="login_username" placeholder="Epost" id="username" />
+					</td>
 				</tr>
 				<tr>
-					<td><img class="icon" alt="" src="img/icon_white.png"></td>
-					<td><input data-role="none" class="input_underscored"
-						type="password" name="login_password" placeholder="Passord"
-						id="password"></td>
+					<td>
+						<img class="icon" alt="" src="img/icon_white.png">
+					</td>
+					<td>
+						<input data-role="none" class="input_underscored" type="password" name="login_password" placeholder="Passord" id="password">
+					</td>
 				</tr>
 			</table>
 			<table class="table_btns">
 				<tr>
 					<td style="width: 40pt"></td>
 					<td>
-						<button data-corners="false" data-shadow="false" name="loginUser"
-							style="width: 100pt; font-weight: bold" class="btn_white blue">LOGG
-							INN</button>
-
-
+						<button data-corners="false" data-shadow="false" name="loginUser" style="width: 100pt; font-weight: bold" class="btn_white blue">LOGG INN</button>
 					</td>
-					<td><button data-corners="false" data-shadow="false"
-							onclick="toRegister1()" data-transition="slide"
-							style="width: 100pt; font-weight: bold" class="btn_white blue">
-							NY BRUKER</button></td>
+					<td>
+						<button data-corners="false" data-shadow="false" onclick="toRegister1()" data-transition="slide" style="width: 100pt; font-weight: bold" class="btn_white blue">
+							NY BRUKER
+						</button>
+					</td>
 				</tr>
 
 			</table>
@@ -89,372 +87,394 @@
 			<div class="somespace"></div>
 			<div class="somespace"></div>
 
-			<span style="font-size: xx-large; color: white;">Organisasjoner</span>
+			<span style="font-size: xx-large; color: white;">
+				Organisasjoner
+			</span>
 
-			<button data-corners="false" data-shadow="false"
-				onclick="toRegister1b()" data-transition="slide"
-				style="width: 150pt; font-weight: bold; margin-left: 40pt;"
-				class="btn_white blue" id="newOrg">NY ORGANISASJON</button>
+			<button data-corners="false" data-shadow="false" onclick="toRegister1b()" data-transition="slide" style="width: 150pt; font-weight: bold; margin-left: 40pt;" class="btn_white blue" id="newOrg">
+				NY ORGANISASJON
+			</button>
 
 			<div class="develop">
 				<span style="font-size: large; color: white;">Sidenavigering</span>
-				<ul data-role="listview" data-filter="true" data-input="#myFilter"
-					data-inset="true">
-					<li><a href="pages/overview.html" rel="external"
-						class="show-page-loading-msg">Oversikt</a></li>
-					<li><a href="pages/organisation.html" rel="external"
-						class="show-page-loading-msg">Organisasjon</a></li>
-					<li><a href="pages/org_single_project.html" rel="external"
-						class="show-page-loading-msg">Org med ett prosjekt</a></li>
-					<li><a href="pages/project.html" rel="external"
-						class="show-page-loading-msg">Prosjekt</a></li>
-					<li><a href="pages/mystatistics.html" rel="external"
-						class="show-page-loading-msg">Statistikk</a></li>
-					<li><a href="pages/organisation_news.html" rel="external"
-						class="show-page-loading-msg">Org - nyheter</a></li>
-					<li><a href="pages/project_news.html" rel="external"
-						class="show-page-loading-msg">Prosjekt - nyheter</a></li>
-					<li><a href="pages/org_page.html" rel="external"
-						class="show-page-loading-msg">Organisasjon-side</a></li>
-					<li><a href="pages/org_activities.html" rel="external"
-						class="show-page-loading-msg">Org-Aktiviteter</a></li>
-					<li><a href="pages/org_donations.html" rel="external"
-						class="show-page-loading-msg">Org-Donasjoner</a></li>
-					<li><a href="pages/org_statistics.html" rel="external"
-						class="show-page-loading-msg">Org-Statistikk</a></li>
-					<li><a href="pages/org_settings.html" rel="external"
-						class="show-page-loading-msg">Org-Innstillinger</a></li>
-					<li><a href="pages/project_meny.html" rel="external"
-						class="show-page-loading-msg">Prosjekt meny</a></li>
-					<li><a href="pages/add_friend.html" rel="external"
-						class="show-page-loading-msg">Legg til venner</a></li>
-					<li><a href="pages/my_friends.html" rel="external"
-						class="show-page-loading-msg">Mine venner</a></li>
-
+				<ul data-role="listview" data-filter="true" data-input="#myFilter" data-inset="true">
+					<li>
+						<a href="pages/overview.html" rel="external" class="show-page-loading-msg">Oversikt</a>
+					</li>
+					<li>
+						<a href="pages/organisation.html" rel="external" class="show-page-loading-msg">Organisasjon</a>
+					</li>
+					<li>
+						<a href="pages/org_single_project.html" rel="external" class="show-page-loading-msg">Org med ett prosjekt</a>
+					</li>
+					<li>
+						<a href="pages/project.html" rel="external" class="show-page-loading-msg">Prosjekt</a>
+					</li>
+					<li>
+						<a href="pages/mystatistics.html" rel="external"class="show-page-loading-msg">Statistikk</a>
+					</li>
+					<li>
+						<a href="pages/organisation_news.html" rel="external" class="show-page-loading-msg">Org - nyheter</a>
+					</li>
+					<li>
+						<a href="pages/project_news.html" rel="external" class="show-page-loading-msg">Prosjekt - nyheter</a>
+					</li>
+					<li>
+						<a href="pages/org_page.html" rel="external" class="show-page-loading-msg">Organisasjon-side</a>
+					</li>
+					<li>
+						<a href="pages/org_activities.html" rel="external" class="show-page-loading-msg">Org-Aktiviteter</a>
+					</li>
+					<li>
+						<a href="pages/org_donations.html" rel="external" class="show-page-loading-msg">Org-Donasjoner</a>
+					</li>
+					<li>
+						<a href="pages/org_statistics.html" rel="external" class="show-page-loading-msg">Org-Statistikk</a>
+					</li>
+					<li>
+						<a href="pages/org_settings.html" rel="external" class="show-page-loading-msg">Org-Innstillinger</a>
+					</li>
+					<li>
+						<a href="pages/project_meny.html" rel="external" class="show-page-loading-msg">Prosjekt meny</a>
+					</li>
+					<li>
+						<a href="pages/add_friend.html" rel="external" class="show-page-loading-msg">Legg til venner</a>
+					</li>
+					<li>
+						<a href="pages/my_friends.html" rel="external" class="show-page-loading-msg">Mine venner</a>
+					</li>
 				</ul>
 			</div>
 			<div class="somespace"></div>
 		</div>
-
 	</div>
 
-
 	<div data-role="page" id="page_register1">
-
 		<!-- 		<header data-role="header"></header> -->
 		<div id="header_div">
 			<div class="header_top"></div>
 			<p>
-				Registrering<span
-					style="float: right; margin-right: 5%; font-size: small; font-weight: normal">steg
-					1/<span id="stepstogo"></span>
+				Registrering
+				<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+					steg 1
+					<span id="stepstogo"></span>
 				</span>
 			</p>
 		</div>
 		<div data-role="tabs" id="tabs" style="margin: 0; padding: 0">
-
 			<div data-role="navbar" style="margin: 0; padding: 0;">
 				<ul>
-					<li><a href="#register1a" id="nav_register1a"
-						class="navlink ui-btn-active">Ny bruker</a></li>
-					<li><a href="#register1b" id="nav_register1b" class="navlink">Ny
-							organisasjon</a></li>
+					<li>
+						<a href="#register1a" id="nav_register1a" class="navlink ui-btn-active">Ny bruker</a>
+					</li>
+					<li>
+						<a href="#register1b" id="nav_register1b" class="navlink">Ny organisasjon</a>
+					</li>
 				</ul>
 			</div>
 
 			<div class="portrait">
-
 				<img src="img/default.png" alt="Portrettbilde" style="height:100%; width:100%" name="preview"/>
 				<div class="logodiv_right" name="trigger_pick_image">
-					
 					<p>Velg bilde</p>
-					
-
-				Portrettbilde
-
-				<div class="logodiv_right" name = "trigger_pick_image">
-					
-					<p>Velg bilde</p>
-				
-
+					Portrettbilde
 				</div>
-				
-
 			</div>
-
 			<div id="register1a">
-
 				<div class="main_content">
 					<table>
 						<tr>
-							<td style="width: 40pt;"><img class="icon" alt=""
-								src="img/icon_blue.png"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="text" name="reg_user_name" placeholder="Fullt navn"
-								id="in_fullname"></td>
+							<td style="width: 40pt;">
+								<img class="icon" alt="" src="img/icon_blue.png">
+							</td>
+							<td>
+								<input data-role="none" class="input_underscored" type="text" name="reg_user_name" placeholder="Fullt navn" id="in_fullname">
+							</td>
 						</tr>
 						<tr>
-							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="tel" name="reg_user_phone" placeholder="Telefon" id="in_phone"></td>
-						</tr>
-
-						<tr>
-							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="email" name="reg_user_email" placeholder="Epost" id="in_email"></td>
-						</tr>
-
-
-						<tr>
-							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="password" name="reg_user_password" placeholder="Passord"
-								id="in_password"></td>
+							<td>
+								<img class="icon" alt="" src="img/icon_blue.png">
+							</td>
+							<td>
+								<input data-role="none" class="input_underscored" type="tel" name="reg_user_phone" placeholder="Telefon" id="in_phone">
+							</td>
 						</tr>
 						<tr>
-							<td><img class="icon" alt="" src="img/icon_blue.png"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="password" name="reg_user_password_repeat"
-								placeholder="Gjenta passord" id="in_password_repeat"></td>
+							<td>
+								<img class="icon" alt="" src="img/icon_blue.png">
+							</td>
+							<td>
+								<input data-role="none" class="input_underscored" type="email" name="reg_user_email" placeholder="Epost" id="in_email">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img class="icon" alt="" src="img/icon_blue.png">
+							</td>
+							<td>
+								<input data-role="none" class="input_underscored" type="password" name="reg_user_password" placeholder="Passord" id="in_password">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img class="icon" alt="" src="img/icon_blue.png">
+							</td>
+							<td>
+								<input data-role="none" class="input_underscored" type="password" name="reg_user_password_repeat"placeholder="Gjenta passord" id="in_password_repeat">
+							</td>
 						</tr>
 					</table>
-
 					<table class="table_btns">
 						<tr>
-							<td style="width: 40pt"></td>
+							<td style="width: 40pt">
+								<button data-corners="false" data-shadow="false" onclick="reloadPage()" style="width: 100pt;" class="btn_white">
+									AVBRYT
+								</button>
+							</td>
 							<td>
-								<button data-corners="false" data-shadow="false"
-									onclick="reloadPage()" style="width: 100pt;" class="btn_white">AVBRYT</button>
-							<td>
-								<button data-corners="false" data-shadow="false"
-									name="reg_user_personalia_done" style="width: 100pt" class="btn_blue">NESTE</button>
+								<button data-corners="false" data-shadow="false" name="reg_user_personalia_done" style="width: 100pt" class="btn_blue">NESTE
+								</button>
 							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 
-
 			<div id="register1b">
-
 				<div class="main_content">
 					<table>
 						<tr>
-							<td style="width: 40pt;"><img alt="grey dot"
-								src="img/icon_blue.png" class="icon"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="text" name="org_owner" placeholder="Eier"
-								id="in_org_owner"></td>
+							<td style="width: 40pt;">
+								<img alt="grey dot" src="img/icon_blue.png" class="icon">
+							</td>
+							<td>
+								<input data-role="none" class="input_underscored" type="text" name="org_owner" placeholder="Eier" id="in_org_owner">
+							</td>
 						</tr>
 						<tr>
-							<td><img alt="grey dot" src="img/icon_blue.png" class="icon"></td>
-							<td><span style="line-height: 25pt">sharityapp.no/</span><input
-								data-role="none" class="input_underscored"
-								style="width: 58%; padding-left: 5pt; float: right;" type="text"
-								name="org_name" placeholder="din organisasjon" id="in_org_name"></td>
+							<td>
+								<img alt="grey dot" src="img/icon_blue.png" class="icon">
+							</td>
+							<td>
+								<span style="line-height: 25pt">
+									sharityapp.no/
+								</span>
+								<input data-role="none" class="input_underscored" style="width: 58%; padding-left: 5pt; float: right;" type="text" name="org_name" placeholder="din organisasjon" id="in_org_name" />
+							</td>
 						</tr>
 						<tr>
-							<td><img alt="grey dot" src="img/icon_blue.png" class="icon"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="email" name="org_email" placeholder="Epost"
-								id="in_org_email"></td>
+							<td>
+								<img alt="grey dot" src="img/icon_blue.png" class="icon">
+							</td>
+							<td>
+								<input data-role="none" class="input_underscored" type="email" name="org_email" placeholder="Epost" id="in_org_email">
+							</td>
 						</tr>
 						<tr>
-							<td><img alt="grey dot" src="img/icon_blue.png" class="icon"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="password" name="org_pw" placeholder="Passord"
-								id="in_org_pw"></td>
+							<td>
+								<img alt="grey dot" src="img/icon_blue.png" class="icon">
+							</td>
+							<td>
+								<input data-role="none" class="input_underscored" type="password" name="org_pw" placeholder="Passord" id="in_org_pw">
+							</td>
 						</tr>
 						<tr>
-							<td><img alt="grey dot" src="img/icon_blue.png" class="icon"></td>
-							<td><input data-role="none" class="input_underscored"
-								type="password" name="org_pw_rep" placeholder="Gjenta passord"
-								id="in_org_pw_rep"></td>
+							<td>
+								<img alt="grey dot" src="img/icon_blue.png" class="icon">
+							</td>
+							<td>
+								<input data-role="none" class="input_underscored" type="password" name="org_pw_rep" placeholder="Gjenta passord" id="in_org_pw_rep">
+							</td>
 						</tr>
 					</table>
-
 					<table class="table_btns">
 						<tr>
-							<td style="width: 40pt"></td>
+							<td style="width: 40pt">
+								<button data-corners="false" data-shadow="false" onclick="reloadPage()" style="width: 100pt;" class="btn_white">
+									AVBRYT
+								</button>
+							</td>
 							<td>
-								<button data-corners="false" data-shadow="false"
-									onclick="reloadPage()" style="width: 100pt;" class="btn_white">AVBRYT</button>
-							<td>
-								<button data-corners="false" data-shadow="false"
-									onclick="toRegister2b()" style="width: 100pt" class="btn_blue">NESTE</button>
+								<button data-corners="false" data-shadow="false" onclick="toRegister2b()" style="width: 100pt" class="btn_blue">
+									NESTE
+								</button>
 							</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 		</div>
-
 	</div>
-
 	<div data-role="page" id="page_register2">
 		<div id="header_div">
 			<div class="header_top"></div>
-			<img src="img/arrow_left.png"
-				class="show-page-loading-msg menu_icon back_icon">
+			<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon back_icon" />
 			<p>
-				Månedlige trekk<span
-					style="float: right; margin-right: 5%; font-size: small; font-weight: normal">steg
-					2/4</span>
+				Månedlige trekk
+				<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+					steg 2/4
+				</span>
 			</p>
 		</div>
+
 		<div class="main_content">
-			<p>But I must explain to you how all this mistaken idea of
+			<p>
+				But I must explain to you how all this mistaken idea of
 				denouncing pleasure and praising pain was born and I will give you a
 				complete account of the system, and expound the actual teachings of
 				the great explorer of the truth, the master-builder of human
-				happiness.</p>
+				happiness.
+			</p>
 			<fieldset data-role="controlgroup">
 				<table>
-
 					<tr>
-						<td><input class="radio_amount" type="radio"
-							name="in_monthly_amount" id="amount1" value="20"> <label
-							for="amount1">20 kr</label></td>
-						<td><input class="radio_amount" type="radio"
-							name="in_monthly_amount" id="amount2" value="50"> <label
-							for="amount2">50 kr</label></td>
+						<td>
+							<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount1" value="20"/>
+							<label for="amount1">
+								20 kr
+							</label>
+						</td>
+						<td>
+							<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount2" value="50"/>
+							<label for="amount2">
+								50 kr
+							</label>
+						</td>
 					</tr>
 					<tr>
-						<td><input class="radio_amount" type="radio"
-							name="in_monthly_amount" id="amount3" value="100"> <label
-							for="amount3">100 kr</label></td>
-						<td><input class="radio_amount" type="radio"
-							name="in_monthly_amount" id="amount4" value="200"> <label
-							for="amount4">200 kr</label></td>
+						<td>
+							<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount3" value="100"/>
+							<label for="amount3">
+								100 kr
+							</label>
+						</td>
+						<td>
+							<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount4" value="200"/>
+							<label for="amount4">
+								200 kr
+							</label>
+						</td>
 					</tr>
 				</table>
 			</fieldset>
-			<br>
-
+			<br/>
 			<table>
 				<tr>
-					<td style="width: 50%"><input data-role="none"
-						class="input_underscored" style="width: 90%" type="tel"
-						id="in_custom_amount" name="in_monthly_amount"
-						placeholder="Egendefinert" onfocus="uncheckRadiobuttons()"></td>
-					<td style="text-align: left">kr</td>
+					<td style="width: 50%">
+						<input data-role="none" class="input_underscored" style="width: 90%" type="tel"
+						id="in_custom_amount" name="in_monthly_amount" placeholder="Egendefinert" onfocus="uncheckRadiobuttons()">
+					</td>
+					<td style="text-align: left">
+						kr
+					</td>
 				</tr>
 			</table>
-
-
 			<table class="table_btns">
 				<tr>
-					<td style="width: 40pt"></td>
-					<td>
-						<button data-corners="false" data-shadow="false"
-							name="reg_user_skip_creditcard" style="width: 100pt; font-weight: bold"
-							class="btn_white">HOPP OVER</button>
-
-
+					<td style="width: 40pt">
 					</td>
-					<td><button data-corners="false" data-shadow="false"
-							 name="reg_user_donation_done" data-transition="slide"
-							style="width: 100pt; font-weight: bold" class="btn_blue">NESTE</button></td>
+					<td>
+						<button data-corners="false" data-shadow="false" name="reg_user_skip_creditcard" style="width: 100pt; font-weight: bold" class="btn_white">
+							HOPP OVER
+						</button>
+					</td>
+					<td>
+						<button data-corners="false" data-shadow="false" name="reg_user_donation_done" data-transition="slide" style="width: 100pt; font-weight: bold" class="btn_blue">
+							NESTE
+						</button>
+					</td>
 				</tr>
-
 			</table>
-
 		</div>
-
-
 	</div>
 
 	<div data-role="page" id="page_register2b">
 		<div id="header_div">
 			<div class="header_top"></div>
-			<img src="img/arrow_left.png"
-				class="show-page-loading-msg menu_icon back_icon">
+			<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon back_icon" />
 			<p>
-				Registrering<span
-					style="float: right; margin-right: 5%; font-size: small; font-weight: normal">steg
-					2/3</span>
+				Registrering
+				<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+					steg 2/3
+				</span>
 			</p>
 		</div>
-
 		<div class="main_content">
 			<fieldset class="ui-field-contain">
-				<select name="org_category" id="in_org_category" data-role="none"
-					class="input_underscored grey">
+				<select name="org_category" id="in_org_category" data-role="none" class="input_underscored grey">
 					<option>Velg område</option>
 					<option value="Barn">Barn</option>
 					<option value="Fattige">Fattige</option>
 					<option value="Krig">Krig</option>
 				</select>
 			</fieldset>
-			<textarea type="text" cols="80" rows="15" name="org_about"
-				id="in_org_about"
-				placeholder="Fortell kort om hva organisasjonen din gjør..."></textarea>
+			<textarea type="text" cols="80" rows="15" name="org_about" id="in_org_about" placeholder="Fortell kort om hva organisasjonen din gjør...">
+			</textarea>
 			<table>
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					<td><input type="text" data-role="none"
-						class="input_underscored" placeholder="Nettside"
-						id="in_org_website"></td>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon"/>
+					</td>
+					<td>
+						<input type="text" data-role="none" class="input_underscored" placeholder="Nettside" id="in_org_website"/>
+					</td>
 				</tr>
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					<td><input type="text" data-role="none"
-						class="input_underscored"
-						placeholder="Organisasjonsnr (valgfritt)" id="in_org_nr"></td>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon"/>
+					</td>
+					<td>
+						<input type="text" data-role="none" class="input_underscored" placeholder="Organisasjonsnr (valgfritt)" id="in_org_nr">
+					</td>
 				</tr>
 			</table>
-
 			<table class="table_btns">
 				<tr>
 					<td style="width: 40pt"></td>
 					<td>
-						<button data-corners="false" data-shadow="false"
-							onclick="reloadPage()" style="width: 100pt; font-weight: bold"
-							class="btn_white">AVBRYT</button>
-
+						<button data-corners="false" data-shadow="false" onclick="reloadPage()" style="width: 100pt; font-weight: bold" class="btn_white">
+							AVBRYT
+						</button>
 					</td>
-					<td><button data-corners="false" data-shadow="false"
-							onclick="toSummaryB()" data-transition="slide"
-							style="width: 100pt; font-weight: bold" class="btn_blue">
-							NESTE</button></td>
+					<td>
+						<button data-corners="false" data-shadow="false" onclick="toSummaryB()" data-transition="slide" style="width: 100pt; font-weight: bold" class="btn_blue">
+							NESTE
+						</button>
+					</td>
 				</tr>
 			</table>
-
-
 		</div>
-
-
-
 	</div>
 
 	<div data-role="page" id="page_register3">
 		<div id="header_div">
 			<div class="header_top"></div>
-			<img src="img/arrow_left.png"
-				class="show-page-loading-msg menu_icon back_icon">
+			<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon back_icon" />
 			<p>
-				Kredittinformasjon<span
-					style="float: right; margin-right: 5%; font-size: small; font-weight: normal">steg
-					3/4</span>
+				Kredittinformasjon
+				<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+					steg 3/4
+				</span>
 			</p>
 		</div>
-
 		<div class="main_content">
 			<table>
-
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					<td><input data-role="none" class="input_underscored"
-						type="tel" name="reg_user_visa_number" placeholder="Kortnummer"
-						id="in_visa_number"></td>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon"/>
+					</td>
+					<td>
+						<input data-role="none" class="input_underscored" type="tel" name="reg_user_visa_number" placeholder="Kortnummer" id="in_visa_number"/>
+					</td>
 				</tr>
 			</table>
 			<table>
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					
-					<td><select name="reg_user_visa_expire_month" id="in_visa_expire_month">
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon">
+					</td>
+					<td>
+						<select name="reg_user_visa_expire_month" id="in_visa_expire_month">
 							<optgroup label="Utløpsmåned">
 								<option value="1">Januar</option>
 								<option value="2">Februar</option>
@@ -469,198 +489,239 @@
 								<option value="11">November</option>
 								<option value="12">Desember</option>
 							</optgroup>
-
-					</select></td>
-					<td><select name="reg_user_visa_expire_year" id="in_visa_expire_year">
+						</select>
+					</td>
+					<td>
+						<select name="reg_user_visa_expire_year" id="in_visa_expire_year">
 							<optgroup label="Utløpsår">
-
 								<option value="2015">2015</option>
 								<option value="2016">2016</option>
 								<option value="2017">2017</option>
 								<option value="2018">2018</option>
 							</optgroup>
-
-					</select></td>
-
-				</tr>
-			</table>
-			<br>
-			<table>
-				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					<td><input data-role="none"
-						class="input_underscored half_width" type="tel" name="reg_user_visa_ccv"
-						placeholder="CCV" id="in_visa_ccv"></td>
+						</select>
 					</td>
 				</tr>
 			</table>
-			<br>
+			<br/>
+			<table>
+				<tr>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon"/>
+					</td>
+					<td>
+						<input data-role="none" class="input_underscored half_width" type="tel" name="reg_user_visa_ccv" placeholder="CCV" id="in_visa_ccv"/>
+					</td>
+				</tr>
+			</table>
+			<br/>
+
 			<table class="table_btns">
 				<tr>
 					<td style="width: 40pt;"></td>
-					<td><button data-corners="false" data-shadow="false"
-							onclick="back()" data-transition="slide" data-direction="reverse"
-							style="width: 100pt;">Tilbake</button></td>
 					<td>
-						<button data-corners="false" data-shadow="false"
-							name="reg_user_credit_card_done" class="btn_blue" style="width: 100pt;">Neste</button>
+						<button data-corners="false" data-shadow="false" onclick="back()" data-transition="slide" data-direction="reverse" style="width: 100pt;">
+							Tilbake
+						</button>
+					</td>
+					<td>
+						<button data-corners="false" data-shadow="false" name="reg_user_credit_card_done" class="btn_blue" style="width: 100pt;">
+							Neste
+						</button>
+					</td>
 				</tr>
 			</table>
-
 		</div>
 	</div>
 
+
 	<div data-role="page" id="page_reg_summary">
-		<!-- 		<header data-role="header"></header> -->
+		<!--<header data-role="header"></header> -->
 		<div id="header_div">
 			<div class="header_top"></div>
-			<img src="img/arrow_left.png"
-				class="show-page-loading-msg menu_icon back_icon">
+			<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon back_icon"/>
 			<p>
-				Oppsummering<span
-					style="float: right; margin-right: 5%; font-size: small; font-weight: normal">steg
-					4/4</span>
+				Oppsummering
+				<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+					steg 4/4
+				</span>
 			</p>
 		</div>
-
 		<div class="portrait"><img src="img/default.png" alt="Portrettbilde" style="height:100%; width:100%" name="preview"/></div>
-
 		<div class="main_content">
 			<table>
 				<tr>
-					<td style="width: 50pt"><img alt="" src="img/icon_blue.png"
-						class="icon"></td>
+					<td style="width: 50pt">
+						<img alt="" src="img/icon_blue.png" class="icon"/>
+					</td>
 					<td id="reg_summary_name" name="reg_user_sumary_name"></td>
 				</tr>
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon"/>
+					</td>
 					<td id="reg_summary_phone" name="reg_user_sumary_phone"></td>
 				</tr>
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon">
+					</td>
 					<td id="reg_summary_email" name="reg_user_sumary_email"></td>
 				</tr>
 			</table>
 			<div class="greyline"></div>
 			<table>
 				<tr>
-					<td style="width: 50pt"><img alt="" src="img/icon_blue.png"
-						class="icon"></td>
+					<td style="width: 50pt">
+						<img alt="" src="img/icon_blue.png" class="icon"/>
+					</td>
 					<td id="reg_summary_monthly_amount" name="reg_user_sumary_monthly_amount"></td>
 				</tr>
 			</table>
+
 			<div class="greyline"></div>
+
 			<table>
 				<tr>
-					<td style="width: 50pt"><img alt="" src="img/icon_blue.png"
-						class="icon"></td>
-					<td id="reg_summary_visanr" name="reg_user_sumary_visa_number"></td>
+					<td style="width: 50pt">
+						<img alt="" src="img/icon_blue.png" class="icon"/>
+					</td>
+					<td id="reg_summary_visanr" name="reg_user_sumary_visa_number">
+					</td>
 				</tr>
 			</table>
-			<input type="checkbox" name="cb_send_receipts" id="cb_send_receipts">
-			<label for="cb_send_receipts">Send meg kvitteringer</label> <input
-				type="checkbox" name="cb_accept_user_conditions"
-				id="cb_accept_user_conditions" onClick="enableSubmit(this)">
-			<label for="cb_accept_user_conditions">Godkjenn brukervilkår</label>
-			<a href="#" style="margin-left: 31pt">Les brukervilkår</a>
 
+			<input type="checkbox" name="cb_send_receipts" id="cb_send_receipts"/>
+
+			<label for="cb_send_receipts">
+				Send meg kvitteringer
+			</label>
+			<input type="checkbox" name="cb_accept_user_conditions" id="cb_accept_user_conditions" onClick="enableSubmit(this)"/>
+			<label for="cb_accept_user_conditions">
+				Godkjenn brukervilkår
+			</label>
+			<a href="#" style="margin-left: 31pt">
+				Les brukervilkår
+			</a>
 
 			<table class="table_btns">
 				<tr>
 					<td style="width: 40pt;"></td>
 					<td>
-						<button data-corners="false" data-shadow="false"
-							onclick="reloadPage()" style="width: 100pt;">AVBRYT</button>
+						<button data-corners="false" data-shadow="false" onclick="reloadPage()" style="width: 100pt;">
+							AVBRYT
+						</button>
+					</td>
 					<td>
-						<button data-corners="false" data-shadow="false"
-							id="register_user" name="reg_user_complete"
-							style="width: 130pt;" class="btn_blue">OPPRETT BRUKER</button>
+						<button data-corners="false" data-shadow="false" id="register_user" name="reg_user_complete" style="width: 130pt;" class="btn_blue">
+							OPPRETT BRUKER
+						</button>
 					</td>
 				</tr>
 			</table>
 		</div>
-
 	</div>
 
 	<div data-role="page" id="page_reg_summaryB">
-		<!-- 		<header data-role="header"></header> -->
+		<!--<header data-role="header"></header> -->
 		<div id="header_div">
 			<div class="header_top"></div>
-			<a data-rel="back"><img src="img/arrow_left.png"
-				class="show-page-loading-msg menu_icon"></a>
+			<a data-rel="back">
+				<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon">
+			</a>
 			<p>
-				Oppsummering<span
-					style="float: right; margin-right: 5%; font-size: small; font-weight: normal">steg
-					3/3</span>
+				Oppsummering
+				<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+					steg 3/3
+				</span>
 			</p>
 		</div>
-
 		<div class="main_content">
 			<table>
 				<tr>
-					<td style="width: 50pt"><img alt="" src="img/icon_blue.png"
-						class="icon"></td>
+					<td style="width: 50pt">
+						<img alt="" src="img/icon_blue.png" class="icon">
+					</td>
 					<td id="org_summary_owner"></td>
 				</tr>
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon">
+					</td>
 					<td id="org_summary_orgname"></td>
 				</tr>
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon">
+					</td>
 					<td id="org_summary_email"></td>
 				</tr>
 			</table>
 			<div class="greyline"></div>
 			<table>
 				<tr>
-					<td style="width: 50pt"><img alt="" src="img/icon_blue.png"
-						class="icon"></td>
-					<td id="org_summary_category"></td>
+					<td style="width: 50pt">
+						<img alt="" src="img/icon_blue.png" class="icon">
+					</td>
+					<td id="org_summary_category">
+					</td>
 				</tr>
 				<tr>
-					<td style="position: relative"><img alt=""
-						src="img/icon_blue.png" class="icon"
-						style="position: absolute; top: 5pt;"></td>
-					<td id="org_summary_org_about"></td>
+					<td style="position: relative">
+						<img alt="" src="img/icon_blue.png" class="icon" style="position: absolute; top: 5pt;">
+					</td>
+					<td id="org_summary_org_about">
+					</td>
 				</tr>
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					<td id="org_summary_website"></td>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon">
+					</td>
+					<td id="org_summary_website">
+					</td>
 				</tr>
 				<tr>
-					<td><img alt="" src="img/icon_blue.png" class="icon"></td>
-					<td id="org_summary_orgnr"></td>
+					<td>
+						<img alt="" src="img/icon_blue.png" class="icon">
+					</td>
+					<td id="org_summary_orgnr">
+					</td>
 				</tr>
 			</table>
+
 			<div class="greyline"></div>
-			<input type="checkbox" name="cb_accept_conditions"
-				id="cb_accept_conditions" onclick="enableSubmit(this)"> <label
-				for="cb_accept_conditions">Godkjenn brukervilkår</label> <a href="#"
-				style="margin-left: 31pt">Les brukervilkår</a>
+
+			<input type="checkbox" name="cb_accept_conditions" id="cb_accept_conditions" onclick="enableSubmit(this)"/>
+			<label for="cb_accept_conditions">
+				Godkjenn brukervilkår
+			</label>
+			<a href="#" style="margin-left: 31pt">
+				Les brukervilkår
+			</a>
 			<table class="table_btns">
 				<tr>
 					<td style="width: 40pt;"></td>
-					<td><button data-corners="false" data-shadow="false"
-							onclick="reloadPage()" data-transition="slide"
-							data-direction="reverse" style="width: 100pt;">AVBRYT</button></td>
 					<td>
-						<button data-corners="false" data-shadow="false" onclick="#"
-							id="register_org" class="btn_blue" style="width: 100pt;">OPPRETT</button>
+						<button data-corners="false" data-shadow="false" onclick="reloadPage()" data-transition="slide" data-direction="reverse" style="width: 100pt;">
+							AVBRYT
+						</button>
+					</td>
+					<td>
+						<button data-corners="false" data-shadow="false" onclick="#" id="register_org" class="btn_blue" style="width: 100pt;">
+							OPPRETT
+						</button>
+					</td>
 				</tr>
 			</table>
-
 		</div>
 	</div>
-
-
 </body>
 <script charset="UTF-8" src="js/index.js"></script>
 <script>
 
 if($("#cb_accept_user_contidions").checked()==false)
 	$("#register_user").this().input.disabled=true;
-	
+
 </script>
 </html>
 
