@@ -1,7 +1,6 @@
 
 var phpBackend = "http://localhost/SharityCRM/phpBackend/";
 
-
 function getURLphpBackendInsertUser(){
 	return phpBackend + "insertUser.php";
 }
