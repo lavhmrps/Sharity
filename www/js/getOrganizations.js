@@ -12,9 +12,11 @@ $(document).ready(function(){
 				dataType: "JSON",
 				data : {'organizationSQL' : sql},
 				success : function(response){
+
+					var orgCode = "";
 					for(var i = 0 ; i < 10; i++){
-						var orgCode = 
-						'<li>' + 
+						
+						orgCode += '<li onclick=setLocalStorage()>' + 
 						'<a href="organization.html" rel="external" class="show-page-loading-msg">'+ 
 						'<div class="li_container">'+
 						'<div class="li_left">'+
@@ -36,13 +38,9 @@ $(document).ready(function(){
 						'</div>'+
 						'</a>'+
 						'</li>';
-						$('#orgList').append(orgCode);
-					}
-					var orgs = $('#orgList').getElementsByTagName('li');
-      
-					// For each <li> inside #links
-					for (var i = 0; i < orgs.length; i++) {
-					  alert(i);
+
+						$("#orgList").html(orgCode);
+					
 					}
 				},
 				error: function(){
