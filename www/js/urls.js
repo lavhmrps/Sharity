@@ -19,3 +19,7 @@ function getURLphpBackendInsertImageUser(){
 function getURLphpBackendlocalStorageJStoPHP(){
 	return phpBackend + "localStorageJStoPHP.php";
 }
+
+function getURLphpBackendGetOrganizations(){
+	return phpBackend + "getOrganizations.php";
+}
