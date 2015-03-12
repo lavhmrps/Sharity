@@ -3,31 +3,117 @@
 <html>
 <head>
 
-<meta charset="utf-8" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="msapplication-tap-highlight" content="no" />
-<meta name="viewport"
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport"
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
 
-<!-- Include the local stylesheets -->
-<link rel="stylesheet" type="text/css" href="../css/project.css" />
-<link rel="stylesheet" type="text/css" href="../css/list_project.css">
+	<!-- Include the local stylesheets -->
+	<link rel="stylesheet" type="text/css" href="../css/project.css" />
+	<link rel="stylesheet" type="text/css" href="../css/list_project.css">
 
-<!-- Include the jQuery library -->
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<!-- Include the jQuery library -->
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
-<!-- Include the jQuery Mobile library -->
-<script
+	<!-- Include the jQuery Mobile library -->
+	<script
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-<!-- Include the jQuery Dotdotdot library -->
-<script src="../js/jquery.dotdotdot.min.js"></script>
+	<!-- Include the jQuery Dotdotdot library -->
+	<script src="../js/jquery.dotdotdot.min.js"></script>
 
 
-<!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<!-- Include jQuery Mobile stylesheets -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+	<script type="text/javascript" src="../js/urls.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		$(document.body).on('click', 'li', function() {
+			alert("NewsID: " + this.id);
+
+		});
+		
+		var projectID = localStorage.getItem("projectToShow");
+
+		var sql = "SELECT * FROM Project WHERE projectID ='" + projectID + "'";
+		var url = getURLphpBackendGetProjects();
+		$.ajax({
+			type : "POST",
+			url : url,
+			dataType: "JSON",
+			data : {"projectSQL" : sql},
+			success : function(response){
+				var project_name = response[0].name;
+				var project_title = response[0].title;
+				var about_project = response[0].about;
+				var project_city = response[0].city;
+				var project_country = response[0].country;
+				var background = response[0].backgroundimgURL;
+
+				$('p[name=project_name]').text(project_name);
+				$('h2[name=project_title]').text(project_title);
+				$('p[name=ingress]').text(about_project);
+				$('span[name=project_country]').text(project_country);
+				$('span[name=project_city]').text(project_city);
+				$('img[name=background]').attr("src", background);
+
+				appendNewsList(projectID);
+
+
+			}
+		});
+
+
+		function appendNewsList(projectID){
+
+			var sql = "SELECT * FROM News WHERE projectID ='" + projectID + "'";
+			var url = getURLphpBackendGetSQL();
+			$.ajax({
+				type : "POST",
+				url : url,
+				dataType: "JSON",
+				data : {"SQL" : sql},
+				success : function(response){
+					
+					for(var i = 0; i < response.length; i++){
+						var newsCode = 
+						'<li id="' + response[i].newsID + '">'+
+						'<a href="news.html" rel="external" class="show-page-loading-msg">'+
+						'<div class="li_container">'+
+						'<div class="li_left">'+
+						'<div class="circle"></div>'+
+						'</div>'+
+						'<div class="li_mid dots">'+
+						'<span class="li_date">'+
+						response[i].date_added + 
+						'</span>'+
+						'<span class="li_text">'+
+						response[i].txt +
+						'</span>'+
+						'</div>'+
+						'<div class="li_right">'+
+						'<img src="../img/li_arrow_r_grey.png">'+
+						'</div>'+
+						'</div>'+
+						'</a>'+
+						'</li>';
+						$('ul[name=newsList]').append(newsCode);
+					}
+				}
+			});
+
+}
+
+
+
+});
+</script>
+
 
 </head>
 <body>
@@ -35,12 +121,12 @@
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
 			<img src="../img/arrow_left.png" class="menu_icon back_btn">
-			<p>Navn på prosjekt</p>
+			<p name="project_name">Navn på prosjekt</p>
 		</div>
 
 		<!-- For toppbilde  -->
 		<div class="portrait">
-			Bakgrunnsbilde / toppbilde
+			<img src="#" alt="[background image]" name="background" style="height:100%; width:100%">
 			<div class="logodiv_top_right">
 				<p>Velg bilde</p>
 			</div>
@@ -49,82 +135,30 @@
 			<!-- 			<button class="ui-btn btn_single_project_donate" data-role="none" -->
 			<!-- 				onclick="#">DONÉR</button> -->
 			<a href="donate.html" rel="external"
-				class="btn_single_project_donate show-page-loading-msg">DONÉR</a>
+			class="btn_single_project_donate show-page-loading-msg">DONÉR</a>
 		</div>
 		<div class="main_content">
 
-			<span style="text-decoration: underline;" class="grey">Land</span>,<span
-				style="text-decoration: underline;" class="grey"> by</span>
+			<span style="text-decoration: underline;" class="grey" name="project_country">[country]</span>,<span style="text-decoration: underline;" class="grey" name="project_city">[city]</span>
 
-			<h2>Boko-haram angrep</h2>
-			<p class="ingress">Væpnet, islamistisk gruppe med base i
-				Nord-Nigeria. Gjennomfører terrorangrep i islams navn mot sivile og
-				militære mål.Væpnet, islamistisk gruppe med base i Nord-Nigeria.
-				Gjennomfører terrorangrep i islams navn mot sivile og militære mål.</p>
+			<h2 name="project_title">[project title]</h2>
+			<p class="ingress" name="ingress">[about this project]</p>
 
 			<div class="listdiv">
 				<h3>Siste Nyheter</h3>
 
-				<ul data-role="none">
-					<li><a href="news.html" rel="external"
-						class="show-page-loading-msg">
-							<div class="li_container">
-								<div class="li_left">
-									<div class="circle"></div>
-								</div>
-								<div class="li_mid dots">
-									<span class="li_date">2. feb 2015</span> <span class="li_text">Malala
-										Yousafzai, the Pakistani schoolgirl shot in the head by the
-										Taliban, has criticised Nigerian and world leaders for not
-										doing enough to free hundreds of schoolgirls kidnapped 300
-										days ago by Boko Haram.</span>
-								</div>
-								<div class="li_right">
-									<img src="../img/li_arrow_r_grey.png">
-								</div>
-							</div>
-					</a></li>
-					<li><a href="news.html" rel="external"
-						class="show-page-loading-msg">
-							<div class="li_container">
-								<div class="li_left">
-									<div class="circle"></div>
-								</div>
-								<div class="li_mid dots">
-									<div class="li_mid_content">
-										<span class="li_date">19. jan 2015</span> <span
-											class="li_text">Boko Haram fighters have carried out
-											their first known fatal attack in Chad, killing several
-											people including a local chief, according to residents and
-											security forces.</span>
-									</div>
-								</div>
-								<div class="li_right">
-									<img src="../img/li_arrow_r_grey.png">
-								</div>
-							</div>
-					</a></li>
-					<li><a href="news.html" rel="external"
-						class="show-page-loading-msg">
-							<div class="li_container">
-								<div class="li_left">
-									<div class="circle"></div>
-								</div>
-								<div class="li_mid dots">
-									<div class="li_mid_content">
-										<span class="li_date">28. des 2014</span> <span
-											class="li_text">Niger’s parliament has unanimously
-											approved the deployment of troops to northern Nigeria as part
-											of a regional offensive against Islamist militant group Boko
-											Haram, which has launched several cross-border attacks in
-											recent days.</span>
-									</div>
-								</div>
-								<div class="li_right">
-									<img src="../img/li_arrow_r_grey.png">
-								</div>
-							</div>
-					</a></li>
+				<ul data-role="none" name="newsList">
+
+
+
+
+
+
+					
+
+
+
+
 				</ul>
 			</div>
 
@@ -139,41 +173,41 @@
 				<ul>
 					<li class="footer_me"><img class="footer_menu_icon" alt=""
 						src="../img/icon_menu_footer_me.png"></li>
-					<li class="footer_overview"><img class="footer_menu_icon"
-						alt="" src="../img/icon_menu_footer_overview.png"></li>
-					<li class="footer_friends"><img class="footer_menu_icon"
-						alt="" src="../img/icon_menu_footer_friends.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon"
-						alt="" src="../img/icon_menu_footer_settings.png"></li>
-				</ul>
-			</div>
-		</footer>
-	</div>
+						<li class="footer_overview"><img class="footer_menu_icon"
+							alt="" src="../img/icon_menu_footer_overview.png"></li>
+							<li class="footer_friends"><img class="footer_menu_icon"
+								alt="" src="../img/icon_menu_footer_friends.png"></li>
+								<li class="footer_settings"><img class="footer_menu_icon"
+									alt="" src="../img/icon_menu_footer_settings.png"></li>
+								</ul>
+							</div>
+						</footer>
+					</div>
 
-</body>
-<script>
-	$(document).ready(function() {
-		$(".dots").dotdotdot();
-	});
+				</body>
+				<script>
+				$(document).ready(function() {
+					$(".dots").dotdotdot();
+				});
 
-	$(".back_btn").click(function() {
-		window.history.go(-1);
-	});
+				$(".back_btn").click(function() {
+					window.history.go(-1);
+				});
 
-	$(".footer_me").click(function() {
-		window.location.href = "";
-	});
+				$(".footer_me").click(function() {
+					window.location.href = "";
+				});
 
-	$(".footer_overview").click(function() {
-		window.location.href = "overview.html";
-	});
+				$(".footer_overview").click(function() {
+					window.location.href = "overview.html";
+				});
 
-	$(".footer_friends").click(function() {
-		window.location.href = "my_friends.html";
-	});
+				$(".footer_friends").click(function() {
+					window.location.href = "my_friends.html";
+				});
 
-	$(".footer_settings").click(function() {
-		window.location.href = "";
-	});
-</script>
-</html>
+				$(".footer_settings").click(function() {
+					window.location.href = "";
+				});
+				</script>
+				</html>

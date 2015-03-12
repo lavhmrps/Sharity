@@ -1,4 +1,12 @@
 $(document).ready(function(){
+
+	$(document.body).on('click', 'li', function() {
+		setLocalStorage(this.id);
+
+	});
+
+
+
 	if(localStorage.getItem('userID') != null){
 			//alert(localStorage.getItem('userID'));
 			//sjekk om email / userID fortsatt finnes i databasen
@@ -12,12 +20,10 @@ $(document).ready(function(){
 				dataType: "JSON",
 				data : {'organizationSQL' : sql},
 				success : function(response){
-
-					var orgCode = "";
-					for(var i = 0 ; i < 10; i++){
+					for(var i = 0 ; i < response.length; i++){		
 						
-						orgCode += '<li onclick=setLocalStorage()>' + 
-						'<a href="organization.html" rel="external" class="show-page-loading-msg">'+ 
+						var orgCode = '<li id="'+ response[i].organizationNr +'">' +
+						'<a href="organization.html" rel="external" class="show-page-loading-msg">' + 
 						'<div class="li_container">'+
 						'<div class="li_left">'+
 						'<div class="circle">'+
@@ -36,30 +42,30 @@ $(document).ready(function(){
 						'<img src="../img/li_arrow_r_grey.png"/>'+
 						'</div>'+
 						'</div>'+
-						'</a>'+
+						'</a>' +
 						'</li>';
 
-						$("#orgList").html(orgCode);
-					
+						$("#orgList").append(orgCode);
 					}
 				},
 				error: function(){
-					alert("Roor");
+					alert("getOrganiation.js error");
 				}
 			});
-}else{
-	window.location.replace("../index.html");
-	alert("Logg inn ditt beist!");
+		}else{
+			window.location.replace("../index.html");
+			alert("Logg inn ditt beist!");
+		}
+
+		$('button[name=logut]').click(function(){
+			localStorage.removeItem("userID");
+			window.location.replace("../index.html");
+		});
+
+
+
+	});
+
+function setLocalStorage(orgnaizationNr){
+	localStorage['organizationToShow'] = orgnaizationNr;
 }
-
-$('button[name=logut]').click(function(){
-	localStorage.removeItem("userID");
-	window.location.replace("../index.html");
-});
-
-function setLocalStorage(){
-
-	alert("localstorage er satt");
-}
-
-});

@@ -23,3 +23,15 @@ function getURLphpBackendlocalStorageJStoPHP(){
 function getURLphpBackendGetOrganizations(){
 	return phpBackend + "getOrganizations.php";
 }
+
+function getURLphpBackendGetProjects(){
+	return phpBackend + "getProjects.php";
+}
+
+function getURLphpBackendGetNews(){
+	return phpBackend + "getNews.php";
+}
+
+function getURLphpBackendGetSQL(){
+	return phpBackend + "getSQL.php";
+}
