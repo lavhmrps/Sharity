@@ -24,12 +24,22 @@
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('img[name=back]').click(function(){
+				window.history.go(-1);
+			});
+		});
+
+	</script>
+
+
 </head>
 <body>
 	<div data-role="page" id="page_donate" data-theme="a">
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
-			<img src="../img/arrow_left.png" class="menu_icon">
+			<img src="../img/arrow_left.png" class="menu_icon" name="back"/>
 			<p>Donér</p>
 		</div>
 
@@ -122,7 +132,7 @@
 	</div>
 </body>
 
-<script>
+<script type="text/javascript">
 $(".radio_amount").click(function() {
 	$("#in_custom_amount").val("");
 	$("#in_custom_amount").blur();
@@ -133,5 +143,24 @@ function uncheckRadiobuttonsDonate() {
 	$("input[name='in_donate_amount']").attr("checked", false)
 	.checkboxradio("refresh");
 }
+
+$(".footer_me").click(function() {
+	window.location.href = "mystatistics.html";
+});
+
+$(".footer_overview").click(function() {
+	window.location.href = "overview.html";
+});
+
+$(".footer_friends").click(function() {
+	window.location.href = "my_friends.html";
+});
+
+$(".footer_settings").click(function() {
+	window.location.href = "";
+});
 </script>
+
+
+
 </html>

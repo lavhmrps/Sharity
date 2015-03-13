@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	
+
 	var globalData = {
 		name : '',
 		email : '',
@@ -149,28 +151,21 @@ $('button[name=reg_user_skip_creditcard]').click(function(){
 
 $('button[name=reg_user_complete]').click(function(){
 	insertUser();
+
 });
 
 function insertUser(){
 
-	var json = {
-		"name" : globalData.name,
-		"phone" : globalData.phone,
-		"email" : globalData.email,
-		"password" : globalData.password
-	}
-
-	json = JSON.stringify(json);
-	
-	var url = getURLphpBackendInsertUser();	
-	var data = {"user" : json};
+	var sql = "INSERT INTO User (name, phone, email, password) VALUES ('"+globalData.name+"', '"+globalData.phone+"', '"+globalData.email+"','"+globalData.password+"')";
+	var data = {"setSQL" : sql};
+	var url = getURLappBackend();	
 
 
 	$.ajax({
 		type : "POST",
-		dataType : "text",
-		url : url,
+		url : url, 
 		data : data,
+		dataType : "text",
 		success : function(response){
 			if(response === "OK"){
 
@@ -198,25 +193,17 @@ function insertUser(){
 				alert(response + ", noe gikk galt, insertUser() insertUser.js");
 			}
 		},
-		error : function(response){
-			alert(response + ", error:  insertUser() insertUser.js");
+		error : function(){
+			alert("faul");
 		}
-	});
+	});	
+	
 }
 
 function insertCardAndUpdateUser(){
-
-	var json = {
-		"visa_number" : globalData.visa_number,
-		"visa_expire_month" : globalData.visa_expire_month,
-		"visa_expire_year" : globalData.visa_expire_year,
-		"ccv" : globalData.ccv
-	}
-
-	json = JSON.stringify(json);
-
-	var url = getURLphpBackendInsertCard();	
-	var data = {"credit_card" : json};
+	var sql = "INSERT INTO Card (cardnr, month, year, CCV) VALUES('"+globalData.visa_number+"', '"+globalData.visa_expire_month+"', '"+globalData.visa_expire_year+"', '"+globalData.ccv+"')";
+	var url = getURLappBackend();	
+	var data = {"setSQL" : sql};
 	$.ajax({
 		type : "POST",
 		dataType : "text",
@@ -224,7 +211,7 @@ function insertCardAndUpdateUser(){
 		data : data,
 		success : function(response){
 			if(response === "OK"){
-				//alert("Kort satt inn!  insertCard() insertUser.js");
+				alert("Kort satt inn!  insertCard() insertUser.js");
 				updateUser();
 			}else{
 				alert(response + ", noe gikk galt, insertCardAndUpdateUser() insertUser.js button[name=reg_user_complete.click]");
@@ -239,13 +226,13 @@ function updateUser(){
 
 	var sql = "UPDATE User SET cardnr = '" + globalData.visa_number + "' WHERE email = '" + globalData.email + "'";
 
-	var url = getURLphpBackendUpdateUser();
+	var url = getURLappBackend();
 
 	$.ajax({
 		type : "POST",
 		dataType : "text",
 		url : url,
-		data : {"update" : sql},
+		data : {"setSQL" : sql},
 		success : function(response){
 			if(response == "OK"){
 				//clearInput()
@@ -316,6 +303,8 @@ function insertImage(image){
 }
 
 });
+
+
 
 
 

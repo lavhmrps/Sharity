@@ -11,13 +11,12 @@ $(document).ready(function(){
 			//alert(localStorage.getItem('userID'));
 			//sjekk om email / userID fortsatt finnes i databasen
 			var sql = "SELECT * FROM Organization";
-			var url = getURLphpBackendGetOrganizations();
-
+			var url = getURLappBackend();
 
 			$.ajax({
 				type : "POST",
 				url : url,
-				dataType: "JSON",
+				dataType: "json",
 				data : {'organizationSQL' : sql},
 				success : function(response){
 					for(var i = 0 ; i < response.length; i++){		
@@ -52,20 +51,29 @@ $(document).ready(function(){
 					alert("getOrganiation.js error");
 				}
 			});
-		}else{
-			window.location.replace("../index.html");
-			alert("Logg inn ditt beist!");
-		}
+}else{
+	window.location.replace("../index.html");
+	alert("Logg inn ditt beist!");
+}
 
-		$('button[name=logut]').click(function(){
-			localStorage.removeItem("userID");
-			window.location.replace("../index.html");
-		});
+$('button[name=logut]').click(function(){
+	localStorage.removeItem("userID");
+	window.location.replace("../index.html");
+});
 
 
 
-	});
+});
 
 function setLocalStorage(orgnaizationNr){
 	localStorage['organizationToShow'] = orgnaizationNr;
 }
+
+
+
+
+/*
+	
+
+
+*/

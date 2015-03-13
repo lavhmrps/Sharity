@@ -12,11 +12,12 @@ $(document).ready(function(){
 
 	json = JSON.stringify(json);
 
+	var url = getURLappBackend();
 
 	$.ajax({
 		type : "POST",
 		datatype : "text",
-		url : "http://localhost/SharityCRM/phpBackend/checkLogin.php",
+		url : url,
 		data : {"userLoginApp" : json},
 		success: function(response){
 			if(response == "OK"){
