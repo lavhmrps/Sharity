@@ -42,51 +42,44 @@ $(document).ready(function(){
 		}
 	});
 
-			/*
-			*/
+	function appendProjectList(organizationNr){
+		var sql = "SELECT * FROM Project WHERE organizationNr ='" + organizationNr + "'";
+		var url = getURLappBackend();
+		$.ajax({
+			type : "POST",
+			url : url,
+			dataType: "JSON",
+			data : {"getSQL" : sql},
+			success : function(response){
+				for(var i = 0; i < response.length; i++){
+					var projectCode = 
+					'<li id="' + response[i].projectID +'">'+
+					'<div class="li_container">' +
+					'<div class="li_left">'+
+					'<div class="li_circ"><img src="#"></div>'+
+					'</div>'+
+					'<a href="project.html" rel="external" class="show-page-loading-msg">'+
+					'<div class="li_mid dots">'+
+					'<span class="li_heading">' + response[i].name + '</span>'+
+					'<span class="li_text"></span>'+
+					'</div>'+
+					'</a>'+
+					'<div class="li_right">'+
+					'<a href="donate.html" rel="external" class="li_btn_donate show-page-loading-msg" id="' + response[i].projectID +'" name="donation">DONÉR</a>'+
+					'</div>'+
+					'</div>'+
+					'</li>';
 
-
-			function appendProjectList(organizationNr){
-				var sql = "SELECT * FROM Project WHERE organizationNr ='" + organizationNr + "'";
-				var url = getURLappBackend();
-				$.ajax({
-					type : "POST",
-					url : url,
-					dataType: "JSON",
-					data : {"getSQL" : sql},
-					success : function(response){
-						for(var i = 0; i < response.length; i++){
-							var projectCode = 
-							'<li id="' + response[i].projectID +'">'+
-							'<div class="li_container">' +
-							'<div class="li_left">'+
-							'<div class="li_circ"><img src="#"></div>'+
-							'</div>'+
-							'<a href="project.html" rel="external" class="show-page-loading-msg">'+
-							'<div class="li_mid dots">'+
-							'<span class="li_heading">' + response[i].name + '</span>'+
-							'<span class="li_text"></span>'+
-							'</div>'+
-							'</a>'+
-							'<div class="li_right">'+
-							'<a href="donate.html" rel="external" class="li_btn_donate show-page-loading-msg" id="' + response[i].projectID +'" name="donation">DONÉR</a>'+
-							'</div>'+
-							'</div>'+
-							'</li>';
-
-							$('ul[name=projectList]').append(projectCode);
-						}
-
-
-					}
-				});
-
+					$('ul[name=projectList]').append(projectCode);
+				}
 			}
+		});
 
-			function setLocalStorageProjectToShow(projectID){
-				localStorage['projectToShow'] = projectID;
-			}
+	}
+	function setLocalStorageProjectToShow(projectID){
+		localStorage['projectToShow'] = projectID;
+	}
 
 
 
-		});	
+});	

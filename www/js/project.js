@@ -4,9 +4,7 @@ $(document).ready(function(){
 		alert("NewsID: " + this.id);
 
 	});
-
 	var projectID = localStorage.getItem("projectToShow");
-
 	var sql = "SELECT * FROM Project WHERE projectID ='" + projectID + "'";
 	var url = getURLappBackend();
 	$.ajax({
@@ -34,8 +32,6 @@ $(document).ready(function(){
 
 		}
 	});
-
-
 	function appendNewsList(projectID){
 
 		var sql = "SELECT * FROM News WHERE projectID ='" + projectID + "'";
@@ -75,7 +71,4 @@ $(document).ready(function(){
 		});
 
 	}
-
-
-
 });
