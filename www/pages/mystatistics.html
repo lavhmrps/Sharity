@@ -3,30 +3,142 @@
 <html>
 <head>
 
-<meta charset="utf-8" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="msapplication-tap-highlight" content="no" />
-<meta name="viewport"
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport"
 	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-<!-- Lokal css -->
-<link rel="stylesheet" type="text/css" href="../css/mystatistics.css" />
+	<!-- Lokal css -->
+	<link rel="stylesheet" type="text/css" href="../css/mystatistics.css" />
 
-<!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet"
+	<!-- Include jQuery Mobile stylesheets -->
+	<link rel="stylesheet"
 	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
-<!-- Include the jQuery library -->
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<!-- Include the jQuery library -->
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
-<!-- Include the jQuery Mobile library -->
-<script
+	<!-- Include the jQuery Mobile library -->
+	<script
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-<!-- Include the jQuery Dotdotdot library -->
-<script src="../js/jquery.dotdotdot.min.js"></script>
+	<!-- Include the jQuery Dotdotdot library -->
+	<script src="../js/jquery.dotdotdot.min.js"></script>
 
-<script type="text/javascript" src="../js/footer_nav.js"></script>
+	<script type="text/javascript" src="../js/footer_nav.js"></script>
+
+	<script type="text/javascript" src="../js/urls.js"></script>
+
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+
+
+		var current_date = new Date();
+		var month = new Array();
+		month[0] = "Januar";
+		month[1] = "Februar";
+		month[2] = "Mars";
+		month[3] = "April";
+		month[4] = "Mai";
+		month[5] = "Juni";
+		month[6] = "Juli";
+		month[7] = "August";
+		month[8] = "September";
+		month[9] = "Oktober";
+		month[10] = "November";
+		month[11] = "Desember";
+		
+		var current_month = month[current_date.getMonth()];
+
+		$('span[name=current_month]').text(current_month);
+
+		var email = localStorage.getItem('userID');
+		var sql = "SELECT * FROM User WHERE email = '"+email+"'";
+		var url = getURLappBackend();
+		var data = {"getSQL" : sql};
+
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : data,
+			dataType : "JSON",
+			success : function(json){
+				$('div[name="user_name"]').text(json[0].name);
+				$('img[name=logo]').attr('src',json[0].picURL);
+				getDonationInformation();
+				
+			},
+			error : function(error){
+				alert("Error i mystatistics.js bad ajax reqest getSQL from database");
+			}
+		});
+
+		
+		$('div[name="user_name"]').text('Full name goes here');
+	});
+
+
+function getDonationInformation(){
+	var email = localStorage.getItem('userID');
+	var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
+	var url = getURLappBackend();
+	var data = {"getSQL" : sql};
+
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : data,
+		dataType : "JSON",
+		success : function(json){
+
+			var text = "";
+
+			var num_donations = 0;
+			var sum_current_month = 0;
+			var sum_total = 0;
+
+			for(var i = 0; i < json.length; i++){
+				text += "Sum: " + json[i].sum + ", Type: " + json[i].type + ", Datum: "+ json[i].date  + "\n";
+
+				var t = json[i].date.split(/[- :]/);
+				var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+
+				if(date.getMonth() == new Date().getMonth()){
+					num_donations++;
+					sum_current_month += parseInt(json[i].sum);
+				}
+				sum_total += parseInt(json[i].sum);
+			}
+
+
+
+			$('span[name=amount_current_month]').text(sum_current_month);
+			$('span[name=total_amount]').text(sum_total);
+			if(num_donations == 1){
+				$('span[name=is_pluar]').text("Donasjon");
+			}else{
+				$('span[name=is_pluar]').text("Donasjoner");
+			}
+			if(num_donations == 0){
+				$('span[name=num_donations]').text("Ingen");
+				$('span[name=is_pluar]').text("donasjoner");
+			}else{
+				$('span[name=num_donations]').text(num_donations);
+			}
+			
+
+			//alert(text);
+		},
+		error : function(error){
+			alert("Error i mystatistics.js bad ajax reqest getSQL from database");
+		}
+	});
+}
+
+
+</script>
 
 </head>
 <body>
@@ -38,8 +150,8 @@
 		</div>
 		<div id="mystats_title">
 			<div id="mystats_title_container">
-				<div class="mystats_logo"></div>
-				<div id="mystats_title_name">Kurt-Olav Espeseth Fransen</div>
+				<div class="mystats_logo"><img src="#" name="logo" class ="mystats_logo"/></div>
+				<div id="mystats_title_name" name="user_name">[Full name]</div>
 
 			</div>
 		</div>
@@ -48,79 +160,84 @@
 		</div>
 		<div class="main_content">
 			<div class="content_box1 layer"
-				style="height: 100pt; margin-top: -20pt;">
-				<div class="content_box1l" style="height: 100%;">
-					<div class="content_box_top">
-						<span id="mystats_currmonth_donations" class="green"
-							style="position: absolute; bottom: 0; left: 0; right: 0;">180</span>
-					</div>
-					<div id="mystats_currmonth" class="content_box_bottom">
-						<span>Februar</span>
-					</div>
+			style="height: 100pt; margin-top: -20pt;">
+			<div class="content_box1l" style="height: 100%;">
+				<div class="content_box_top">
+					<span id="mystats_currmonth_donations" class="green" style="position: absolute; bottom: 0; left: 0; right: 0;" name="amount_current_month">[$$$]</span>
 				</div>
-				<div class="content_box1r" style="height: 100%;">
-					<div class="content_box_top">
-						<span id="mystats_total_donations" class="green"
-							style="position: absolute; bottom: 0; left: 0; right: 0;">2155</span>
-					</div>
-					<div class="content_box_bottom">
-						<span>Total</span>
-					</div>
+				<div id="mystats_currmonth" class="content_box_bottom">
+					<span name="current_month">[Current month]</span>
+				</div>
+			</div>
+			<div class="content_box1r" style="height: 100%;">
+				<div class="content_box_top">
+					<span id="mystats_total_donations" class="green" style="position: absolute; bottom: 0; left: 0; right: 0;" name="total_amount">[$$$]</span>
+				</div>
+				<div class="content_box_bottom">
+					<span>Total</span>
 				</div>
 			</div>
 		</div>
-		<div style="height: 40pt;">
-			<span style="padding-left: 5%; line-height: 55pt;">Aktiviteter</span>
-		</div>
-		<div id="mystats_activities">
-			<table class="clickable"
-				style="border-top: thin solid #eee; border-bottom: thin solid #eee"
-				onclick="#">
-				<tr style="height: 50pt;">
-					<td style="position: relative; width: 25%"><div
-							class="mystats_logo"
-							style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;"></div></td>
-					<td style="width: 65%; font-size: x-large;"><span
-						id="mystats_num_donations">27</span> donasjoner</td>
-					<td><img src="../img/li_arrow_r_grey.png"></td>
-				</tr>
-			</table>
-		</div>
+	</div>
+	<div style="height: 40pt;">
+		<span style="padding-left: 5%; line-height: 55pt;">Aktiviteter</span>
+	</div>
+	<div id="mystats_activities">
+		<table class="clickable"
+		style="border-top: thin solid #eee; border-bottom: thin solid #eee"
+		onclick="#">
+		<tr style="height: 50pt;">
+			<td style="position: relative; width: 25%">
+				<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
+				</div>
+			</td>
+			<td style="width: 65%; font-size: x-large;">
+				<span id="mystats_num_donations" name = "num_donations">
+					[#donations]
+				</span>
+				<span name="is_pluar">[...]<span>
+			</td>
+			<td>
+				<img src="../img/li_arrow_r_grey.png">
+			</td>
+		</tr>
+	</table>
+</div>
 
-		<div style="height: 55pt;">
-			<span style="padding-left: 5%; line-height: 85pt;">Utfordringer</span>
-		</div>
-		<div id="mystats_challenges">
-			<table class="clickable"
-				style="border-top: thin solid #eee; border-bottom: thin solid #eee"
-				onclick="#">
-				<tr style="height: 50pt;">
-					<td style="position: relative; width: 25%"><div
-							class="mystats_logo"
-							style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;"></div></td>
-					<td style="width: 65%; font-size: x-large;"><span
-						id="mystats_num_challenges">22</span> utfordringer</td>
-					<td><img src="../img/li_arrow_r_grey.png"></td>
-				</tr>
-			</table>
-		</div>
-		<div class="somespace"></div>
+<div style="height: 55pt;">
+	<span style="padding-left: 5%; line-height: 85pt;">Utfordringer</span>
+</div>
+<div id="mystats_challenges">
+	<table class="clickable"
+	style="border-top: thin solid #eee; border-bottom: thin solid #eee"
+	onclick="#">
+	<tr style="height: 50pt;">
+		<td style="position: relative; width: 25%"><div
+			class="mystats_logo"
+			style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;"></div></td>
+			<td style="width: 65%; font-size: x-large;"><span
+				id="mystats_num_challenges">22</span> utfordringer</td>
+				<td><img src="../img/li_arrow_r_grey.png"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="somespace"></div>
 
-		<footer data-role="footer" data-position="fixed">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img class="footer_menu_icon" alt=""
-						src="../img/icon_menu_footer_me.png"></li>
+	<footer data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li class="footer_me"><img class="footer_menu_icon" alt=""
+					src="../img/icon_menu_footer_me.png"></li>
 					<li class="footer_overview"><img class="footer_menu_icon"
 						alt="" src="../img/icon_menu_footer_overview.png"></li>
-					<li class="footer_friends"><img class="footer_menu_icon"
-						alt="" src="../img/icon_menu_footer_friends.png"></li>
-					<li class="footer_settings"><img class="footer_menu_icon"
-						alt="" src="../img/icon_menu_footer_settings.png"></li>
-				</ul>
-			</div>
-		</footer>
-	</div>
+						<li class="footer_friends"><img class="footer_menu_icon"
+							alt="" src="../img/icon_menu_footer_friends.png"></li>
+							<li class="footer_settings"><img class="footer_menu_icon"
+								alt="" src="../img/icon_menu_footer_settings.png"></li>
+							</ul>
+						</div>
+					</footer>
+				</div>
 
-</body>
-</html>
+			</body>
+			</html>

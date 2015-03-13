@@ -24,14 +24,10 @@
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$('img[name=back]').click(function(){
-				window.history.go(-1);
-			});
-		});
+	<script type="text/javascript" src="../js/urls.js"></script>
 
-	</script>
+
+	<script type="text/javascript" src="../js/donate.js"></script>
 
 
 </head>
@@ -46,7 +42,6 @@
 		<div class="main_content">
 			<fieldset data-role="none">
 				<table>
-
 					<tr>
 						<td>
 							<input class="radio_amount" type="radio" name="in_donate_amount" id="donate_amount1" value="20">
@@ -80,7 +75,7 @@
 			<table>
 				<tr>
 					<td style="width: 40%;">
-						<input data-role="none" class="input_underscored" style="width: 80%; margin-left: 10pt;" type="tel" id="in_custom_amount" name="in_donate_amount" placeholder="Velg" onfocus="uncheckRadiobuttonsDonate()">
+						<input data-role="none" class="input_underscored" style="width: 80%; margin-left: 10pt;" type="tel" id="in_custom_amount" name="in_donate_amount_custom" placeholder="Velg" onfocus="uncheckRadiobuttonsDonate()">
 					</td>
 					<td style="text-align: left">
 						NOK
@@ -90,11 +85,11 @@
 			<div class="somespace"></div>
 			<h5>Betalingsfrekvens</h5>
 			<fieldset data-role="none" style="border-bottom: thin solid #d2d2d2; border-top: thin solid #d2d2d2; margin-top: 10pt;">
-				<input type="radio" name="donation_freq" id="donation_freq_once">
+				<input type="radio" name="donation_freq" id="donation_freq_once" value="engangsdonasjon"/>
 				<label for="donation_freq_once">
 					Engangsbeløp
 				</label>
-				<input type="radio" name="donation_freq" id="donation_freq_monthly">
+				<input type="radio" name="donation_freq" id="donation_freq_monthly" value="fast"/>
 				<label for="donation_freq_monthly">
 					Fast trekk
 				</label>
@@ -103,7 +98,7 @@
 			<div class="somespace"></div>
 
 			<button data-role="none" class="btn_single_project_donate"
-			onclick="#">DONÉR BELØP</button>
+			onclick="#" name="reg_donation_done">DONÉR BELØP</button>
 
 
 			<div class="somespace"></div>
