@@ -25,6 +25,10 @@ body {
 	background: white;
 }
 
+.green{
+	color: #20a623;
+}
+
 #header_div {
 	width: 100%;
 	height: 90pt;
