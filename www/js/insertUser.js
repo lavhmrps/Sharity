@@ -172,7 +172,6 @@ function insertUser(){
 				try{
 					var image = $('input[name=reg_user_image]').prop('files')[0];
 				}catch(error){
-					alert(error.message);
 				}
 				if(image != undefined){
 					insertImage(image);
@@ -194,7 +193,7 @@ function insertUser(){
 			}
 		},
 		error : function(){
-			alert("faul");
+			alert("Error insertUser.js insertUser()");
 		}
 	});	
 	
@@ -211,7 +210,6 @@ function insertCardAndUpdateUser(){
 		data : data,
 		success : function(response){
 			if(response === "OK"){
-				alert("Kort satt inn!  insertCard() insertUser.js");
 				updateUser();
 			}else{
 				alert(response + ", noe gikk galt, insertCardAndUpdateUser() insertUser.js button[name=reg_user_complete.click]");
@@ -237,7 +235,6 @@ function updateUser(){
 			if(response == "OK"){
 				//clearInput()
 				$.mobile.changePage("#page_login", {
-
 					transition : "slide"
 				});
 
@@ -270,18 +267,18 @@ function insertImage(image){
 		dataType : "text",
 		data : {"userEmailToInsertImage" : globalData.email},
 		success : function(response){
-			alert(response);
+			if(response != "OK"){
+				alert("insertUser.js insertImage: " + response);
+			}
 		},
 		error : function(response){
-			alert("showProject.js : showProject() : ajax request error: "  +  response.message);
+			alert("insertUser.js : insertImage() : ajax request error: "  +  response.message);
 		}
 	});
 	
 
 	var urlInsertImage = getURLappBackendInsertImageUser();
-	alert(urlInsertImage);
-
-
+	
 	var form_data_image = new FormData();
 	form_data_image.append('image', image);
 	$.ajax({
@@ -293,40 +290,18 @@ function insertImage(image){
 		data: form_data_image,
 		type: 'POST',
 		success: function(response){
-			alert("insertProject.js ajax request success Bakgrunnsbilde: " + response);
+			if(response == "OK"){
+
+			}else{
+				alert("insertUser.js insertImage: " + response);
+			}
+			
 		},
 		error : function(response){
 			alert(" insertProject.js : insertBackground ajax request ERROR: " + response);
 			console.log(response.message);
 		}
 	});
-
-
-
-	/*
-
-	var form_data_image = new FormData();
-	form_data_image.append('image', image);
-	$.ajax({
-		url: urlInsertImage, // point to server-side PHP script
-		datatype: 'text', // what to expect back from the PHP script, if anything
-		cache: false,
-		contentType: false,
-		processData: false,
-		data: form_data_image,
-		type: 'POST',
-		success: function(response){
-			alert("insertProject.js ajax request success Bakgrunnsbilde: " + response);
-		},
-		error : function(response){
-			alert(" insertProject.js : insertBackground ajax request ERROR: " + response);
-			console.log(response.message);
-		}
-	});
-
-*/
-
-
 }
 
 });
