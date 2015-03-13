@@ -56,14 +56,14 @@
 					<div>
 						<!--<h6 class="grey">Søk blandt alle organisasjoner og prosjekter</h6>-->
 						<form class="ui-filterable">
-							<input id="myFilter" data-type="search" data-role="none" class="search" placeholder="Søk organisasjoner og prosjekter"/>
+							<input id="orgFilter" data-type="search" data-role="none" class="search" placeholder="Søk organisasjoner og prosjekter"/>
 						</form>
 					</div>
 				</div>
 			</div>
 			<div class="listdiv" style="overflow:scroll;">
 				<h5>Alle organisasjoner</h5>
-				<ul data-role="none" name="organizationList" id="orgList">
+				<ul name="organizationList" id="orgList" data-filter="true" data-input="#orgFilter">
 					<!--Organization list goes here, appende-->
 
 
