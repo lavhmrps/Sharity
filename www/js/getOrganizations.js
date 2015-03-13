@@ -34,7 +34,8 @@ $(document).ready(function(){
 						response[i].name +
 						'</span>'+
 						'<span class="li_num_projects">'+
-						response[i].projectCount + ' prosjekter'+
+						response[i].projectCount + ' prosjekt'+
+						(response[i].projectCount==1?'':'er')
 						'</span>'+
 						'</div>'+
 						'<div class="li_right">'+
