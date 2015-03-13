@@ -184,7 +184,7 @@ function insertUser(){
 				}else if(localStorage['is_register_credit_card'] == 0){
 					
 
-					$.mobile.changePage("#page_register3", {
+					$.mobile.changePage("#page_login", {
 
 						transition : "slide"
 					});
@@ -236,7 +236,7 @@ function updateUser(){
 		success : function(response){
 			if(response == "OK"){
 				//clearInput()
-				$.mobile.changePage("#page_register3", {
+				$.mobile.changePage("#page_login", {
 
 					transition : "slide"
 				});
@@ -276,9 +276,11 @@ function insertImage(image){
 			alert("showProject.js : showProject() : ajax request error: "  +  response.message);
 		}
 	});
+	
 
+	var urlInsertImage = getURLappBackendInsertImageUser();
+	alert(urlInsertImage);
 
-	var urlInsertImage = getURLphpBackendInsertImageUser();
 
 	var form_data_image = new FormData();
 	form_data_image.append('image', image);
@@ -298,6 +300,31 @@ function insertImage(image){
 			console.log(response.message);
 		}
 	});
+
+
+
+	/*
+
+	var form_data_image = new FormData();
+	form_data_image.append('image', image);
+	$.ajax({
+		url: urlInsertImage, // point to server-side PHP script
+		datatype: 'text', // what to expect back from the PHP script, if anything
+		cache: false,
+		contentType: false,
+		processData: false,
+		data: form_data_image,
+		type: 'POST',
+		success: function(response){
+			alert("insertProject.js ajax request success Bakgrunnsbilde: " + response);
+		},
+		error : function(response){
+			alert(" insertProject.js : insertBackground ajax request ERROR: " + response);
+			console.log(response.message);
+		}
+	});
+
+*/
 
 
 }

@@ -33,8 +33,6 @@ $(document).ready(function(){
 			$('p[name=ingress]').text(about_organization); 
 			$('img[name=logo]').attr("src", logoURL );
 			$('img[name=background]').attr("src", backgroundimgURL);
-
-
 			appendProjectList(organizationNr);
 		},
 		error: function(){
