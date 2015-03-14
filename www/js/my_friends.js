@@ -5,7 +5,11 @@ $(document).ready(function(){
 
 		
 		
-		var sql = "select name, sum(donation.sum) as Donasjoner, picURL from user join friend  on (user.email like friend.email2 and friend.email like '"+localStorage.getItem('userID')+"') left join donation on(donation.email like friend.email2) group by name";
+		var sql = "select name, sum(donation.sum) as Donasjoner, picURL "
+					+"from user join friend on "
+					+"(user.email like friend.email2 "
+					+"and friend.email like '"+localStorage.getItem('userID')+"')"
+					+" left join donation on(donation.email like friend.email2) group by name";
 
 		var url = getURLappBackend();
 
@@ -17,15 +21,14 @@ $(document).ready(function(){
 			data : {'getSQL' : sql},
 			success : function(response){
 				
-				$("#debug").append(response);
-
 				for(var i = 0 ; i < response.length; i++){		
 					
 					var friend='<li><a href="friend.html" rel="external" class="show-page-loading-msg">'
 					+'<div class="li_container">'
 					+'<div class="li_left">'
 					+'<div class="circle">'
-					+'<img src="'+response[i].picURL+'">Bilde</p>'
+					+'<img src="'
+					+(response[i].picURL==null? '../img/no_image_avaliable.png':response[i].picURL )+'"/>'
 					+'</div>'
 					+'</div>'
 					+'<div class="li_mid_left dots">'
