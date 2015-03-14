@@ -59,6 +59,10 @@ body {
 	height: 25pt;
 	background-color: #0057cb;
 }
+.main_content {
+	width: 90%;
+	margin: auto;
+}
 
 .somespace {
 	min-height: 20pt;

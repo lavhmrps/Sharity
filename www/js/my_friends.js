@@ -20,32 +20,52 @@ $(document).ready(function(){
 			dataType: "json",
 			data : {'getSQL' : sql},
 			success : function(response){
-				
-				for(var i = 0 ; i < response.length; i++){		
-					
-					var friend='<li><a href="friend.html" rel="external" class="show-page-loading-msg">'
-					+'<div class="li_container">'
-					+'<div class="li_left">'
-					+'<div class="circle">'
-					+'<img src="'
-					+(response[i].picURL==null? '../img/no_image_avaliable.png':response[i].picURL )+'"/>'
-					+'</div>'
-					+'</div>'
-					+'<div class="li_mid_left dots">'
-					+'<span class="li_friends">'+response[i].name	+'</span>	'	
-					+'</div>'
-					+'<div class="li_mid_right donations">'
-					+'<span class="li_donations green">'
-					+(response[i].Donasjoner==null?0:response[i].Donasjoner+'')
-					+'</span>'
-					+'</div>'
-					+'<div class="li_right">'
-					+'<img src="../img/li_arrow_r_grey.png">'
-					+'</div>'
-					+'</div>'
-					+'</a>'
-					+'</li>';
-					$("#friendList").append(friend);
+				if(response.length == 0){
+					var html = '<li><a href="#" rel="external" class="show-page-loading-msg">'
+						+'<div class="li_container">'
+						+'<div class="li_left">'
+						+'<div class="circle">'
+						+'</div>'
+						+'</div>'
+						+'<div class="li_mid_left dots">'
+						+'<h3 class="li_friends">Ingen venner lagt til</h3>'	
+						+'</div>'
+						+'<div class="li_mid_right">'
+						+'</div>'
+						+'<div class="li_right">'
+						+'</div>'
+						+'</div>'
+						+'</a>'
+						+'</li>';
+					$("#friendList").append(html);
+				}else{
+
+					for(var i = 0 ; i < response.length; i++){		
+						
+						var friend='<li><a href="friend.html" rel="external" class="show-page-loading-msg">'
+						+'<div class="li_container">'
+						+'<div class="li_left">'
+						+'<div class="circle">'
+						+'<img src="'
+						+(response[i].picURL==null? '../img/no_image_avaliable.png':response[i].picURL )+'"/>'
+						+'</div>'
+						+'</div>'
+						+'<div class="li_mid_left dots">'
+						+'<span class="li_friends">'+response[i].name	+'</span>	'	
+						+'</div>'
+						+'<div class="li_mid_right donations">'
+						+'<span class="li_donations green">'
+						+(response[i].Donasjoner==null?0:response[i].Donasjoner+'')
+						+'</span>'
+						+'</div>'
+						+'<div class="li_right">'
+						+'<img src="../img/li_arrow_r_grey.png">'
+						+'</div>'
+						+'</div>'
+						+'</a>'
+						+'</li>';
+						$("#friendList").append(friend);
+					}
 				}
 			},
 			error: function(){

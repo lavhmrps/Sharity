@@ -1,0 +1,20 @@
+var contact='<li>'
++'<div class="li_container">'
++'<div class="li_left">'
++'<div class="circlegrey">'
++img
++'</div>'
++'</div>'
++'<div class="li_mid ">'
++'<div class="li_friends">'
++name
++'</div>'
++'<div class="circlebluelittle">S</div>'
++'</div>'
++'<div class="li_right">'
++'<input data-role="none" type="checkbox" class="input_cb" id="'
++checkboxid
++'">'
++'</div>'
++'</div>'
++'</li>'
