@@ -64,6 +64,9 @@
 	display: block;
 	font-size: medium;
 	color: #000;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
 }
 
 .li_num_projects{

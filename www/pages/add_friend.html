@@ -13,6 +13,8 @@
 	<!-- Include the local stylesheets -->
 	<link rel="stylesheet" type="text/css" href="../css/add_friend.css" />
 	<link rel="stylesheet" type="text/css" href="../css/list_add_friend.css">
+	<link rel="stylesheet" type="text/css" href="../css/list_add_friend_my_contacts.css">
+	
 
 	<!-- Include the jQuery library -->
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -21,14 +23,15 @@
 	<script
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-	<!-- Include the jQuery Dotdotdot library -->
-	<script src="../js/jquery.dotdotdot.min.js"></script>
-
-
 	<!-- Include jQuery Mobile stylesheets -->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
 	<script type="text/javascript" src="../js/footer_nav.js"></script>
+	 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" charset="utf-8" src="../js/getPhoneContacts.js">
+	   
+	</script>
+
 
 </head>
 <body>
@@ -47,7 +50,7 @@
 						<div class="li_container">
 							<div class="li_left">
 								<div class="circleblue">
-									<p>F</p>
+									F
 								</div>
 							</div>
 							<div class="li_mid dots">
@@ -63,7 +66,7 @@
 						<div class="li_container">
 							<div class="li_left">
 								<div class="circleblue">
-									<p>S</p>
+									S
 								</div>
 							</div>
 							<div class="li_mid dots">
@@ -82,8 +85,13 @@
 
 		<div class="listdiv">
 			<h5>Mine Kontakter</h5>			
-			<ul data-role="none" >
+
+			<ul id="myContactsList" name="contactsList">
+				
 			</ul>
+
+			<div id="contacts" ></div>
+
 
 		</div>
 	</div>
@@ -113,14 +121,4 @@
 	</div>
 
 </body>
-<script src="cordova.js"></script>
-<script>
-$(document).ready(function(){
-	$(".dots").dotdotdot();
-});
-
-
-
-
-</script>
 </html>
