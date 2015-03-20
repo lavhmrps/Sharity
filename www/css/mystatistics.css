@@ -166,15 +166,6 @@ table tr td {
 	height: 40pt;
 }
 
-.footer_menu_icon {
-	width: 100%;
-}
-
-.footer_menu_icon_holo {
-	background: white;
-	width: 99%;
-}
-
 .main_content {
 	width: 90%;
 	margin: auto;
@@ -199,6 +190,20 @@ section {
 
 .clickable:ACTIVE {
 	background: #eee;
+}
+
+footer ul li {
+	position: relative;
+	height :40pt;
+	background: white;
+}
+
+footer ul li img{
+	position:absolute;
+	bottom:0;top:0;
+	left:0;right:0;
+	margin:auto;
+	height:30pt;
 }
 
 .footer_active {

@@ -52,10 +52,20 @@ body {
 	background-color: #0057cb;
 }
 
-.footer_menu_icon_holo {
+footer ul li {
+	position: relative;
+	height :40pt;
 	background: white;
-	width: 99%;
 }
+
+footer ul li img{
+	position:absolute;
+	bottom:0;top:0;
+	left:0;right:0;
+	margin:auto;
+	height:30pt;
+}
+
 
 .footer_active {
 	background: #eee;

@@ -17,35 +17,55 @@ $(document).ready(function(){
 				type : "POST",
 				url : url,
 				dataType: "json",
-				data : {'organizationSQL' : sql},
+				data : {'getSQL' : sql},
 				success : function(response){
-					for(var i = 0 ; i < response.length; i++){		
-						
-						var orgCode = '<li id="'+ response[i].organizationNr +'">' +
-						'<a href="organization.html" rel="external" class="show-page-loading-msg">' + 
-						'<div class="li_container">'+
-						'<div class="li_left">'+
-						'<div class="circle">'+
-						'<img src="' + response[i].logoURL + '"/>'+
-						'</div>'+
-						'</div>'+
-						'<div class="li_mid">'+
-						'<span class="li_org_name">' + 
-						response[i].name +
-						'</span>'+
-						'<span class="li_num_projects">'+
-						response[i].projectCount + ' prosjekt'+
-						(response[i].projectCount==1?'':'er')+
-						'</span>'+
-						'</div>'+
-						'<div class="li_right">'+
-						'<img src="../img/li_arrow_r_grey.png"/>'+
-						'</div>'+
-						'</div>'+
-						'</a>' +
-						'</li>';
-
+					if(response.length == 0){
+						var orgCode = '<li><div class="li_container">'+
+							'<div class="li_left">'+
+							'<div class="circle">'+
+							'</div>'+
+							'</div>'+
+							'<div class="li_mid">'+
+							'<span class="li_org_name" style="white-space:normal;">Det finnes ingen organisasjoner i databasen</span>'+
+							'<span class="li_num_projects"></span>'+
+							'</div>'+
+							'<div class="li_right">'+
+							'</div>'+
+							'</div></li>';
 						$("#orgList").append(orgCode);
+					} 
+					else{
+						for(var i = 0 ; i < response.length; i++){	
+							alert(response[i].projectCount);
+							var orgCode = '<li '+
+
+							'class="result" '+
+							'id="'+ response[i].organizationNr +'">' +
+							'<a href="organization.html" rel="external" class="show-page-loading-msg">' + 
+							'<div class="li_container">'+
+							'<div class="li_left">'+
+							'<div class="circle">'+
+							'<img src="' + response[i].logoURL + '"/>'+
+							'</div>'+
+							'</div>'+
+							'<div class="li_mid">'+
+							'<span class="li_org_name">' + 
+							response[i].name +
+							'</span>'+
+							'<span class="li_num_projects">'+
+							(response[i].projectCount == null ? '0':response[i].projectCount) + ' prosjekt'+
+							(response[i].projectCount==1?'':'er')+
+							'</span>'+
+							'</div>'+
+							'<div class="li_right">'+
+							'<img src="../img/li_arrow_r_grey.png"/>'+
+							'</div>'+
+							'</div>'+
+							'</a>' +
+							'</li>';
+
+							$("#orgList").append(orgCode);
+						}
 					}
 				},
 				error: function(){

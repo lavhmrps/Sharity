@@ -7,9 +7,9 @@ $(document).ready(function(){
 		
 		var sql = "select name, sum(donation.sum) as Donasjoner, picURL "
 					+"from user join friend on "
-					+"(user.email like friend.email2 "
-					+"and friend.email like '"+localStorage.getItem('userID')+"')"
-					+" left join donation on(donation.email like friend.email2) group by name";
+					+"(user.email like friend.friendEmail "
+					+"and friend.userEmail like '"+localStorage.getItem('userID')+"')"
+					+" left join donation on(donation.email like friend.friendEmail) group by name";
 
 		var url = getURLappBackend();
 
