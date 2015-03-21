@@ -54,7 +54,9 @@ $(document).ready(function(){
 					'<li id="' + response[i].projectID +'">'+
 					'<div class="li_container">' +
 					'<div class="li_left">'+
-					'<div class="li_circ"><img src="#"></div>'+
+					'<div class="li_circ"><img src="'+
+					response[i].logoURL+
+					'"></div>'+
 					'</div>'+
 					'<a href="project.html" rel="external" class="show-page-loading-msg">'+
 					'<div class="li_mid dots">'+

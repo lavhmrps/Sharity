@@ -72,6 +72,7 @@
 	color: #404040;
 	font-family: Circular Std Book,Calibri,Sans-serif !important;
 	font-weight: normal;
+	max-height: 40pt;
 }
 
 .li_right img{

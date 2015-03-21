@@ -1,0 +1,137 @@
+@font-face {
+	font-family: CircularBook;
+	src: local(CircularStd-Book);
+}
+
+@font-face {
+	font-family: CircularBook;
+	src: local(CircularStd-Bold);
+	font-weight: bold;
+}
+
+* {
+	font-family: CircularBook, Circular Std Book, Calibri, Arial,
+		Sans-serif !important;
+	margin: 0;
+	padding: 0;
+	text-shadow: none !important;
+}
+#header_div {
+	width: 100%;
+	height: 90pt;
+	line-height: 65pt;
+	background: #006dfe;
+	color: white;
+}
+#header_div h2 {
+	margin-left: 50pt;
+	color: white;
+	float:left;
+}
+
+
+.boxshadow {
+	box-shadow: 0pt 0pt 1pt #888;
+}
+
+.header_top {
+	width: 100%;
+	height: 25pt;
+	background-color: #0057cb;
+}
+.menu_icon {
+	position: absolute;
+	width: 25pt;
+	height: 25pt;
+	margin-top: 20pt;
+	margin-left: 10pt;
+}
+
+.logodiv_left {
+	position: absolute;
+	bottom: -30pt;
+	left: 10pt;
+	border-radius: 50%;
+	width: 90pt;
+	height: 90pt;
+	background-color: white;
+	color: grey;
+	font-size: 12pt;
+	border: 1pt solid grey;
+	line-height: 90pt;
+	text-align: center
+}
+
+.portrait {
+	position: relative;
+	width: 100%;
+	height: 150pt;
+	background-color: #d2d2d2;
+	color: white;
+	line-height: 150pt;
+	text-align: center;
+}
+.main_content {
+	width: 90%;
+	margin: auto;
+	margin-top: 30pt;
+}
+.top_links {
+	width: 60%;
+	margin-left: 40%;
+}
+.space_btn {
+	width: 90%;
+	margin: auto;
+	margin-top: 5pt;
+	min-height: 40pt;
+}
+.btn_single_project_donate {
+	position: absolute !important;
+	width: 45% !important;
+	right: 5% !important;
+	background: #20a623 !important;
+	color: white !important;
+	padding: 10pt !important;
+	font-size: large !important;
+	outline: none !important;
+	text-align:center;
+	text-decoration:none;
+	border: none;
+}
+.listdiv {
+	margin-top: 30pt;
+}
+
+
+.grey {
+	color: #9b9b9b !important;
+}
+
+.blue {
+	color: #006dfe !important;
+}
+
+.green {
+	color: #20a623 !important;
+}
+
+
+footer ul li {
+	position: relative;
+	height :40pt;
+	background: white;
+}
+
+footer ul li img{
+	position:absolute;
+	bottom:0;top:0;
+	left:0;right:0;
+	margin:auto;
+	height:30pt;
+}
+
+
+.footer_active {
+	background: #eee;
+}

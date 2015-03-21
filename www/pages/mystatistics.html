@@ -144,15 +144,17 @@ function getDonationInformation(){
 <body>
 	<div data-role="page" id="page_mystatistics" data-theme="a">
 		<div id="header_div" class="boxshadow">
-			<div class="header_top"></div>
-			<img src="../img/menu.png" class="menu_icon">
-			 Min statistikk
+			<div id="header_div" class="boxshadow">
+				<div class="header_top"></div>
+				<img src="../img/arrow_left.png" class="menu_icon back_btn">
+				 <h2>Min statistikk</h2>
+			</div>
 		</div>
 		<div id="mystats_title">
 			<div id="mystats_title_container">
-				<div class="mystats_logo"><img src="#" name="logo" class ="mystats_logo"/></div>
+				<div class="mystats_logo">
+					<img src="#" name="logo" class ="mystats_logo"/></div>
 				<div id="mystats_title_name" name="user_name">[Full name]</div>
-
 			</div>
 		</div>
 		<div style="height: 40pt; border-bottom: thin solid #eee;">
@@ -238,5 +240,11 @@ function getDonationInformation(){
 		</div>
 	</footer>
 </body>
+
+<script >
+$(".back_btn").click(function() {
+	window.history.go(-1);
+});
+</script>
 
 </html>

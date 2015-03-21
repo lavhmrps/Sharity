@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	$(document.body).on('click', 'li', function() {
-		setLocalStorage(this.id);
+		setLocalStorageorganizationToShow(this.id);
 
 	});
 
@@ -10,7 +10,7 @@ $(document).ready(function(){
 	if(localStorage.getItem('userID') != null){
 			//alert(localStorage.getItem('userID'));
 			//sjekk om email / userID fortsatt finnes i databasen
-			var sql = "SELECT * FROM Organization";
+			var sql = "select org.* , count(projectID) as projectCount from organization as org left join project on ( project.organizationNR like org.organizationNR ) group by org.name";
 			var url = getURLappBackend();
 
 			$.ajax({
@@ -36,9 +36,7 @@ $(document).ready(function(){
 					} 
 					else{
 						for(var i = 0 ; i < response.length; i++){	
-							alert(response[i].projectCount);
 							var orgCode = '<li '+
-
 							'class="result" '+
 							'id="'+ response[i].organizationNr +'">' +
 							'<a href="organization.html" rel="external" class="show-page-loading-msg">' + 
@@ -69,12 +67,12 @@ $(document).ready(function(){
 					}
 				},
 				error: function(){
-					alert("getOrganiation.js error");
+					alert("getOrganiation.js error: Kan man få mer info her elleh?");
 				}
 			});
 }else{
 	window.location.replace("../index.html");
-	alert("Logg inn ditt beist!");
+	alert("Vennligst logg inn");
 }
 
 $('button[name=logut]').click(function(){
@@ -82,11 +80,9 @@ $('button[name=logut]').click(function(){
 	window.location.replace("../index.html");
 });
 
-
-
 });
 
-function setLocalStorage(orgnaizationNr){
+function setLocalStorageorganizationToShow(orgnaizationNr){
 	localStorage['organizationToShow'] = orgnaizationNr;
 }
 

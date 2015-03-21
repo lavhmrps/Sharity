@@ -1,9 +1,11 @@
 $(document).ready(function(){
 
 	$(document.body).on('click', 'li', function() {
-		alert("NewsID: " + this.id);
+		setLocalStorageNewsToShow(this.id);
 
 	});
+
+	
 	var projectID = localStorage.getItem("projectToShow");
 	var sql = "SELECT * FROM Project WHERE projectID ='" + projectID + "'";
 	var url = getURLappBackend();
@@ -51,13 +53,13 @@ $(document).ready(function(){
 					'<div class="li_left">'+
 					'<div class="circle"></div>'+
 					'</div>'+
-					'<div class="li_mid dots">'+
+					'<div class="li_mid">'+
 					'<span class="li_date">'+
 					response[i].date_added + 
 					'</span>'+
-					'<span class="li_text">'+
+					'<div class="li_text dots">'+
 					response[i].txt +
-					'</span>'+
+					'</div>'+
 					'</div>'+
 					'<div class="li_right">'+
 					'<img src="../img/li_arrow_r_grey.png">'+
@@ -65,10 +67,20 @@ $(document).ready(function(){
 					'</div>'+
 					'</a>'+
 					'</li>';
+
 					$('ul[name=newsList]').append(newsCode);
+					$('#orgLogo').html();
+
+					$(".dots").dotdotdot();
 				}
 			}
 		});
 
 	}
+
 });
+
+
+function setLocalStorageNewsToShow(projectID){
+	localStorage['newsToShow'] = projectID;
+}

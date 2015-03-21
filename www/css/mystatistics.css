@@ -23,24 +23,28 @@ body {
 
 #header_div {
 	width: 100%;
-	height: 75pt;
-	line-height: 50pt;
+	height: 90pt;
+	line-height: 65pt;
 	background: #006dfe;
 	color: white;
-
-
 }
-
-#header_div p {
-	margin-left: 45pt;
+#header_div h2 {
+	margin-left: 50pt;
 	color: white;
-	font-size: x-large;
+	float:left;
 }
 
+.menu_icon {
+	position: absolute;
+	width: 25pt;
+	height: 25pt;
+	margin-top: 20pt;
+	margin-left: 10pt;
+}
 .menu_projects_icon {
 	position: absolute;
 	height: 12pt;
-	margin-top: 20pt;
+	top: 20pt;
 	right: 10pt;
 }
 
@@ -54,18 +58,8 @@ body {
 
 .header_top {
 	width: 100%;
-	height: 15pt;
-	background-color: #0057cb;
-	position:fixed;
-	z-index: 100;
-}
-
-.menu_icon {
-	position: absolute;
-	width: 25pt;
 	height: 25pt;
-	margin-top: 12pt;
-	margin-left: 10pt;
+	background-color: #0057cb;
 }
 
 #mystats_title {
