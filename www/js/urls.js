@@ -1,5 +1,5 @@
-var appBackend = "http://localhost/SharityCRM/appBackend/";
-var phpBackend = "http://localhost/SharityCRM/phpBackend/";
+var appBackend = "http://student.cs.hioa.no/~s188117/SharityCRM/AppBackend/";
+var phpBackend = "http://student.cs.hioa.no/~s188117/SharityCRM/phpBackend/";
 
 function getURLappBackend(){
 	return appBackend + "appBackend.php";
@@ -12,3 +12,4 @@ function getURLphpBackendlocalStorageJStoPHP(){
 function getURLappBackendInsertImageUser(){
 	return appBackend + "insertImageUser.php";
 }
+

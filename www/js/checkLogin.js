@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	
 	$('button[name=loginUser]').click(function(event){	
+		
 	
 	var email = $('input[name=login_username]').val();
 	var password = $('input[name=login_password]').val();
