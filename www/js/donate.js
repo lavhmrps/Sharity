@@ -1,4 +1,16 @@
 $(document).ready(function(){
+
+	$(".radio_amount").click(function() {
+		$("#in_custom_amount").val("");
+		$("#in_custom_amount").blur();
+		$("#in_custom_amount").css("border-bottom", "thin solid #d2d2d2");
+	});
+
+	function uncheckRadiobuttonsDonate() {
+		$("input[name='in_donate_amount']").attr("checked", false)
+		.checkboxradio("refresh");
+	}
+
 	$('img[name=back]').click(function(){
 		window.history.go(-1);
 	});
@@ -40,9 +52,10 @@ $(document).ready(function(){
 			dataType : "text",
 			data : data,
 			success : function(response){
-				alert("donate.js successful ajax request returned : " + response);
+				//alert("donate.js successful ajax request returned : " + response);
 				$("input[name='in_donate_amount']").attr("checked", false).checkboxradio("refresh");
 				$("input[name='donation_freq']").attr("checked", false).checkboxradio("refresh");
+				$("input[name='in_donate_amount_custom']").val("");
 				window.history.go(-1);
 			},
 			error : function(response){

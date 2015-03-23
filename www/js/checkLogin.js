@@ -1,40 +1,46 @@
 $(document).ready(function(){
-	
+
+
+	if(localStorage['userID'] == null ||localStorage['userID'].length == 0 ){
+	}else{
+		window.location.replace("pages/app.html#page_overview");
+	}
+
 	$('button[name=loginUser]').click(function(event){	
 		
-	
-	var email = $('input[name=login_username]').val();
-	var password = $('input[name=login_password]').val();
+		
+		var email = $('input[name=login_username]').val();
+		var password = $('input[name=login_password]').val();
 
-	var json = {
-		"email" : email,
-		"password" : password
-	};
+		var json = {
+			"email" : email,
+			"password" : password
+		};
 
-	json = JSON.stringify(json);
+		json = JSON.stringify(json);
 
-	var url = getURLappBackend();
+		var url = getURLappBackend();
 
-	$.ajax({
-		type : "POST",
-		datatype : "text",
-		url : url,
-		data : {"userLoginApp" : json},
-		success: function(response){
-			if(response == "OK"){
+		$.ajax({
+			type : "POST",
+			datatype : "text",
+			url : url,
+			data : {"userLoginApp" : json},
+			success: function(response){
+				if(response == "OK"){
 
-				window.location.replace("pages/overview.html");
-				localStorage.setItem("userID", email);
-			}else{
-				alert("NOT OK " + response);
+					window.location.replace("pages/app.html#page_overview");
+					localStorage.setItem("userID", email);
+				}else{
+					alert("NOT OK " + response);
+				}
+
+			},
+			error: function(response){
+				console.log(response.message);
 			}
+		});
 
-		},
-		error: function(response){
-			console.log(response.message);
-		}
+		event.preventDefault();
 	});
-
-	event.preventDefault();
-});
 });

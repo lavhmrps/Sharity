@@ -1,11 +1,14 @@
 $(document).ready(function(){
+	$(document.body).on('click', 'li[name=news_list]', function() {
+		localStorage.setItem('newsToShow', this.id);
+		//alert("file: getNews.js: trying to show news:  newsToShow in localStorage: " + localStorage.getItem('newsToShow'));
+		showNews();
 
-	$(document.body).on('click', 'li', function() {
-		setLocalStorageNewsToShow(this.id);
-	});	
+	});
 
-	var newsID = localStorage.getItem("newsToShow");
-	var projectID = localStorage.getItem("projectToShow");
+	function showNews(){
+		var newsID = localStorage.getItem("newsToShow");
+		var projectID = localStorage.getItem("projectToShow");
 	//
 	//var sql = "select * from news where newsID = " + newsID;
 	var sql = "select news.*, org.name as orgName from news join project on (news.projectID ="+projectID+") join organization as org on (project.organizationNR like org.organizationNR) where newsID = "+newsID+" group by newsID";
@@ -17,10 +20,10 @@ $(document).ready(function(){
 		dataType: "json",
 		data: {"getSQL" : sql},
 		success: function(response){
-			$("#orgname").html(response[0].orgName);
-			$("#date").html(response[0].date_added);
-			$("#title").html(response[0].title);
-			$("#ingress").html(response[0].txt);
+			$("#orgname").text(response[0].orgName);
+			$("#date").text(response[0].date_added);
+			$("#title").text(response[0].title);
+			$("#ingress").text(response[0].txt);
 		}
 	});
 
@@ -33,18 +36,18 @@ $(document).ready(function(){
 		dataType: "JSON",
 		data : {"getSQL" : sql},
 		success : function(response){
-
+			var newsCode = "";
 			for(var i = 0; i < response.length; i++){
-				var newsCode = 
+				newsCode += 
 				'<li id="' + response[i].newsID + '">'+
-				'<a href="news.html" rel="external" class="show-page-loading-msg">'+
+				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
 				'<div class="li_container">'+
 				'<div class="li_left">'+
 				'<div class="circle"></div>'+
 				'</div>'+
 				'<div class="li_mid">'+
 				'<span class="li_date">'+
-				response[i].date_added + 
+				response[i].date_added +"TEST" + 
 				'</span>'+
 				'<div class="li_text dots">'+
 				response[i].txt +
@@ -57,15 +60,11 @@ $(document).ready(function(){
 				'</a>'+
 				'</li>';
 
-				$('ul[name=newsList]').append(newsCode);
+				
 				$(".dots").dotdotdot();
 			}
+			$('ul[name=newsList]').html(newsCode);
 		}
 	});
-
-	
-});
-
-function setLocalStorageNewsToShow(projectID){
-	localStorage['newsToShow'] = projectID;
 }
+});

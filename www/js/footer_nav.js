@@ -1,17 +1,27 @@
 $(document).ready(function(){
 	$(".footer_me").click(function() {
-		window.location.href = "mystatistics.html";
+		$.mobile.changePage("#page_mystatistics", {
+			transition : "none"
+		});
 	});
 
 	$(".footer_overview").click(function() {
-		window.location.href = "overview.html";
+		$.mobile.changePage("#page_overview", {
+			transition : "none"
+		});
 	});
 
 	$(".footer_friends").click(function() {
-		window.location.href = "my_friends.html";
+		$.mobile.changePage("#page_my_friends", {
+			transition : "none"
+		});
+
 	});
 
 	$(".footer_settings").click(function() {
-		window.location.href = "";
+		$.mobile.changePage("#page_settings", {
+			transition : "none"
+		});
+
 	});
 });

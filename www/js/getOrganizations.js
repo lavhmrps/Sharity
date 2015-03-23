@@ -1,18 +1,20 @@
 $(document).ready(function(){
-
-	$(document.body).on('click', 'li', function() {
-		setLocalStorageorganizationToShow(this.id);
-
+	
+	$(document.body).on('click', 'li[name=organization_list]', function() {
+		localStorage.setItem('organizationToShow', this.id);
+		//alert("File: getOrganization.js: setting organizationToShow " + localStorage.getItem('organizationToShow'));
 	});
 
 
 
-	if(localStorage.getItem('userID') != null){
+	$('.footer_overview').click(function(){
+		if(localStorage.getItem('userID') != null){
+
 			//alert(localStorage.getItem('userID'));
 			//sjekk om email / userID fortsatt finnes i databasen
-			var sql = "select org.* , count(projectID) as projectCount from organization as org left join project on ( project.organizationNR like org.organizationNR ) group by org.name";
+			var sql = "select org.* , count(projectID) as projectCount from organization as org left join project on ( project.organizationNr like org.organizationNr ) group by org.name";
 			var url = getURLappBackend();
-
+			var orgCode = "";
 			$.ajax({
 				type : "POST",
 				url : url,
@@ -20,26 +22,27 @@ $(document).ready(function(){
 				data : {'getSQL' : sql},
 				success : function(response){
 					if(response.length == 0){
-						var orgCode = '<li><div class="li_container">'+
-							'<div class="li_left">'+
-							'<div class="circle">'+
-							'</div>'+
-							'</div>'+
-							'<div class="li_mid">'+
-							'<span class="li_org_name" style="white-space:normal;">Det finnes ingen organisasjoner i databasen</span>'+
-							'<span class="li_num_projects"></span>'+
-							'</div>'+
-							'<div class="li_right">'+
-							'</div>'+
-							'</div></li>';
-						$("#orgList").append(orgCode);
+						orgCode += '<li><div class="li_container">'+
+						'<div class="li_left">'+
+						'<div class="circle">'+
+						'</div>'+
+						'</div>'+
+						'<div class="li_mid">'+
+						'<span class="li_org_name" style="white-space:normal;">Det finnes ingen organisasjoner i databasen</span>'+
+						'<span class="li_num_projects"></span>'+
+						'</div>'+
+						'<div class="li_right">'+
+						'</div>'+
+						'</div></li>';
+						$("#orgList").html(orgCode);
 					} 
 					else{
+						orgCode = "";
 						for(var i = 0 ; i < response.length; i++){	
-							var orgCode = '<li '+
+							orgCode += '<li name="organization_list"'+
 							'class="result" '+
 							'id="'+ response[i].organizationNr +'">' +
-							'<a href="organization.html" rel="external" class="show-page-loading-msg">' + 
+							'<a href="#page_organization" rel="external" class="show-page-loading-msg">' + 
 							'<div class="li_container">'+
 							'<div class="li_left">'+
 							'<div class="circle">'+
@@ -62,18 +65,20 @@ $(document).ready(function(){
 							'</a>' +
 							'</li>';
 
-							$("#orgList").append(orgCode);
+							
 						}
+						$("#orgList").html(orgCode);
 					}
 				},
 				error: function(){
-					alert("getOrganiation.js error: Kan man få mer info her elleh?");
+					alert("getOrganization.js feil i kontakt med " + url + ", serverbackendfeil");
 				}
 			});
 }else{
 	window.location.replace("../index.html");
 	alert("Vennligst logg inn");
 }
+});
 
 $('button[name=logut]').click(function(){
 	localStorage.removeItem("userID");
@@ -82,9 +87,7 @@ $('button[name=logut]').click(function(){
 
 });
 
-function setLocalStorageorganizationToShow(orgnaizationNr){
-	localStorage['organizationToShow'] = orgnaizationNr;
-}
+
 
 
 

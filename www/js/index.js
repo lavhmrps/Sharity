@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	$(".dots").dotdotdot();
+	
 });
 
 $(".back_icon").click(function() {
