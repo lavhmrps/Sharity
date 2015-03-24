@@ -2,18 +2,18 @@ body {
 	margin-top: 100pt;
 }
 
-#list_organisation {
+#projectList {
 	width: 100%;
 	background: #fff;
 	list-style: none;
 	border-bottom: none;
 }
 
-#list_organisation li {
-	height: 60pt;
+#projectList  li {
+	max-height: 60pt ;
 }
 
-.li_container {
+#projectList .li_container {
 	width: 100%;
 	height: 100%;
 	background: #fff;
@@ -21,7 +21,7 @@ body {
 	border-bottom: thin solid #f2f2f2;
 }
 
-.li_left,.li_mid,.li_right {
+#projectList .li_left,#projectList .li_mid,#projectList .li_right {
 	background: #fff;
 	position: relative;
 	height: 100%;
@@ -29,21 +29,21 @@ body {
 	box-sizing: border-box;
 }
 
-.li_left {
+#projectList .li_left {
 	width: 15%;
 }
 
-.li_mid {
+#projectList .li_mid {
 	width: 55%;
 	padding: 15pt 3pt 5pt 5pt;
 	color: #000;
 }
 
-.li_right {
+#projectList .li_right {
 	width: 30%;
 }
 
-.li_circ {
+#projectList .li_circ {
 	position: absolute;
 	margin: auto;
 	top: 0;
@@ -56,32 +56,32 @@ body {
 	border-radius: 50%;
 }
 
-.li_circ img {
+#projectList .li_circ img {
 	border-radius: 50%;
 	width: 100%;
 }
 
-.li_heading {
+#projectList .li_heading {
 	font-size: large;
 	line-height:26pt;
 	display: block;
 	font-weight: normal;
-	color: #404040;
+	color: #333;
 }
 
-.li_text {
+#projectList .li_text {
 	font-size: small;
 	font-family: Circular Std Book, monospace, Calibri, Arial,
 		Sans-serif !important;
 	font-weight: normal;
 }
 
-.txt_grey {
+#projectList .txt_grey {
 	color: #9b9b9b;
 }
 
 /* li_right */
-.li_btn_donate {
+#projectList .li_btn_donate {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -95,7 +95,7 @@ body {
 	box-shadow: 0 0 2pt 0 #777;
 }
 
-a.li_btn_donate {
+#projectList a.li_btn_donate {
 	text-decoration: none !important;
 	color: white !important;
 	font-weight: normal !important;
@@ -106,10 +106,10 @@ a.li_btn_donate {
 	text-align: center;
 }
 
-.li_btn_donate:focus {
+#projectList .li_btn_donate:focus {
 	outline: none;
 }
 
-.li_btn_donate:active {
+#projectList .li_btn_donate:active {
 	background: #4CAF50;
 }

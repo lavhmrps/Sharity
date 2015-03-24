@@ -3,47 +3,48 @@
 	padding:0;
 }
 
-.listdiv ul li{
-	height: 40pt;
+.listdiv #orgList  li{
+	max-height: 40pt ;
 	border-bottom: thin solid #d2d2d2;
 	list-style: none;
+	background: red;
 }
 
-.li_container{
+#orgList .li_container{
 	position: relative;
 	width: 100%;
 	height: 40pt;
 }
 
-.li_left, .li_right, .li_mid{
+#orgList .li_left, #orgList .li_right, #orgList .li_mid{
 	height:100%;
 	float:left;
 	box-sizing:border-box;
 	background: #f2f2f2;
 }
 
-.li_left{
+#orgList .li_left{
 	position: relative;
 	width:15%;
 }
 
-.li_mid{
+#orgList .li_mid{
 	width:70%;
 	padding: 5pt;
 	
 }
 
-.li_right{
+#orgList .li_right{
 	position:relative;
 	width:15%;
 }
 
-.li_left img{
+#orgList .li_left img{
 	height: 100%;
 	border-radius: 50%;
 }
 
-.circle{
+#orgList .circle{
 	position: absolute;
 	margin:auto;
 	top:0;
@@ -60,7 +61,7 @@
 	text-align: center;
 }
 
-.li_org_name{
+#orgList .li_org_name{
 	display: block;
 	font-size: medium;
 	color: #000;
@@ -69,12 +70,12 @@
 	text-overflow:ellipsis;
 }
 
-.li_num_projects{
+#orgList .li_num_projects{
 	font-size: small;
 	color: #9b9b9b;
 }
 
-.li_right img{
+#orgList .li_right img{
 	margin:0;
 	padding:0;
 	border:none;

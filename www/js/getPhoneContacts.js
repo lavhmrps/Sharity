@@ -1,6 +1,8 @@
-document.addEventListener('deviceready', onDeviceReady, false);
-function onDeviceReady(){
-	        //alert("ready");
+ $( document ).delegate("#page_add_friend", "pageinit", function() {
+		document.addEventListener('deviceready', onDeviceReady, false);
+	});
+		
+	function onDeviceReady(){
 	        getContacts();
 	    }
 	    var filter = "";
@@ -44,7 +46,7 @@ function onDeviceReady(){
 	    			alert("File: getPhoneContacts.js cannot request sql from server backend bad ajax request, error");
 	    		}
 	    	});
-}
+		}
 function onError(contactError) {
 	alert('onError!');
 };
@@ -79,7 +81,6 @@ function newListitem(contact, isMember){
 	    	'</li>';
 	    	return listitemCode;
 	    }
-	});
 
 
 

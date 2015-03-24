@@ -1,5 +1,9 @@
-$(document).ready(function(){
 
+	$( document ).delegate("#page_project", "pageinit", function() {
+		showProject()
+	});
+		
+		
 	$(document.body).on('click', 'li[name=news_list]', function() {
 		localStorage.setItem('newsToShow', this.id);
 		//alert("file: project.js: setting newsToShow in localStorage: " + localStorage.getItem('newsToShow'));
@@ -12,7 +16,7 @@ $(document).ready(function(){
 
 	});
 	function showProject(){
-
+		
 		var projectID = localStorage.getItem("projectToShow");
 		var sql = "SELECT * FROM Project WHERE projectID ='" + projectID + "'";
 		var url = getURLappBackend();
@@ -54,6 +58,11 @@ $(document).ready(function(){
 			data : {"getSQL" : sql},
 			success : function(response){
 
+				if(response.length == 0){
+
+					newsCode = '<li>Ingen nyheter</li>';
+				}
+
 				for(var i = 0; i < response.length; i++){
 					newsCode += 
 					'<li id="' + response[i].newsID + '" name="news_list">'+
@@ -64,7 +73,7 @@ $(document).ready(function(){
 					'</div>'+
 					'<div class="li_mid">'+
 					'<span class="li_date">'+
-					response[i].date_added +"IKKETEST" + 
+					response[i].date_added  + 
 					'</span>'+
 					'<div class="li_text dots">'+
 					response[i].txt +
@@ -79,11 +88,9 @@ $(document).ready(function(){
 
 					
 					$('#orgLogo').html();
-
-					$(".dots").dotdotdot();
+					
 				}
 				$('ul[name=newsListProject]').html(newsCode);
 			}
 		});
 	}
-});

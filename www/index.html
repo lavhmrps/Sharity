@@ -8,14 +8,12 @@
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="msapplication-tap-highlight" content="no" />
 	<!--Original meta for view-->
-	<meta name="viewport"
-	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<!--	
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+-->
 
-
-	<meta name="viewport" content="target-densitydpi=medium-dpi, user-scalable=no, initial-scale=0.5, minimum-scale=0.5, width=device-width" />
-
-	<!-- Test -->
-	<meta name="viewport" content="target-densitydpi=medium-dpi, user-scalable=no, initial-scale=0.5, minimum-scale=0.5, width=device-width" />
+	<!--  -->
+	<meta name="viewport" content="target-densitydpi=medium-dpi, user-scalable=no, initial-scale=1, minimum-scale=1, width=device-width" />
 
 	<!-- Lokalt stilark -->
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -31,16 +29,17 @@
 	<script
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-	<!-- Include the js for register user script -->
+	<!-- Local Javascripts -->
 	<script src="js/register_user.js"></script>
-
-	<script type="text/javascript" src="js/checkLogin.js"></script>
-
-	<!--<script type="text/javascript" src="js/insertUser.js"></script>-->
-
-	<script type="text/javascript" src="js/insertUser.js"></script>
-
-	<script type="text/javascript" src="js/urls.js"></script>
+	<script src="js/checkLogin.js"></script>
+	<script src="js/insertUser.js"></script>
+	<script src="js/urls.js"></script>
+		
+	<script src="js/index.js"></script>
+	<script>
+		if($("#cb_accept_user_contidions").checked()==false)
+			$("#register_user").this().input.disabled=true;
+	</script>
 
 
 
@@ -723,13 +722,7 @@
 	</div>
 </div>
 </body>
-<script charset="UTF-8" src="js/index.js"></script>
-<script>
 
-if($("#cb_accept_user_contidions").checked()==false)
-	$("#register_user").this().input.disabled=true;
-
-</script>
 </html>
 
 

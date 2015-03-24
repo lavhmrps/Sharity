@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 	if(localStorage['userID'] == null ||localStorage['userID'].length == 0 ){
 	}else{
-		window.location.replace("pages/app.html#page_overview");
+		//window.location.replace("pages/app.html#page_overview");
 	}
 
 	$('button[name=loginUser]').click(function(event){	

@@ -8,8 +8,7 @@ $(document).ready(function(){
 
 	$(document.body).on('click', 'li[name=project_list]', function() {
 		localStorage.setItem("projectToShow", this.id);
-		//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));
-		
+		//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
 	});
 	$(document.body).on('click', 'a[name="donation"]', function() {
 		setLocalStorageProjectToShow(this.id);
@@ -74,7 +73,7 @@ $(document).ready(function(){
 					'<div class="li_container">' +
 					'<div class="li_left">'+
 					'<div class="li_circ"><img src="'+
-					response[i].logoURL+
+					(response[i].logoURL == null? "../img/no_image_avaliable.png":response[i].logoURL)+
 					'"></div>'+
 					'</div>'+
 					'<a href="#page_project" rel="external" class="show-page-loading-msg">'+

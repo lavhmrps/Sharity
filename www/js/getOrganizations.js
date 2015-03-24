@@ -1,6 +1,9 @@
 $(document).ready(function(){
+
+	listOrgs();
 	
 	$(document.body).on('click', 'li[name=organization_list]', function() {
+		//alert(this.id+": (getOrganization.js)");
 		localStorage.setItem('organizationToShow', this.id);
 		//alert("File: getOrganization.js: setting organizationToShow " + localStorage.getItem('organizationToShow'));
 	});
@@ -10,9 +13,25 @@ $(document).ready(function(){
 	$('.footer_overview').click(function(){
 		if(localStorage.getItem('userID') != null){
 
+				listOrgs();
 			//alert(localStorage.getItem('userID'));
 			//sjekk om email / userID fortsatt finnes i databasen
-			var sql = "select org.* , count(projectID) as projectCount from organization as org left join project on ( project.organizationNr like org.organizationNr ) group by org.name";
+			
+}else{
+	window.location.replace("../index.html");
+	alert("Vennligst logg inn");
+}
+});
+
+$('button[name=logut]').click(function(){
+	localStorage.removeItem("userID");
+	window.location.replace("../index.html");
+});
+
+});
+
+function listOrgs(){
+	var sql = "select org.* , count(projectID) as projectCount from organization as org left join project on ( project.organizationNr like org.organizationNr ) group by org.name";
 			var url = getURLappBackend();
 			var orgCode = "";
 			$.ajax({
@@ -46,7 +65,7 @@ $(document).ready(function(){
 							'<div class="li_container">'+
 							'<div class="li_left">'+
 							'<div class="circle">'+
-							'<img src="' + response[i].logoURL + '"/>'+
+							'<img src="' + (response[i].logoURL == null? "../img/no_image_avaliable.png":response[i].logoURL) + '"/>'+
 							'</div>'+
 							'</div>'+
 							'<div class="li_mid">'+
@@ -74,19 +93,7 @@ $(document).ready(function(){
 					alert("getOrganization.js feil i kontakt med " + url + ", serverbackendfeil");
 				}
 			});
-}else{
-	window.location.replace("../index.html");
-	alert("Vennligst logg inn");
 }
-});
-
-$('button[name=logut]').click(function(){
-	localStorage.removeItem("userID");
-	window.location.replace("../index.html");
-});
-
-});
-
 
 
 

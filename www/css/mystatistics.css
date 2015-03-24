@@ -203,3 +203,30 @@ footer ul li img{
 .footer_active {
 	background: #eee;
 }
+
+/*DonationList*/
+#donationList{
+	list-style: none;
+}
+
+#donationList a{
+	text-decoration: none;
+}
+
+#donationList li{
+	height: 50pt;
+}
+
+#donationList img{
+	height: 40%;
+	position:absolute;
+}
+
+#donationList .li_project{
+	font-size: large;
+	font-weight: bold;
+}
+
+#donationList .li_donation{
+	
+}

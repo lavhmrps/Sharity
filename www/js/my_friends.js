@@ -42,7 +42,7 @@ $.ajax({
 
 			for(var i = 0 ; i < response.length; i++){		
 				
-				var friend='<li><a href="friend.html" rel="external" class="show-page-loading-msg">'
+				var friend='<li><a href="#" rel="external" class="show-page-loading-msg">'
 				+'<div class="li_container">'
 				+'<div class="li_left">'
 				+'<div class="circle">'

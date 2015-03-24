@@ -20,21 +20,13 @@ $(document).ready(function(){
 		image.replaceWith( image = image.clone( true ) );
 	});
 
-
-
 	$("input[name=reg_user_image]").change(function(){
 		previewImage(this);
 	});
 
-
-
-
 	$("div[name=trigger_pick_image]").click(function(){
 		$("input[name=reg_user_image]").trigger('click');
 	});
-
-
-
 
 
 	$('button[name=reg_user_personalia_done]').click(function(){

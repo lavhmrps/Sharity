@@ -1,5 +1,11 @@
-$(document).ready(function(){
 
+	$( document ).delegate("#page_mystatsDonations", "pageinit", function() {
+		listDonations();
+	});
+	
+	$( document ).delegate("#page_mystatistics", "pageinit", function() {
+		showStats();
+	});
 	
 
 	$(".back_btn").click(function() {
@@ -7,6 +13,10 @@ $(document).ready(function(){
 	});
 
 	$(".footer_me").click(function() {
+
+		showStats();
+	});
+	function showStats(){
 		var current_date = new Date();
 		var month = new Array();
 		month[0] = "Januar";
@@ -37,7 +47,7 @@ $(document).ready(function(){
 			data : data,
 			dataType : "JSON",
 			success : function(json){
-				$('div[name="user_name"]').text(json[0].name);
+				$('div[name="user_name"]').text(json[0].name+"HEI");
 				$('img[name=logo]').attr('src',json[0].picURL);
 				getDonationInformation();
 				getChallenges();
@@ -51,10 +61,10 @@ $(document).ready(function(){
 
 		$('div[name="user_name"]').text('Full name goes here');
 		
-	});
+	}
 
 
-});
+
 
 function getChallenges(){
 	var email = localStorage.getItem('userID');
@@ -109,10 +119,10 @@ function getDonationInformation(){
 				sum_total += parseInt(json[i].sum);
 			}
 
-			alert("File: mystatistics.js getDonationInformation() just for show:\n" + text);
+			//alert("File: mystatistics.js getDonationInformation() just for show:\n" + text);
 
 
-
+			
 			$('span[name=amount_current_month]').text(sum_current_month);
 			$('span[name=total_amount]').text(sum_total);
 			if(num_donations == 1){
@@ -127,11 +137,82 @@ function getDonationInformation(){
 				$('span[name=num_donations]').text(num_donations);
 			}
 			
-
+			return json;
 			//alert(text);
 		},
 		error : function(error){
 			alert("Error i mystatistics.js bad ajax reqest getSQL from database");
 		}
 	});
+}
+
+function listDonations(){
+	var email = localStorage.getItem('userID');
+		var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
+		var sql ="SELECT don.*, pro.name as projectName FROM donation as don join project as pro on (pro.projectID = don.projectID ) WHERE email = '"+email+"'";
+		var url = getURLappBackend();
+		var data = {"getSQL" : sql};
+
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : data,
+			dataType : "JSON",
+			success : function(json){
+
+				var donations = "";
+
+				var num_donations = 0;
+				var sum_current_month = 0;
+				var sum_total = 0;
+
+				for(var i = 0; i < json.length; i++){
+					donations += //'<li>Sum: ' + json[i].sum + ', Type: ' + json[i].type + ', Datum: '+ json[i].date  + '</li>';
+					'<li id="' + json[i].projectID +'"  donation="' + json[i].donationID +'">'+
+						'<div class="li_container">' +
+						'<div class="li_left">'+
+						'<div class="li_circ"></div>'+
+						'</div>'+
+						'<div class="li_mid">'+
+						'<div class="li_project">' + json[i].projectName + '</div>'+
+						'<span class="li_donation grey">' + json[i].sum + ' kr,</span> <span'+
+						(json[i].type == 'fast'?' class="green">':'>')+json[i].type+'</span>'+
+						'</div>'+
+						'<div class="li_right">'+
+						(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
+						'</div>'+
+						'</div>'+
+						'</li>';
+				}
+				$("#donationList").html(donations);
+				$("#donationList li .li_mid, .li_left, .li_right").click(function() {
+					var projectID =$(this).parent().parent().attr("id");
+					var donationID =$(this).parent().parent().attr("donation");
+
+					if($(this).attr("class") == "li_right"){
+							if (confirm("Stoppe donasjonen?") == true) {
+								stopDonation(donationID);
+							}else{
+								exit;
+							}
+								
+					}
+					localStorage.setItem("projectToShow", projectID);
+					$.mobile.changePage("#page_project");
+					location.reload();
+					//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
+				});
+
+
+
+			},
+			error : function(error){
+				alert("Error i mystatistics.js bad ajax reqest getSQL from database");
+			}
+		});	
+}
+
+function stopDonation(donationID){
+	alert("stoping donation: "+donationID);
+	exit;
 }
