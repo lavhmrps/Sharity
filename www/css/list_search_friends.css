@@ -1,0 +1,67 @@
+.content_box{
+	position: relative;
+	margin: auto;
+	border: thin solid #eee;
+	line-height: 40pt;
+
+}
+
+.content_box_search {
+	height: 55pt;
+	bottom: 0;
+	border: none;
+	background-color: #F3F3F3;
+	line-height: 100%;
+	
+}
+
+#page_search_friends_sharity li{
+	height: 50pt;
+}
+
+#page_search_friends_sharity li .li_mid{
+	padding:7pt 0;
+}
+
+#page_search_friends_sharity .li_name{
+	font-size: large;
+	color:#333;
+}
+
+#page_search_friends_sharity .li_email{
+	margin-left: 10pt;
+	font-size: small;
+	color:#9b9b9b;
+}
+
+/* li_right */
+#page_search_friends_sharity .li_btn_donate {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right:0;
+	border: none;
+	width: 70pt;
+	height: 20pt;
+	margin: auto;
+	background: #20a623;
+	color: white;
+	font-size: small;
+	box-shadow: 0 0 2pt 0 #777;
+}
+
+#page_search_friends_sharity a.li_btn_donate {
+	text-decoration: none !important;
+	color: white !important;
+	text-shadow: none;
+	line-height: 20pt;
+	text-align: center;
+}
+
+#page_search_friends_sharity .li_btn_donate:focus {
+	outline: none;
+}
+
+#page_search_friends_sharity .li_btn_donate:active {
+	background: #4CAF50;
+}

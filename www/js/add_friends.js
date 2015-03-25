@@ -41,32 +41,36 @@ $(document).ready(function(){
 		success: function(response){
 			var userCode = "";
 			for(var i = 0 ; i < response.length; i++){	
-				userCode += '<li name="user_list">'+
-				'<h3>Navn: '+
-				response[i].name+
-				'</h3>'+
-				'<p>Email: '+
-				response[i].email +
-				'</p>'+
-				'<button name="add_friend" id="'+response[i].email+'" >Legg til som venn</button>'+
-				'</li>';
-
+				userCode +='<li>'
+					+'<div class="li_container">'
+					+'<div class="li_left">'
+					+'<div class="circlegrey"><img src="'
+					+(response[i].picURL == null? "../img/no_image_avaliable.png":response[i].picURL)
+					+'"/></div>'
+					+'</div>'
+					+'<div class="li_mid ">'
+					+'<div class="li_name">'
+					+ response[i].name
+					+'</div>'
+					+'<span class="li_email">'
+					+ response[i].email
+					+'</span>'
+					+'</div>'
+					+'<div class="li_right">'
+					+'<a href="#" class="li_btn_donate" name="donation">Legg til venn</a>'
+					+'</div>'
+					+'</li>';
 			}
 
 			$("#user_list").html(userCode);
 		}
 		
-
-
-
 	});
 });
 function requestFriendship(to_user){
 	var url = getURLappBackend();
 	var from_user = localStorage['userID'];
 	var data = {"setSQL" : "INSERT INTO friend_request (from_user, to_user) VALUES('"+from_user+"', '"+to_user+"')"};
-
-
 
 	$.ajax({
 		type: "POST",

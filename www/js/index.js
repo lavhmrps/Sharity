@@ -34,13 +34,13 @@ function toRegister1b() {
 // Setting steps-to-go to 4 if register NewUser
 $("#nav_register1a").click(function() {
 	$(".portrait").show();
-	$("#stepstogo").empty().append("4");
+	$("#stepstogo").empty().append("/4");
 });
 
 //Setting steps-to-go to 3 if register NewOrganisation
 $("#nav_register1b").click(function() {
 	$(".portrait").hide();
-	$("#stepstogo").empty().append("3");
+	$("#stepstogo").empty().append("/3");
 });
 
 // The inputfield in focus gets a blue border-bottom
@@ -93,6 +93,11 @@ $(document)
 
 // Hiding footer when typing
 $(document).on("focus", "input", function() {
+	var pageID = $.mobile.activePage.attr('id');
+	//.. but not when on search-pages
+	if (pageID == "page_search_friends_sharity"){
+		return;
+	}
 	$.mobile.activePage.find("footer").hide();
 });
 

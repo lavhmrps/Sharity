@@ -25,6 +25,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/mystatistics.css" />
 	<link rel="stylesheet" type="text/css" href="../css/news.css" />
 	<link rel="stylesheet" type="text/css" href="../css/list_project.css">
+	<link rel="stylesheet" type="text/css" href="../css/list_search_friends.css">
 	<!-- Include jQuery Mobile stylesheets -->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<!--************End of stylesheets************-->
@@ -52,6 +53,15 @@
 	<script src="../js/footer_nav.js"></script>
 	<script src="../js/settings.js"></script>
 	<script	src="../js/getNews.js"></script>
+
+	<script >
+$(document).on("focus", "input", function() {
+	//alert($.mobile.activePage.attr('id'));
+	//$.mobile.activePage.find("footer").show();
+
+});
+
+	</script>
 
 	<!--************End of scripts************-->
 </head>
@@ -639,34 +649,33 @@
 
 		</div>
 		<div class="main_content">
-			<div class="content_box1 layer">
-				<h2>Søk i sharity etter venner</h2>
-				<div class="content_box1b">
+			<div class="content_box">
+				<div class="content_box_search layer">
 					<div class="content_box1b_icon">
 						<img src="../img/icon_search.png" class="icon"/>
 					</div>
 					<div>
 						<!--<h6 class="grey">Søk blandt alle organisasjoner og prosjekter</h6>-->
 						<form class="ui-filterable">
-							<input id="friendFilter" data-type="search" data-role="none" class="search" placeholder="Søk i sharty database for å finne venner"/>
+							<input id="friendFilter" data-type="search" data-role="none" class="search" placeholder="Søk etter venner"/>
 						</form>
 					</div>
 				</div>
 			</div>
-			<div class="listdiv">
+			<div class="listdiv" style="min-height:1000pt">
 				
 				<ul name="user_list" id="user_list" data-filter="true" data-input="#friendFilter">
-					<!--Organization list goes here, append-->
+					<!--User list goes here, append-->
 					
 				</ul>
 			</div>
 		</div>
 		<div class="somespace"></div>
 
-		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+	<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
 			<div data-role="navbar">
 				<ul>
-					<li class="footer_me"><img  alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
 					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
 					<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
 					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
