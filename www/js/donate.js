@@ -40,7 +40,7 @@ $(document).ready(function(){
 			return false;
 		}
 
-		var sql = "INSERT INTO Donation (projectID, email, type, sum) VALUES('"+projectID+"', '"+email+"', '"+type+"', '"+sum+"')";
+		var sql = "INSERT INTO Donation (projectID, email, type, sum,active) VALUES('"+projectID+"', '"+email+"', '"+type+"', '"+sum+"', '"+(type=='fast'?1:0)+"')";
 
 		var url = getURLappBackend();
 		
