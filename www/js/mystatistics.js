@@ -47,7 +47,7 @@
 			data : data,
 			dataType : "JSON",
 			success : function(json){
-				$('div[name="user_name"]').text(json[0].name+"HEI");
+				$('div[name="user_name"]').text(json[0].name);
 				$('img[name=logo]').attr('src',json[0].picURL);
 				getDonationInformation();
 				getChallenges();
@@ -167,8 +167,9 @@ function listDonations(){
 				var sum_total = 0;
 
 				for(var i = 0; i < json.length; i++){
-					donations += //'<li>Sum: ' + json[i].sum + ', Type: ' + json[i].type + ', Datum: '+ json[i].date  + '</li>';
-					'<li id="' + json[i].projectID +'"  donation="' + json[i].donationID +'">'+
+
+					donations +='<li id="' + json[i].projectID +'"  donation="' + json[i].donationID +'" active="'+
+						(json[i].active == 1 ? 'true">':'false">')+
 						'<div class="li_container">' +
 						'<div class="li_left">'+
 						'<div class="li_circ"></div>'+
@@ -179,7 +180,8 @@ function listDonations(){
 						(json[i].type == 'fast'?' class="green">':'>')+json[i].type+'</span>'+
 						'</div>'+
 						'<div class="li_right">'+
-						(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
+						//(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
+						((json[i].type == 'fast' ? (json[i].active == 1 ? 'Aktiv':'Stoppet') : '' ))+
 						'</div>'+
 						'</div>'+
 						'</li>';
@@ -188,13 +190,23 @@ function listDonations(){
 				$("#donationList li .li_mid, .li_left, .li_right").click(function() {
 					var projectID =$(this).parent().parent().attr("id");
 					var donationID =$(this).parent().parent().attr("donation");
+					var active = $(this).parent().parent().attr("active");
 
 					if($(this).attr("class") == "li_right"){
+						if(active == "true"){
 							if (confirm("Stoppe donasjonen?") == true) {
-								stopDonation(donationID);
+							stopDonation(donationID);
+							}else{
+								exit;
+							}	
+						}else{
+							if (confirm("Aktivere donasjonen igjen?") == true) {
+							startDonation(donationID);
 							}else{
 								exit;
 							}
+						}
+						
 								
 					}
 					localStorage.setItem("projectToShow", projectID);
@@ -213,6 +225,69 @@ function listDonations(){
 }
 
 function stopDonation(donationID){
-	alert("stoping donation: "+donationID);
+	var sql = "update donation set active = 0 where donationID = "+donationID;
+	var url = getURLappBackend();
+
+	$.ajax({
+		type:"post",
+		url:url,
+		dataType:"text",
+		data:{"setSQL":sql},
+		success: function(response){
+			alert("Donasjon stoppet!");
+			window.location.reload();
+		},
+		error: function(response){
+			alert("Kunne ikke stoppe donasjonen.");
+		}
+	});
+
 	exit;
+}
+
+function startDonation(donationID){
+
+	var userID, projectID,type,sum;
+	var sql = "SELECT * FROM donation where donationID = "+donationID;
+	var url = getURLappBackend();
+
+	$.ajax({
+		type: "POST",
+		url: url,
+		dataType: "json",
+		data: {"getSQL":sql},
+		success: function(r){
+			userID = r[0].email;
+			projectID = r[0].projectID;
+			type = r[0].type;
+			sum = r[0].sum;
+			
+			var txt = r[0].donationID +", "+r[0].projectID  +", "+r[0].email+", "+r[0].type +", "+r[0].sum +", "+r[0].active;
+			//alert(txt);
+
+			sql = "UPDATE donation set active = 1 where donationID = "+donationID;
+
+			$.ajax({
+				type :"POST",
+				url : url,
+				dataType : "text",
+				data : {'setSQL' : sql},
+				success : function(response){
+					alert("Donasjon aktivert!")
+					window.location.reload();
+
+				},
+				error : function(response){
+					alert("Error in setSQL:"+ response);
+				}
+			});
+		},
+		error: function(response){
+			alert("error in getSQL:"+json.stringify(response));
+		}
+
+	});
+
+	exit;
+
 }

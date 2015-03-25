@@ -205,8 +205,23 @@ footer ul li img{
 }
 
 /*DonationList*/
+
 #donationList{
 	list-style: none;
+}
+
+#donationList .li_left{
+	width: 10%;
+}
+
+#donationList .li_mid{
+	width: 70%;
+}
+
+#donationList .li_right{
+	width: 20%;
+	line-height: 40pt;
+	font-weight: bold;
 }
 
 #donationList a{
