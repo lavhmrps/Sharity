@@ -1,4 +1,21 @@
-.content_box{
+#page_search_friends_sharity .circlegrey{
+	position: absolute;
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	height:35pt;
+	width: 35pt;
+	border-radius: 50%;
+	background: #9b9b9b;
+	color:white;
+	line-height: 35pt;
+	font-size: small;
+	text-align: center;
+}
+
+#page_search_friends_sharity .content_box{
 	position: relative;
 	margin: auto;
 	border: thin solid #eee;
@@ -6,7 +23,7 @@
 
 }
 
-.content_box_search {
+#page_search_friends_sharity .content_box_search {
 	height: 55pt;
 	bottom: 0;
 	border: none;
@@ -19,8 +36,34 @@
 	height: 50pt;
 }
 
-#page_search_friends_sharity li .li_mid{
+#page_search_friends_sharity #user_list{
+	list-style: none;
+}
+
+
+#page_search_friends_sharity .li_container{
+
+	width:100%;
+}
+
+#page_search_friends_sharity .li_left, .li_right, .li_mid{
+	position: relative;
+	height:100%;
+	float:left;
+}
+
+#page_search_friends_sharity  .li_left{
+	width: 20%;
+
+}
+
+#page_search_friends_sharity .li_mid{
+	width: 60%;
 	padding:7pt 0;
+}
+
+#page_search_friends_sharity .li_right{
+	width: 20%;
 }
 
 #page_search_friends_sharity .li_name{
@@ -64,4 +107,13 @@
 
 #page_search_friends_sharity .li_btn_donate:active {
 	background: #4CAF50;
+}
+
+#page_search_friends_sharity img{
+	max-height: 100%;
+	max-width: 100%;
+}
+
+footer ul li{
+	max-height: 40pt !important;
 }

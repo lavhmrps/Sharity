@@ -210,18 +210,28 @@ footer ul li img{
 	list-style: none;
 }
 
+#donationList .li_container{
+
+}
+
+#donationList .li_left, .li_right, .li_mid{
+	position: relative;
+	height:100%;
+	float:left;
+	box-sizing:border-box;
+}
 #donationList .li_left{
 	width: 10%;
 }
 
 #donationList .li_mid{
 	width: 70%;
+	padding:7pt 0;
 }
 
 #donationList .li_right{
 	width: 20%;
 	line-height: 40pt;
-	font-weight: bold;
 }
 
 #donationList a{
@@ -243,5 +253,5 @@ footer ul li img{
 }
 
 #donationList .li_donation{
-	
+	color:#333;
 }

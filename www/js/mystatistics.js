@@ -1,67 +1,67 @@
 
-	$( document ).delegate("#page_mystatsDonations", "pageinit", function() {
-		listDonations();
+$( document ).delegate("#page_mystatsDonations", "pageinit", function() {
+	listDonations();
+});
+
+$( document ).delegate("#page_mystatistics", "pageinit", function() {
+	showStats();
+});
+
+
+$(".back_btn").click(function() {
+	window.history.go(-1);
+});
+
+$(".footer_me").click(function() {
+	showStats();
+});
+
+function showStats(){
+	var current_date = new Date();
+	var month = new Array();
+	month[0] = "Januar";
+	month[1] = "Februar";
+	month[2] = "Mars";
+	month[3] = "April";
+	month[4] = "Mai";
+	month[5] = "Juni";
+	month[6] = "Juli";
+	month[7] = "August";
+	month[8] = "September";
+	month[9] = "Oktober";
+	month[10] = "November";
+	month[11] = "Desember";
+
+	var current_month = month[current_date.getMonth()];
+
+	$('span[name=current_month]').text(current_month);
+
+	var email = localStorage.getItem('userID');
+	var sql = "SELECT * FROM User WHERE email = '"+email+"'";
+	var url = getURLappBackend();
+	var data = {"getSQL" : sql};
+
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : data,
+		dataType : "JSON",
+		success : function(json){
+			$('div[name="user_name"]').text(json[0].name);
+			$('img[name=logo]').attr('src',json[0].picURL);
+			getDonationInformation();
+			getChallenges();
+
+		},
+		error : function(error){
+			alert("Error i mystatistics.js bad ajax reqest getSQL from database");
+		}
 	});
+
+
+	$('div[name="user_name"]').text('Full name goes here');
 	
-	$( document ).delegate("#page_mystatistics", "pageinit", function() {
-		showStats();
-	});
-	
-
-	$(".back_btn").click(function() {
-		window.history.go(-1);
-	});
-
-	$(".footer_me").click(function() {
-
-		showStats();
-	});
-	function showStats(){
-		var current_date = new Date();
-		var month = new Array();
-		month[0] = "Januar";
-		month[1] = "Februar";
-		month[2] = "Mars";
-		month[3] = "April";
-		month[4] = "Mai";
-		month[5] = "Juni";
-		month[6] = "Juli";
-		month[7] = "August";
-		month[8] = "September";
-		month[9] = "Oktober";
-		month[10] = "November";
-		month[11] = "Desember";
-
-		var current_month = month[current_date.getMonth()];
-
-		$('span[name=current_month]').text(current_month);
-
-		var email = localStorage.getItem('userID');
-		var sql = "SELECT * FROM User WHERE email = '"+email+"'";
-		var url = getURLappBackend();
-		var data = {"getSQL" : sql};
-
-		$.ajax({
-			type : "POST",
-			url : url,
-			data : data,
-			dataType : "JSON",
-			success : function(json){
-				$('div[name="user_name"]').text(json[0].name);
-				$('img[name=logo]').attr('src',json[0].picURL);
-				getDonationInformation();
-				getChallenges();
-
-			},
-			error : function(error){
-				alert("Error i mystatistics.js bad ajax reqest getSQL from database");
-			}
-		});
-
-
-		$('div[name="user_name"]').text('Full name goes here');
-		
-	}
+}
 
 
 
@@ -168,21 +168,20 @@ function listDonations(){
 
 				for(var i = 0; i < json.length; i++){
 
-					donations +='<li id="' + json[i].projectID +'"  donation="' + json[i].donationID +'" active="'+
+					donations +=
+					'<li id="' + json[i].projectID +'"  donation="' + json[i].donationID +'" active="'+
 						(json[i].active == 1 ? 'true">':'false">')+
 						'<div class="li_container">' +
-						'<div class="li_left">'+
-						'<div class="li_circ"></div>'+
-						'</div>'+
-						'<div class="li_mid">'+
-						'<div class="li_project">' + json[i].projectName + '</div>'+
-						'<span class="li_donation grey">' + json[i].sum + ' kr,</span> <span'+
-						(json[i].type == 'fast'?' class="green">':'>')+json[i].type+'</span>'+
-						'</div>'+
-						'<div class="li_right">'+
-						//(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
-						((json[i].type == 'fast' ? (json[i].active == 1 ? 'Aktiv':'Stoppet') : '' ))+
-						'</div>'+
+							'<div class="li_left"><div class="circle"></div></div>'+
+							'<div class="li_mid">'+
+								'<div class="li_project">' + json[i].projectName + '</div>'+
+								'<span class="li_donation grey">' + json[i].sum + ' kr,</span> <span'+
+								(json[i].type == 'fast'?' class="green">':'>')+json[i].type+'</span>'+
+							'</div>'+
+							'<div class="li_right">'+
+								//(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
+								((json[i].type == 'fast' ? (json[i].active == 1 ? 'Aktiv':'Stoppet') : '' ))+
+							'</div>'+
 						'</div>'+
 						'</li>';
 				}

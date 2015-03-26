@@ -1,4 +1,4 @@
-.circle{
+#page_my_friends .circle{
 	position: absolute;
 	margin:auto;
 	top:0;
@@ -15,10 +15,10 @@
 	text-align: center;
 }
 
-.li_friends{
+#page_my_friends .li_friends{
 	margin:0;
 	padding:0;
-	top:22pt;
+	line-height: 40pt;
 	border:none;
 	position:relative;
 	font-size: large;
@@ -27,10 +27,10 @@
 	font-weight: normal;
 }
 
-.li_donations{
+#page_my_friends .li_donations{
 	margin:0;
 	padding:0;
-	top:22pt;
+	line-height: 40pt;
 	border:none;
 	position:relative;
 	font-size: large;
@@ -38,7 +38,7 @@
 	font-weight: bold;
 }
 
-.top_donations{
+#page_my_friends .top_donations{
 	top: 19pt;
 	left:70%;
 	color: #333;
@@ -46,44 +46,42 @@
 	font-size: normal;
 }
 
-.top_container{
+#page_my_friends .top_container{
 	position: relative;
 	width: 100%;
 	height: 35pt;
 	border-bottom: 1px solid #f2f2f2;
 }
-
-.listdiv ul{
-	margin:0;
-	padding:0;
+#page_my_friends .listdiv {
+	margin-top: 0;
 }
 
-.listdiv li{
-	height: 70pt;
+#page_my_friends .listdiv li{
+	height: 50pt;
 	border-bottom: thin solid #f2f2f2;
 	list-style: none;
 }
 
-.li_container{
+#page_my_friends .li_container{
 	position: relative;
 	width: 100%;
 	height: 100%;
 	border-bottom: 1px solid #f2f2f2;
 }
 
-.li_left, .li_right, .li_mid_left, .li_mid_right{
+#page_my_friends .li_left, .li_right, .li_mid_left, .li_mid_right{
 	height:100%;
 	float:left;
 	box-sizing:border-box;
 	background: #fff;
 }
 
-.li_left{
+#page_my_friends .li_left{
 	position: relative;
 	width:20%;
 }
 
-.li_left img{
+#page_my_friends .li_left img{
 	position:absolute;
 	top:0;bottom:0;left:0;
 	width: 100%;
@@ -91,22 +89,22 @@
 	border-radius: 50%;
 }
 
-.li_mid_left{	
+#page_my_friends .li_mid_left{	
 	width:50%;
 	padding: 5pt 0 5pt 5pt;
 }
 
-.li_mid_right{
+#page_my_friends .li_mid_right{
 	width:20%;
 	padding: 5pt 0 0 0;
 }
 
-.li_right{
+#page_my_friends .li_right{
 	position:relative;
 	width:10%;
 }
 
-.li_right img{
+#page_my_friends .li_right img{
 	margin:0;
 	padding:0;
 	border:none;
@@ -117,4 +115,8 @@
 	left:0;
 	right:0;
 	color:white;
+}
+
+#page_my_friends  #friendList a{
+	text-decoration: none;
 }

@@ -1,9 +1,4 @@
-.listdiv ul{
-	margin:0;
-	padding:0;
-}
-
-.listdiv #orgList  li{
+#orgList  li{
 	max-height: 40pt ;
 	border-bottom: thin solid #d2d2d2;
 	list-style: none;
@@ -88,6 +83,13 @@
 	color:white;
 }
 
+#orgList a{
+	text-decoration: none;
+}
+
+li a{
+	text-decoration: none;
+}
 
 
 

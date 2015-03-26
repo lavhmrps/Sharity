@@ -15,7 +15,7 @@
 	text-align: center;
 }
 
-.circleblue{
+#page_add_friend .circleblue{
 	position: absolute;
 	margin:auto;
 	top:0;
@@ -32,7 +32,7 @@
 	text-align: center;
 }
 
-.circlebluelittle{
+#page_add_friend .circlebluelittle{
 	position: absolute;
 	top: 0; bottom:0;
 	margin: auto;
@@ -50,7 +50,7 @@
 }
 
 
-.li_friends{
+#page_add_friend .li_friends{
 	max-width:80%;
 	top:23pt;
 	border:none;
@@ -67,31 +67,21 @@
 
 }
 
-
-.listdiv {
-	margin-bottom: 30pt;
-}
-
-.listdiv ul{
-	margin:0;
-	padding:0;
-
-}
-
-.listdiv ul li{
+#page_add_friend  ul li{
 	height: 70pt;
 	border-bottom: thin solid #f2f2f2;
 	list-style: none;
+	
 }
 
-.li_container{
+#page_add_friend .li_container{
 	position: relative;
 	width: 100%;
 	height: 100%;
 	border-bottom: 1px solid #f2f2f2;
 }
 
-.li_left, .li_right, .li_mid{
+#page_add_friend .li_left, .li_right, .li_mid{
 	position: relative;
 	height:100%;
 	float:left;
@@ -99,49 +89,49 @@
 	background: #fff;
 }
 
-.li_left{
+#page_add_friend .li_left{
 	width:20%;
 }
 
-.li_mid{
+#page_add_friend .li_mid{
 	width:70%;
 	padding: 5pt 0 5pt 5pt;
 }
 
-.li_right{
+#page_add_friend .li_right{
 	width:10%;
 }
 
 
-.li_left_contacts, .li_right_contacts, .li_mid_contacts{
+#page_add_friend .li_left_contacts, .li_right_contacts, .li_mid_contacts{
 	height:100%;
 	float:left;
 	box-sizing:border-box;
 	background: #fff;
 }
 
-.li_left_contacts{
+#page_add_friend .li_left_contacts{
 	position: relative;
 	width:40%;
 }
 
-.li_mid_contacts{	
+#page_add_friend .li_mid_contacts{	
 	width:50%;
 	padding: 5pt 0 5pt 5pt;
 
 }
 
-.li_right_contacts{
+#page_add_friend .li_right_contacts{
 	position:relative;
 	width:10%;
 }
 
-.li_left img{
+#page_add_friend .li_left img{
 	height: 100%;
 	border-radius: 50%;
 }
 
-.li_right img{
+#page_add_friend .li_right img{
 	margin:0;
 	padding:0;
 	border:none;
@@ -152,12 +142,12 @@
 	color:white;
 }
 
-.input_cb{
+#page_add_friend .input_cb{
 	position: absolute;
 	top:0;	bottom:0; left:0;right:0;
 	margin:auto;
 }
-input[type=checkbox] {
+#page_add_friend input[type=checkbox] {
   /* All browsers except webkit*/
   transform: scale(1.5);
 
