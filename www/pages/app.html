@@ -53,6 +53,7 @@
 	<script src="../js/footer_nav.js"></script>
 	<script src="../js/settings.js"></script>
 	<script	src="../js/getNews.js"></script>
+	<script src="../js/showSubscriptions.js"></script>
 	<!--************End of scripts************-->
 
 </head>
@@ -277,7 +278,7 @@
 	<div data-role="page" id="page_project" data-theme="a">
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
-			<img src="../img/arrow_left.png" class="menu_icon back_btn">
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
 			<p name="project_name">Navn på prosjekt</p>
 		</div>
 
@@ -291,8 +292,8 @@
 		<div class="space_btn">
 			<!-- 			<button class="ui-btn btn_single_project_donate" data-role="none" -->
 			<!-- 				onclick="#">DONÉR</button> -->
-			<a href="#page_donate" rel="external"
-			class="btn_single_project_donate show-page-loading-msg">DONÉR</a>
+			<a href="#page_donate" rel="external" class="btn_single_project_donate show-page-loading-msg">DONÉR</a>
+			<a href="#" name="follow_this_project"> Følg prosjekt</a>
 		</div>
 		<div class="main_content">
 
@@ -617,6 +618,14 @@
 		<ul name="friend_requests">
 			
 		</ul>
+		<br/><br/><br/><br/><br/>
+		<p><u>Abonnementer: </u></p>
+
+		<ul name="subscription_list">
+		</ul>
+	
+
+
 		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
 			<div data-role="navbar">
 				<ul>
@@ -675,6 +684,14 @@
 		</footer>
 	</div>
 	<!--************End of page_search_friends_sharity************-->
+
+	<script>
+		$(document).ready(function(){
+			$('img[name=back_btn]').click(function(){
+				window.history.go(-1);
+			});
+		});
+	</script>
 
 	
 </body>
