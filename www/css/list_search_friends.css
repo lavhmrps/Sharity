@@ -46,7 +46,7 @@
 	width:100%;
 }
 
-#page_search_friends_sharity .li_left, .li_right, .li_mid{
+#page_search_friends_sharity .li_left, #page_search_friends_sharity  .li_right, #page_search_friends_sharity .li_mid{
 	position: relative;
 	height:100%;
 	float:left;

@@ -10,33 +10,33 @@ body {
 }
 
 #projectList  li {
-	max-height: 60pt ;
+	height: 60pt ;
 }
 
 #projectList .li_container {
+	position: relative;
 	width: 100%;
 	height: 100%;
-	background: #fff;
+	background: #abc;
 	box-sizing: border-box;
 	border-bottom: thin solid #f2f2f2;
 }
 
 #projectList .li_left,#projectList .li_mid,#projectList .li_right {
 	background: #fff;
-	position: relative;
-	height: 100%;
-	float: left;
-	box-sizing: border-box;
+	min-height: 100%;
+	float:left;
 }
 
 #projectList .li_left {
+	position: relative;
+	min-height: 100%;
 	width: 15%;
 }
 
 #projectList .li_mid {
 	width: 55%;
 	padding: 15pt 3pt 5pt 5pt;
-	color: #000;
 }
 
 #projectList .li_right {
