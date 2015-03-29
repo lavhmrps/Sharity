@@ -1,4 +1,6 @@
-$(document).ready(function(){
+$(document).delegate("#page_donate","pagebeforeshow",function(){
+	$(".projectName").html("Prosjekt: "+localStorage.getItem("projectName"));
+	$(".orgName").html("Organisasjon: "+localStorage.getItem("orgName"));
 
 	$(".radio_amount").click(function() {
 		$("#in_custom_amount").val("");
@@ -27,7 +29,6 @@ $(document).ready(function(){
 		var type;
 		var projectID = localStorage.getItem('projectToShow');
 		var email = localStorage.getItem('userID');
-		var feilmelding;
 
 		if($('input[name=in_donate_amount]:checked').length > 0){
 			sum = $('input[name=in_donate_amount]:checked').val();

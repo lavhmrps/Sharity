@@ -1,86 +1,51 @@
-@font-face {
-	font-family: CircularBook;
-	src: local(CircularStd-Book);
+#header_div{
+	position: relative;
 }
 
-@font-face {
-	font-family: CircularBook;
-	src: local(CircularStd-Bold);
-	font-weight: bold;
-}
-
-* {
-	font-family: CircularBook, Circular Std Book, Calibri, Arial,
-		Sans-serif !important;
-	margin: 0;
-	padding: 0;
-	text-shadow: none !important;
-}
-
-body {
-	width: 100%;
-}
-
-#header_div {
-	width: 100%;
-	height: 90pt;
-	line-height: 65pt;
-	background: #006dfe;
-	color: white;
-}
-
-#header_div p {
-	margin-left: 50pt;
-	color: white;
-	font-size: x-large;
-}
-
-.boxshadow {
-	box-shadow: 0pt 0pt 1pt #888;
-}
-
-.header_top {
-	width: 100%;
-	height: 25pt;
-	background-color: #0057cb;
-}
-
-.menu_icon {
+#donationRecieverInfo{
 	position: absolute;
-	width: 25pt;
-	height: 25pt;
-	margin-top: 20pt;
-	margin-left: 10pt;
+	right: 0; bottom:0;
+	line-height: normal;
+	margin-right: 25pt;
 }
 
-table{
-	width: 100%;
+#donationRecieverInfo .projectName{
+	color:pink;
 }
-table tr td {
+
+#donationRecieverInfo .orgName{
+	color: orange;
+}
+
+
+#page_donate table{
+	width: 100%;
+	background:#fafafa;
+}
+#page_donate table tr td {
 	height: 40pt;
 }
 
-table tr td input {
+#page_donate table tr td input {
 	line-height: 25pt;
 }
 
-input[type="radio"] {
+#page_donate input[type="radio"] {
 	display: none;
 }
 
-.ui-radio label {
+#page_donate .ui-radio label {
 	height: 20pt;
 	line-height: 26pt;
 	padding-left: 35pt;
 }
 
-.ui-radio .ui-btn.ui-radio-off:after {
+#page_donate .ui-radio .ui-btn.ui-radio-off:after {
 	background: #fafafa;
 	width: 15pt;
 	height: 15pt;
 	border: 2px solid #6E7983;
 }
-
 .ui-radio .ui-btn.ui-radio-on:after {
 	color: #006dfe;
 	width: 15pt;
@@ -88,19 +53,19 @@ input[type="radio"] {
 	border: 0;
 }
 
-.ui-radio .ui-btn.ui-radio-off {
+#page_donate .ui-radio .ui-btn.ui-radio-off {
 	background: #fafafa;
 	outline: none !important;
 	border: none !important;
 }
 
-.ui-radio .ui-btn.ui-radio-on {
+#page_donate .ui-radio .ui-btn.ui-radio-on {
 	outline: none !important;
 	border: none !important;
 }
 
 
-.input_underscored {
+#page_donate .input_underscored {
 	width: 100%;
 	box-shadow: none;
 	/* 	-webkit-border-radius: 3pt; */
@@ -110,16 +75,11 @@ input[type="radio"] {
 	box-shadow: none;
 }
 
-.input_underscored:FOCUS {
+#page_donate .input_underscored:FOCUS {
 	outline: none;
 }
-.main_content {
-	width: 90%;
-	margin: auto;
-	margin-top: 30pt 0;
-}
 
-.btn_single_project_donate {
+#page_donate .btn_single_project_donate {
 	position: absolute !important;
 	width: 45% !important;
 	right: 5% !important;
@@ -133,14 +93,6 @@ input[type="radio"] {
 	border: none;
 }
 
-.btn_single_project_donate:active {
+#page_donate .btn_single_project_donate:active {
 	background: #4CAF50 !important;
-}
-
-.somespace {
-	min-height: 20pt;
-}
-
-.footer_menu_icon {
-	width: 100%;
 }

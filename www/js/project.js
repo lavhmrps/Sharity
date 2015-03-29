@@ -1,5 +1,5 @@
 $(document).delegate("#page_project", "pagebeforeshow",function(){
-	
+
 	$('a[name=follow_this_project]').click(function(){
 		var projectID = localStorage.getItem("projectToShow");
 		var email = localStorage.getItem('userID');
@@ -78,6 +78,7 @@ function showProject(){
 			var background = response[0].backgroundimgURL;
 
 			$('p[name=project_name]').text(project_name);
+			localStorage.setItem("projectName", project_name);
 			$('h2[name=project_title]').text(project_title);
 			$('p[name=ingress]').text(about_project);
 			$('span[name=project_country]').text(project_country);

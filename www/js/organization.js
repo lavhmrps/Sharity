@@ -10,6 +10,7 @@ $(document).delegate("#page_organization", "pagebeforeshow", function() {
 
 	$(document.body).on('click', 'li[name=project_list]', function() {
 		localStorage.setItem("projectToShow", this.id);
+
 		//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
 	});
 	$(document.body).on('click', 'a[name="donation"]', function() {
@@ -42,7 +43,8 @@ $(document).delegate("#page_organization", "pagebeforeshow", function() {
 					var organizationNr = response[0].organizationNr;
 					
 					$('span[name=category]').text(category);
-					$('p[name=organization_name]').text(organization_name); 
+					$('p[name=organization_name]').text(organization_name);
+					localStorage.setItem("orgName", organization_name);
 					$('h2[name=organization_name]').text(organization_name); 
 					$('p[name=ingress]').text(about_organization); 
 					$('img[name=logo]').attr("src", logoURL );
