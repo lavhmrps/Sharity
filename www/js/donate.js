@@ -6,6 +6,11 @@ $(document).ready(function(){
 		$("#in_custom_amount").css("border-bottom", "thin solid #d2d2d2");
 	});
 
+	$("#in_custom_amount").click(function(){
+		uncheckRadiobuttonsDonate();
+
+	});
+
 	function uncheckRadiobuttonsDonate() {
 		$("input[name='in_donate_amount']").attr("checked", false)
 		.checkboxradio("refresh");
