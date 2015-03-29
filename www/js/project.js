@@ -1,6 +1,5 @@
-		
-
-$(document).ready(function(){
+$(document).delegate("#page_project", "pagebeforeshow",function(){
+	
 	$('a[name=follow_this_project]').click(function(){
 		var projectID = localStorage.getItem("projectToShow");
 		var email = localStorage.getItem('userID');
@@ -41,8 +40,8 @@ $(document).ready(function(){
 });
 
 
-$( document ).delegate("#page_project", "pageinit", function() {
-	showProject()
+$(document).delegate("#page_project", "pagebeforeshow", function() {
+		showProject();
 });
 
 

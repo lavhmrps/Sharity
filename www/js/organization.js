@@ -1,4 +1,6 @@
-$(document).ready(function(){
+//$(document).ready(function(){
+$(document).delegate("#page_organization", "pagebeforeshow", function() {
+	showOrganization();
 
 
 	$(document.body).on('click', 'li[name=organization_list]', function() {
