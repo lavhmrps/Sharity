@@ -1,6 +1,4 @@
 $(document).delegate("#page_donate","pagebeforeshow",function(){
-	//$(".projectName").html("Prosjekt: "+localStorage.getItem("projectName"));
-	//$(".orgName").html("Organisasjon: "+localStorage.getItem("orgName"));
 
 	var projectID = localStorage.getItem('projectToShow');
 	var projectName, orgName;
@@ -56,32 +54,35 @@ $(document).delegate("#page_donate","pagebeforeshow",function(){
 		var projectID = localStorage.getItem('projectToShow');
 		var email = localStorage.getItem('userID');
 
+		var validSum = false;
+
 		if($('input[name=in_donate_amount]:checked').length > 0){
 			sum = $('input[name=in_donate_amount]:checked').val();
+			validSum = true;
 		}
 		else if($('input[name=in_donate_amount_custom]').val().length > 0){
 			sum = $('input[name=in_donate_amount_custom]').val();
 			if(isNaN(sum)){
 				alert("Sjekk at beløpet er et tall");
-				return false;
+				exit;
 			}else if(sum <= 0){
 				alert("Ugyldig beløp (0 eller mindre)");
-				return false;
+				exit;
 			}
 			else if(sum % 1 != 0){
 				alert("Kun tillatt med beløp i hele kroner");
-				return false;
+				exit;
 			}
 		}else{
 			alert("Velg beløp");
-			return false;
+			exit;
 		}
 
 		if($('input[name=donation_freq]:checked').length > 0){
 			type = $('input[name=donation_freq]:checked').val();
 		}else{
 			alert("Velg donasjonsfrekvens");
-			return false;
+			exit;
 		}
 
 		var sql = "INSERT INTO Donation (projectID, email, type, sum,active) VALUES('"+projectID+"', '"+email+"', '"+type+"', '"+sum+"', '"+(type=='fast'?1:0)+"')";
