@@ -4,8 +4,12 @@ $(document).ready(function(){
 		window.location.href = "#page_add_friend";
 	});
 
+	$(document.body).on('click', 'li[name=showFriend]', function() {
+		alert(this.id);
+	});
+
 	if(localStorage.getItem('userID') != null){
-		var sql = "select name, sum(donation.sum) as Donasjoner, picURL "
+		var sql = "select friendEmail, name, sum(donation.sum) as Donasjoner, picURL "
 		+"from user join friend on "
 		+"(user.email like friend.friendEmail "
 			+"and friend.userEmail like '"+localStorage.getItem('userID')+"')"
@@ -42,7 +46,7 @@ $.ajax({
 
 			for(var i = 0 ; i < response.length; i++){		
 				
-				var friend='<li><a href="#" rel="external" class="show-page-loading-msg">'
+				var friend='<li id="'+response[i].friendEmail+'" name="showFriend"><a href="#" rel="external" class="show-page-loading-msg">'
 				+'<div class="li_container">'
 				+'<div class="li_left">'
 				+'<div class="circle">'

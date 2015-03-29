@@ -54,6 +54,7 @@
 	<script src="../js/settings.js"></script>
 	<script	src="../js/getNews.js"></script>
 	<script src="../js/showSubscriptions.js"></script>
+	<script src="../js/showUserprofile.js"></script>
 	<!--************End of scripts************-->
 
 </head>
@@ -466,237 +467,353 @@
 		</div>
 		<div id="mystats_activities">
 			<a href="#page_mystatsDonations">
-			<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
-			
-				<tr style="height: 50pt;">
-					<a href="#"></a>
-					<td style="position: relative; width: 25%">
-						<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
-						</div>
-					</td>
-					<td style="width: 65%; font-size: x-large;">
-						<span id="mystats_num_donations" name = "num_donations">
-							[#donations]
-						</span>
-						<span name="is_pluar">
-							[...]
-						</span>
-					</td>
-					<td>
-						<img src="../img/li_arrow_r_grey.png">
-					</td>
-				</tr>
-			
-			
-			</table></a>
-			<ul id="mystats_donationslist">
-			</ul>
-		</div>
+				<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
 
-		<div style="height: 55pt;" id="chl">
-			<span style="padding-left: 5%; line-height: 85pt;">
-				Utfordringer
-			</span>
-		</div>
-		<div id="mystats_challenges">
-			<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee" onclick="#">
-				<tr style="height: 50pt;">
-					<td style="position: relative; width: 25%">
-						<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
+					<tr style="height: 50pt;">
+						<a href="#"></a>
+						<td style="position: relative; width: 25%">
+							<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
+							</div>
+						</td>
+						<td style="width: 65%; font-size: x-large;">
+							<span id="mystats_num_donations" name = "num_donations">
+								[#donations]
+							</span>
+							<span name="is_pluar">
+								[...]
+							</span>
+						</td>
+						<td>
+							<img src="../img/li_arrow_r_grey.png">
+						</td>
+					</tr>
 
-						</div>
-					</td>
-					<td style="width: 65%; font-size: x-large;">
-						<span id="mystats_num_challenges">
-							[#]
-						</span>
-						utfordringer
-					</td>
-					<td>
-						<img src="../img/li_arrow_r_grey.png">
-					</td>
-				</tr>
-			</table>
-		</div>
 
-		<div class="somespace"></div>
-
-		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
-					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
-					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
-					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</table></a>
+				<ul id="mystats_donationslist">
 				</ul>
 			</div>
-		</footer>
-	</div>
-	<!--************End of page_mystatistics************-->
 
-	<!--************ page page_mystatsDonations goes here ************-->
-	<div data-role="page" id="page_mystatsDonations" data-theme="a">
+			<div style="height: 55pt;" id="chl">
+				<span style="padding-left: 5%; line-height: 85pt;">
+					Utfordringer
+				</span>
+			</div>
+			<div id="mystats_challenges">
+				<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee" onclick="#">
+					<tr style="height: 50pt;">
+						<td style="position: relative; width: 25%">
+							<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
 
-		<div id="header_div" class="boxshadow">
+							</div>
+						</td>
+						<td style="width: 65%; font-size: x-large;">
+							<span id="mystats_num_challenges">
+								[#]
+							</span>
+							utfordringer
+						</td>
+						<td>
+							<img src="../img/li_arrow_r_grey.png">
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="somespace"></div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of page_mystatistics************-->
+
+		<!--************ page page_mystatsDonations goes here ************-->
+		<div data-role="page" id="page_mystatsDonations" data-theme="a">
+
 			<div id="header_div" class="boxshadow">
-				<div class="header_top"></div>
+				<div id="header_div" class="boxshadow">
+					<div class="header_top"></div>
+					<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+					<h2>Mine donasjoner</h2>
+
+				</div>
+			</div>
+			<div class="main_content">
+				<ul id="donationList" name="donationList"></ul>
+			</div>
+			<div class="somespace"></div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of page page_mystatsDonations ************-->
+
+		<!--************Page news goes here************-->
+
+		<div data-role="page" id="page_news" data-theme="a">
+			<div id="header_div" class="boxshadow">
+				<div page-role="header" class="header_top"></div>
 				<img src="../img/arrow_left.png" class="menu_icon back_btn">
-				<h2>Mine donasjoner</h2>
-				
+				<h2 id="orgname">[Org.name]</h2>
 			</div>
-		</div>
-		<div class="main_content">
-		<ul id="donationList" name="donationList"></ul>
-		</div>
-		<div class="somespace"></div>
+			<div class="portrait">
+				Bakgrunnsbilde / toppbilde
 
-		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
-					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
-					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
-					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
-				</ul>
+				<div class="logodiv_left">Org. logo</div>
+
 			</div>
-		</footer>
-	</div>
-	<!--************End of page page_mystatsDonations ************-->
+			<div class="top_links">
+				<a href="#">Nyheter</a> <a href="#">Om organisasjonen</a>
+			</div>
 
-	<!--************Page news goes here************-->
+			<div class="space_btn">
+				<button class="ui-btn btn_single_project_donate" data-role="none"
+				onclick="#">DONÉR</button>
+			</div>
 
-	<div data-role="page" id="page_news" data-theme="a">
-		<div id="header_div" class="boxshadow">
-			<div page-role="header" class="header_top"></div>
-			<img src="../img/arrow_left.png" class="menu_icon back_btn">
-			<h2 id="orgname">[Org.name]</h2>
+			<div class="main_content">
+				<h4 class="grey" id="date">[date]</h4>
+				<h2 class="orgname" id="title">[title]</h2>
+				<span class="ingress" id="ingress">[news text]</span>
+				<div class="listdiv">
+					<h3>Siste nyheter</h3>
+					<ul name="newsListProject" id="newsListProject">
+					</ul>
+				</div>
+			</div>
+			<div class="somespace"></div>
+
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings footer_active"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
 		</div>
-		<div class="portrait">
-			Bakgrunnsbilde / toppbilde
 
-			<div class="logodiv_left">Org. logo</div>
-
-		</div>
-		<div class="top_links">
-			<a href="#">Nyheter</a> <a href="#">Om organisasjonen</a>
-		</div>
-
+<<<<<<< Updated upstream
 		<div class="space_btn">
 			<a href="#page_donate" class="ui-btn btn_single_project_donate" data-role="none">DONÉR</a>
 		</div>
+=======
+		<!--************End of page_news************-->
+>>>>>>> Stashed changes
 
-		<div class="main_content">
-			<h4 class="grey" id="date">[date]</h4>
-			<h2 class="orgname" id="title">[title]</h2>
-			<span class="ingress" id="ingress">[news text]</span>
-			<div class="listdiv">
-				<h3>Siste nyheter</h3>
-				<ul name="newsListProject" id="newsListProject">
-				</ul>
-			</div>
+
+		<!--************Page settings goes here************-->
+		<div id="page_settings" data-role="page">
+			<h1>Settings goes here</h1>
+			<button id="logout" name="logout">Logg ut</button>
+			<p id="num_friend_req">Friend requests: </p>
+			<br/><br/><br/><br/><br/>
+			<ul name="friend_requests">
+
+			</ul>
+			<br/><br/><br/><br/><br/>
+			<p><u>Abonnementer: </u></p>
+
+			<ul name="subscription_list">
+			</ul>
+
+
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings footer_active"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
 		</div>
-		<div class="somespace"></div>
+		<!--************End of settings************-->
 
+		<!--************ page_search_friends_sharity goes here************-->
+		<div data-role="page" id="page_search_friends_sharity" data-theme="a">
+			<div id="header_div" class="boxshadow">
+				<div page-role="header" class="header_top"></div>
+				<img src="../img/menu.png" class="menu_icon">
+				<!--<button name="logut">Logg ut</button>-->
+				<p id = "header_check">Sharity</p>
 
-		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
-					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
-					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
-					<li class="footer_settings footer_active"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
-				</ul>
 			</div>
-		</footer>
-	</div>
-
-	<!--************End of page_news************-->
-
-
-	<!--************Page settings goes here************-->
-	<div id="page_settings" data-role="page">
-		<h1>Settings goes here</h1>
-		<button id="logout" name="logout">Logg ut</button>
-		<p id="num_friend_req">Friend requests: </p>
-		<br/><br/><br/><br/><br/>
-		<ul name="friend_requests">
-			
-		</ul>
-		<br/><br/><br/><br/><br/>
-		<p><u>Abonnementer: </u></p>
-
-		<ul name="subscription_list">
-		</ul>
-	
-
-
-		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
-					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
-					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
-					<li class="footer_settings footer_active"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
-				</ul>
-			</div>
-		</footer>
-	</div>
-	<!--************End of settings************-->
-
-	<!--************ page_search_friends_sharity goes here************-->
-	<div data-role="page" id="page_search_friends_sharity" data-theme="a">
-		<div id="header_div" class="boxshadow">
-			<div page-role="header" class="header_top"></div>
-			<img src="../img/menu.png" class="menu_icon">
-			<!--<button name="logut">Logg ut</button>-->
-			<p id = "header_check">Sharity</p>
-
-		</div>
-		<div class="main_content">
-			<div class="content_box">
-				<div class="content_box_search layer">
-					<div class="content_box1b_icon">
-						<img src="../img/icon_search.png" class="icon"/>
+			<div class="main_content">
+				<div class="content_box">
+					<div class="content_box_search layer">
+						<div class="content_box1b_icon">
+							<img src="../img/icon_search.png" class="icon"/>
+						</div>
+						<div>
+							<!--<h6 class="grey">Søk blandt alle organisasjoner og prosjekter</h6>-->
+							<form class="ui-filterable">
+								<input id="friendFilter" data-type="search" data-role="none" class="search" placeholder="Søk etter venner"/>
+							</form>
+						</div>
 					</div>
-					<div>
-						<!--<h6 class="grey">Søk blandt alle organisasjoner og prosjekter</h6>-->
-						<form class="ui-filterable">
-							<input id="friendFilter" data-type="search" data-role="none" class="search" placeholder="Søk etter venner"/>
-						</form>
+				</div>
+				<div class="listdiv" style="min-height:800pt">
+
+					<ul name="user_list" id="user_list" data-filter="true" data-input="#friendFilter">
+						<!--User list goes here, append-->
+
+					</ul>
+				</div>
+			</div>
+			<div class="somespace"></div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of page_search_friends_sharity************-->
+
+
+
+		<!--************Pages_show_user_profile goes here************-->
+
+		<div data-role="page" id="page_show_user_profile" data-theme="a">
+			<div id="header_div" class="boxshadow">
+				<div id="header_div" class="boxshadow">
+					<div class="header_top"></div>
+					<img src="../img/arrow_left.png" class="menu_icon back_btn">
+					<h2 name="show_profile_username">[Username]</h2>
+				</div>
+			</div>
+			<div id="mystats_title">
+				<div id="mystats_title_container">
+					<div class="mystats_logo">
+						<img src="#" name="logo" class ="mystats_logo"/></div>
+						<div id="mystats_title_name" name="show_user_fullname">[Full name]</div>
+					</div>
+				</div>
+				<div style="height: 40pt; border-bottom: thin solid #eee;">
+					<span style="padding-left: 5%; line-height: 55pt;">Statistikk</span>
+				</div>
+				<div class="main_content">
+					<div class="content_box1 layer"
+					style="height: 100pt; margin-top: -20pt;">
+					<div class="content_box1l" style="height: 100%;">
+						<div class="content_box_top">
+							<span id="mystats_currmonth_donations" class="green" style="position: absolute; bottom: 0; left: 0; right: 0;" name="show_user_amount_current_month">[$$$]</span>
+						</div>
+						<div id="mystats_currmonth" class="content_box_bottom">
+							<span name="current_month">[Current month]</span>
+						</div>
+					</div>
+					<div class="content_box1r" style="height: 100%;">
+						<div class="content_box_top">
+							<span id="mystats_total_donations" class="green" style="position: absolute; bottom: 0; left: 0; right: 0;" name="show_user_total_amount">[$$$]</span>
+						</div>
+						<div class="content_box_bottom">
+							<span>Total</span>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="listdiv" style="min-height:800pt">
-				
-				<ul name="user_list" id="user_list" data-filter="true" data-input="#friendFilter">
-					<!--User list goes here, append-->
+			<div style="height: 40pt;">
+				<span style="padding-left: 5%; line-height: 55pt;">Aktiviteter</span>
+			</div>
+			<div id="mystats_activities">
+				<a href="#page_mystatsDonations">
+					<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
+
+						<tr style="height: 50pt;">
+							<a href="#"></a>
+							<td style="position: relative; width: 25%">
+								<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
+								</div>
+							</td>
+							<td style="width: 65%; font-size: x-large;">
+								<span id="mystats_num_donations" name = "show_user_num_donations">
+									[#donations]
+								</span>
+								<span name="is_pluar">
+									[...]
+								</span>
+							</td>
+							<td>
+								<img src="../img/li_arrow_r_grey.png">
+							</td>
+						</tr>
+
+
+					</table></a>
+					<ul id="mystats_donationslist">
+					</ul>
+				</div>
+
+				<div style="height: 55pt;" id="chl">
 					
-				</ul>
-			</div>
-		</div>
-		<div class="somespace"></div>
+				</div>
+				<div id="mystats_challenges">
+					<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee" onclick="#">
+						<tr style="height: 50pt;">
+							
+							<td style="width: 65%; font-size: x-large;">
+								<button name="challenge_user">Send utfordring</button>
+							</td>
+							<td>
+								<img src="../img/li_arrow_r_grey.png">
+							</td>
+						</tr>
+					</table>
+				</div>
 
-	<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
-			<div data-role="navbar">
-				<ul>
-					<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
-					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
-					<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
-					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
-				</ul>
-			</div>
-		</footer>
-	</div>
-	<!--************End of page_search_friends_sharity************-->
+				<div class="somespace"></div>
 
-	<script>
-		$(document).ready(function(){
-			$('img[name=back_btn]').click(function(){
-				window.history.go(-1);
+				<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+					<div data-role="navbar">
+						<ul>
+							<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+							<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+							<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+							<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+						</ul>
+					</div>
+				</footer>
+			</div>
+			<!--************End of Pages_show_user_profile************-->
+
+
+
+			<script>
+			$(document).ready(function(){
+				$('img[name=back_btn]').click(function(){
+					window.history.go(-1);
+				});
 			});
-		});
-	</script>
+			</script>
 
-	
-</body>
-</html>
+
+		</body>
+		</html>

@@ -1,38 +1,12 @@
-/*var contact='<li>'
-+'<div class="li_container">'
-+'<div class="li_left">'
-+'<div class="circlegrey">'
-+img
-+'</div>'
-+'</div>'
-+'<div class="li_mid ">'
-+'<div class="li_friends">'
-+name
-+'</div>'
-+'<div class="circlebluelittle">S</div>'
-+'</div>'
-+'<div class="li_right">'
-+'<input data-role="none" type="checkbox" class="input_cb" id="'
-+checkboxid
-+'">'
-+'</div>'
-+'</div>'
-+'</li>';*/
-
 $(document).ready(function(){
-
 	$(document.body).on('click', 'button[name=add_friend]', function() {
 		requestFriendship(this.id);
 	});
-
 	$('span[name=search_sharity]').click(function(){
 		window.location.href='#page_search_friends_sharity';
 	});
-	
-
 	var url = getURLappBackend();
 	var data = {"getSQL" : "SELECT * FROM user WHERE email !='"+localStorage['userID']+"'"};
-
 	$.ajax({
 		type : "POST",
 		data : data,
@@ -57,14 +31,13 @@ $(document).ready(function(){
 					+'</span>'
 					+'</div>'
 					+'<div class="li_right">'
+					+'<a href="#page_show_user_profile" name="showUserprofile" id="'+response[i].email+'">Vis profil</a>'
 					+'<a href="#" class="li_btn_donate" name="donation">Legg til venn</a>'
 					+'</div>'
 					+'</li>';
 			}
-
 			$("#user_list").html(userCode);
 		}
-		
 	});
 });
 function requestFriendship(to_user){
