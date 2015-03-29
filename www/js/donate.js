@@ -27,12 +27,24 @@ $(document).ready(function(){
 		var type;
 		var projectID = localStorage.getItem('projectToShow');
 		var email = localStorage.getItem('userID');
+		var feilmelding;
 
 		if($('input[name=in_donate_amount]:checked').length > 0){
 			sum = $('input[name=in_donate_amount]:checked').val();
 		}
 		else if($('input[name=in_donate_amount_custom]').val().length > 0){
 			sum = $('input[name=in_donate_amount_custom]').val();
+			if(isNaN(sum)){
+				alert("Sjekk at beløpet er et tall");
+				return false;
+			}else if(sum <= 0){
+				alert("Ugyldig beløp(0 eller mindre)");
+				return false;
+			}
+			else if(sum % 1 != 0){
+				alert("Kun tillatt med beløp i hele kroner");
+				return false;
+			}
 		}else{
 			alert("Velg beløp");
 			return false;
