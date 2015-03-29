@@ -1,6 +1,32 @@
 $(document).delegate("#page_donate","pagebeforeshow",function(){
-	$(".projectName").html("Prosjekt: "+localStorage.getItem("projectName"));
-	$(".orgName").html("Organisasjon: "+localStorage.getItem("orgName"));
+	//$(".projectName").html("Prosjekt: "+localStorage.getItem("projectName"));
+	//$(".orgName").html("Organisasjon: "+localStorage.getItem("orgName"));
+
+	var projectID = localStorage.getItem('projectToShow');
+	var projectName, orgName;
+
+	var sql ="select p.* , o.name as orgName from project as p join organization as o on (p.organizationNr = o.organizationNr) where projectID = " + projectID;
+	var url = getURLappBackend();
+
+	$.ajax({
+		type:"post",
+		url:url,
+		dataType:"json",
+		data:{"getSQL":sql},
+		success:function(response){
+			//alert("projectID:" +projectID+": "+JSON.stringify(response));
+			projectName = response[0].name;
+			orgName = response[0].orgName;
+
+			$(".projectName").html("Prosjekt: "+projectName);
+			$(".orgName").html("Organisasjon: "+orgName);
+			
+
+		},
+		error:function(response){
+			alert("error: "+json.stringify(response));
+		}
+	});
 
 	$(".radio_amount").click(function() {
 		$("#in_custom_amount").val("");
@@ -39,7 +65,7 @@ $(document).delegate("#page_donate","pagebeforeshow",function(){
 				alert("Sjekk at beløpet er et tall");
 				return false;
 			}else if(sum <= 0){
-				alert("Ugyldig beløp(0 eller mindre)");
+				alert("Ugyldig beløp (0 eller mindre)");
 				return false;
 			}
 			else if(sum % 1 != 0){

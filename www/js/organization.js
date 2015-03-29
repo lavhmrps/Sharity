@@ -14,7 +14,8 @@ $(document).delegate("#page_organization", "pagebeforeshow", function() {
 		//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
 	});
 	$(document.body).on('click', 'a[name="donation"]', function() {
-		setLocalStorageProjectToShow(this.id);
+		//setLocalStorageProjectToShow(this.id);
+		
 	});
 
 
@@ -82,8 +83,7 @@ $(document).delegate("#page_organization", "pagebeforeshow", function() {
 					'</div>'+
 					'<a href="#page_project" rel="external" class="show-page-loading-msg">'+
 					'<div class="li_mid dots">'+
-					'<span class="li_heading">' + response[i].name + '</span>'+
-					'<span class="li_text"></span>'+
+					'<div class="li_heading">' + response[i].name + '</div>'+
 					'</div>'+
 					'</a>'+
 					'<div class="li_right">'+

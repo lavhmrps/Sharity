@@ -67,6 +67,9 @@ body {
 	display: block;
 	font-weight: normal;
 	color: #333;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
 }
 
 #projectList .li_text {
