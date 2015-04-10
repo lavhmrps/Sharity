@@ -49,7 +49,6 @@ function showStats(){
 		success : function(json){
 			$('div[name="user_name"]').text(json[0].name);
 			$('img[name=logo]').attr('src',json[0].picURL);
-			alert("bilde:"+json[0].picURL);
 			getDonationInformation();
 			getChallenges();
 
