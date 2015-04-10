@@ -562,6 +562,37 @@
 		</div>
 		<!--************End of page page_mystatsDonations ************-->
 
+		<!--************ page page_showUserDonations goes here ************-->
+		<div data-role="page" id="page_showUserDonations" data-theme="a">
+
+			<div id="header_div" class="boxshadow">
+				<div id="header_div" class="boxshadow">
+					<div class="header_top"></div>
+					<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+					<span id="usernameToShow" style="margin-left:50pt">[show users donation]</span>
+
+				</div>
+			</div>
+			<div class="main_content">
+				<ul id="userDonationList" name="userDonationList">
+					
+				</ul>
+			</div>
+			<div class="somespace"></div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of page page_showUserDonations ************-->
+
 		<!--************Page news goes here************-->
 
 		<div data-role="page" id="page_news" data-theme="a">
@@ -696,15 +727,15 @@
 			<div id="header_div" class="boxshadow">
 				<div id="header_div" class="boxshadow">
 					<div class="header_top"></div>
-					<img src="../img/arrow_left.png" class="menu_icon back_btn">
-					<h2 name="show_profile_username">[Username]</h2>
+					<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+					<span id="show_profile_username" name="show_profile_username" style="margin-left:50pt;font-size:large;">[Username]</span>
 				</div>
 			</div>
 			<div id="mystats_title">
 				<div id="mystats_title_container">
 					<div class="mystats_logo">
-						<img src="#" name="logo" class ="mystats_logo"/></div>
-						<div id="mystats_title_name" name="show_user_fullname">[Full name]</div>
+						<img src="#" name="user_logo" class ="mystats_logo"/></div>
+						<span id="mystats_title_name" name="show_user_fullname">[Full name]</span>
 					</div>
 				</div>
 				<div style="height: 40pt; border-bottom: thin solid #eee;">
@@ -735,7 +766,7 @@
 				<span style="padding-left: 5%; line-height: 55pt;">Aktiviteter</span>
 			</div>
 			<div id="mystats_activities">
-				<a href="#page_mystatsDonations">
+				<a href="#page_showUserDonations" name="show_user_donationlist">
 					<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
 
 						<tr style="height: 50pt;">
@@ -785,9 +816,9 @@
 				<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
 					<div data-role="navbar">
 						<ul>
-							<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+							<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
 							<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
-							<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+							<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
 							<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
 						</ul>
 					</div>
@@ -798,11 +829,9 @@
 
 
 			<script>
-			$(document).ready(function(){
 				$('img[name=back_btn]').click(function(){
 					window.history.go(-1);
 				});
-			});
 			</script>
 
 
