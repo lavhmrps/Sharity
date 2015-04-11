@@ -30,9 +30,9 @@ $(document).ready(function(){
 					+ response[i].email
 					+'</span>'
 					+'</div>'
-					+'<div class="li_right">'
-					+'<a href="#page_show_user_profile" name="showUserprofile" id="'+response[i].email+'">Vis profil</a>'
-					+'<a href="#" class="li_btn_donate" name="donation">Legg til venn</a>'
+					+'<div class="li_right"><div class="li_right_tophalf">'
+					+'<a href="#page_show_user_profile" name="showUserprofile" id="'+response[i].email+'">Vis profil </a></div>'
+					+'<div class="li_right_bottomhalf"<span href="#"  >Legg til venn</span>'
 					+'</div>'
 					+'</li>';
 			}
@@ -62,6 +62,12 @@ $(document).on("pageshow","#page_search_friends_sharity",function(){
 	$("li").on("click",function(){
 		localStorage.setItem("userIDtoShow",$(this).attr("id"));
 		
-	});// a on click
+	});// li on click
+
+	$(".li_right_bottomhalf").on("click",function(){
+		//localStorage.setItem("userIDtoShow",$(this).parent().parent().parent().attr("id")); // id of listitem
+		localStorage.setItem("userIDtoShow",$(this).closest("li").attr("id")); // id of listitem
+		console.log("Bli venn med: "+localStorage.getItem("userIDtoShow") );
+	}); // li_right_bottomhalf click
 
 }) // on pageshow #page_add_friend
