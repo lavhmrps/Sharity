@@ -192,24 +192,24 @@ function listDonations(){
 					if($(this).attr("class") == "li_right"){
 						if(active == "true"){
 							if (confirm("Stoppe donasjonen?") == true) {
-							stopDonation(donationID);
+							stopDonation(donationID,$(this));
 							}else{
 								exit;
 							}	
 						}else{
 							if (confirm("Aktivere donasjonen igjen?") == true) {
-							startDonation(donationID);
+							startDonation(donationID,$(this));
 							}else{
 								exit;
 							}
 						}
-						
 								
+					}else{
+						localStorage.setItem("projectToShow", projectID);
+						$.mobile.changePage("#page_project");
+						location.reload();
+						//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
 					}
-					localStorage.setItem("projectToShow", projectID);
-					$.mobile.changePage("#page_project");
-					location.reload();
-					//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
 				});
 
 
@@ -221,7 +221,7 @@ function listDonations(){
 		});	
 }
 
-function stopDonation(donationID){
+function stopDonation(donationID,div){
 	var sql = "update donation set active = 0 where donationID = "+donationID;
 	var url = getURLappBackend();
 
@@ -231,8 +231,9 @@ function stopDonation(donationID){
 		dataType:"text",
 		data:{"setSQL":sql},
 		success: function(response){
-			alert("Donasjon stoppet!");
-			window.location.reload();
+			//alert("Donasjon stoppet!");
+			div.html("Stoppet");
+			div.closest("li").attr("active","false");
 		},
 		error: function(response){
 			alert("Kunne ikke stoppe donasjonen.");
@@ -242,7 +243,7 @@ function stopDonation(donationID){
 	exit;
 }
 
-function startDonation(donationID){
+function startDonation(donationID,div){
 
 	var userID, projectID,type,sum;
 	var sql = "SELECT * FROM donation where donationID = "+donationID;
@@ -270,8 +271,10 @@ function startDonation(donationID){
 				dataType : "text",
 				data : {'setSQL' : sql},
 				success : function(response){
-					alert("Donasjon aktivert!")
-					window.location.reload();
+					//alert("Donasjon aktivert!");
+					div.html("Aktiv");
+					div.closest("li").attr("active","true");
+					//window.location.reload();
 
 				},
 				error : function(response){
