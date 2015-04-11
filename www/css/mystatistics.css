@@ -193,6 +193,9 @@ footer ul li img{
 #donationList .li_project{
 	font-size: large;
 	font-weight: bold;
+	text-overflow: ellipsis;
+	overflow:hidden;
+	white-space: nowrap;
 }
 
 #donationList .li_donation{
