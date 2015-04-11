@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$(document.body).on('click', 'button[name=add_friend]', function() {
 		requestFriendship(this.id);
 	});
-	$('span[name=search_sharity]').click(function(){
+	$('li[name=search_sharity]').click(function(){
 		window.location.href='#page_search_friends_sharity';
 	});
 	var url = getURLappBackend();
@@ -15,7 +15,7 @@ $(document).ready(function(){
 		success: function(response){
 			var userCode = "";
 			for(var i = 0 ; i < response.length; i++){	
-				userCode +='<li>'
+				userCode +='<li id="'+response[i].email+'">'
 					+'<div class="li_container">'
 					+'<div class="li_left">'
 					+'<div class="circlegrey"><img src="'
@@ -55,3 +55,13 @@ function requestFriendship(to_user){
 		}
 	});
 }
+
+$(document).on("pageshow","#page_search_friends_sharity",function(){
+	//alert("pageshow");
+
+	$("li").on("click",function(){
+		localStorage.setItem("userIDtoShow",$(this).attr("id"));
+		
+	});// a on click
+
+}) // on pageshow #page_add_friend

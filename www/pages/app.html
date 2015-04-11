@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Sharity app</title>
@@ -10,6 +11,7 @@
 	<!--************End of meta************-->
 
 	<!--************CSS goes here************-->
+	<link rel="stylesheet" type="text/css" href="../css/app.css" />
 	<link rel="stylesheet" type="text/css" href="../css/overview.css" />
 	<link rel="stylesheet" type="text/css" href="../css/list_overview.css">
 	<link rel="stylesheet" type="text/css" href="../css/my_friends.css" />
@@ -41,8 +43,6 @@
 	<script src="../js/jquery.dotdotdot.min.js"></script>
 	<script src="../js/getOrganizations.js"></script>
 	<script src="../js/urls.js"></script>
-	<script src="cordova.js"></script>
-	
 	<script src="../js/getPhoneContacts.js"></script>
 	<script src="../js/organization.js"></script>
 	<script src="../js/my_friends.js"></script>
@@ -177,7 +177,7 @@
 							</div>
 						</a>
 					</li>
-					<li>
+					<li name="search_sharity">
 						<a href="" rel="external" class="show-page-loading-msg">
 							<div class="li_container">
 								<div class="li_left">
@@ -186,7 +186,7 @@
 									</div>
 								</div>
 								<div class="li_mid dots">
-									<span class="li_friends" name="search_sharity">
+									<span class="li_friends" >
 										Søk Sharity
 									</span>
 								</div>
@@ -468,7 +468,6 @@
 				<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
 
 					<tr style="height: 50pt;">
-						<a href="#"></a>
 						<td style="position: relative; width: 25%">
 							<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
 							</div>
@@ -770,7 +769,7 @@
 					<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
 
 						<tr style="height: 50pt;">
-							<a href="#"></a>
+							<a ></a>
 							<td style="position: relative; width: 25%">
 								<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
 								</div>
@@ -798,11 +797,11 @@
 					
 				</div>
 				<div id="mystats_challenges">
-					<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee" onclick="#">
+					<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
 						<tr style="height: 50pt;">
 							
 							<td style="width: 65%; font-size: x-large;">
-								<button name="challenge_user">Send utfordring</button>
+								<button id="challenge_user" name="challenge_user">Send utfordring</button>
 							</td>
 							<td>
 								<img src="../img/li_arrow_r_grey.png">

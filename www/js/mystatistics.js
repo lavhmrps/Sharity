@@ -3,7 +3,7 @@ $( document ).delegate("#page_mystatsDonations", "pageinit", function() {
 	listDonations();
 });
 
-$( document ).delegate("#page_mystatistics", "pageinit", function() {
+$( document ).delegate("#page_mystatistics", "pagebeforeshow", function() {
 	showStats();
 });
 
@@ -47,11 +47,11 @@ function showStats(){
 		data : data,
 		dataType : "JSON",
 		success : function(json){
-			$('div[name="user_name"]').text(json[0].name);
-			$('img[name=logo]').attr('src',json[0].picURL);
-			getDonationInformation();
-			getChallenges();
 
+			$('div[name="user_name"]').text(json[0].name);
+			$('img[name=logo]').attr('src',(json[0].picURL==null?"../img/no_image_avaliable.png":json[0].picURL));
+			getMyDonationInformation();
+			getChallenges();
 		},
 		error : function(error){
 			alert("Error i mystatistics.js bad ajax reqest getSQL from database");
@@ -87,9 +87,12 @@ function getChallenges(){
 }
 
 
-function getDonationInformation(){
+function getMyDonationInformation(){
+
+	console.log("getMyDonationInformation");
 	var email = localStorage.getItem('userID');
 	var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
+	console.log(sql);
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 
@@ -99,28 +102,22 @@ function getDonationInformation(){
 		data : data,
 		dataType : "JSON",
 		success : function(json){
-
-			var text = "";
-
+			console.log(json.length);
 			var num_donations = 0;
 			var sum_current_month = 0;
 			var sum_total = 0;
 
 			for(var i = 0; i < json.length; i++){
-				text += "Sum: " + json[i].sum + ", Type: " + json[i].type + ", Datum: "+ json[i].date  + "\n";
-
 				var t = json[i].date.split(/[- :]/);
 				var date = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 
 				if(date.getMonth() == new Date().getMonth()){
-					num_donations++;
+					
 					sum_current_month += parseInt(json[i].sum);
 				}
+				num_donations++;
 				sum_total += parseInt(json[i].sum);
 			}
-
-			//alert("File: mystatistics.js getDonationInformation() just for show:\n" + text);
-
 
 			
 			$('span[name=amount_current_month]').text(sum_current_month);
@@ -148,7 +145,8 @@ function getDonationInformation(){
 
 function listDonations(){
 	var email = localStorage.getItem('userID');
-		var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
+	console.log("listDonations() "+email);
+		//var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
 		var sql ="SELECT don.*, pro.name as projectName FROM donation as don join project as pro on (pro.projectID = don.projectID ) WHERE email = '"+email+"'";
 		var url = getURLappBackend();
 		var data = {"getSQL" : sql};
@@ -172,7 +170,7 @@ function listDonations(){
 					'<li id="' + json[i].projectID +'"  donation="' + json[i].donationID +'" active="'+
 						(json[i].active == 1 ? 'true">':'false">')+
 						'<div class="li_container">' +
-							'<div class="li_left"><div class="circle"></div></div>'+
+							'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
 							'<div class="li_mid">'+
 								'<div class="li_project">' + json[i].projectName + '</div>'+
 								'<span class="li_donation grey">' + json[i].sum + ' kr,</span> <span'+
@@ -186,7 +184,7 @@ function listDonations(){
 						'</li>';
 				}
 				$("#donationList").html(donations);
-				$("#donationList li .li_mid, .li_left, .li_right").click(function() {
+				$("#donationList li .li_mid,#donationList li .li_left,#donationList li .li_right").click(function() {
 					var projectID =$(this).parent().parent().attr("id");
 					var donationID =$(this).parent().parent().attr("donation");
 					var active = $(this).parent().parent().attr("active");

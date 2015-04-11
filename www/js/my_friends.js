@@ -42,7 +42,7 @@ $(document).delegate("#page_my_friends","pagebeforeshow",function(){
 					+'</div>'
 					+'</a>'
 					+'</li>';
-					$("#friendList").append(html);
+					$("#friendList").html(html);
 				}else{
 					var friends="";
 					for(var i = 0 ; i < response.length; i++){		
