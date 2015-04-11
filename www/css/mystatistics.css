@@ -198,3 +198,21 @@ footer ul li img{
 #donationList .li_donation{
 	color:#333;
 }
+
+.donationItem{
+	position:absolute;
+	top:0;bottom:0;
+	margin:auto;
+	height:20pt;
+	width: 20pt;
+	background:#20a623;
+	text-align: center;
+	line-height: 20pt;
+	color:white;
+	border-radius: 50%;
+}
+
+#mystats_activities  a{
+	color:#333;
+	font-weight: normal;
+}
