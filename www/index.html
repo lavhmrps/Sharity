@@ -30,15 +30,14 @@
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 	<!-- Local Javascripts -->
-	<script src="js/register_user.js"></script>
+	<!-- <script src="js/register_user.js"></script> -->
 	<script src="js/checkLogin.js"></script>
 	<script src="js/insertUser.js"></script>
 	<script src="js/urls.js"></script>
-		
 	<script src="js/index.js"></script>
 	<script>
-		if($("#cb_accept_user_contidions").checked()==false)
-			$("#register_user").this().input.disabled=true;
+		//if($("#cb_accept_user_contidions").checked()==false)
+		//	$("#register_user").this().input.disabled=true;
 	</script>
 
 
@@ -325,23 +324,19 @@
 
 	<div class="main_content">
 		<p>
-			But I must explain to you how all this mistaken idea of
-			denouncing pleasure and praising pain was born and I will give you a
-			complete account of the system, and expound the actual teachings of
-			the great explorer of the truth, the master-builder of human
-			happiness.
+			Velg et beløp som skal trekkes månedlig fra bankkontoen din.
 		</p>
-		<fieldset data-role="controlgroup">
-			<table>
+		<fieldset data-role="controlgroup" >
+			<table >
 				<tr>
 					<td>
-						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount1" value="20"/>
+						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount1" value="20" onclick="blurDeleteCustomInput()"/>
 						<label for="amount1">
 							20 kr
 						</label>
 					</td>
 					<td>
-						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount2" value="50"/>
+						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount2" value="50" onclick="blurDeleteCustomInput()"/>
 						<label for="amount2">
 							50 kr
 						</label>
@@ -349,13 +344,13 @@
 				</tr>
 				<tr>
 					<td>
-						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount3" value="100"/>
+						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount3" value="100" onclick="blurDeleteCustomInput()"/>
 						<label for="amount3">
 							100 kr
 						</label>
 					</td>
 					<td>
-						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount4" value="200"/>
+						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount4" value="200" onclick="blurDeleteCustomInput()"/>
 						<label for="amount4">
 							200 kr
 						</label>
@@ -526,7 +521,7 @@
 			<tr>
 				<td style="width: 40pt;"></td>
 				<td>
-					<button data-corners="false" data-shadow="false" onclick="back()" data-transition="slide" data-direction="reverse" style="width: 100pt;">
+					<button data-corners="false" data-shadow="false" class="back_icon" data-transition="slide" data-direction="reverse" style="width: 100pt;">
 						Tilbake
 					</button>
 				</td>

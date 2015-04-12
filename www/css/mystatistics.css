@@ -113,6 +113,10 @@ table tr td {
 	color: #9b9b9b !important;
 }
 
+.red{
+	color:#f63218 !important;
+}
+
 .green {
 	color: #20a623 !important;
 }
@@ -153,11 +157,7 @@ footer ul li img{
 	list-style: none;
 }
 
-#donationList .li_container{
-
-}
-
-#donationList .li_left, .li_right, .li_mid{
+#donationList .li_left, #donationList .li_right, #donationList .li_mid{
 	position: relative;
 	height:100%;
 	float:left;
@@ -190,7 +190,7 @@ footer ul li img{
 	position:absolute;
 }
 
-#donationList .li_project{
+#donationList .li_project, #userDonationList .li_project{
 	font-size: large;
 	font-weight: bold;
 	text-overflow: ellipsis;
@@ -198,7 +198,7 @@ footer ul li img{
 	white-space: nowrap;
 }
 
-#donationList .li_donation{
+#donationList .li_donation, #userDonationList .li_donation{
 	color:#333;
 }
 
@@ -219,3 +219,28 @@ footer ul li img{
 	color:#333;
 	font-weight: normal;
 }
+/* UserDonationList */
+#userDonationList li{
+	list-style: none;
+	height: 50pt;
+}
+#userDonationList .li_left, #userDonationList .li_right, #userDonationList .li_mid{
+	position: relative;
+	height:100%;
+	float:left;
+	box-sizing:border-box;
+}
+#userDonationList .li_left{
+	width: 10%;
+}
+
+#userDonationList .li_mid{
+	width: 70%;
+	padding:7pt 5pt;
+}
+
+#userDonationList .li_right{
+	width: 20%;
+	line-height: 40pt;
+}
+

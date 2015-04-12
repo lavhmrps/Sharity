@@ -1,10 +1,47 @@
-$(document).ready(function() {;
-	$(".dots").dotdotdot();
-	
-});
+$(document).ready(function(){
 
-$(".back_icon").click(function() {
-	window.history.go(-1);
+	$(".back_icon").click(function() {
+		console.log(".back_icon");
+		window.history.go(-1);
+	});
+
+	// Setting steps-to-go to 4 if register NewUser
+	$("#nav_register1a").click(function() {
+		$(".portrait").show();
+		$("#stepstogo").empty().append("/4");
+	});
+
+	//Setting steps-to-go to 3 if register NewOrganisation
+	$("#nav_register1b").click(function() {
+		$(".portrait").hide();
+		$("#stepstogo").empty().append("/3");
+	});
+
+	// The inputfield in focus gets a blue border-bottom
+	$(".input_underscored").focus(function() {
+		// .. but not if at loginpage
+		if ($.mobile.activePage.attr('id') == "page_login")
+			return;
+		$(this).css("border-bottom", "thin solid #006dfe");
+	});
+
+	// If the inputfield is empty after having had focus -> gets a red border-bottom
+	// else, it gets a black border-bottom
+	$(".input_underscored").blur(function() {
+		// .. but not if at loginpage
+		if ($.mobile.activePage.attr('id') == "page_login")
+			return;
+
+		var text = $(this).val();
+		if (text == "") {
+			$(this).css("border-bottom", "thin solid #f63218");
+		} else
+		$(this).css("border-bottom", "thin solid #000");
+
+	});
+
+
+
 });
 
 //Goes to register NewUser and activating the correct tab
@@ -31,40 +68,6 @@ function toRegister1b() {
 	$("#nav_register1b").addClass("ui-btn-active");
 }
 
-// Setting steps-to-go to 4 if register NewUser
-$("#nav_register1a").click(function() {
-	$(".portrait").show();
-	$("#stepstogo").empty().append("/4");
-});
-
-//Setting steps-to-go to 3 if register NewOrganisation
-$("#nav_register1b").click(function() {
-	$(".portrait").hide();
-	$("#stepstogo").empty().append("/3");
-});
-
-// The inputfield in focus gets a blue border-bottom
-$(".input_underscored").focus(function() {
-	// .. but not if at loginpage
-	if ($.mobile.activePage.attr('id') == "page_login")
-		return;
-	$(this).css("border-bottom", "thin solid #006dfe");
-});
-
-// If the inputfield is empty after having had focus -> gets a red border-bottom
-// else, it gets a black border-bottom
-$(".input_underscored").blur(function() {
-	// .. but not if at loginpage
-	if ($.mobile.activePage.attr('id') == "page_login")
-		return;
-
-	var text = $(this).val();
-	if (text == "") {
-		$(this).css("border-bottom", "thin solid #f63218");
-	} else
-	$(this).css("border-bottom", "thin solid #000");
-
-});
 
 // Visual spinner when loading new page
 $(document)
@@ -91,7 +94,7 @@ $(document)
 		$.mobile.loading("hide");
 	});
 
-// Hiding footer when typing
+// Hiding footer when typing (for phones)
 $(document).on("focus", "input", function() {
 	var pageID = $.mobile.activePage.attr('id');
 	//.. but not when on search-pages
@@ -179,11 +182,11 @@ function toRegister2b() {
 };
 
 // When choosing a amount from radiobutton, the custom input resets to "" and unfocusing it
-$(".radio_amount").click(function() {
+function blurDeleteCustomInput(){
 	$("#in_custom_amount").val("");
 	$("#in_custom_amount").blur();
 	$("#in_custom_amount").css("border-bottom", "thin solid #d2d2d2");
-});
+}
 
 // Unchecking radiobuttons with nametag 'in_donate_amount' (when custom amount has focus)
 function uncheckRadiobuttonsDonate() {
@@ -314,3 +317,8 @@ function reloadPage() {
 	$.mobile.changePage("#page_login");
 	location.reload();
 }
+
+function back(){
+	$.mobile.changePage("#page_register2");
+}
+

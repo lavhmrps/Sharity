@@ -122,7 +122,7 @@ function listUserDonations(userIDtoShow){
 
 	
 	var list = $("#userDonationList");
-	var sql = "select project.name as name, donation.sum as sum, donation.type as type, donation.active as active from donation join project on (project.projectID = donation.projectID) where donation.email like '"+userIDtoShow+"'";
+	var sql = "select project.name as name, donation.sum as sum, donation.type as type, donation.active as active, donation.date as date from donation join project on (project.projectID = donation.projectID) where donation.email like '"+userIDtoShow+"'";
 	console.log(sql);
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
@@ -142,10 +142,24 @@ function listUserDonations(userIDtoShow){
 			}else{
 				
 				for(var i = 0; i < response.length; i++){
-					listItem = 
-						"<li> "
-						+response[i].name+", "+response[i].sum+", "+response[i].type+", "+(response[i].type=='fast'?(response[i].active==1?"Pågår":"Avsluttet"):"");
-						+"</li>";
+						//+response[i].name+", "+response[i].sum+", "+response[i].type+", "+(response[i].type=='fast'?(response[i].active==1?"Pågår":"Avsluttet"):"");
+					listItem = '<li>'+
+						'<div class="li_container">' +
+							'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
+							'<div class="li_mid">'+
+								'<div class="li_project">' +response[i].name+ '</div>'+
+								'<span class="li_donation red">' + response[i].sum + ' kr,</span> <span'+
+								(response[i].type == 'fast'?' class="green">fast':'>')/*+response[i].type*/+'</span><span class="grey" style="float:right;font-size:small">'+
+								formatDate(response[i].date)+'</span>'+
+							'</div>'+
+							'<div class="li_right">'+
+								//(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
+								((response[i].type == 'fast' ? (response[i].active == 1 ? 'Aktiv':'Stoppet') : '' ))+
+								
+							'</div>'+
+						'</div>'+
+						'</li>';
+				
 					listHTML+=listItem;
 						
 				}
@@ -157,4 +171,39 @@ function listUserDonations(userIDtoShow){
 			alert("error: "+JSON.stringify(response.readyState));
 		}
 	});
+}
+
+function formatDate(date){
+	// date : yyyy-mm-dd hh:mm:ss
+	var formattedDate="";
+	var year,month,day,hour,minute,second;
+	year = date.substring(0,4);
+	month = date.substring(5,7);
+	day = date.substring(8,10);
+	hour = date.substring(11,13);
+	minute = date.substring(14,16);
+	second = date.substring(17,19);
+
+	year = year.substring(2,4);
+	
+	switch(month){
+		case "01": month ="Jan";break;
+		case "02": month ="Feb";break;
+		case "03": month ="Mar";break;
+		case "04": month ="Apr";break;
+		case "05": month ="Mai";break;
+		case "06": month ="Jun";break;
+		case "07": month ="Jul";break;
+		case "08": month ="Aug";break;
+		case "09": month ="Sep";break;
+		case "10": month ="Okt";break;
+		case "11": month ="Nov";break;
+		case "12": month ="Des";break;
+	}
+	if(day.indexOf("0") == 0) 
+		day = day.substring(1,2);
+
+	formattedDate = day+". "+month+"-"+year+" "+hour+":"+minute;
+
+	return formattedDate;
 }

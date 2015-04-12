@@ -32,7 +32,7 @@ $(document).ready(function(){
 					window.location.replace("pages/app.html#page_overview");
 					localStorage.setItem("userID", email);
 				}else{
-					alert("NOT OK " + response);
+					alert("Vennligst sjekk at epost og passord er riktig");
 				}
 
 			},
