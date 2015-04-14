@@ -512,3 +512,14 @@ section h4 {
 .footer_active {
 	background: #eee;
 }
+
+#email_error{
+	position:absolute;
+	margin-top:-15pt;
+
+}
+
+#email_error_message{
+	font-size: small;
+	color:#f63218;
+}

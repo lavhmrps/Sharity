@@ -28,19 +28,56 @@ $(document).ready(function(){
 	// If the inputfield is empty after having had focus -> gets a red border-bottom
 	// else, it gets a black border-bottom
 	$(".input_underscored").blur(function() {
+		
 		// .. but not if at loginpage
 		if ($.mobile.activePage.attr('id') == "page_login")
 			return;
 
 		var text = $(this).val();
-		if (text == "") {
+		if (text == "" || text.indexOf("'")!=-1) {
 			$(this).css("border-bottom", "thin solid #f63218");
-		} else
-		$(this).css("border-bottom", "thin solid #000");
+		} else	{
+			$(this).css("border-bottom", "thin solid #000")
+		};
 
 	});
 
+	// Checking database for existing userID (email)
+	$(document).on("blur","input[name='reg_user_email']",function(){
+		var patt = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+		var emailTest = $("input[name='reg_user_email']").val();
 
+		if(emailTest.indexOf("'")!=-1){
+			return;
+		}
+
+		var sql = "select count(*) as numEmail from user where email like '"+$("input[name='reg_user_email']").val()+"'";
+		
+		url = getURLappBackend();
+
+		$.ajax({
+			type:"post",
+			url:url,
+			dataType:"json",
+			data: {"getSQL":sql},
+			success: function(response){
+				//console.log("success: "+response[0].numEmail);
+				if(response[0].numEmail != 0 || !patt.test(emailTest)){
+					$("input[name='reg_user_email']").css("border-bottom", "thin solid #f63218");
+					var error_message = response[0].numEmail != 0 ? "Eposten er allerede registrert:":"Ugyldig epost-adresse:";
+					$("#email_error_message").html(error_message);
+					localStorage.setItem("reg_user_email_ok","false");
+				}
+
+				else{
+					$("input[name='reg_user_email']").css("border-bottom", "thin solid #000");
+					localStorage.setItem("reg_user_email_ok","true");
+					$("#email_error_message").html("");
+				}
+			}
+		});
+
+	});
 
 });
 
@@ -50,7 +87,7 @@ function toRegister1() {
 		transition : "slide"
 	});
 	$("#stepstogo").empty().append("4");
-	$( "#tabs" ).tabs( "option", "active", 0 );
+	$("#tabs" ).tabs( "option", "active", 0 );
 	$("#nav_register1b").removeClass("ui-btn-active");
 	$("#nav_register1a").addClass("ui-btn-active");
 	
@@ -70,11 +107,7 @@ function toRegister1b() {
 
 
 // Visual spinner when loading new page
-$(document)
-.on(
-	"click",
-	".show-page-loading-msg",
-	function() {
+$(document).on(	"click", ".show-page-loading-msg", function() {
 		var $this = $(this), theme = $this.jqmData("theme")
 		|| $.mobile.loader.prototype.options.theme, msgText = $this
 		.jqmData("msgtext")

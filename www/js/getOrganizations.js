@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-	
-
 	listOrgs();
 	
 	$(document.body).on('click', 'li[name=organization_list]', function() {

@@ -5,6 +5,7 @@ $(document).ready(function(){
 		name : '',
 		email : '',
 		phone : '',
+		picURL:'',
 		monthly_amount : '0',
 		visa_number : '',
 		visa_expire_year : '',
@@ -43,7 +44,7 @@ $(document).ready(function(){
 			emptyInput += "Navn, ";
 			ok = 0;
 		}
-		if(globalData.email.trim() == ""){
+		if(globalData.email.trim() == "" || localStorage.getItem("reg_user_email_ok")=="false"){
 			emptyInput += "Email, ";
 			ok = 0;
 		}
@@ -147,6 +148,7 @@ $('button[name=reg_user_complete]').click(function(){
 });
 
 function insertUser(){
+	//console.log(globalData.name+"', '"+globalData.phone+"', '"+globalData.email+"','"+globalData.password);
 
 	var sql = "INSERT INTO User (name, phone, email, password) VALUES ('"+globalData.name+"', '"+globalData.phone+"', '"+globalData.email+"','"+globalData.password+"')";
 	var data = {"setSQL" : sql};
@@ -166,6 +168,7 @@ function insertUser(){
 				}catch(error){
 				}
 				if(image != undefined){
+					console.log("image undefined");
 					insertImage(image);
 				}
 				//alert("USER SATT INN!  insertUser.js button[name=reg_user_complete.click]");
@@ -297,9 +300,3 @@ function insertImage(image){
 }
 
 });
-
-
-
-
-
-
