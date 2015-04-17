@@ -173,8 +173,9 @@ function listDonations(){
 							'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
 							'<div class="li_mid">'+
 								'<div class="li_project">' + json[i].projectName + '</div>'+
-								'<span class="li_donation grey">' + json[i].sum + ' kr,</span> <span'+
-								(json[i].type == 'fast'?' class="green">':'>')+json[i].type+'</span>'+
+								'<span class="li_donation grey">' + json[i].sum + ' kr</span> <span'+
+								(json[i].type == 'fast'?' class="green">fast':'>')+'</span><span style="float:right;margin-right:5pt; font-size:small" class="grey">'+
+								formatDate(json[i].date)+'</span>'+
 							'</div>'+
 							'<div class="li_right">'+
 								//(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
