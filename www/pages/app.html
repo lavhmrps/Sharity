@@ -27,6 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/mystatistics.css" />
 	<link rel="stylesheet" type="text/css" href="../css/list_project.css">
 	<link rel="stylesheet" type="text/css" href="../css/list_search_friends.css">
+	<link rel="stylesheet" type="text/css" href="../css/settings.css">
 	<!-- Include jQuery Mobile stylesheets -->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<!--************End of stylesheets************-->
@@ -248,7 +249,7 @@
 		</div>
 		<div class="main_content">
 			<span class="grey" name="category">Kategori: </span>
-			<h2 class="orgname" name="organization_name">[Navn på Org]</h2>
+			<p class="orgname" name="organization_name">[Navn på Org]</p>
 			<p class="ingress" name="ingress">[about this organization]</p>
 
 
@@ -299,7 +300,7 @@
 
 			<span style="text-decoration: underline;" class="grey" name="project_country">[country]</span>,<span style="text-decoration: underline;" class="grey" name="project_city">[city]</span>
 
-			<h2 name="project_title">[project title]</h2>
+			<p name="project_title">[project title]</p>
 			<p class="ingress" name="ingress">[about this project]</p>
 
 			<div class="listdiv">
@@ -332,7 +333,7 @@
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
 			<img src="../img/arrow_left.png" class="menu_icon" name="back"/>
-			<h2>Donér</h2>
+			<p>Donér</p>
 			<div id="donationRecieverInfo">
 				<div class="projectName">[prosjektnavn]</div>
 				<span class="orgName">[organisasjonsnavn]</span>
@@ -427,7 +428,7 @@
 			<div id="header_div" class="boxshadow">
 				<div class="header_top"></div>
 				<img src="../img/arrow_left.png" class="menu_icon back_btn">
-				<h2>Min statistikk</h2>
+				<p>Min statistikk</p>
 			</div>
 		</div>
 		<div id="mystats_title">
@@ -540,7 +541,7 @@
 				<div id="header_div" class="boxshadow">
 					<div class="header_top"></div>
 					<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
-					<h2>Mine donasjoner</h2>
+					<p>Mine donasjoner</p>
 
 				</div>
 			</div>
@@ -599,7 +600,7 @@
 			<div id="header_div" class="boxshadow">
 				<div page-role="header" class="header_top"></div>
 				<img src="../img/arrow_left.png" class="menu_icon back_btn">
-				<h2 id="orgname">[Org.name]</h2>
+				<p id="orgname">[Org.name]</p>
 			</div>
 			<div class="portrait">
 				Bakgrunnsbilde / toppbilde
@@ -618,7 +619,7 @@
 
 			<div class="main_content">
 				<h4 class="grey" id="date">[date]</h4>
-				<h2 class="orgname" id="title">[title]</h2>
+				<p class="orgname" id="title">[title]</p>
 				<span class="ingress" id="ingress">[news text]</span>
 				<div class="listdiv">
 					<h3>Siste nyheter</h3>
@@ -645,18 +646,29 @@
 
 		<!--************Page settings goes here************-->
 		<div id="page_settings" data-role="page">
-			<h1>Settings goes here</h1>
-			<button id="logout" name="logout">Logg ut</button>
-			<p id="num_friend_req">Friend requests: </p>
-			<br/><br/><br/><br/><br/>
-			<ul name="friend_requests">
+			<div id="header_div" class="boxshadow">
+				<div class="header_top"></div>
+				<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
+				<p>Innstillinger</p>
+				<div id="div_logout"><button id="logout" name="logout">Logg ut</button></div>
+					
+			</div>
+			<div class="main_content">
+				<h4>Venneforespørsler</h4>
+				<div class="listdiv">
+					<span id="num_friend_req" class="grey"></span>
+					<div class="greyline"></div>
+					<ul name="friend_requests">
 
-			</ul>
-			<br/><br/><br/><br/><br/>
-			<p><u>Abonnementer: </u></p>
-
-			<ul name="subscription_list">
-			</ul>
+					</ul>
+				</div>
+				<h4>Abonnementer</h4>
+				<div class="listdiv">
+					<span id="subscription_message" class="grey"></span>
+					<ul id="subscription_list" name="subscription_list">
+					</ul>
+				</div>
+			</div>
 
 
 

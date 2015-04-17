@@ -21,10 +21,7 @@ $(document).delegate("#page_project", "pagebeforeshow",function(){
 						data : data,
 						dataType : "text",
 						success : function(response){
-							
-							if(response == "OK"){
-								alert("subscription was added with response: " + response);
-							}
+							console.log("response");
 						},
 						error : function(){
 							alert("project.js trying to insert subscription but ajax request failed");
