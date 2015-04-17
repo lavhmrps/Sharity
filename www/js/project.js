@@ -1,4 +1,8 @@
-$(document).delegate("#page_project", "pagebeforeshow",function(){
+$(document).on( "pagebeforeshow","#page_project",function(){
+	var projectID = localStorage.getItem("projectToShow");
+	var email = localStorage.getItem('userID');
+	checkSubStatus(email,projectID);
+	
 
 	$('a[name=follow_this_project]').click(function(){
 		var projectID = localStorage.getItem("projectToShow");
@@ -13,6 +17,7 @@ $(document).delegate("#page_project", "pagebeforeshow",function(){
 			data : data,
 			dataType : "json",
 			success : function(json){
+				console.log(json.length);
 				if(json.length == 0){
 					var data = {"setSQL" :  "INSERT INTO subscription (email, projectID) VALUES ('"+email+"', '"+projectID+"')"};
 					$.ajax({
@@ -21,7 +26,9 @@ $(document).delegate("#page_project", "pagebeforeshow",function(){
 						data : data,
 						dataType : "text",
 						success : function(response){
-							console.log("response");
+							console.log("start abo: "+response);
+							$('a[name=follow_this_project]').html("Stopp abonnement");
+
 						},
 						error : function(){
 							alert("project.js trying to insert subscription but ajax request failed");
@@ -29,7 +36,19 @@ $(document).delegate("#page_project", "pagebeforeshow",function(){
 					});
 
 				}else{
-					alert("project.js : trying to insert new subscription, brukeren abonnerer allerede på prosjektet");
+					var sql ="delete from subscription where email like '"+email+"' and projectID = "+projectID;
+
+					$.ajax({
+						type:"post",
+						url:url,
+						dataType:"text",
+						data:{"setSQL":sql},
+						success:function(response){
+							console.log("avslutt abo: "+response);
+							$('a[name=follow_this_project]').html("Følg prosjekt");
+						}
+					});
+					
 				}
 			}
 		});
@@ -49,12 +68,25 @@ $(document.body).on('click', 'li[name=news_list]', function() {
 	});
 
 $(document.body).on('click', 'li[name=project_list]', function() {
-		//alert("File: project.js, trying to show projectNr: " + localStorage.getItem('projectToShow'));
-		showProject();
+	//alert("File: project.js, trying to show projectNr: " + localStorage.getItem('projectToShow'));
+	showProject();
+});
 
+function checkSubStatus(email,projectID){
+	var url = getURLappBackend();
+	var sql = "SELECT * FROM subscription WHERE email = '"+email+"' AND projectID = "+projectID;
+	
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : {"getSQL":sql},
+		dataType : "json",
+		success : function(response){
+			var subText = (response.length == 0?"Følg Prosjekt":"Stopp abonnement");
+			$('a[name=follow_this_project]').html(subText);
+		}
 	});
-
-
+}
 
 function showProject(){
 

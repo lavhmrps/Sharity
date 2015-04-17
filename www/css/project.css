@@ -18,6 +18,11 @@
 	margin-top: 5pt;
 	min-height: 40pt;
 }
+
+#sublink{
+	font-size: small;
+}
+
 .btn_single_project_donate {
 	position: absolute !important;
 	width: 45% !important;
