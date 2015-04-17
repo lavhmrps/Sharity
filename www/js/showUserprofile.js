@@ -113,6 +113,13 @@ $(document).on("pagebeforeshow","#page_showUserDonations",function(){
 	// alert("page_showUserDonations");
 	var userIDtoShow = localStorage.getItem("userIDtoShow");
 	listUserDonations(userIDtoShow);
+
+	$(document).on("click","#userDonationList .li_mid",function(){
+		//console.log("userDonation,projectID: "+$(this).closest("li").attr("projectID"));
+		localStorage.setItem("projectToShow", $(this).closest("li").attr("projectID"));
+		$.mobile.changePage("#page_project");
+		location.reload();
+	});
 });
 
 function listUserDonations(userIDtoShow){
@@ -122,8 +129,7 @@ function listUserDonations(userIDtoShow){
 
 	
 	var list = $("#userDonationList");
-	var sql = "select project.name as name, donation.sum as sum, donation.type as type, donation.active as active, donation.date as date from donation join project on (project.projectID = donation.projectID) where donation.email like '"+userIDtoShow+"'";
-	console.log(sql);
+	var sql = "select project.projectID as projectID, project.name as name, donation.sum as sum, donation.type as type, donation.active as active, donation.date as date from donation join project on (project.projectID = donation.projectID) where donation.email like '"+userIDtoShow+"'";
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 
@@ -142,13 +148,12 @@ function listUserDonations(userIDtoShow){
 			}else{
 				
 				for(var i = 0; i < response.length; i++){
-						//+response[i].name+", "+response[i].sum+", "+response[i].type+", "+(response[i].type=='fast'?(response[i].active==1?"Pågår":"Avsluttet"):"");
-					listItem = '<li>'+
+					listItem = '<li name="userDonation" projectID="'+response[i].projectID+'">'+
 						'<div class="li_container">' +
 							'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
 							'<div class="li_mid">'+
 								'<div class="li_project">' +response[i].name+ '</div>'+
-								'<span class="li_donation red">' + response[i].sum + ' kr,</span> <span'+
+								'<span class="li_donation red">' + response[i].sum + ' kr</span> <span'+
 								(response[i].type == 'fast'?' class="green">fast':'>')/*+response[i].type*/+'</span><span class="grey" style="float:right;font-size:small">'+
 								formatDate(response[i].date)+'</span>'+
 							'</div>'+
@@ -173,6 +178,7 @@ function listUserDonations(userIDtoShow){
 	});
 }
 
+// returns easily read date
 function formatDate(date){
 	// date : yyyy-mm-dd hh:mm:ss
 	var formattedDate="";
