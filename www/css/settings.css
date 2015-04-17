@@ -1,0 +1,93 @@
+#page_settings #div_logout{
+	position: relative;
+	width:80pt;
+	float:right;
+	margin-right: 5pt;
+	position: relative;
+	height:66pt;
+}
+#div_logout button{
+	position: absolute;
+	top:0;bottom:0;
+	margin:auto;
+	height:30pt;
+	font-size: large;
+	padding:0;
+}
+
+.greyline {
+	width: 100%;
+	margin: 20pt 0 20pt 0;
+	border-bottom: thin solid #d2d2d2;
+}
+
+#subscription_message, #num_friend_req{
+	font-size: small;
+}
+
+
+#subscription_list li{
+	max-height: 50pt;
+	border-bottom: thin solid #d2d2d2;
+	list-style: none;
+}
+
+#subscription_list .li_container{
+	height:40pt;
+}
+
+#subscription_list .li_left, #subscription_list .li_mid, #subscription_list .li_right{
+	background: white;;
+	position: relative;
+	height:40pt;
+	box-sizing: border-box;
+	float:left;
+
+}
+
+#subscription_list .li_left{
+	width:15%;
+}
+
+#subscription_list .circlegrey{
+	position: absolute;
+	margin:auto;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	height:22pt;
+	width: 22pt;
+	border-radius: 50%;
+	background: #9b9b9b;
+	color:white;
+	line-height: 35pt;
+	font-size: small;
+	text-align: center;
+}
+
+#subscription_list .li_mid{
+	padding:5pt;
+	width: 65%;
+}
+
+#subscription_list .projectName{
+	color:#333;
+	display: block;
+	font-weight: bold;
+	font-size: large;
+}
+
+#subscription_list .date{
+	font-size:small;
+}
+
+#subscription_list .li_right{
+	width: 20%;
+	text-align: center;
+	line-height: 40pt;
+}
+
+#subscription_list a{
+	font-size: small;
+}

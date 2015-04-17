@@ -1,18 +1,4 @@
 
-#header_div {
-	width: 100%;
-	height: 90pt;
-	line-height: 65pt;
-	background: #006dfe;
-	color: white;
-}
-
-#header_div p {
-	margin-left: 50pt;
-	color: white;
-	font-size: x-large;
-}
-
 .boxshadow {
 	box-shadow: 0pt 0pt 1pt #888;
 }
@@ -21,14 +7,6 @@
 	width: 100%;
 	height: 25pt;
 	background-color: #0057cb;
-}
-
-.menu_icon {
-	position: absolute;
-	width: 25pt;
-	height: 25pt;
-	margin-top: 20pt;
-	margin-left: 10pt;
 }
 
 .icon {
