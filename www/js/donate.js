@@ -64,48 +64,83 @@ $(document).delegate("#page_donate","pagebeforeshow",function(){
 			sum = $('input[name=in_donate_amount_custom]').val();
 			if(isNaN(sum)){
 				alert("Sjekk at beløpet er et tall");
-				exit;
+				return;
 			}else if(sum <= 0){
 				alert("Ugyldig beløp (0 eller mindre)");
-				exit;
+				return;
 			}
 			else if(sum % 1 != 0){
 				alert("Kun tillatt med beløp i hele kroner");
-				exit;
+				return;
 			}
 		}else{
 			alert("Velg beløp");
-			exit;
+			return;
 		}
 
 		if($('input[name=donation_freq]:checked').length > 0){
 			type = $('input[name=donation_freq]:checked').val();
 		}else{
 			alert("Velg donasjonsfrekvens");
-			exit;
+			return;
 		}
 
-		var sql = "INSERT INTO Donation (projectID, email, type, sum,active) VALUES('"+projectID+"', '"+email+"', '"+type+"', '"+sum+"', '"+(type=='fast'?1:0)+"')";
-
+		var funds;
+		var sql = "select funds from user where email like '"+email+"'";
 		var url = getURLappBackend();
-		
-		var data = {'setSQL' : sql};
 
 		$.ajax({
-			type :"POST",
-			url : url,
-			dataType : "text",
-			data : data,
-			success : function(response){
-				//alert("donate.js successful ajax request returned : " + response);
-				$("input[name='in_donate_amount']").attr("checked", false).checkboxradio("refresh");
-				$("input[name='donation_freq']").attr("checked", false).checkboxradio("refresh");
-				$("input[name='in_donate_amount_custom']").val("");
-				window.history.go(-1);
-			},
-			error : function(response){
-				alert("Error in: donate.js bad ajax request when insert to database");
+			type:"post",
+			url:url,
+			dataType:"json",
+			data:{"getSQL":sql},
+			success:function(response){
+				console.log("funds for "+email+": "+response[0].funds);
+				funds =  response[0].funds;
+				if (funds < sum){
+					alert("ikke dekning på konto");
+					return;
+				}
+				var newFunds = funds - sum;
+
+				var sql = "INSERT INTO Donation (projectID, email, type, sum,active) VALUES('"+projectID+"', '"+email+"', '"+type+"', '"+sum+"', '"+(type=='fast'?1:0)+"')";
+				var data = {'setSQL' : sql};
+
+				$.ajax({
+					type :"POST",
+					url : url,
+					dataType : "text",
+					data : data,
+					success : function(response){
+						//alert("donate.js successful ajax request returned : " + response);
+						console.log("insert: "+response);
+						$("input[name='in_donate_amount']").attr("checked", false).checkboxradio("refresh");
+						$("input[name='donation_freq']").attr("checked", false).checkboxradio("refresh");
+						$("input[name='in_donate_amount_custom']").val("");
+
+						sql  = "update user set funds = "+newFunds+" where email like '"+email+"'";
+						$.ajax({
+							type :"POST",
+							url : url,
+							dataType : "text",
+							data : data,
+							success : function(response){
+								console.log(sql+ " "+response);
+							}
+						});
+
+
+						window.history.go(-1);
+					},
+					error : function(response){
+						alert("Error in: donate.js bad ajax request when insert to database");
+					}
+				});
+
 			}
+
 		});
+
+		
 	});
 });

@@ -195,7 +195,9 @@ function insertUser(){
 }
 
 function insertCardAndUpdateUser(){
-	var sql = "INSERT INTO Card (cardnr, month, year, CCV) VALUES('"+globalData.visa_number+"', '"+globalData.visa_expire_month+"', '"+globalData.visa_expire_year+"', '"+globalData.ccv+"')";
+
+	var sql = "INSERT INTO Card (cardnr, month, year, CCV,monthly_charge) VALUES('"+globalData.visa_number+"', '"+globalData.visa_expire_month+"', '"+globalData.visa_expire_year+"', '"+globalData.ccv+"', '"+globalData.monthly_amount+"')";
+	console.log(sql);
 	var url = getURLappBackend();	
 	var data = {"setSQL" : sql};
 	$.ajax({
@@ -204,21 +206,18 @@ function insertCardAndUpdateUser(){
 		url : url,
 		data : data,
 		success : function(response){
-			if(response === "OK"){
-				updateUser();
-			}else{
-				alert(response + ", noe gikk galt, insertCardAndUpdateUser() insertUser.js button[name=reg_user_complete.click]");
-			}
+			console.log("insertCardAndUpdateUser(): success, "+response);
+			updateUser();
 		},
 		error : function(response){
-			alert(response + ", error:  insertUser.js insertCardAndUpdateUser() button[name=reg_user_complete.click]");
+			console.log(response + ", error:  insertUser.js insertCardAndUpdateUser() button[name=reg_user_complete.click]");
 		}
 	});
 }
 function updateUser(){
 
-	var sql = "UPDATE User SET cardnr = '" + globalData.visa_number + "' WHERE email = '" + globalData.email + "'";
-
+	var sql = "UPDATE User SET cardnr = '" + globalData.visa_number + "', funds = "+globalData.monthly_amount+" WHERE email = '" + globalData.email + "'";
+	console.log("updateUser(): "+sql)
 	var url = getURLappBackend();
 
 	$.ajax({
@@ -227,13 +226,14 @@ function updateUser(){
 		url : url,
 		data : {"setSQL" : sql},
 		success : function(response){
-			if(response == "OK"){
-				//clearInput()
-				$.mobile.changePage("#page_login", {
-					transition : "slide"
-				});
-
-			}
+			//clearInput()
+			console.log("updateUser(): success, response: "+response);
+			$.mobile.changePage("#page_login", {
+				transition : "slide"
+			});
+		},
+		error:function(response){
+			console.log("updateUser(): error, "+response);
 		}
 	});
 }
