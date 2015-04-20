@@ -258,7 +258,6 @@ function toRegister3() {
 }
 
 function toSummary() {
-
 	data.cardnr = $("#in_visa_number").val();
 	var monthdrop = document.getElementById("in_visa_expire_month");
 	data.expire_month = monthdrop.options[monthdrop.selectedIndex].value; // date
@@ -270,6 +269,7 @@ function toSummary() {
 	// of
 	// expiration
 	data.ccv = $("#in_visa_ccv").val();
+
 
 	$.mobile.changePage("#page_reg_summary", {
 		transition : "slide"
@@ -307,6 +307,7 @@ enableSubmit = function enableSubmit(val) {
 }
 
 $(document).on("pageinit", "#page_reg_summary", function() {
+	
 
 	var val = document.getElementById("cb_accept_user_conditions");
 	var sbmt = document.getElementById("register_user");
@@ -316,12 +317,13 @@ $(document).on("pageinit", "#page_reg_summary", function() {
 	} else {
 		sbmt.disabled = true;
 	}
-
+/*
 	$("#reg_summary_name").append(data.fullname);
 	$("#reg_summary_phone").append(data.phone);
 	$("#reg_summary_email").append(data.email);
 	$("#reg_summary_monthly_amount").append(data.monthly_amount + " kr.");
 	$("#reg_summary_visanr").append(data.cardnr);
+*/	
 
 });
 
