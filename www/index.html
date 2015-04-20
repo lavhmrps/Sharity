@@ -470,6 +470,7 @@
 				</td>
 			</tr>
 		</table>
+
 		<table>
 			<tr>
 				<td>
@@ -513,6 +514,16 @@
 				</td>
 				<td>
 					<input data-role="none" class="input_underscored half_width" type="tel" name="reg_user_visa_ccv" placeholder="CCV" id="in_visa_ccv"/>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_blue.png" class="icon"/>
+				</td>
+				<td>
+					<input data-role="none" class="input_underscored" type="text" name="reg_user_visa_name" placeholder="Korteier" id="in_visa_name"/>
 				</td>
 			</tr>
 		</table>
@@ -588,9 +599,26 @@
 				<td style="width: 50pt">
 					<img alt="" src="img/icon_blue.png" class="icon"/>
 				</td>
-				<td id="reg_summary_visanr" name="reg_user_sumary_visa_number">
+				<td id="reg_summary_visanr" name="reg_user_sumary_visa_number" >
+				<!--
+					<div style="position:relative;display:inline-block;min-width:70pt">
+						<span style="position:absolute;font-size:9pt;left:0;top:20pt">Utløper: 
+							<span style="display:inline-block;background:yellow;" id="reg_summary_card_expiredate" name="reg_summary_card_expiredate"></span>
+						</span>
+						<span style="position:absolute;font-size:9pt;right:0;top:20pt">CCV: 
+							<span id="reg_summary_card_ccv" name="reg_summary_card_ccv"></span>
+						</span>
+					</div>
+				-->
 				</td>
 			</tr>
+			<tr>
+				<td style="width: 50pt">
+					<img alt="" src="img/icon_blue.png" class="icon"/>
+				</td>
+				<td id="reg_summary_cardname" name="reg_user_summary_cardname"></td>
+			</tr>
+			
 		</table>
 
 		<input type="checkbox" name="cb_send_receipts" id="cb_send_receipts"/>
