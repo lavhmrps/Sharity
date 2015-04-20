@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+<!-- Lokal css -->
+<link rel="stylesheet" type="text/css" href="../css/org_page_home.css" />
+<link rel="stylesheet" type="text/css" href="../css/org_activities.css" />
+<link rel="stylesheet" type="text/css" href="../css/org_statistics.css" />
+
+<!-- Include jQuery Mobile stylesheets -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+<!-- Include the jQuery library -->
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<!-- Include the jQuery Mobile library -->
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- Include the jQuery Dotdotdot library -->
+<script src="../js/jquery.dotdotdot.min.js"></script>
+
+</head>
+<body>
+	<!-- ************ page_org_home ************-->
+	<div data-role="page" id="page_org_home" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div page-role="header" class="header_top"></div>
+			<p>Side</p>
+		</div>
+
+		<div class="portrait_small">
+			<div class="logodiv_left_small">Logo</div>
+		</div>
+
+		<div class="main_content">
+			<section>
+				<span class="grey">Kategori for organisasjon</span>
+				<h2>Navn på organisasjon</h2>
+				<div class="somespace"></div>
+				<div class="content_box1">
+					<div class="content_box_top">
+						Totalt: <span class="green">6722</span>
+					</div>
+					<div class="content_box1l">
+						<div class="container_top">
+							<span id="org_num_followers" class="bottom big">25</span>
+						</div>
+						<div class="container_bottom">
+							<span id="org_num_followers" class="top medium">følgere</span>
+						</div>
+
+					</div>
+					<div class="content_box1r">
+						<div class="container_top">
+							<span id="org_num_followers" class="bottom big">11</span>
+						</div>
+						<div class="container_bottom">
+							<span id="org_num_followers" class="top medium">donasjoner</span>
+						</div>
+					</div>
+				</div>
+
+			</section>
+			<section>
+				<table class="layer clickable">
+					<tr>
+						<td style="width: 85%"><span style="margin-left: 10pt">Publiser
+								nyhet</span></td>
+						<td style="width: 15%"><img src="../img/li_arrow_r_grey.png"></td>
+					</tr>
+				</table>
+
+			</section>
+
+			<section>
+
+				<h2>Siste nytt</h2>
+
+				<div class="portrait">Bakgrunnsbilde</div>
+				<article>
+					<h2 class="blue">Tittel på nyhet</h2>
+
+					<p>lablablablab a balba lba llblablabl ablblabl albal ba lba
+						lablb lb lab lab lab labd lab ba lbb bblblabdlbalb bl bab ab ablb
+						a</p>
+				</article>
+
+			</section>
+
+
+		</div>
+
+		<!-- Lager litt plass før footer -->
+		<div class="somespace"></div>
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_org_page footer_active"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_site_holo.png"></li>
+					<li class="footer_org_activities"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_activities_holo.png"></li>
+					<li class="footer_org_statistics"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_statistics_holo.png"></li>
+					<li class="footer_org_settings"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<!-- ************ end of page_org_home ************-->
+
+
+
+	<!-- ************ page_org_activities ************-->
+
+	<div data-role="page" id="page_org_activities" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div class="header_top"></div>
+		<!--
+			<img alt="Projects-icon" src="../img/menu_projects.png"	class="menu_projects_icon">
+		-->
+			<p>Aktiviteter</p>
+		</div>
+
+		<div class="main_content">
+			<select data-role="none" class="input_underscored grey">
+				<!-- 			<option disabled selected style="display:none;">Alle prosjekter</option> -->
+				<option value="0">Alle Prosjekter</option>
+				<option value="1">Prosjekt1</option>
+				<option value="2">Prosjekt2</option>
+				<option value="3">Prosjekt3</option>
+			</select>
+			<section>
+				<table class="layer">
+					<tr class="border-bottom clickable">
+						<td style="width: 80%"><span style="margin-left: 10pt">Donasjoner</span></td>
+						<td style="width: 10%"><div class="red_notif"
+								id="num_donations">31</div></td>
+						<td style="width: 10%"><img alt="Arrow"
+							src="../img/li_arrow_r_grey.png"></td>
+					</tr>
+					<tr class=" clickable">
+						<td style="width: 80%"><span style="margin-left: 10pt">Følgere</span></td>
+						<td style="width: 10%"><div class="red_notif"
+								id="num_followers">114</div></td>
+						<td style="width: 10%"><img alt="Arrow"
+							src="../img/li_arrow_r_grey.png"></td>
+					</tr>
+				</table>
+			</section>
+
+		</div>
+
+		<!-- Lager litt plass før footer -->
+		<div class="somespace"></div>
+
+		<footer data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_org_page"><img class="footer_menu_icon_holo"
+						alt="" src="../img/icon_menu_footer_site_holo.png"></li>
+					<li class="footer_org_activities footer_active"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_activities_holo.png"></li>
+					<li class="footer_org_statistics"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_statistics_holo.png"></li>
+					<li class="footer_org_settings"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<!-- ************ end of page_org_activities ************-->
+
+
+	<!-- ************ page_org_statistics ************-->
+	<div data-role="page" id="page_org_statistics">
+		<div id="header_div" class="boxshadow">
+			<div class="header_top"></div>
+			<p>Statistikk</p>
+		</div>
+
+		<div class="main_content">
+			<section>
+				<select data-role="none" class="input_underscored grey">
+					<!-- 			<option disabled selected style="display:none;">Alle prosjekter</option> -->
+					<option value="0">Alle Prosjekter</option>
+					<option value="1">Prosjekt1</option>
+					<option value="2">Prosjekt2</option>
+					<option value="3">Prosjekt3</option>
+				</select>
+			</section>
+			<section>
+				<div class="content_box1" style="height: 100pt">
+					<div class="content_box1l" style="height: 100%;">
+						<div class="content_box_top">
+							<span id="mystats_currmonth_donations" class="green"
+								style="position: absolute; bottom: 0; left: 0; right: 0;">180</span>
+						</div>
+						<div id="mystats_currmonth" class="content_box_bottom">
+							<span>Februar</span>
+						</div>
+					</div>
+					<div class="content_box1r" style="height: 100%;">
+						<div class="content_box_top">
+							<span id="mystats_total_donations" class="green"
+								style="position: absolute; bottom: 0; left: 0; right: 0;">2155</span>
+						</div>
+						<div class="content_box_bottom">
+							<span>Total</span>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<span class="number">4222</span> <span class="grey">Donasjoner</span>
+				<div class="greyline"></div>
+				<span class="number">4222</span> <span class="grey">Følgere</span>
+				<div class="greyline"></div>
+			</section>
+
+		</div>
+
+		<!-- Lager litt plass før footer -->
+		<div class="somespace"></div>
+
+
+		<footer data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_org_page"><img class="footer_menu_icon_holo"
+						alt="" src="../img/icon_menu_footer_site_holo.png"></li>
+					<li class="footer_org_activities"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_activities_holo.png"></li>
+					<li class="footer_org_statistics footer_active"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_statistics_holo.png"></li>
+					<li class="footer_org_settings"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<!-- ************ end of page_org_statistics ************-->
+
+
+	<!-- ************ page_org_settings ************-->
+
+	<div data-role="page" id="page_org_settings" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div class="header_top"></div>
+			<img alt="Projects-icon" src="../img/menu_projects.png"
+				class="menu_projects_icon">
+			<p>Innstillinger</p>
+		</div>
+
+		<div class="main_content">
+		FASE 2...
+
+		</div>
+
+		<!-- Lager litt plass før footer -->
+		<div class="somespace"></div>
+
+
+	<footer data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_org_page"><img class="footer_menu_icon_holo"
+						alt="" src="../img/icon_menu_footer_site_holo.png"></li>
+					<li class="footer_org_activities"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_activities_holo.png"></li>
+					<li class="footer_org_statistics"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_statistics_holo.png"></li>
+					<li class="footer_org_settings"><img
+						class="footer_menu_icon_holo footer_active" alt=""
+						src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+
+</body>
+<script>
+	function isOverflowed(element) {
+		return element.scrollWidth > element.clientWidth;
+	}
+
+	$(document).ready(
+			function() {
+				var element = document.getElementById("num_donations");
+				if (isOverflowed(element)) {
+					while (isOverflowed(element)) {
+						var style = window.getComputedStyle(element);
+						var width = style.getPropertyValue('width').replace(
+								/\D+$/g, ""); // replace all leading non-digits with nothing
+						$(element).css("width", ++width + "px");
+
+					}
+					$(element).css("width", 5 + width + "px");
+				}
+
+				var element = document.getElementById("num_followers");
+				if (isOverflowed(element)) {
+					while (isOverflowed(element)) {
+						var style = window.getComputedStyle(element);
+						var width = style.getPropertyValue('width').replace(
+								/\D+$/g, ""); // replace all leading non-digits with nothing
+						$(element).css("width", ++width + "px");
+
+					}
+					$(element).css("width", 5 + width + "px");
+				}
+
+			});
+	
+	$(".footer_org_page").click(function() {
+		window.location.href = "#page_org_home";
+	});
+
+	$(".footer_org_activities").click(function() {
+		window.location.href = "#page_org_activities";
+	});
+
+	$(".footer_org_statistics").click(function() {
+		window.location.href = "#page_org_statistics";
+	});
+
+	$(".footer_org_settings").click(function() {
+		window.location.href = "#page_org_settings";
+	});
+</script>
+</html>
