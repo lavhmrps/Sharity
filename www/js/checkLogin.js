@@ -28,11 +28,17 @@ $(document).ready(function(){
 			data : {"userLoginApp" : json},
 			success: function(response){
 				if(response == "OK"){
-
-					window.location.replace("pages/app.html#page_overview");
+					console.log("Bruker-login");
+					//window.location.replace("pages/app.html#page_overview");
 					localStorage.setItem("userID", email);
-				}else{
-					alert("Vennligst sjekk at epost og passord er riktig");
+				}else if(response == "ORG"){
+					console.log("Organisasjon-login: ok");
+					window.location.replace("pages/app_for_orgs.html#page_org_home");
+					
+				}
+
+				else{
+					alert("Vennligst sjekk at epost og passord er riktig: "+response );
 				}
 
 			},

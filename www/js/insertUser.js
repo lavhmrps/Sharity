@@ -11,6 +11,7 @@ $(document).ready(function(){
 		visa_expire_year : '',
 		visa_expire_month : '',
 		ccv : '',
+		cardname:'',
 		password : ''
 	};
 	
@@ -114,6 +115,7 @@ $('button[name=reg_user_credit_card_done]').click(function(){
 	globalData.visa_expire_month = $('select[name=reg_user_visa_expire_month]').val();
 	globalData.visa_expire_year = $('select[name=reg_user_visa_expire_year]').val();
 	globalData.ccv = $('input[name=reg_user_visa_ccv]').val();
+	globalData.cardname = $('input[name=reg_user_visa_name]').val();
 
  	//sjekk at data stemmer her!!!!
 
@@ -122,6 +124,7 @@ $('button[name=reg_user_credit_card_done]').click(function(){
  	$('td[name= reg_user_sumary_phone]').text(globalData.phone);
 
  	$('td[name=reg_user_sumary_visa_number]').text(globalData.visa_number);
+ 	$('td[name=reg_user_summary_cardname]').text(globalData.cardname);
 
  	$.mobile.changePage("#page_reg_summary", {
  		transition : "slide"
@@ -196,7 +199,7 @@ function insertUser(){
 
 function insertCardAndUpdateUser(){
 
-	var sql = "INSERT INTO Card (cardnr, month, year, CCV,monthly_charge) VALUES('"+globalData.visa_number+"', '"+globalData.visa_expire_month+"', '"+globalData.visa_expire_year+"', '"+globalData.ccv+"', '"+globalData.monthly_amount+"')";
+	var sql = "INSERT INTO Card (cardnr, month, year, CCV, cardname, monthly_charge) VALUES('"+globalData.visa_number+"', '"+globalData.visa_expire_month+"', '"+globalData.visa_expire_year+"', '"+globalData.ccv+"', '"+globalData.cardname+"', '"+globalData.monthly_amount+"')";
 	console.log(sql);
 	var url = getURLappBackend();	
 	var data = {"setSQL" : sql};
