@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17. Apr, 2015 15:10 
+-- Generation Time: 21. Apr, 2015 23:32 
 -- Server-versjon: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `month` varchar(2) NOT NULL,
   `year` varchar(4) NOT NULL,
   `CCV` varchar(3) NOT NULL,
+  `cardname` varchar(60) NOT NULL,
   `monthly_charge` float DEFAULT NULL,
   `userID` varchar(60) NOT NULL,
   PRIMARY KEY (`cardnr`),
@@ -55,16 +56,18 @@ CREATE TABLE IF NOT EXISTS `card` (
 -- Dataark for tabell `card`
 --
 
-INSERT INTO `card` (`cardnr`, `month`, `year`, `CCV`, `monthly_charge`, `userID`) VALUES
-('', '', '', '', NULL, ''),
-('123123123123', '1', '2015', '123', 50, ''),
-('1905190519051905', '1', '2015', '123', NULL, ''),
-('2321321312312312', '1', '2015', '123', NULL, ''),
-('4146598383', '1', '2015', '324', NULL, '123@icloud.vom'),
-('4198165746812', '1', '2015', '124', 200, ''),
-('684129814864', '1', '2015', '789', 100, ''),
-('987', '1', '2015', '987', 987, ''),
-('9999 8888 7777 4', '1', '2015', '548', 69, '');
+INSERT INTO `card` (`cardnr`, `month`, `year`, `CCV`, `cardname`, `monthly_charge`, `userID`) VALUES
+('', '', '', '', '', NULL, ''),
+('123123123123', '1', '2015', '123', '', 50, ''),
+('123123213213213', '1', '2015', '555', 'Bare Egil', 200, ''),
+('1905190519051905', '1', '2015', '123', '', NULL, ''),
+('2321321312312312', '1', '2015', '123', '', NULL, ''),
+('4146598383', '1', '2015', '324', '', NULL, '123@icloud.vom'),
+('4198165746812', '1', '2015', '124', '', 200, ''),
+('684129814864', '1', '2015', '789', '', 100, ''),
+('987', '1', '2015', '987', '', 987, ''),
+('9999 8888 7777 4', '1', '2015', '548', '', 69, ''),
+('9999888899998887', '4', '2018', '888', '', 50, '');
 
 -- --------------------------------------------------------
 
@@ -5091,6 +5094,14 @@ CREATE TABLE IF NOT EXISTS `subscription` (
   PRIMARY KEY (`email`,`projectID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dataark for tabell `subscription`
+--
+
+INSERT INTO `subscription` (`email`, `projectID`, `date_added`) VALUES
+('maglunde@gmail.com', 1, '2015-04-20 18:52:40'),
+('maglunde@gmail.com', 4, '2015-04-20 18:53:17');
+
 -- --------------------------------------------------------
 
 --
@@ -5561,6 +5572,7 @@ INSERT INTO `user` (`name`, `phone`, `email`, `password`, `picURL`, `address`, `
 ('Daniella Nissen', '46336692', 'daniella.nissen@sharity.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:17'),
 ('Daniella Brandmo', '4135899', 'daniella_brandmo@hotmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:12:52'),
 ('Daniel Tangen', '49024750', 'daniel_tangen@hotmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:17'),
+('egil', '213123', 'egil@egil.no', 'egil', NULL, NULL, NULL, '123123213213213', 200, '2015-04-20 20:46:22'),
 ('Guttorm Evensen', '22334455', 'gutt@orm.no', 'gutt', NULL, NULL, NULL, NULL, 0, '2015-04-12 13:48:44'),
 ('lise', '9182', 'lise@gmail.com', 'lise', NULL, NULL, NULL, NULL, 0, '2015-04-14 12:24:17'),
 ('Vegard tae ese lokrei', '4146598383', 'lokizn@hotmail.com', 'natrium2299', NULL, NULL, NULL, NULL, 0, '2015-03-23 07:18:29'),
@@ -5577,6 +5589,7 @@ INSERT INTO `user` (`name`, `phone`, `email`, `password`, `picURL`, `address`, `
 ('per', 'per', 'per@prt', 'per', NULL, NULL, NULL, NULL, 0, '2015-04-17 12:01:25'),
 ('qweq', 'we', 'qwe@ku.nbo', 'qwe', NULL, NULL, NULL, NULL, 0, '2015-04-14 14:20:24'),
 ('Ronny Pedersen', '41468026', 'ronny@test.com', 'n', NULL, NULL, NULL, NULL, 0, '2015-03-23 04:38:30'),
+('buge', '123', 'sokgd@sdgn.no', '123', NULL, NULL, NULL, '9999888899998887', 50, '2015-04-20 20:43:47'),
 ('Alexandra Emhjellen', '48041801', 't@t.com', '123', NULL, NULL, NULL, NULL, 0, '2015-03-23 06:01:11'),
 ('Test', '123', 'tttt@tt.mo', 'Test', NULL, NULL, NULL, '4198165746812', 200, '2015-04-17 12:07:43');
 
