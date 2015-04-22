@@ -4,7 +4,7 @@ $(document).ready(function(){
 		
 	});
 	$("button[name=logout]").click(function(){
-		localStorage.removeItem("userID");
+		localStorage.clear();
 		window.location.replace("../index.html");
 	});
 	$(document.body).on('click', 'button[name=accept_request]', function() {
