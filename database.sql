@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 17. Apr, 2015 15:10 
--- Server-versjon: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost
+-- Generation Time: 23. Apr, 2015 00:29 AM
+-- Server-versjon: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,9 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `admin` (
   `userID` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  PRIMARY KEY (`userID`),
-  UNIQUE KEY `username` (`username`)
+  `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -46,9 +44,7 @@ CREATE TABLE IF NOT EXISTS `card` (
   `year` varchar(4) NOT NULL,
   `CCV` varchar(3) NOT NULL,
   `monthly_charge` float DEFAULT NULL,
-  `userID` varchar(60) NOT NULL,
-  PRIMARY KEY (`cardnr`),
-  KEY `userIdIndex` (`userID`)
+  `userID` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -93,17 +89,14 @@ INSERT INTO `challenge` (`from_user`, `to_user`, `date`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `donation` (
-  `donationID` int(255) NOT NULL AUTO_INCREMENT,
+`donationID` int(255) NOT NULL,
   `projectID` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `type` varchar(30) NOT NULL,
   `sum` int(11) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`donationID`),
-  KEY `userIdIndex` (`email`),
-  KEY `projectIdIndex` (`projectID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=71 ;
+  `active` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
 
 --
 -- Dataark for tabell `donation`
@@ -175,9 +168,7 @@ INSERT INTO `donation` (`donationID`, `projectID`, `email`, `date`, `type`, `sum
 CREATE TABLE IF NOT EXISTS `friend` (
   `userEmail` varchar(65) NOT NULL,
   `friendEmail` varchar(65) NOT NULL,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`userEmail`,`friendEmail`),
-  KEY `email2` (`friendEmail`)
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -203,9 +194,7 @@ INSERT INTO `friend` (`userEmail`, `friendEmail`, `date_added`) VALUES
 CREATE TABLE IF NOT EXISTS `friend_request` (
   `from_user` varchar(100) NOT NULL,
   `to_user` varchar(100) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`from_user`,`to_user`),
-  KEY `to_user` (`to_user`)
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -224,23 +213,23 @@ INSERT INTO `friend_request` (`from_user`, `to_user`, `date`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `news` (
-  `newsID` int(11) NOT NULL AUTO_INCREMENT,
+`newsID` int(11) NOT NULL,
   `title` varchar(65) NOT NULL,
   `txt` text NOT NULL,
   `backgroundimgURL` longtext NOT NULL,
   `projectID` int(11) NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`newsID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `organizationNr` int(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dataark for tabell `news`
 --
 
-INSERT INTO `news` (`newsID`, `title`, `txt`, `backgroundimgURL`, `projectID`, `date_added`) VALUES
-(1, 'Fikk faen meg mer penger og', 'Kirkens nÃ¸dhjelp mottok mer penger, det er faen meg sykt det! abcdefg hijklmenop qrstuvwxyz Vi maa ha mer text her for aa se om dotdtodotd greiene funker !!!! kukk mer Det var en gang en mann som het magfnus', '', 3, '2015-03-23 17:45:32'),
-(2, '', 'JHer er nyhet nr to. DRITkult megahipt og schpa lol. ok skal vel abre se om detnne udkker opp her', '', 3, '2015-03-23 18:07:41'),
-(3, 'Noen tok pengene til Haiti :(', 'det var en gang en manns om het magn us', '', 9, '2015-04-14 15:58:09');
+INSERT INTO `news` (`newsID`, `title`, `txt`, `backgroundimgURL`, `projectID`, `date_added`, `organizationNr`) VALUES
+(1, 'Fikk faen meg mer penger og', 'Kirkens nÃ¸dhjelp mottok mer penger, det er faen meg sykt det! abcdefg hijklmenop qrstuvwxyz Vi maa ha mer text her for aa se om dotdtodotd greiene funker !!!! kukk mer Det var en gang en mann som het magfnus', '', 3, '2015-03-23 17:45:32', 0),
+(2, '', 'JHer er nyhet nr to. DRITkult megahipt og schpa lol. ok skal vel abre se om detnne udkker opp her', '', 3, '2015-03-23 18:07:41', 0),
+(3, 'Noen tok pengene til Haiti :(', 'det var en gang en manns om het magn us', '', 9, '2015-04-14 15:58:09', 0);
 
 -- --------------------------------------------------------
 
@@ -262,10 +251,7 @@ CREATE TABLE IF NOT EXISTS `organization` (
   `accountnumber` varchar(15) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `about` text,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`organizationNr`),
-  UNIQUE KEY `organizationNr` (`organizationNr`),
-  UNIQUE KEY `organizationNr_2` (`organizationNr`)
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -287,9 +273,7 @@ INSERT INTO `organization` (`organizationNr`, `name`, `category`, `password`, `p
 
 CREATE TABLE IF NOT EXISTS `post` (
   `zipcode` varchar(4) NOT NULL,
-  `city` varchar(65) NOT NULL,
-  PRIMARY KEY (`zipcode`),
-  UNIQUE KEY `zipcode` (`zipcode`)
+  `city` varchar(65) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -5049,7 +5033,7 @@ INSERT INTO `post` (`zipcode`, `city`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `project` (
-  `projectID` int(11) NOT NULL AUTO_INCREMENT,
+`projectID` int(11) NOT NULL,
   `name` varchar(60) DEFAULT NULL,
   `title` varchar(50) DEFAULT NULL,
   `about` text,
@@ -5058,10 +5042,8 @@ CREATE TABLE IF NOT EXISTS `project` (
   `logoURL` text,
   `backgroundimgURL` longtext,
   `organizationNr` int(10) NOT NULL,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`projectID`),
-  KEY `orgIdIndex` (`organizationNr`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dataark for tabell `project`
@@ -5087,8 +5069,7 @@ INSERT INTO `project` (`projectID`, `name`, `title`, `about`, `country`, `city`,
 CREATE TABLE IF NOT EXISTS `subscription` (
   `email` varchar(65) NOT NULL,
   `projectID` int(10) NOT NULL,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`email`,`projectID`)
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -5107,9 +5088,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `zip` varchar(4) DEFAULT NULL,
   `cardnr` varchar(16) DEFAULT NULL,
   `funds` int(11) NOT NULL,
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`email`),
-  UNIQUE KEY `email` (`email`)
+  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -5581,6 +5560,95 @@ INSERT INTO `user` (`name`, `phone`, `email`, `password`, `picURL`, `address`, `
 ('Test', '123', 'tttt@tt.mo', 'Test', NULL, NULL, NULL, '4198165746812', 200, '2015-04-17 12:07:43');
 
 --
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+ ADD PRIMARY KEY (`userID`), ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `card`
+--
+ALTER TABLE `card`
+ ADD PRIMARY KEY (`cardnr`), ADD KEY `userIdIndex` (`userID`);
+
+--
+-- Indexes for table `donation`
+--
+ALTER TABLE `donation`
+ ADD PRIMARY KEY (`donationID`), ADD KEY `userIdIndex` (`email`), ADD KEY `projectIdIndex` (`projectID`);
+
+--
+-- Indexes for table `friend`
+--
+ALTER TABLE `friend`
+ ADD PRIMARY KEY (`userEmail`,`friendEmail`), ADD KEY `email2` (`friendEmail`);
+
+--
+-- Indexes for table `friend_request`
+--
+ALTER TABLE `friend_request`
+ ADD PRIMARY KEY (`from_user`,`to_user`), ADD KEY `to_user` (`to_user`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+ ADD PRIMARY KEY (`newsID`);
+
+--
+-- Indexes for table `organization`
+--
+ALTER TABLE `organization`
+ ADD PRIMARY KEY (`organizationNr`), ADD UNIQUE KEY `organizationNr` (`organizationNr`), ADD UNIQUE KEY `organizationNr_2` (`organizationNr`);
+
+--
+-- Indexes for table `post`
+--
+ALTER TABLE `post`
+ ADD PRIMARY KEY (`zipcode`), ADD UNIQUE KEY `zipcode` (`zipcode`);
+
+--
+-- Indexes for table `project`
+--
+ALTER TABLE `project`
+ ADD PRIMARY KEY (`projectID`), ADD KEY `orgIdIndex` (`organizationNr`);
+
+--
+-- Indexes for table `subscription`
+--
+ALTER TABLE `subscription`
+ ADD PRIMARY KEY (`email`,`projectID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+ ADD PRIMARY KEY (`email`), ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `donation`
+--
+ALTER TABLE `donation`
+MODIFY `donationID` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=71;
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+MODIFY `newsID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `project`
+--
+ALTER TABLE `project`
+MODIFY `projectID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
 -- Begrensninger for dumpede tabeller
 --
 
@@ -5588,34 +5656,34 @@ INSERT INTO `user` (`name`, `phone`, `email`, `password`, `picURL`, `address`, `
 -- Begrensninger for tabell `card`
 --
 ALTER TABLE `card`
-  ADD CONSTRAINT `card_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `card_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `user` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Begrensninger for tabell `donation`
 --
 ALTER TABLE `donation`
-  ADD CONSTRAINT `donation_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`),
-  ADD CONSTRAINT `donation_ibfk_2` FOREIGN KEY (`projectID`) REFERENCES `project` (`projectID`);
+ADD CONSTRAINT `donation_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`),
+ADD CONSTRAINT `donation_ibfk_2` FOREIGN KEY (`projectID`) REFERENCES `project` (`projectID`);
 
 --
 -- Begrensninger for tabell `friend`
 --
 ALTER TABLE `friend`
-  ADD CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`userEmail`) REFERENCES `user` (`email`),
-  ADD CONSTRAINT `friend_ibfk_2` FOREIGN KEY (`friendEmail`) REFERENCES `user` (`email`);
+ADD CONSTRAINT `friend_ibfk_1` FOREIGN KEY (`userEmail`) REFERENCES `user` (`email`),
+ADD CONSTRAINT `friend_ibfk_2` FOREIGN KEY (`friendEmail`) REFERENCES `user` (`email`);
 
 --
 -- Begrensninger for tabell `friend_request`
 --
 ALTER TABLE `friend_request`
-  ADD CONSTRAINT `friend_request_ibfk_1` FOREIGN KEY (`to_user`) REFERENCES `user` (`email`),
-  ADD CONSTRAINT `friend_request_ibfk_2` FOREIGN KEY (`from_user`) REFERENCES `user` (`email`);
+ADD CONSTRAINT `friend_request_ibfk_1` FOREIGN KEY (`to_user`) REFERENCES `user` (`email`),
+ADD CONSTRAINT `friend_request_ibfk_2` FOREIGN KEY (`from_user`) REFERENCES `user` (`email`);
 
 --
 -- Begrensninger for tabell `project`
 --
 ALTER TABLE `project`
-  ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`organizationNr`) REFERENCES `organization` (`organizationNr`) ON DELETE CASCADE ON UPDATE CASCADE;
+ADD CONSTRAINT `project_ibfk_1` FOREIGN KEY (`organizationNr`) REFERENCES `organization` (`organizationNr`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
