@@ -120,6 +120,4 @@ $(document).on("pageshow","#page_org_home",function(){
 	$("span[name=homeOrgNumDonations]").html(numDonations);
 	$("span[name=homeOrgSingularPluarDonations]").html((numDonations==1?"donasjon":"donasjoner"));
 
-
-
 });
