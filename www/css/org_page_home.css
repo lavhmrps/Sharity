@@ -68,6 +68,12 @@ body {
 	color: white;
 }
 
+.portrait_small img{
+	width:100%;
+	height:100%;
+	border-radius: 50%;
+}
+
 .logodiv_left_small {
 	position: absolute;
 	bottom: -25pt;
@@ -175,16 +181,21 @@ table tr td {
 	margin: 5pt;
 }
 
+.green{
+	color: #20a623 !important;
+}
+
+.red{
+	color:#f63218;
+}
+
+
 .grey {
 	color: #9b9b9b !important;
 }
 
 .blue {
 	color: #006dfe !important;
-}
-
-.green {
-	color: #20a623 !important;
 }
 
 .somespace {
@@ -196,7 +207,18 @@ section {
 }
 
 article {
-	margin-bottom: 35pt;
+	margin-bottom: 15pt;
+}
+
+#homeOrgNews img{
+	width:100%;
+	height:100%;
+}
+
+.article_separator{
+	border-bottom:thin solid #f63218;
+	margin:10pt auto;
+	width:60%;
 }
 
 section h2.blue {
@@ -230,6 +252,10 @@ section h2.blue {
 .medium {
 	font-size: large;
 	line-height: 15pt;
+}
+
+.small{
+	font-size: small;
 }
 
 .footer_active {

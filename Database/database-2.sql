@@ -2,7 +2,10 @@
 -- version 4.2.11
 -- http://www.phpmyadmin.net
 --
-
+-- Host: localhost
+-- Generation Time: 23. Apr, 2015 00:29 AM
+-- Server-versjon: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -40,7 +43,6 @@ CREATE TABLE IF NOT EXISTS `card` (
   `month` varchar(2) NOT NULL,
   `year` varchar(4) NOT NULL,
   `CCV` varchar(3) NOT NULL,
-  `cardname` varchar(60) NOT NULL,
   `monthly_charge` float DEFAULT NULL,
   `userID` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -49,8 +51,16 @@ CREATE TABLE IF NOT EXISTS `card` (
 -- Dataark for tabell `card`
 --
 
-INSERT INTO `card` (`cardnr`, `month`, `year`, `CCV`, `cardname`, `monthly_charge`, `userID`) VALUES
-('4146598383', '1', '2015', '324', '', NULL, '123@icloud.vom');
+INSERT INTO `card` (`cardnr`, `month`, `year`, `CCV`, `monthly_charge`, `userID`) VALUES
+('', '', '', '', NULL, ''),
+('123123123123', '1', '2015', '123', 50, ''),
+('1905190519051905', '1', '2015', '123', NULL, ''),
+('2321321312312312', '1', '2015', '123', NULL, ''),
+('4146598383', '1', '2015', '324', NULL, '123@icloud.vom'),
+('4198165746812', '1', '2015', '124', 200, ''),
+('684129814864', '1', '2015', '789', 100, ''),
+('987', '1', '2015', '987', 987, ''),
+('9999 8888 7777 4', '1', '2015', '548', 69, '');
 
 -- --------------------------------------------------------
 
@@ -85,16 +95,8 @@ CREATE TABLE IF NOT EXISTS `donation` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `type` varchar(30) NOT NULL,
   `sum` int(11) NOT NULL,
-<<<<<<< HEAD
   `active` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
-=======
-  `active` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`donationID`),
-  KEY `userIdIndex` (`email`),
-  KEY `projectIdIndex` (`projectID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=95 ;
->>>>>>> origin/master
 
 --
 -- Dataark for tabell `donation`
@@ -155,31 +157,7 @@ INSERT INTO `donation` (`donationID`, `projectID`, `email`, `date`, `type`, `sum
 (67, 2, 'maglunde@gmail.com', '2015-04-17 13:05:54', 'engangsdonasjon', 100, 0),
 (68, 2, 'maglunde@gmail.com', '2015-04-17 13:05:54', 'engangsdonasjon', 100, 0),
 (69, 2, 'maglunde@gmail.com', '2015-04-17 13:05:54', 'engangsdonasjon', 100, 0),
-(70, 2, 'maglunde@gmail.com', '2015-04-17 13:05:54', 'engangsdonasjon', 100, 0),
-(71, 10, 'maglunde@gmail.com', '2015-04-21 23:15:37', 'engangsdonasjon', 100, 0),
-(72, 10, 'maglunde@gmail.com', '2015-04-21 23:15:37', 'engangsdonasjon', 100, 0),
-(73, 10, 'maglunde@gmail.com', '2015-04-21 23:16:30', 'engangsdonasjon', 20, 0),
-(74, 10, 'maglunde@gmail.com', '2015-04-21 23:16:30', 'engangsdonasjon', 20, 0),
-(75, 2, 'maglunde@gmail.com', '2015-04-22 00:30:43', 'engangsdonasjon', 246, 0),
-(76, 2, 'maglunde@gmail.com', '2015-04-22 00:30:43', 'engangsdonasjon', 246, 0),
-(77, 3, 't@t.com', '2015-04-22 00:33:47', 'fast', 20, 1),
-(78, 3, 't@t.com', '2015-04-22 00:35:27', 'fast', 20, 0),
-(79, 1, 't@t.com', '2015-04-22 00:35:49', 'engangsdonasjon', 50, 0),
-(80, 1, 't@t.com', '2015-04-22 00:35:49', 'engangsdonasjon', 50, 0),
-(81, 1, 't@t.com', '2015-04-22 00:38:04', 'engangsdonasjon', 100, 0),
-(82, 1, 't@t.com', '2015-04-22 00:38:04', 'engangsdonasjon', 100, 0),
-(83, 2, 'maglunde@gmail.com', '2015-04-22 00:39:49', 'engangsdonasjon', 200, 0),
-(84, 2, 'maglunde@gmail.com', '2015-04-22 00:39:49', 'engangsdonasjon', 200, 0),
-(85, 2, 'maglunde@gmail.com', '2015-04-22 00:39:49', 'engangsdonasjon', 200, 0),
-(86, 2, 'maglunde@gmail.com', '2015-04-22 00:39:49', 'engangsdonasjon', 200, 0),
-(87, 2, 'maglunde@gmail.com', '2015-04-22 00:41:37', 'engangsdonasjon', 100, 0),
-(88, 2, 'maglunde@gmail.com', '2015-04-22 00:41:37', 'engangsdonasjon', 100, 0),
-(89, 2, 't@t.com', '2015-04-22 00:54:32', 'fast', 21, 1),
-(90, 2, 't@t.com', '2015-04-22 00:54:32', 'fast', 21, 1),
-(91, 7, 't@t.com', '2015-04-22 00:58:37', 'engangsdonasjon', 100, 0),
-(92, 7, 't@t.com', '2015-04-22 01:00:44', 'engangsdonasjon', 100, 0),
-(93, 1, 't@t.com', '2015-04-22 01:01:23', 'engangsdonasjon', 1, 0),
-(94, 1, 't@t.com', '2015-04-22 01:04:00', 'fast', 2, 1);
+(70, 2, 'maglunde@gmail.com', '2015-04-17 13:05:54', 'engangsdonasjon', 100, 0);
 
 -- --------------------------------------------------------
 
@@ -248,17 +226,10 @@ CREATE TABLE IF NOT EXISTS `news` (
 -- Dataark for tabell `news`
 --
 
-<<<<<<< HEAD
 INSERT INTO `news` (`newsID`, `title`, `txt`, `backgroundimgURL`, `projectID`, `date_added`, `organizationNr`) VALUES
 (1, 'Fikk faen meg mer penger og', 'Kirkens nÃ¸dhjelp mottok mer penger, det er faen meg sykt det! abcdefg hijklmenop qrstuvwxyz Vi maa ha mer text her for aa se om dotdtodotd greiene funker !!!! kukk mer Det var en gang en mann som het magfnus', '', 3, '2015-03-23 17:45:32', 0),
 (2, '', 'JHer er nyhet nr to. DRITkult megahipt og schpa lol. ok skal vel abre se om detnne udkker opp her', '', 3, '2015-03-23 18:07:41', 0),
 (3, 'Noen tok pengene til Haiti :(', 'det var en gang en manns om het magn us', '', 9, '2015-04-14 15:58:09', 0);
-=======
-INSERT INTO `news` (`newsID`, `title`, `txt`, `backgroundimgURL`, `projectID`, `date_added`) VALUES
-(1, 'Fikk faen meg mer penger og', 'Kirkens nÃ¸dhjelp mottok mer penger, det er faen meg sykt det! abcdefg hijklmenop qrstuvwxyz Vi maa ha mer text her for aa se om dotdtodotd greiene funker !!!! kukk mer Det var en gang en mann som het magfnus', 'bilfde', 3, '2015-04-21 23:53:22'),
-(2, 'Enda en nyhet!', 'JHer er nyhet nr to. DRITkult megahipt og schpa lol. ok skal vel abre se om detnne udkker opp her', 'http://www.amnestyinternational.com.au/wp-content/uploads/slider-wd//slide3.jpg', 3, '2015-04-22 00:25:02'),
-(3, 'Noen tok pengene til Haiti :(', 'det var en gang en manns om het magn us', '', 9, '2015-04-14 15:58:09');
->>>>>>> origin/master
 
 -- --------------------------------------------------------
 
@@ -5071,15 +5042,8 @@ CREATE TABLE IF NOT EXISTS `project` (
   `logoURL` text,
   `backgroundimgURL` longtext,
   `organizationNr` int(10) NOT NULL,
-<<<<<<< HEAD
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-=======
-  `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`projectID`),
-  KEY `orgIdIndex` (`organizationNr`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
->>>>>>> origin/master
 
 --
 -- Dataark for tabell `project`
@@ -5094,8 +5058,7 @@ INSERT INTO `project` (`projectID`, `name`, `title`, `about`, `country`, `city`,
 (6, 'Skaff deg et fattig barn IDAG', '4324321432', '4321432342', '43214321', '432', NULL, NULL, 20, '2015-03-23 04:43:05'),
 (7, 'Fluefjes', '2', '23432423', '4321', '12', NULL, NULL, 20, '2015-03-23 04:44:33'),
 (8, 'TestProject', 'test', 'This is a test', 'Test', 'test', NULL, NULL, 20, '2015-03-23 04:45:15'),
-(9, 'Haiti trenger gryn', 'Fortsatt nOEd', 'Etter jordskjelvet er det det fortsatt folk som trenger vann og greier og greier som koster penger. Kan u ikke bare slenge med noen kroner davel???', 'Haiti', 'Haiti By', NULL, NULL, 1, '2015-03-23 12:21:48'),
-(10, 'Hjelp et barn idag!', 'Barnetittel', 'hjelp fattige barn i fattige land! hjelp fattige barn i fattige land! hjelp fattige barn i fattige land!', 'Norge', 'Hamar', NULL, NULL, 3, '2015-04-21 22:57:10');
+(9, 'Haiti trenger gryn', 'Fortsatt nOEd', 'Etter jordskjelvet er det det fortsatt folk som trenger vann og greier og greier som koster penger. Kan u ikke bare slenge med noen kroner davel???', 'Haiti', 'Haiti By', NULL, NULL, 1, '2015-03-23 12:21:48');
 
 -- --------------------------------------------------------
 
@@ -5108,17 +5071,6 @@ CREATE TABLE IF NOT EXISTS `subscription` (
   `projectID` int(10) NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dataark for tabell `subscription`
---
-
-INSERT INTO `subscription` (`email`, `projectID`, `date_added`) VALUES
-('maglunde@gmail.com', 1, '2015-04-20 18:52:40'),
-('maglunde@gmail.com', 2, '2015-04-21 22:38:25'),
-('maglunde@gmail.com', 4, '2015-04-20 18:53:17'),
-('maglunde@gmail.com', 7, '2015-04-21 22:43:31'),
-('maglunde@gmail.com', 10, '2015-04-21 23:06:13');
 
 -- --------------------------------------------------------
 
@@ -5144,6 +5096,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`name`, `phone`, `email`, `password`, `picURL`, `address`, `zip`, `cardnr`, `funds`, `date_added`) VALUES
+('', '', '', '', NULL, NULL, NULL, '', 0, '2015-04-17 11:38:17'),
 ('Ape', '123', '123', '123', NULL, NULL, NULL, '123', 0, '2015-04-14 12:21:33'),
 ('Vegard Lokreim', '123', '123@icloud.vom', '$2a$07$PNT6WMxUEwkicAMpq1UKy.PpC5VzpW9abk4mkH/1NSA58OC9cpjsG', NULL, '1234567890+', NULL, NULL, 0, '2015-03-17 23:28:07'),
 ('Bestemor', '41513690', '321@321.com', '123', NULL, '123', '123', '123123123', 0, '2015-03-18 10:36:35'),
@@ -5567,9 +5520,9 @@ INSERT INTO `user` (`name`, `phone`, `email`, `password`, `picURL`, `address`, `
 ('Dagny BjOErk', '4766363', 'dagny-bjOErk@gmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:17'),
 ('Dagny BjOErneraas', '44258662', 'dagny-bjOErneraas@gmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:25'),
 ('Dagny Jelle', '43439544', 'dagny-jelle@gmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:14:06'),
-('Dagny Lehnin', '43324037', 'dagny-lehnin@gmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:16:12'),
-('Dagny Nissen', '49708985', 'dagny-nissen@gmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:31');
+('Dagny Lehnin', '43324037', 'dagny-lehnin@gmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:16:12');
 INSERT INTO `user` (`name`, `phone`, `email`, `password`, `picURL`, `address`, `zip`, `cardnr`, `funds`, `date_added`) VALUES
+('Dagny Nissen', '49708985', 'dagny-nissen@gmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:31'),
 ('Dagny Nislad', '47103341', 'dagny.nislad@sharity.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:28'),
 ('Dagny Tryvann', '4776716', 'dagny.tryvann@sharity.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:14:04'),
 ('Dagny Rossedal', '49996368', 'dagny_rossedal@hotmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:17'),
@@ -5587,7 +5540,6 @@ INSERT INTO `user` (`name`, `phone`, `email`, `password`, `picURL`, `address`, `
 ('Daniella Nissen', '46336692', 'daniella.nissen@sharity.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:17'),
 ('Daniella Brandmo', '4135899', 'daniella_brandmo@hotmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:12:52'),
 ('Daniel Tangen', '49024750', 'daniel_tangen@hotmail.com', 'test', NULL, NULL, NULL, NULL, 0, '2015-03-23 13:13:17'),
-('egil', '213123', 'egil@egil.no', 'egil', NULL, NULL, NULL, '123123213213213', 200, '2015-04-20 20:46:22'),
 ('Guttorm Evensen', '22334455', 'gutt@orm.no', 'gutt', NULL, NULL, NULL, NULL, 0, '2015-04-12 13:48:44'),
 ('lise', '9182', 'lise@gmail.com', 'lise', NULL, NULL, NULL, NULL, 0, '2015-04-14 12:24:17'),
 ('Vegard tae ese lokrei', '4146598383', 'lokizn@hotmail.com', 'natrium2299', NULL, NULL, NULL, NULL, 0, '2015-03-23 07:18:29'),
@@ -5604,8 +5556,7 @@ INSERT INTO `user` (`name`, `phone`, `email`, `password`, `picURL`, `address`, `
 ('per', 'per', 'per@prt', 'per', NULL, NULL, NULL, NULL, 0, '2015-04-17 12:01:25'),
 ('qweq', 'we', 'qwe@ku.nbo', 'qwe', NULL, NULL, NULL, NULL, 0, '2015-04-14 14:20:24'),
 ('Ronny Pedersen', '41468026', 'ronny@test.com', 'n', NULL, NULL, NULL, NULL, 0, '2015-03-23 04:38:30'),
-('buge', '123', 'sokgd@sdgn.no', '123', NULL, NULL, NULL, '9999888899998887', 50, '2015-04-20 20:43:47'),
-('Alexandra Emhjellen', '48041801', 't@t.com', '123', NULL, NULL, NULL, NULL, 497, '2015-03-23 06:01:11'),
+('Alexandra Emhjellen', '48041801', 't@t.com', '123', NULL, NULL, NULL, NULL, 0, '2015-03-23 06:01:11'),
 ('Test', '123', 'tttt@tt.mo', 'Test', NULL, NULL, NULL, '4198165746812', 200, '2015-04-17 12:07:43');
 
 --

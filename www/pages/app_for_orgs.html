@@ -3,30 +3,31 @@
 <html>
 <head>
 
-<meta charset="utf-8" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="msapplication-tap-highlight" content="no" />
-<meta name="viewport"
-	content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport"
+		content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-<!-- Lokal css -->
-<link rel="stylesheet" type="text/css" href="../css/org_page_home.css" />
-<link rel="stylesheet" type="text/css" href="../css/org_activities.css" />
-<link rel="stylesheet" type="text/css" href="../css/org_statistics.css" />
+	<!-- Lokal css -->
+	<link rel="stylesheet" type="text/css" href="../css/org_page_home.css" />
+	<link rel="stylesheet" type="text/css" href="../css/org_activities.css" />
+	<link rel="stylesheet" type="text/css" href="../css/org_statistics.css" />
 
-<!-- Include jQuery Mobile stylesheets -->
-<link rel="stylesheet"
-	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<!-- Include jQuery Mobile stylesheets -->
+	<link rel="stylesheet"
+		href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
-<!-- Include the jQuery library -->
-<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<!-- Include the jQuery library -->
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
-<!-- Include the jQuery Mobile library -->
-<script
-	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<!-- Include the jQuery Mobile library -->
+	<script
+		src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<!-- Include local JS -->
+	<script src="../js/app_for_orgs.js"></script>
+	<script src="../js/urls.js"></script>
 
-<!-- Include the jQuery Dotdotdot library -->
-<script src="../js/jquery.dotdotdot.min.js"></script>
 
 </head>
 <body>
@@ -38,40 +39,40 @@
 		</div>
 
 		<div class="portrait_small">
-			<div class="logodiv_left_small">Logo</div>
+			<div class="logodiv_left_small"><img src="../img/no_image_avaliable.png" name="homeOrgLogo"></div>
 		</div>
 
 		<div class="main_content">
 			<section>
-				<span class="grey">Kategori for organisasjon</span>
-				<h2>Navn på organisasjon</h2>
+				<span class="small grey" name="homeOrgCategory"></span>
+				<h2 name="homeOrgName"></h2>
 				<div class="somespace"></div>
 				<div class="content_box1">
 					<div class="content_box_top">
-						Totalt: <span class="green">6722</span>
+						Totalt: <span class="green" name="homeOrgSumDonations"></span> kr
 					</div>
 					<div class="content_box1l">
 						<div class="container_top">
-							<span id="org_num_followers" class="bottom big">25</span>
+							<span  name="homeOrgNumFollowers" class="bottom big"></span>
 						</div>
 						<div class="container_bottom">
-							<span id="org_num_followers" class="top medium">følgere</span>
+							<span class="top medium" name="homeOrgSingularPluarFollowers"></span>
 						</div>
 
 					</div>
 					<div class="content_box1r">
 						<div class="container_top">
-							<span id="org_num_followers" class="bottom big">11</span>
+							<span name="homeOrgNumDonations" class="bottom big">11</span>
 						</div>
 						<div class="container_bottom">
-							<span id="org_num_followers" class="top medium">donasjoner</span>
+							<span class="top medium" name="homeOrgSingularPluarDonations"></span>
 						</div>
 					</div>
 				</div>
 
 			</section>
 			<section>
-				<table class="layer clickable">
+				<table class="clickable">
 					<tr>
 						<td style="width: 85%"><span style="margin-left: 10pt">Publiser
 								nyhet</span></td>
@@ -85,14 +86,7 @@
 
 				<h2>Siste nytt</h2>
 
-				<div class="portrait">Bakgrunnsbilde</div>
-				<article>
-					<h2 class="blue">Tittel på nyhet</h2>
-
-					<p>lablablablab a balba lba llblablabl ablblabl albal ba lba
-						lablb lb lab lab lab labd lab ba lbb bblblabdlbalb bl bab ab ablb
-						a</p>
-				</article>
+				<div id="homeOrgNews"></div>
 
 			</section>
 
@@ -137,7 +131,7 @@
 		</div>
 
 		<div class="main_content">
-			<select data-role="none" class="input_underscored grey">
+			<select data-role="none" class="input_underscored grey" name="actsSelectProject">
 				<!-- 			<option disabled selected style="display:none;">Alle prosjekter</option> -->
 				<option value="0">Alle Prosjekter</option>
 				<option value="1">Prosjekt1</option>
@@ -145,18 +139,18 @@
 				<option value="3">Prosjekt3</option>
 			</select>
 			<section>
-				<table class="layer">
-					<tr class="border-bottom clickable">
+				<table id="actsProjectStats">
+					<tr class="border-bottom clickable" name="actsRowDonations">
 						<td style="width: 80%"><span style="margin-left: 10pt">Donasjoner</span></td>
 						<td style="width: 10%"><div class="red_notif"
-								id="num_donations">31</div></td>
+								id="num_donations"><span name="actsNumDonations">5</span></div></td>
 						<td style="width: 10%"><img alt="Arrow"
 							src="../img/li_arrow_r_grey.png"></td>
 					</tr>
-					<tr class=" clickable">
+					<tr class=" clickable" name="actsRowFollowers">
 						<td style="width: 80%"><span style="margin-left: 10pt">Følgere</span></td>
 						<td style="width: 10%"><div class="red_notif"
-								id="num_followers">114</div></td>
+								id="num_followers"><span name="actsNumFollowers">89</span></div></td>
 						<td style="width: 10%"><img alt="Arrow"
 							src="../img/li_arrow_r_grey.png"></td>
 					</tr>
@@ -267,13 +261,12 @@
 	<div data-role="page" id="page_org_settings" data-theme="a">
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
-			<img alt="Projects-icon" src="../img/menu_projects.png"
-				class="menu_projects_icon">
 			<p>Innstillinger</p>
 		</div>
 
 		<div class="main_content">
 		FASE 2...
+		<button id="logout" name="logout">Logg ut</button>
 
 		</div>
 
