@@ -54,7 +54,6 @@ function showNews(){
 		success : function(response){
 			var newsCode = "";
 			for(var i = 0; i < response.length; i++){
-				console.log(response.length);
 				newsCode += 
 				'<li id="' + response[i].newsID + '" name="news_list">'+
 				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
@@ -78,7 +77,6 @@ function showNews(){
 				'</li>';
 			}
 			$('ul[name=newsListProject]').html(newsCode);
-			console.log("newsCode lagt til");
 		}
 	});
 }
