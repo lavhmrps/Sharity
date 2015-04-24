@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	$(document).on('click', 'li[name=news_list]', function() {
 		localStorage.setItem('newsToShow', this.id);
+		showNews();
 	});
 });
 
@@ -33,11 +34,11 @@ function showNews(){
 			$("span[name=title]").text(response[0].title);
 			$("span[name=ingress]").text(response[0].txt);
 
+			$('img[name=backgroundImg]').show();
 			$('img[name=backgroundImg]').error(function(){
-				$(this).remove();
+				$(this).hide();
 			});
 			$('img[name=orglogo]').error(function(){
-				$(this).remove();
 			});
 		}
 	});
@@ -53,8 +54,9 @@ function showNews(){
 		success : function(response){
 			var newsCode = "";
 			for(var i = 0; i < response.length; i++){
+				console.log(response.length);
 				newsCode += 
-				'<li id="' + response[i].newsID + '">'+
+				'<li id="' + response[i].newsID + '" name="news_list">'+
 				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
 				'<div class="li_container">'+
 				'<div class="li_left">'+
@@ -74,11 +76,9 @@ function showNews(){
 				'</div>'+
 				'</a>'+
 				'</li>';
-
-				
-				$(".dots").dotdotdot();
 			}
-			$('ul[name=newsList]').html(newsCode);
+			$('ul[name=newsListProject]').html(newsCode);
+			console.log("newsCode lagt til");
 		}
 	});
 }
