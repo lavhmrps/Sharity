@@ -92,7 +92,7 @@ function checkSubStatus(email,projectID){
 function showProject(){
 
 	var projectID = localStorage.getItem("projectToShow");
-	var sql = "SELECT * FROM Project WHERE projectID ='" + projectID + "'";
+	var sql = "SELECT o.logoURL as orgLogo, p.* FROM Project as p join organization as o on o.organizationNr = p.organizationNr WHERE projectID ='" + projectID + "'";
 	var url = getURLappBackend();
 	$.ajax({
 		type : "POST",
@@ -114,7 +114,8 @@ function showProject(){
 			$('span[name=project_country]').text(project_country);
 			$('span[name=project_city]').text(project_city);
 			$('img[name=background]').attr("src", background);
-			$('img[name=logo]').attr("src",localStorage.getItem("orgLogo"));
+			$('img[name=logo]').attr("src",response[0].orgLogo);
+			localStorage.setItem("orgLogo",response[0].orgLogo)
 
 			appendNewsList(projectID);
 			$('img[name=background]').error(function(){
