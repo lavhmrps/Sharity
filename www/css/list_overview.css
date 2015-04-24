@@ -1,3 +1,8 @@
+#listTitle{
+	font-size: small;
+	font-weight: bold;
+}
+
 #orgList  li{
 	max-height: 40pt ;
 	border-bottom: thin solid #d2d2d2;
@@ -56,7 +61,7 @@
 	text-align: center;
 }
 
-#orgList .li_org_name{
+#orgList .li_org_name,#orgList .li_project_name{
 	display: block;
 	font-size: large;
 	font-weight: normal;
@@ -66,7 +71,7 @@
 	text-overflow:ellipsis;
 }
 
-#orgList .li_num_projects{
+#orgList .li_num_projects,#orgList .li_projects_org_name{
 	font-size: small;
 	color: #9b9b9b;
 	font-weight:normal;
