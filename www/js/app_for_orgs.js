@@ -18,6 +18,7 @@ $(document).on("pagebeforeshow","#page_org_home",function(){
 		data:{"getSQL":sql},
 		success:function(response){
 			localStorage.setItem("orgID",response[0].organizationNr);
+			localStorage.setItem("orgname",response[0].name);
 			localStorage.setItem("orgCategory",response[0].category);
 			localStorage.setItem("orgLogoURL",response[0].logoURL);
 			localStorage.setItem("orgBackgroundURL",response[0].backgroundimgURL);
@@ -102,6 +103,7 @@ $(document).on("pageshow","#page_org_home",function(){
 	
 	$("span[name=homeOrgCategory]").html(localStorage.getItem("orgCategory"));
 	$("h2[name=homeOrgName]").html(localStorage.getItem("orgName"));
+	console.log(localStorage.getItem("orgName"));
 	$("span[name=homeOrgSumDonations]").html(localStorage.getItem("orgSumDonations"));
 	var numSubs = localStorage.getItem("orgNumSubs");
 	$("span[name=homeOrgNumFollowers]").html(numSubs);

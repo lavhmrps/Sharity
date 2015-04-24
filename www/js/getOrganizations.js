@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	listOrgs();
 	
-	$(document.body).on('click', 'li[name=organization_list]', function() {
+	$(document).on('click', 'li[name=organization_list]', function() {
 		//alert(this.id+": (getOrganization.js)");
 		localStorage.setItem('organizationToShow', this.id);
 		//alert("File: getOrganization.js: setting organizationToShow " + localStorage.getItem('organizationToShow'));
@@ -83,8 +83,6 @@ function listOrgs(){
 							'</div>'+
 							'</a>' +
 							'</li>';
-
-							
 						}
 						$("#orgList").html(orgCode);
 					}

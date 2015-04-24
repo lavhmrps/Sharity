@@ -12,6 +12,17 @@
 	line-height: 60pt;
 }
 
+.logodiv_top_right img{
+	width:100%;
+	height:100%;
+	border-radius: 50%;
+}
+.logodiv_left img{
+	width:100%;
+	height:100%;
+	border-radius: 50%;
+}
+
 .space_btn {
 	width: 90%;
 	margin: auto;
@@ -57,3 +68,14 @@
 	margin: 0;
 	padding: 0;
 }
+
+#project_title{
+	display:block;
+	font-size:x-large;
+	font-weight: bold;
+}
+
+.project_city, .project_country{
+	font-size:small;
+}
+

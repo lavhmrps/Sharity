@@ -58,7 +58,8 @@
 
 #orgList .li_org_name{
 	display: block;
-	font-size: medium;
+	font-size: large;
+	font-weight: normal;
 	color: #000;
 	overflow:hidden;
 	white-space: nowrap;
@@ -68,6 +69,7 @@
 #orgList .li_num_projects{
 	font-size: small;
 	color: #9b9b9b;
+	font-weight:normal;
 }
 
 #orgList .li_right img{

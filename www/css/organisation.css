@@ -4,14 +4,18 @@
 	bottom: -30pt;
 	left: 10pt;
 	border-radius: 50%;
-	width: 90pt;
-	height: 90pt;
+	width: 90pt !important;
+	height: 90pt !important;
 	background-color: white;
 	color: grey;
 	font-size: 12pt;
 	border: 1pt solid grey;
 	line-height: 90pt;
 	text-align: center
+}
+
+.above_main_content{
+	position:relative;
 }
 
 
@@ -40,34 +44,25 @@
 	margin-top: 30pt;
 }
 
-.grey {
-	color: #9b9b9b !important;
+.btn_organization_donate {
+	position: absolute !important;
+	top:20pt;
+	width: 45% !important;
+	right: 5% !important;
+	background: #20a623 !important;
+	color: white !important;
+	padding: 10pt !important;
+	font-size: large !important;
+	outline: none !important;
+	text-align:center;
+	text-decoration:none;
+	border: none;
 }
 
-.blue {
-	color: #006dfe !important;
-}
-
-.green {
-	color: #20a623 !important;
-}
-
-.listdiv {
-	margin-top: 30pt;
-}
-
-h2.orgname {
-	margin: 0;
-	padding: 0;
-}
 
 .ingress {
 	margin: 0;
 	padding: 0;
-}
-
-.somespace {
-	min-height: 20pt;
 }
 
 .clickable:ACTIVE {
@@ -81,4 +76,11 @@ h2.orgname {
 
 .footer_active {
 	background: #eee;
+}
+.block{
+	display:block;
+}
+.title{
+	font-size: x-large;
+	font-weight: bold;
 }

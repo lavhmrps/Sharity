@@ -256,6 +256,7 @@ section h2.blue {
 
 .small{
 	font-size: small;
+	font-weight: normal !important;
 }
 
 .footer_active {

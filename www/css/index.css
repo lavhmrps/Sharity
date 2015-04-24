@@ -293,12 +293,6 @@ table tr td input {
 	right: 0;
 }
 
-.box_text {
-	font-size: medium;
-	font-weight: normal;
-	margin: 5pt;
-}
-
 .grey {
 	color: #9b9b9b !important;
 }
@@ -322,7 +316,7 @@ table tr td input {
 	text-shadow: none !important;
 }
 
-.layer {
+. {
 	box-shadow: 0pt 0pt 1pt 0pt #d2d2d2;
 }
 

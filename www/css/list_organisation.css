@@ -35,12 +35,12 @@ body {
 }
 
 #projectList .li_mid {
-	width: 55%;
+	width: 60%;
 	padding: 15pt 3pt 5pt 5pt;
 }
 
 #projectList .li_right {
-	width: 30%;
+	width: 25%;
 }
 
 #projectList .li_circ {
@@ -89,7 +89,7 @@ body {
 	top: 0;
 	bottom: 0;
 	border: none;
-	width: 70pt;
+	width: 60pt;
 	height: 20pt;
 	margin: auto;
 	background: #20a623;

@@ -81,25 +81,6 @@
 	margin: 5pt;
 }
 
-.grey {
-	color: #9b9b9b !important;
-}
-
-.blue {
-	color: #006dfe !important;
-}
-
-.green {
-	color: #20a623 !important;
-}
-
-.layer {
-	box-shadow: 0pt 0pt 1pt 0pt #d2d2d2;
-}
-
-.listdiv {
-	margin-top: 30pt;
-}
 
 .search {
 	margin-top: 10pt;
@@ -110,16 +91,13 @@
 	outline: none;
 	box-shadow: none;
 	border: none;
-	font-size: medium;
+	font-size: small;
 }
 
 input.search:focus {
 	outline: none;
 }
 
-.somespace {
-	min-height: 20pt;
-}
 
 footer ul li {
 	position: relative;

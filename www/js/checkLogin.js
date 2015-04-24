@@ -34,6 +34,8 @@ $(document).ready(function(){
 				}else if(response == "ORG"){
 					console.log("Organisasjon-login: ok");
 					window.location.replace("pages/app_for_orgs.html#page_org_home");
+					
+					email = toTitleCase(email);
 					localStorage.setItem("orgName", email);
 				}
 
@@ -50,3 +52,11 @@ $(document).ready(function(){
 		event.preventDefault();
 	});
 });
+
+// Each word gets capitalized letter
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){
+    	return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+}

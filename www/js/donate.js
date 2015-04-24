@@ -1,9 +1,26 @@
-$(document).delegate("#page_donate","pageinit",function(){
+$(document).on("pagebeforeshow","#page_donate",function(){
+	//console.log("page_donate, project: "+localStorage.getItem("donateToProject"));
 
-	var projectID = localStorage.getItem('projectToShow');
+	var projectID = localStorage.getItem('donateToProject');
+	var orgNr = localStorage.getItem('donateToOrganization');
+	var sql="";
+	var orgDonation=false; projectDonation=false;
 	var projectName, orgName;
+	if(projectID != undefined){
+		sql ="select p.* , o.name as orgName from project as p join organization as o on (p.organizationNr = o.organizationNr) where projectID = " + projectID;
+		projectDonation=true;
+		console.log("ProjectDonation! "+projectID);
+	}
+	else if (orgNr != undefined){
+		sql ="select * from organization where organizationNr = "+orgNr;
+		orgDonation=true;
+		console.log("OrganizationDonation!"+orgNr);
+	}
+	else{
+		alert("feil: Hverken organisasjon eller prosjekt er valgt");
+		return;
+	}
 
-	var sql ="select p.* , o.name as orgName from project as p join organization as o on (p.organizationNr = o.organizationNr) where projectID = " + projectID;
 	var url = getURLappBackend();
 
 	$.ajax({
@@ -13,19 +30,28 @@ $(document).delegate("#page_donate","pageinit",function(){
 		data:{"getSQL":sql},
 		success:function(response){
 			//alert("projectID:" +projectID+": "+JSON.stringify(response));
-			projectName = response[0].name;
-			orgName = response[0].orgName;
-
-			$(".projectName").html("Prosjekt: "+projectName);
-			$(".orgName").html("Organisasjon: "+orgName);
-			
-
+			if(projectDonation){
+				projectName = response[0].name;
+				orgName = response[0].orgName;
+				$(".recieverProject").show();
+				$(".projectName").html(projectName);
+			}
+			if(orgDonation){
+				orgName = response[0].name;
+				$(".recieverProject").hide();
+			}
+			$(".orgName").html(orgName);
 		},
 		error:function(response){
 			alert("error: "+json.stringify(response));
 		}
 	});
 
+});
+
+
+$(document).on("pageinit","#page_donate",function(){
+	// Click events on page
 	$(".radio_amount").click(function() {
 		$("#in_custom_amount").val("");
 		$("#in_custom_amount").blur();
@@ -37,26 +63,34 @@ $(document).delegate("#page_donate","pageinit",function(){
 
 	});
 
-	function uncheckRadiobuttonsDonate() {
-		$("input[name='in_donate_amount']").attr("checked", false)
-		.checkboxradio("refresh");
-	}
-
 	$('img[name=back]').click(function(){
 		window.history.go(-1);
 	});
 
 	$('button[name=reg_donation_done]').click(function(){
+		if(localStorage.getItem("donateToOrganization") != undefined)
+		{
+			alert("TODO: doner til organisasjon");
+			return;
+		}
 		completeDonation();
 	});
 });
 
-function completeDonation(){
-	var projectID = localStorage.getItem('projectToShow');
+ $(document).on("pagebeforehide","#page_donate",function(){
+ 	localStorage.removeItem("donateToProject");
+ 	localStorage.removeItem("donateToOrganization");
+ })
 
+function uncheckRadiobuttonsDonate() {
+	$("input[name='in_donate_amount']").attr("checked", false)
+	.checkboxradio("refresh");
+}
+
+function completeDonation(){
 	var sum;
 	var type;
-	var projectID = localStorage.getItem('projectToShow');
+	var projectID = localStorage.getItem('donateToProject');
 	var email = localStorage.getItem('userID');
 
 	var validSum = false;
@@ -103,7 +137,7 @@ function completeDonation(){
 			console.log("funds for "+email+": "+response[0].funds);
 			funds =  response[0].funds;
 			if (funds < sum){
-				alert("ikke dekning på konto");
+				alert("ikke dekning på konto:"+funds +" < "+ sum);
 				return;
 			}
 			var newFunds = funds - sum;

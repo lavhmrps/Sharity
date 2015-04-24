@@ -10,7 +10,11 @@
 	position: absolute;
 	top:0;bottom:0;
 	margin:auto;
+	width:70pt;
 	height:30pt;
+	outline: none;
+	border:none;
+	background: white;
 	font-size: large;
 	padding:0;
 }

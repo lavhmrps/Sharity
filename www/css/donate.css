@@ -1,39 +1,18 @@
-#header_div{
-	position: relative;
-}
-
 #donationRecieverInfo{
-	position: absolute;
-	right: 0; bottom:0;
-	line-height: normal;
-	margin-right: 25pt;
-	max-width: 150pt;
-
-
-}
-
-#donationRecieverInfo .projectName{
-	color:pink;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2; /* number of lines to show */
-	line-height: 15pt;        /* fallback */
-	max-height: 30pt;       /* fallback */
+	font-size: x-large;
 }
 
 #donationRecieverInfo .orgName{
-	color: orange;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2; /* number of lines to show */
-	line-height: 15pt;        /* fallback */
-	max-height: 30pt;       /* fallback */
 }
 
+#donationRecieverInfo .placeholderOrg,#donationRecieverInfo .placeholderProject{
+	position: absolute;
+	font-size: x-small;
+	top:-6pt;
+}
+
+#donationRecieverInfo .projectName{     /* fallback */
+}
 
 #page_donate table{
 	width: 100%;

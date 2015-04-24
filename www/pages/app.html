@@ -72,13 +72,13 @@
 
 
 		<div class="main_content">
-			<div class="content_box1 layer">
+			<div class="content_box1 ">
 				<div class="content_box1l box_inner">
-					<h6 class="box_text grey">Sorter</h6>
+					<h6 class="box_text small grey">Sorter</h6>
 					<h5 class="box_text blue">Organisasjoner</h5>
 				</div>
 				<div class="content_box1r box_inner">
-					<h6 class="box_text grey">Område</h6>
+					<h6 class="box_text small grey">Område</h6>
 					<h5 class="box_text blue">Alle</h5>
 				</div>
 				<div class="content_box1b">
@@ -233,20 +233,24 @@
 	<div data-role="page" id="page_organization" data-theme="a">
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
 			<p name="organization_name">Org.navn</p>
 		</div>
 		<div class="portrait">
-			<img name="background"style="height:100%; width:100%;" alt="[background image]">
+			<img src="#" name="background">
 			<img class="logodiv_left" name="logo"/>
 
 		</div>
-		<div class="top_links">
-			<a href="#">Nyheter</a> <a href="#">Om organisasjonen</a>
+		<div class="above_main_content">
+			<div class="top_links">
+				<a href="#">Nyheter</a>
+				<a href="#page_donate" class="btn_organization_donate" name="page_org_donation">DONÉR</a>
+			</div>
 		</div>
 		<div class="main_content">
-			<span class="grey" name="category">Kategori: </span>
-			<p class="orgname" name="organization_name">[Navn på Org]</p>
-			<p class="ingress" name="ingress">[about this organization]</p>
+			<span class="grey small block" name="category">Kategori: </span>
+			<span class="title block" name="organization_name">[Navn på Org]</span>
+			<span class="block" name="ingress">[about this organization]</span>
 
 
 			<div class="listdiv">
@@ -262,7 +266,7 @@
 				<div data-role="navbar">
 					<ul>
 						<li class="footer_me"><img  alt="" src="../img/icon_menu_footer_me_holo.png"></li>
-						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_overview footer_active"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
 						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
 						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
 					</ul>
@@ -283,20 +287,21 @@
 
 		<!-- For toppbilde  -->
 		<div class="portrait">
-			<img src="#" alt="[background image]" name="background" style="height:100%; width:100%">
+			<img src="#" name="background">
 			<div class="logodiv_top_right">
-				Orglogo
+				<img src="#" name="logo">
 			</div>
 		</div>
 		<div class="space_btn">
 			<a href="#" name="follow_this_project" id="sublink"></a>
-			<a href="#page_donate" rel="external" class="btn_single_project_donate show-page-loading-msg">DONÉR</a>
+			<a href="#page_donate" rel="external" class="btn_single_project_donate show-page-loading-msg" name="page_project_donation">DONÉR</a>
 		</div>
 		<div class="main_content">
 
-			<span style="text-decoration: underline;" class="grey" name="project_country">[country]</span>,<span style="text-decoration: underline;" class="grey" name="project_city">[city]</span>
+			<span style="text-decoration: underline;" class="small grey" name="project_country">[country]</span>,
+			<span style="text-decoration: underline;" class="small grey" name="project_city">[city]</span>
 
-			<p name="project_title">[project title]</p>
+			<span id="project_title" name="project_title">[project title]</span>
 			<p class="ingress" name="ingress">[about this project]</p>
 
 			<div class="listdiv">
@@ -315,7 +320,7 @@
 			<div data-role="navbar">
 				<ul>
 					<li class="footer_me"><img  alt="" src="../img/icon_menu_footer_me_holo.png"></li>
-					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_overview footer_active"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
 					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
 					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
 				</ul>
@@ -330,14 +335,16 @@
 			<div class="header_top"></div>
 			<img src="../img/arrow_left.png" class="menu_icon" name="back"/>
 			<p>Donér</p>
-			<div id="donationRecieverInfo">
-				<div class="projectName">[prosjektnavn]</div>
-				<span class="orgName">[organisasjonsnavn]</span>
-
-			</div>
+			
 		</div>
 
 		<div class="main_content">
+			<!--<span style="display:block;margin-top:-25pt;font-size:large;">Mottager</span>-->
+			<div id="donationRecieverInfo">
+				<div class="relative recieverOrg"><span class="placeholderOrg green">Organisasjon:</span><span class="orgName">[organisasjonsnavn]</span></div>
+				<div class="relative recieverProject"><span class="placeholderProject green">Prosjekt:</span><span class="projectName">[prosjektnavn]</span></div>
+
+			</div>
 			<fieldset data-role="none">
 				<table>
 					<tr>
@@ -395,9 +402,7 @@
 
 			<div class="somespace"></div>
 
-			<button data-role="none" class="btn_single_project_donate"
-			onclick="#" name="reg_donation_done">DONÉR BELØP</button>
-
+			<button data-role="none" class="btn_single_project_donate" onclick="#" name="reg_donation_done">DONÉR BELØP</button>
 
 			<div class="somespace"></div>
 			<div class="somespace"></div>
@@ -406,7 +411,7 @@
 				<div data-role="navbar">
 					<ul>
 						<li class="footer_me"><img  alt="" src="../img/icon_menu_footer_me_holo.png"></li>
-						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_overview footer_active"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
 						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
 						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
 					</ul>
@@ -438,7 +443,7 @@
 				<span style="padding-left: 5%; line-height: 55pt;">Statistikk</span>
 			</div>
 			<div class="main_content">
-				<div class="content_box1 layer"
+				<div class="content_box1 "
 				style="height: 100pt; margin-top: -20pt;">
 				<div class="content_box1l" style="height: 100%;">
 					<div class="content_box_top">
@@ -596,16 +601,16 @@
 			<div id="header_div" class="boxshadow">
 				<div page-role="header" class="header_top"></div>
 				<img src="../img/arrow_left.png" class="menu_icon back_btn">
-				<p id="orgname">[Org.name]</p>
+				<p name="orgname">[Org.name]</p>
 			</div>
 			<div class="portrait">
-				Bakgrunnsbilde / toppbilde
+				<img src="#" name="backgroundImg">
 
-				<div class="logodiv_left">Org. logo</div>
+				<div class="logodiv_left"><img src="#" name="orglogo"></div>
 
 			</div>
 			<div class="top_links">
-				<a href="#">Nyheter</a> <a href="#">Om organisasjonen</a>
+				<a href="#">Nyheter</a> 
 			</div>
 
 			<div class="space_btn">
@@ -614,9 +619,9 @@
 			</div>
 
 			<div class="main_content">
-				<h4 class="grey" id="date">[date]</h4>
-				<p class="orgname" id="title">[title]</p>
-				<span class="ingress" id="ingress">[news text]</span>
+				<span class="small grey" name="date">[date]</span>
+				<span class="title block" name="title">[title]</span>
+				<span class="block" name="ingress">[news text]</span>
 				<div class="listdiv">
 					<h3>Siste nyheter</h3>
 					<ul name="newsListProject" id="newsListProject">
@@ -646,7 +651,7 @@
 				<div class="header_top"></div>
 				<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
 				<p>Innstillinger</p>
-				<div id="div_logout"><button id="logout" name="logout">Logg ut</button></div>
+				<div id="div_logout"><button id="logout" name="logout" data-role="none">Logg ut</button></div>
 					
 			</div>
 			<div class="main_content">
@@ -691,7 +696,7 @@
 			</div>
 			<div class="main_content">
 				<div class="content_box">
-					<div class="content_box_search layer">
+					<div class="content_box_search ">
 						<div class="content_box1b_icon">
 							<img src="../img/icon_search.png" class="icon"/>
 						</div>
@@ -749,7 +754,7 @@
 					<span style="padding-left: 5%; line-height: 55pt;">Statistikk</span>
 				</div>
 				<div class="main_content">
-					<div class="content_box1 layer"
+					<div class="content_box1 "
 					style="height: 100pt; margin-top: -20pt;">
 					<div class="content_box1l" style="height: 100%;">
 						<div class="content_box_top">

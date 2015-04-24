@@ -56,6 +56,7 @@
 
 
 .main_content {
+	position: relative;
 	width: 90%;
 	margin: auto;
 	margin-top: 30pt;
@@ -99,4 +100,18 @@
 
 .footer_active {
 	background: #eee;
+}
+
+.small{
+	font-size:small !important;
+	font-weight: normal;
+}
+
+.relative{
+	position: relative;
+}
+
+.portrait img{
+	height:100%;
+	width:100%;
 }

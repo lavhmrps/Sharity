@@ -103,27 +103,6 @@ table tr td {
 	height: 40pt;
 }
 
-.main_content {
-	width: 90%;
-	margin: auto;
-	margin-top: 30pt;
-}
-
-.grey {
-	color: #9b9b9b !important;
-}
-
-.red{
-	color:#f63218 !important;
-}
-
-.green {
-	color: #20a623 !important;
-}
-
-.somespace {
-	min-height: 20pt;
-}
 
 section {
 	margin: 20pt 0;

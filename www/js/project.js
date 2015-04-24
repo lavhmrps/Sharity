@@ -1,4 +1,4 @@
-$(document).on( "pagebeforeshow","#page_project",function(){
+$(document).on( "pageinit","#page_project",function(){
 	var projectID = localStorage.getItem("projectToShow");
 	var email = localStorage.getItem('userID');
 	checkSubStatus(email,projectID);
@@ -17,7 +17,6 @@ $(document).on( "pagebeforeshow","#page_project",function(){
 			data : data,
 			dataType : "json",
 			success : function(json){
-				console.log(json.length);
 				if(json.length == 0){
 					var data = {"setSQL" :  "INSERT INTO subscription (email, projectID) VALUES ('"+email+"', '"+projectID+"')"};
 					$.ajax({
@@ -26,7 +25,6 @@ $(document).on( "pagebeforeshow","#page_project",function(){
 						data : data,
 						dataType : "text",
 						success : function(response){
-							console.log("start abo: "+response);
 							$('a[name=follow_this_project]').html("Stopp abonnement");
 
 						},
@@ -44,7 +42,6 @@ $(document).on( "pagebeforeshow","#page_project",function(){
 						dataType:"text",
 						data:{"setSQL":sql},
 						success:function(response){
-							console.log("avslutt abo: "+response);
 							$('a[name=follow_this_project]').html("Følg prosjekt");
 						}
 					});
@@ -53,23 +50,27 @@ $(document).on( "pagebeforeshow","#page_project",function(){
 			}
 		});
 	});
-});
 
-
-$(document).delegate("#page_project", "pagebeforeshow", function() {
-		showProject();
-});
-
-
-$(document.body).on('click', 'li[name=news_list]', function() {
-	localStorage.setItem('newsToShow', this.id);
-		//alert("file: project.js: setting newsToShow in localStorage: " + localStorage.getItem('newsToShow'));
-
+	$(document).on('click', 'a[name="page_project_donation"]', function() {
+		localStorage.setItem("donateToProject",localStorage.getItem("projectToShow"));
+		console.log("page_project, project: "+localStorage.getItem("donateToProject"));
 	});
 
-$(document.body).on('click', 'li[name=project_list]', function() {
-	//alert("File: project.js, trying to show projectNr: " + localStorage.getItem('projectToShow'));
-	showProject();
+	$(document).on('click', 'li[name=news_list]', function() {
+		localStorage.setItem('newsToShow', this.id);
+			//alert("file: project.js: setting newsToShow in localStorage: " + localStorage.getItem('newsToShow'));
+
+		});
+
+	$(document).on('click', 'li[name=project_list]', function() {
+		//alert("File: project.js, trying to show projectNr: " + localStorage.getItem('projectToShow'));
+		showProject();
+	});
+});
+
+
+$(document).on("pagebeforeshow","#page_project", function() {
+		showProject();
 });
 
 function checkSubStatus(email,projectID){
@@ -108,15 +109,20 @@ function showProject(){
 
 			$('p[name=project_name]').text(project_name);
 			localStorage.setItem("projectName", project_name);
-			$('h2[name=project_title]').text(project_title);
+			$('span[name=project_title]').text(project_title);
 			$('p[name=ingress]').text(about_project);
 			$('span[name=project_country]').text(project_country);
 			$('span[name=project_city]').text(project_city);
 			$('img[name=background]').attr("src", background);
+			$('img[name=logo]').attr("src",localStorage.getItem("orgLogo"));
 
 			appendNewsList(projectID);
-
-
+			$('img[name=background]').error(function(){
+				$(this).remove();
+			});
+			$('img[name=logo]').error(function(){
+				$(this).remove();
+			});
 		}
 	});
 }
@@ -131,9 +137,7 @@ function appendNewsList(projectID){
 		dataType: "JSON",
 		data : {"getSQL" : sql},
 		success : function(response){
-
 			if(response.length == 0){
-
 				newsCode = '<li>Ingen nyheter</li>';
 			}
 
@@ -146,8 +150,8 @@ function appendNewsList(projectID){
 				'<div class="circle"></div>'+
 				'</div>'+
 				'<div class="li_mid">'+
-				'<span class="li_date">'+
-				response[i].date_added  + 
+				'<span class="small grey">'+
+				response[i].date_added  +
 				'</span>'+
 				'<div class="li_text dots">'+
 				response[i].txt +
