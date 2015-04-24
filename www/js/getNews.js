@@ -38,7 +38,9 @@ function showNews(){
 			$('img[name=backgroundImg]').error(function(){
 				$(this).hide();
 			});
+			$('img[name=orglogo]'),show();
 			$('img[name=orglogo]').error(function(){
+				$(this).hide();
 			});
 		}
 	});

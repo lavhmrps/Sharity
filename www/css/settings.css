@@ -19,6 +19,7 @@
 	padding:0;
 }
 
+
 .greyline {
 	width: 100%;
 	margin: 20pt 0 20pt 0;
@@ -30,7 +31,7 @@
 }
 
 
-#subscription_list li{
+#subscription_list li,#friend_requests li{
 	max-height: 50pt;
 	border-bottom: thin solid #d2d2d2;
 	list-style: none;
@@ -40,7 +41,7 @@
 	height:40pt;
 }
 
-#subscription_list .li_left, #subscription_list .li_mid, #subscription_list .li_right{
+#subscription_list .li_left, #subscription_list .li_mid, #subscription_list .li_right,#friend_requests .li_left, #friend_requests .li_mid, #friend_requests .li_right{
 	background: white;;
 	position: relative;
 	height:40pt;
@@ -49,11 +50,11 @@
 
 }
 
-#subscription_list .li_left{
+#subscription_list .li_left,#friend_requests .li_left{
 	width:15%;
 }
 
-#subscription_list .circlegrey{
+#subscription_list .circlegrey,#friend_requests .circlegrey{
 	position: absolute;
 	margin:auto;
 	top:0;
@@ -70,11 +71,38 @@
 	text-align: center;
 }
 
+#friend_requests .li_mid{
+	padding:5pt;
+	width: 60%;
+}
+
 #subscription_list .li_mid{
 	padding:5pt;
 	width: 65%;
 }
 
+#friend_requests .li_right{
+	position:relative;
+	width: 25%;
+}
+#friend_requests button{
+	position: absolute;
+	right:0;
+	width:50pt;
+	height: 16pt;
+	color:white;
+	font-size: small;
+	border:thin solid #9b9b9b;
+}
+
+#friend_requests .btn_deny{
+	bottom:3pt;margin:auto;
+	background:#f63218;
+}
+#friend_requests .btn_accept{
+	top:3pt;margin:auto;
+	background :#20a623;
+}
 #subscription_list .projectName{
 	color:#333;
 	display: block;
@@ -82,9 +110,7 @@
 	font-size: large;
 }
 
-#subscription_list .date{
-	font-size:small;
-}
+
 
 #subscription_list .li_right{
 	width: 20%;

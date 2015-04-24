@@ -7,7 +7,7 @@ $(document).ready(function(){
 		localStorage.clear();
 		window.location.replace("../index.html");
 	});
-	$(document.body).on('click', 'button[name=accept_request]', function() {
+	$(document).on('click', 'button[name=accept_request]', function() {
 		acceptFriendRequest(this.id);
 	});
 });
@@ -19,7 +19,7 @@ $(document).on('pagebeforeshow', '#page_settings', function(){
 
 function checkFriendRequests(){
 	var url = getURLappBackend();
-	var data = {"getSQL" : "SELECT * FROM friend_request WHERE to_user = '"+localStorage.getItem('userID')+"'"};
+	var data = {"getSQL" : "SELECT fr.*,u.* FROM friend_request as fr join user as u on fr.from_user = u.email and fr.to_user = '"+localStorage.getItem("userID")+"'"};
 
 	$.ajax({
 		type: "POST",
@@ -27,22 +27,24 @@ function checkFriendRequests(){
 		data: data,
 		dataType: "json",
 		success : function(response){
-			$("#num_friend_req").text("You have " + response.length + " friend request(s)");
+			var numRequests = response.length;
+			$("#num_friend_req").text("Du har " + (numRequests==0?"ingen":numRequests) + " venneforespørs"+(numRequests==1?"el":"ler"));
 			var friend_requests = "";
 
 			for(var i = 0; i < response.length; i++){
-				friend_requests +=
-				'<li>'+
-				'<p>From: '+
-				response[i].from_user+
-				' '+
-				'Date: '+
-				response[i].date+
-				'<button name="accept_request" id="'+response[i].from_user+'">Godta</p>'+
-				'</p>'+
-				'</li>';
-			}
-			$('ul[name=friend_requests]').html(friend_requests);
+				friend_requests += "<li>"
+						+"<div class='li_container'><div class='li_left'><div class='circlegrey'>"
+						+(response[i].picURL == null? '':"<img src='"+response[i].picURL+"'>")+"</div>"
+						+"</div><div class='li_mid'>"
+						+ "<span class='projectName'>"+response[i].name+"</span>"
+						+"<span class='grey small block'>"+ response[i].from_user+"</span>"
+						+"</div><div class='li_right'>"
+						+"<button class='btn_deny' name='deny_request' id='"+response[i].from_user+"'>Avslå</button>"
+						+"<button class='btn_accept' name='accept_request' id='"+response[i].from_user+"'>OK</button>"
+						+ "</div></div></li>";
+					}
+					$('ul[name=friend_requests]').html(friend_requests);
+
 		},
 		error : function(){
 			alert("File: settings.js, trying to get friend_requests from getSQL appBackend from server, bad request, error");

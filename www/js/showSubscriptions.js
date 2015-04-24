@@ -14,12 +14,12 @@ $(document).on("pagebeforeshow","#page_settings",function(){
 			if(json.length>0){
 				$("#subscription_message").html("");
 				for(var i = 0; i < json.length; i++){
-					subscription_list += "<li id='teeest' projectID='"+json[i].projectID+"'>"
+					subscription_list += "<li projectID='"+json[i].projectID+"'>"
 						+"<div class='li_container'><div class='li_left'><div class='circlegrey'></div>"
 						+"</div><div class='li_mid'>"
 						+ "<span class='projectName'>"+json[i].name+"</span>"
-						+"<span class='date grey'>"+ formatDate(json[i].date_added)+"</span>"
-						+"</div><div class='li_right'><a href='#' name='cancel_subscription'>Stopp</a>"					
+						+"<span class='small grey'>"+ formatDate(json[i].date_added)+"</span>"
+						+"</div><div class='li_right'><a href='#' class='red' name='cancel_subscription'>Stopp</a>"					
 						+ "</div></div></li>";
 					
 				}

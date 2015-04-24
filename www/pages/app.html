@@ -120,6 +120,7 @@
 	<div data-role="page" id="page_my_friends" data-theme="a">
 		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
 			<img src="../img/icon_add_friend.png" class="add_friend_icon" name="add_friend">
 			<p>Mine venner</p>
 		</div>
@@ -154,6 +155,7 @@
 	<div data-role="page" id="page_add_friend" data-theme="a">
 		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
 			<p>Legg til venner</p>
 		</div>
 
@@ -658,10 +660,11 @@
 				<h4>Venneforespørsler</h4>
 				<div class="listdiv">
 					<span id="num_friend_req" class="grey"></span>
-					<div class="greyline"></div>
-					<ul name="friend_requests">
+					
+					<ul id="friend_requests" name="friend_requests">
 
 					</ul>
+					<div class="greyline"></div>
 				</div>
 				<h4>Abonnementer</h4>
 				<div class="listdiv">
@@ -689,8 +692,10 @@
 		<!--************ page_search_friends_sharity goes here************-->
 		<div data-role="page" id="page_search_friends_sharity" data-theme="a">
 			<div id="header_div" class="boxshadow">
+
 				<div page-role="header" class="header_top"></div>
 				<!--<button name="logut">Logg ut</button>-->
+				<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
 				<p id = "header_check">Sharity</p>
 
 			</div>
