@@ -1,16 +1,13 @@
-//$(document).ready(function(){
-
 $(document).on("pageinit","#page_organization",function(){
+
 	$(document).on('click', 'a[name="page_org_donation"]', function() {
 		localStorage.setItem("donateToOrganization",localStorage.getItem("organizationToShow"));
 		console.log("page_organization: "+localStorage.getItem("donateToOrganization"));
-		
 	});
 
 	$(document).on('click', 'a[name="page_org_li_donation"]', function() {
 		localStorage.setItem("donateToProject",this.id);
 		console.log("page_organization: "+localStorage.getItem("donateToProject"));
-		
 	});
 });
 
@@ -25,8 +22,6 @@ $(document).delegate("#page_organization", "pagebeforeshow", function() {
 
 	$(document).on('click', 'li[name=project_list]', function() {
 		localStorage.setItem("projectToShow", this.id);
-
-		//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
 	});
 
 
@@ -62,12 +57,20 @@ function showOrganization(){
 				$('span[name=category]').text(category);
 				$('span[name=organization_name]').text(organization_name);
 				$('span[name=ingress]').text(about_organization); 
-				$('img[name=logo]').attr("src", logoURL );
-				$('img[name=background]').attr("src", backgroundimgURL);
+
+				$('img[name=background]').show();
+				$('img[name=logo]').show();
+				$('img[name=background]').attr("src", (backgroundimgURL==null?"#":backgroundimgURL));
+				$('img[name=logo]').attr("src", (logoURL==null?"#":logoURL));
+
 				appendProjectList(organizationNr);
 				$('img[name=background]').error(function(){
-					$(this).remove();
+					$(this).hide();
 				});
+				$('img[name=logo]').error(function(){
+					$(this).hide();
+				});
+
 			},
 			error: function(){
 				alert("Error in organization.js trying to print projectlist for: "+ organizationNr +"  ajax bad request");
