@@ -34,6 +34,30 @@
 
 }
 
+.portrait {
+	position: relative;
+	width: 100%;
+	height: 150pt;
+	background-color: #d2d2d2;
+	color: white;
+	line-height: 150pt;
+	text-align: center;
+}
+
+.logodiv_left {
+	position: absolute;
+	bottom: -30pt;
+	left: 10pt;
+	border-radius: 50%;
+	width: 90pt;
+	height: 90pt;
+	background-color: white;
+	color: grey;
+	font-size: 12pt;
+	border: 1pt solid grey;
+	line-height: 90pt;
+	text-align: center
+}
 
 .boxshadow {
 	box-shadow: 0pt 0pt 1pt #888;
@@ -115,7 +139,7 @@
   display: block !important;
 }
 
-.portrait img{
+.logodiv_left img{
 	height:100%;
 	width:100%;
 }
