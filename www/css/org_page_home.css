@@ -186,7 +186,7 @@ table tr td {
 }
 
 .red{
-	color:#f63218;
+	color:#f63218 !important;
 }
 
 
@@ -207,7 +207,7 @@ section {
 }
 
 article {
-	margin-bottom: 15pt;
+	margin: 15pt 0;
 }
 
 #homeOrgNews img{
@@ -221,9 +221,6 @@ article {
 	width:60%;
 }
 
-section h2.blue {
-	margin: 15pt 0 5pt 0;
-}
 
 .clickable:ACTIVE {
 	background: #eee;
@@ -275,4 +272,8 @@ footer ul li img{
 	left:0;right:0;
 	margin:auto;
 	height:30pt;
+}
+
+.right{
+	float:right;
 }
