@@ -120,30 +120,50 @@
 		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
 			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
-			<p>Publiser Nyhet</p>
+			<p>Publiser nyhet</p>
 		</div>
 		<div class="portrait_small">
 			<div class="logodiv_left_small"><img src="../img/no_image_avaliable.png" name="homeOrgLogo"></div>
 		</div>
 
 		<div class="main_content">
-
-			<fieldset class="ui-field-contain">
-				<select class="dd_publish_input input_underscored grey" name="dd_projects" id="dd_projects" data-role="none">
-					<option value="0">Velg Prosjekt</option>
-				</select>
-			</fieldset>
-			<input class="publish_input input_underscored" type="text" placeholder="Tittel" data-role="none" id="news_title">
+			<table>
+				<tr><td style="width:40pt;"><div class="circlegrey"></div></td><td>
+					<fieldset class="ui-field-contain">
+						<select class="dd_publish_input input_underscored grey" name="dd_projects" id="dd_projects" data-role="none">
+							<option value="0">Velg Prosjekt</option>
+						</select>
+					</fieldset>
+				</td></tr>
+				<tr><td style="width:40pt;"><div class="circlegrey"></td><td>
+					<input class="publish_input input_underscored" type="text" placeholder="Tittel" data-role="none" id="news_title"/>
+				</td></tr>
+				<tr><td style="width:40pt;"><div class="circlegrey"></td><td>
+					<label for="textarea" class="grey">Innhold</label>
+					<textarea class="publish_input" rows="4" id="news_content" placeholder="Skriv nyhetsteksten her"></textarea>
+				</td></tr>
+				<tr><td style="width:40pt;"><div class="circlegrey"></td><td>
+					<input class="publish_input" type="file" id="inputChooseImage" data-role="none"/>
+					<div id="preview">
+						<img src="" id="selectedImage" >
+						<img src="../img/add-image-icon-grey2.png" id="add_image_icon" class="add_img" >
+					</div>
+					<div id="previewinfo">
+						<span class="x-small red" id="deleteImage">Fjern</span>
+						<span class="x-small grey" id="info">Klikk for å legge ved et bilde til nyheten</span>
+					</div>
+				</td></tr>
+				</table>
+				<table>
+				<tr><td style="width:40pt;"></td><td>
+					<div>
+					<input type="text" placeholder="url til bilde" class="input_underscored" data-role="none" style="width:125pt;float:left;margin-top:20pt" id="inputUrl"/>
+					<a href="#" data-role="button" class="ui-btn" style="width:50pt; float:right" id="btnGetImgFromUrl">Hent </a>
+				</div>
+				</td></tr>
+				</table>
 			
-			<label for="textarea">Innhold</label>
-			<textarea class="publish_input" rows="4" id="news_content"></textarea>
-
-			<input class="publish_input" type="file" id="inputChooseImage" data-role="none">
-			<div id="preview">
-				<img src="" id="selectedImage" >
-				<img src="../img/add-image-icon-grey2.png" id="add_image_icon" class="add_img" >
-				<span class="small grey add_img">Legg ved bilde</span>
-			</div>
+			<div></div>
 
 			<table class="table_btns">
 					<tr>

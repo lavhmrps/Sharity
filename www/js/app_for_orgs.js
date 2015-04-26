@@ -185,16 +185,36 @@ $(document).on("pageinit","#page_org_publish_news",function(){
 	    	for(var i=0; i<F.length; i++) 
 	    		readImage( F[i] );
 	});
+
+	$("#btnGetImgFromUrl").click(function(){
+		var imgUrl = $("#inputUrl").val();
+		var imageOK = false;
+
+		$("#deleteImage").css("visibility","visible");
+		$('#preview').html('<img src="'+imgUrl+'" id="selectedImage">').show();
+		$("#selectedImage").error(function(){
+			$("#deleteImage").css("visibility","hidden");
+			alert("Feil på bilde");
+			$(this).remove();
+			resetPreview();
+		});
+
+		$('#preview img').off("click").click(function(){
+			$('#inputChooseImage').click();
+		});
+	});
+
+	$("#deleteImage").click(function(){
+		resetPreview();
+		$(this).css("visibility","hidden");
+	});
+
+
 	$("#btnCancelPublish").click(function(){
 		$(".dd_publish_input").val(0);
 		$(".publish_input").val("");
 		$("#selectedImage").hide();
-		$("#preview").html(	'<img src="../img/add-image-icon-grey2.png" id="add_image_icon" >'+
-							'<span class="small grey">Legg ved bilde</span>');
-		$('#add_image_icon').off("click").click(function(){
-			$('#inputChooseImage').click();
-		});
-		//window.history.go(-1);
+		resetPreview();
 
 	});
 	$("#btnCompletePublish").click(function(){
@@ -202,6 +222,19 @@ $(document).on("pageinit","#page_org_publish_news",function(){
 		var content = $("#news_content").val();
 		var image = $("#selectedImage").attr("src");
 		var projectID = $(".dd_publish_input").val();
+
+		if(title == ""){
+			alert("Vennligst lag en tittel til nyheten");
+			return;
+		}
+		if(content == ""){
+			alert("Nyheten har ikke innhold ennå");
+			return;
+		}
+		if(projectID == "0"){
+			alert("Velg et prosjekt");
+			return;
+		}
 
 		var sql = "insert into news (title,txt,backgroundimgURL,projectID) values('"+title+"','"+content+"','"+image+"','"+projectID+"')"
 		var url = getURLappBackend();
@@ -214,6 +247,12 @@ $(document).on("pageinit","#page_org_publish_news",function(){
 			success:function(response){
 				if(response == "OK"){
 					alert("Nyhet lagt til");
+					$(".dd_publish_input").val(0);
+					$(".publish_input").val("");
+					$("#selectedImage").hide();
+					resetPreview();
+					$("#inputUrl").val("");
+
 					$(".back_btn").click();
 				}
 
@@ -329,10 +368,18 @@ function readImage(file) {
 			$('#preview img').click(function(){
 				$('#inputChooseImage').click();
 			});
+			$("#deleteImage").css("visibility","visible");
 		};
         image.onerror= function() {
             alert('Ugyldig filtype: '+ file.type);
         };      
     };
     
+}
+
+function resetPreview(){
+	$("#preview").html(	'<img src="../img/add-image-icon-grey2.png" id="add_image_icon" >');
+	$('#add_image_icon').off("click").click(function(){
+		$('#inputChooseImage').click();
+	});
 }
