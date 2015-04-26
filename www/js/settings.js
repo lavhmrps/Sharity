@@ -28,6 +28,7 @@ function checkFriendRequests(){
 		dataType: "json",
 		success : function(response){
 			var numRequests = response.length;
+			showSettingsNotif(numRequests);
 			$("#num_friend_req").text("Du har " + (numRequests==0?"ingen":numRequests) + " venneforespørs"+(numRequests==1?"el":"ler"));
 			var friend_requests = "";
 
@@ -79,4 +80,14 @@ function acceptFriendRequest(from_user){
 			}
 		}
 	});
+}
+
+function showSettingsNotif(numRequests){
+	
+		$(".footer_settings").each(function(){
+			$(this).find(".notification").remove();
+			if(numRequests>0)
+				$(this).append("<div class='notification'>"+numRequests+"</div>");
+		});		
+	
 }

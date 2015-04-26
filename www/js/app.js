@@ -1,8 +1,18 @@
+$(document).delegate('.ui-page', 'pageshow', function () {
+	checkUpdates();
+});
+
+
 $(document).ready(function(){
 	$(".back_btn").click(function() {
 		window.history.go(-1);
 	});
 });
+
+function checkUpdates(){
+	checkFriendRequests();
+
+}
 
 
 

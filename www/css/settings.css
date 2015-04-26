@@ -74,11 +74,17 @@
 #friend_requests .li_mid{
 	padding:5pt;
 	width: 60%;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow:ellpisis;
 }
 
 #subscription_list .li_mid{
 	padding:5pt;
 	width: 65%;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
 }
 
 #friend_requests .li_right{
