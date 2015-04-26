@@ -8,13 +8,13 @@ $(document).ready(function(){
 	// Setting steps-to-go to 4 if register NewUser
 	$("#nav_register1a").click(function() {
 		$(".portrait").show();
-		$("#stepstogo").empty().append("/4");
+		$("#stepstogo").empty().append("4");
 	});
 
 	//Setting steps-to-go to 3 if register NewOrganisation
 	$("#nav_register1b").click(function() {
 		$(".portrait").hide();
-		$("#stepstogo").empty().append("/3");
+		$("#stepstogo").empty().append("3");
 	});
 
 	// The inputfield in focus gets a blue border-bottom
@@ -86,7 +86,7 @@ function toRegister1() {
 	$.mobile.changePage("#page_register1", {
 		transition : "slide"
 	});
-	$("#stepstogo").empty().append("4");
+	$("#stepstogo").html("4");
 	$("#tabs" ).tabs( "option", "active", 0 );
 	$("#nav_register1b").removeClass("ui-btn-active");
 	$("#nav_register1a").addClass("ui-btn-active");
@@ -98,7 +98,7 @@ function toRegister1b() {
 	$.mobile.changePage("#page_register1", {
 		transition : "slide"
 	});
-	$("#stepstogo").empty().append("3");
+	$("#stepstogo").html("3");
 	// Activate the Org panel
 	$( "#tabs" ).tabs( "option", "active", 1 );
 	$("#nav_register1a").removeClass("ui-btn-active");

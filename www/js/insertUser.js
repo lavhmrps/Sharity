@@ -171,7 +171,7 @@ function insertUser(){
 				}catch(error){
 				}
 				if(image != undefined){
-					console.log("image undefined");
+					console.log("image not undefined");
 					insertImage(image);
 				}
 				//alert("USER SATT INN!  insertUser.js button[name=reg_user_complete.click]");
@@ -255,9 +255,7 @@ function previewImage(input) {
 	}
 }
 
-function insertImage(image){	
-
-
+function insertImage(image){
 	var urlLocalstorage = getURLphpBackendlocalStorageJStoPHP();
 	$.ajax({
 		type : "POST",

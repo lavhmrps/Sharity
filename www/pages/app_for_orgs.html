@@ -37,7 +37,6 @@
 			<div page-role="header" class="header_top"></div>
 			<p>Side</p>
 		</div>
-
 		<div class="portrait_small">
 			<div class="logodiv_left_small"><img src="../img/no_image_avaliable.png" name="homeOrgLogo"></div>
 		</div>
@@ -73,7 +72,7 @@
 			</section>
 			<section>
 				<table class="clickable">
-					<tr>
+					<tr id="rowPublishNew">
 						<td style="width: 85%"><span style="margin-left: 10pt">Publiser
 								nyhet</span></td>
 						<td style="width: 15%"><img src="../img/li_arrow_r_grey.png"></td>
@@ -117,6 +116,73 @@
 	</div>
 	<!-- ************ end of page_org_home ************-->
 
+	<div data-role="page" id="page_org_publish_news" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div page-role="header" class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
+			<p>Publiser Nyhet</p>
+		</div>
+		<div class="portrait_small">
+			<div class="logodiv_left_small"><img src="../img/no_image_avaliable.png" name="homeOrgLogo"></div>
+		</div>
+
+		<div class="main_content">
+
+			<fieldset class="ui-field-contain">
+				<select class="dd_publish_input input_underscored grey" name="dd_projects" id="dd_projects" data-role="none">
+					<option value="0">Velg Prosjekt</option>
+				</select>
+			</fieldset>
+			<input class="publish_input input_underscored" type="text" placeholder="Tittel" data-role="none">
+			
+			<label for="textarea">Innhold</label>
+			<textarea class="publish_input" rows="4"></textarea>
+
+			<input class="publish_input" type="file" id="inputChooseImage" data-role="none">
+			<div id="preview">
+				<img src="" id="selectedImage" >
+				<img src="../img/add-image-icon-grey2.png" id="add_image_icon" class="add_img" >
+				<span class="small grey add_img">Legg ved bilde</span>
+			</div>
+
+			<table class="table_btns">
+					<tr>
+						<td style="width: 40pt"></td><td>
+							<a data-corners="false" data-shadow="false" class="btn_white" id="btnCancelPublish" data-role="button" data-rel="back" data-direction="reverse">
+								AVBRYT
+							</a>
+						</td>
+						<td>
+							<button data-corners="false" data-shadow="false" class="btn_blue" id="btnCompletePublish">
+								PUBLISER
+							</button>
+						</td>
+					</tr>
+				</table>
+		</div>
+
+		<!-- Lager litt plass før footer -->
+		<div class="somespace"></div>
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_org_page footer_active"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_site_holo.png"></li>
+					<li class="footer_org_activities"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_activities_holo.png"></li>
+					<li class="footer_org_statistics"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_statistics_holo.png"></li>
+					<li class="footer_org_settings"><img
+						class="footer_menu_icon_holo" alt=""
+						src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
 
 
 	<!-- ************ page_org_activities ************-->
@@ -295,52 +361,52 @@
 
 </body>
 <script>
-	function isOverflowed(element) {
-		return element.scrollWidth > element.clientWidth;
-	}
+function isOverflowed(element) {
+	return element.scrollWidth > element.clientWidth;
+}
 
-	$(document).ready(
-			function() {
-				var element = document.getElementById("num_donations");
-				if (isOverflowed(element)) {
-					while (isOverflowed(element)) {
-						var style = window.getComputedStyle(element);
-						var width = style.getPropertyValue('width').replace(
-								/\D+$/g, ""); // replace all leading non-digits with nothing
-						$(element).css("width", ++width + "px");
+$(document).ready(
+		function() {
+			var element = document.getElementById("num_donations");
+			if (isOverflowed(element)) {
+				while (isOverflowed(element)) {
+					var style = window.getComputedStyle(element);
+					var width = style.getPropertyValue('width').replace(
+							/\D+$/g, ""); // replace all leading non-digits with nothing
+					$(element).css("width", ++width + "px");
 
-					}
-					$(element).css("width", 5 + width + "px");
 				}
+				$(element).css("width", 5 + width + "px");
+			}
 
-				var element = document.getElementById("num_followers");
-				if (isOverflowed(element)) {
-					while (isOverflowed(element)) {
-						var style = window.getComputedStyle(element);
-						var width = style.getPropertyValue('width').replace(
-								/\D+$/g, ""); // replace all leading non-digits with nothing
-						$(element).css("width", ++width + "px");
+			var element = document.getElementById("num_followers");
+			if (isOverflowed(element)) {
+				while (isOverflowed(element)) {
+					var style = window.getComputedStyle(element);
+					var width = style.getPropertyValue('width').replace(
+							/\D+$/g, ""); // replace all leading non-digits with nothing
+					$(element).css("width", ++width + "px");
 
-					}
-					$(element).css("width", 5 + width + "px");
 				}
+				$(element).css("width", 5 + width + "px");
+			}
 
-			});
-	
-	$(".footer_org_page").click(function() {
-		window.location.href = "#page_org_home";
-	});
+		});
 
-	$(".footer_org_activities").click(function() {
-		window.location.href = "#page_org_activities";
-	});
+$(".footer_org_page").click(function() {
+	window.location.href = "#page_org_home";
+});
 
-	$(".footer_org_statistics").click(function() {
-		window.location.href = "#page_org_statistics";
-	});
+$(".footer_org_activities").click(function() {
+	window.location.href = "#page_org_activities";
+});
 
-	$(".footer_org_settings").click(function() {
-		window.location.href = "#page_org_settings";
-	});
+$(".footer_org_statistics").click(function() {
+	window.location.href = "#page_org_statistics";
+});
+
+$(".footer_org_settings").click(function() {
+	window.location.href = "#page_org_settings";
+});
 </script>
 </html>

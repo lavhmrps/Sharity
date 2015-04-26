@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-	<input type="file" name="reg_user_image" style="display:none; outline: 0 none; z-index:-222;"/>
-
 	<meta charset="utf-8" />
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="msapplication-tap-highlight" content="no" />
@@ -85,69 +82,6 @@
 
 			<div class="somespace"></div>
 			<div class="somespace"></div>
-<!--
-			<span style="font-size: xx-large; color: white;">
-				Organisasjoner
-			</span>
-
-			<button data-corners="false" data-shadow="false" onclick="toRegister1b()" data-transition="slide" style="width: 150pt; font-weight: bold; margin-left: 40pt;" class="btn_white blue" id="newOrg">
-				NY ORGANISASJON
-			</button>
-
-		-->
-<!--
-			<div class="develop">
-				<span style="font-size: large; color: white;">Sidenavigering</span>
-				<ul data-role="listview" data-filter="true" data-input="#myFilter" data-inset="true">
-					<li>
-						<a href="pages/overview.html" rel="external" class="show-page-loading-msg">Oversikt</a>
-					</li>
-					<li>
-						<a href="pages/organisation.html" rel="external" class="show-page-loading-msg">Organisasjon</a>
-					</li>
-					<li>
-						<a href="pages/org_single_project.html" rel="external" class="show-page-loading-msg">Org med ett prosjekt</a>
-					</li>
-					<li>
-						<a href="pages/project.html" rel="external" class="show-page-loading-msg">Prosjekt</a>
-					</li>
-					<li>
-						<a href="pages/mystatistics.html" rel="external"class="show-page-loading-msg">Statistikk</a>
-					</li>
-					<li>
-						<a href="pages/organisation_news.html" rel="external" class="show-page-loading-msg">Org - nyheter</a>
-					</li>
-					<li>
-						<a href="pages/project_news.html" rel="external" class="show-page-loading-msg">Prosjekt - nyheter</a>
-					</li>
-					<li>
-						<a href="pages/org_page.html" rel="external" class="show-page-loading-msg">Organisasjon-side</a>
-					</li>
-					<li>
-						<a href="pages/org_activities.html" rel="external" class="show-page-loading-msg">Org-Aktiviteter</a>
-					</li>
-					<li>
-						<a href="pages/org_donations.html" rel="external" class="show-page-loading-msg">Org-Donasjoner</a>
-					</li>
-					<li>
-						<a href="pages/org_statistics.html" rel="external" class="show-page-loading-msg">Org-Statistikk</a>
-					</li>
-					<li>
-						<a href="pages/org_settings.html" rel="external" class="show-page-loading-msg">Org-Innstillinger</a>
-					</li>
-					<li>
-						<a href="pages/project_meny.html" rel="external" class="show-page-loading-msg">Prosjekt meny</a>
-					</li>
-					<li>
-						<a href="pages/add_friend.html" rel="external" class="show-page-loading-msg">Legg til venner</a>
-					</li>
-					<li>
-						<a href="pages/my_friends.html" rel="external" class="show-page-loading-msg">Mine venner</a>
-					</li>
-				</ul>
-			</div>
-
-		-->
 		<div class="somespace"></div>
 	</div>
 </div>
@@ -155,14 +89,12 @@
 
 
 <div data-role="page" id="page_register1">
-	<!-- 		<header data-role="header"></header> -->
 	<div id="header_div">
 		<div class="header_top"></div>
 		<p>
 			Registrering
 			<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
-				steg 1
-				<span id="stepstogo"></span>
+				steg 1/<span id="stepstogo"></span>
 			</span>
 		</p>
 	</div>
@@ -180,6 +112,7 @@
 
 		<div class="portrait">
 			<img src="img/default.png" alt="Portrettbilde" style="height:100%; width:100%" name="preview"/>
+			<input type="file" name="reg_user_image" style="display:none"/>
 			<div class="logodiv_right" name="trigger_pick_image">
 				<p>Velg bilde</p>
 				Portrettbilde
@@ -189,7 +122,7 @@
 			<div class="main_content">
 				<table>
 					<tr>
-						<td style="width: 40pt;">
+						<td style="width: 40pt">
 							<img class="icon" alt="" src="img/icon_blue.png">
 						</td>
 						<td>
@@ -232,7 +165,7 @@
 				</table>
 				<table class="table_btns">
 					<tr>
-						<td style="width: 40pt">
+						<td style="width: 40pt"></td><td>
 							<button data-corners="false" data-shadow="false" onclick="reloadPage()" style="width: 100pt;" class="btn_white">
 								AVBRYT
 							</button>
@@ -295,13 +228,13 @@
 				</table>
 				<table class="table_btns">
 					<tr>
-						<td style="width: 40pt">
-							<button data-corners="false" data-shadow="false" onclick="reloadPage()" style="width: 100pt;" class="btn_white">
+						<td style="width: 40pt"></td><td>
+							<button data-corners="false" data-shadow="false" onclick="reloadPage()" class="btn_white">
 								AVBRYT
 							</button>
 						</td>
 						<td>
-							<button data-corners="false" data-shadow="false" onclick="toRegister2b()" style="width: 100pt" class="btn_blue">
+							<button data-corners="false" data-shadow="false" onclick="toRegister2b()" class="btn_blue">
 								NESTE
 							</button>
 						</td>
@@ -376,12 +309,12 @@
 				<td style="width: 40pt">
 				</td>
 				<td>
-					<button data-corners="false" data-shadow="false" name="reg_user_skip_creditcard" style="width: 100pt; font-weight: bold" class="btn_white">
+					<button data-corners="false" data-shadow="false" name="reg_user_skip_creditcard" class="btn_white">
 						HOPP OVER
 					</button>
 				</td>
 				<td>
-					<button data-corners="false" data-shadow="false" name="reg_user_donation_done" data-transition="slide" style="width: 100pt; font-weight: bold" class="btn_blue">
+					<button data-corners="false" data-shadow="false" name="reg_user_donation_done" data-transition="slide" class="btn_blue">
 						NESTE
 					</button>
 				</td>
@@ -410,7 +343,7 @@
 				<option value="Krig">Krig</option>
 			</select>
 		</fieldset>
-		<textarea type="text" cols="80" rows="15" name="org_about" id="in_org_about" placeholder="Fortell kort om hva organisasjonen din gjør...">
+		<textarea type="text" rows="4" name="org_about" id="in_org_about" placeholder="Fortell kort om hva organisasjonen din gjør...">
 		</textarea>
 		<table>
 			<tr>

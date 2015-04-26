@@ -306,12 +306,14 @@ table tr td input {
 }
 
 .btn_blue {
+	width:100pt !important;
 	background: #006dfe !important;
 	color: white !important;
 	font-weight: normal !important;
 }
 
 .btn_white {
+	width:100pt;
 	font-weight: normal !important;
 	text-shadow: none !important;
 }
@@ -516,4 +518,8 @@ section h4 {
 #email_error_message{
 	font-size: small;
 	color:#f63218;
+}
+
+textarea{
+	height: auto !important;
 }

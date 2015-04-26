@@ -2,8 +2,21 @@ $(document).ready(function(){
 	$("#logout").click(function(){
 		localStorage.clear();
 		window.location.href="../index.html";
-	})
+	});
 
+	$(".back_btn").click(function() {
+		window.history.go(-1);
+	});
+
+});
+
+$(document).on("pageinit","#page_org_home",function(){
+	$("#rowPublishNew").click(function(){
+		$.mobile.changePage("#page_org_publish_news",{"transition":"slide"});
+		if(localStorage.getItem("orgLogoURL") != "null"){
+			$("img[name=homeOrgLogo]").attr("src",localStorage.getItem("orgLogoURL"));
+	}
+	});
 });
 
 $(document).on("pagebeforeshow","#page_org_home",function(){
@@ -17,7 +30,7 @@ $(document).on("pagebeforeshow","#page_org_home",function(){
 		dataType:"json",
 		data:{"getSQL":sql},
 		success:function(response){
-			localStorage.setItem("orgID",response[0].organizationNr);
+			localStorage.setItem("orgNr",response[0].organizationNr);
 			localStorage.setItem("orgname",response[0].name);
 			localStorage.setItem("orgCategory",response[0].category);
 			localStorage.setItem("orgLogoURL",response[0].logoURL);
@@ -103,8 +116,9 @@ $(document).on("pagebeforeshow","#page_org_home",function(){
 
 $(document).on("pageshow","#page_org_home",function(){
 	//console.log("pageshow");
-	if(localStorage.getItem("orgLogoURL") != "null")
+	if(localStorage.getItem("orgLogoURL") != "null"){
 		$("img[name=homeOrgLogo]").attr("src",localStorage.getItem("orgLogoURL"));
+	}
 	
 	$("span[name=homeOrgCategory]").html(localStorage.getItem("orgCategory"));
 	$("h2[name=homeOrgName]").html(localStorage.getItem("orgName"));
@@ -120,7 +134,7 @@ $(document).on("pageshow","#page_org_home",function(){
 });
 
 $(document).on("pagebeforeshow","#page_org_activities",function(){
-	var sql = "select * from project where project.organizationNr = "+localStorage.getItem("orgID");
+	var sql = "select * from project where project.organizationNr = "+localStorage.getItem("orgNr");
 	url = getURLappBackend();
 
 	$.ajax({
@@ -188,6 +202,57 @@ $(document).on("pageshow","#page_org_activities",function(){
 
 });
 
+$(document).on("pagebeforeshow","#page_org_publish_news",function(){
+	var sql ="select projectID, name from project where organizationNr = "+localStorage.getItem("orgNr");
+	var url = getURLappBackend();
+
+	$.ajax({
+		type:"post",
+		url:url,
+		dataType:"json",
+		data:{"getSQL":sql},
+		success:function(response){
+			var ddHTML ="<option value='0'>Velg Prosjekt</option>";
+			for(var i=0; i < response.length;i++)
+				ddHTML+="<option value='"+response[i].projectID+"'>"+response[i].name+"</option>";
+			$(".dd_publish_input").html(ddHTML);
+		}
+	});
+
+});
+
+$(document).on("pageinit","#page_org_publish_news",function(){
+	$("#selectedImage").hide();
+	$('#add_image_icon').click(function(e) {
+		$('#inputChooseImage').click();
+	});
+	$("#inputChooseImage").change(function (e) {
+	    if(this.disabled) 
+	    	return alert('File upload not supported!');
+	    var F = this.files;
+	    if(F && F[0]) 
+	    	for(var i=0; i<F.length; i++) 
+	    		readImage( F[i] );
+	});
+	$("#btnCancelPublish").click(function(){
+		$(".dd_publish_input").val(0);
+		$(".publish_input").val("");
+		$("#selectedImage").hide();
+		$("#preview").html(	'<img src="../img/add-image-icon-grey2.png" id="add_image_icon" >'+
+							'<span class="small grey">Legg ved bilde</span>');
+		$('#add_image_icon').off("click").click(function(){
+			$('#inputChooseImage').click();
+		});
+		//window.history.go(-1);
+
+	});
+	$("#btnCompletePublish").click(function(){
+
+	});
+
+
+});
+
 // returns easily read date
 function formatDate(date){
 	// date : yyyy-mm-dd hh:mm:ss
@@ -222,4 +287,32 @@ function formatDate(date){
 	formattedDate = day+". "+month+"-"+year+" "+hour+":"+minute;
 
 	return formattedDate;
+}
+
+function readImage(file) {
+  
+    var reader = new FileReader();
+    var image  = new Image();
+  
+    reader.readAsDataURL(file);  
+    reader.onload = function(_file) {
+        image.src    = _file.target.result;              // url.createObjectURL(file);
+        image.onload = function() {
+        	/*
+            var w = this.width,
+                h = this.height,
+                t = file.type,                           // ext only: // file.type.split('/')[1],
+                n = file.name,
+                s = ~~(file.size/1024) +'KB';
+			*/
+            $('#preview').html('<img src="'+ this.src +'" id="selectedImage"> ');	//+w+'x'+h+' '+s+' '+t+' '+n+'<br>');
+			$('#preview img').click(function(){
+				$('#inputChooseImage').click();
+			});
+		};
+        image.onerror= function() {
+            alert('Ugyldig filtype: '+ file.type);
+        };      
+    };
+    
 }
