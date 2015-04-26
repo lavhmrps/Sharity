@@ -89,10 +89,8 @@ function getChallenges(){
 
 function getMyDonationInformation(){
 
-	console.log("getMyDonationInformation");
 	var email = localStorage.getItem('userID');
 	var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
-	console.log(sql);
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 
@@ -102,7 +100,6 @@ function getMyDonationInformation(){
 		data : data,
 		dataType : "JSON",
 		success : function(json){
-			console.log(json.length);
 			var num_donations = 0;
 			var sum_current_month = 0;
 			var sum_total = 0;
