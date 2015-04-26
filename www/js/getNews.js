@@ -30,7 +30,7 @@ function showNews(){
 			$("img[name=orglogo]").attr("src",localStorage.getItem("orgLogo"));
 			$("img[name=backgroundImg]").attr("src",response[0].backgroundimgURL);
 			$("p[name=orgname]").text(response[0].orgName);
-			$("span[name=date]").text(response[0].date_added);
+			$("span[name=date]").text(formatDate(response[0].date_added));
 			$("span[name=title]").text(response[0].title);
 			$("span[name=ingress]").text(response[0].txt);
 
@@ -64,8 +64,8 @@ function showNews(){
 				'<div class="circle"></div>'+
 				'</div>'+
 				'<div class="li_mid">'+
-				'<span class="li_date">'+
-				response[i].date_added + 
+				'<span class="small grey">'+
+				formatDate(response[i].date_added) + 
 				'</span>'+
 				'<div class="li_text dots">'+
 				response[i].txt +

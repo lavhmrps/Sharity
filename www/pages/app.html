@@ -62,10 +62,9 @@
 </head>
 <body>
 	<!-- ************page_overview goes here************-->
-	<div data-role="page" id="page_overview" data-theme="a" >
+	<div data-role="page" id="page_overview" class="page">
 		<div id="header_div" class="boxshadow">
 			<div page-role="header" class="header_top"></div>
-			<!--<button name="logut">Logg ut</button>-->
 			<p>Sharity</p>
 
 		</div>
@@ -245,7 +244,7 @@
 			</div>
 
 		</div>
-		<div class="above_main_content">
+		<div class="relative">
 			<div class="top_links">
 				<a href="#">Nyheter</a>
 				<a href="#page_donate" class="btn_organization_donate" name="page_org_donation">DONÉR</a>
@@ -615,13 +614,11 @@
 				</div>
 
 			</div>
-			<div class="top_links">
-				<a href="#">Nyheter</a> 
-			</div>
-
-			<div class="space_btn">
-				<button class="ui-btn btn_single_project_donate" data-role="none"
-				onclick="#">DONÉR</button>
+			<div class="relative">
+				<div class="top_links">
+					<a href="#">Nyheter</a>
+					<a href="#page_donate" class="btn_organization_donate" name="page_org_donation">DONÉR</a>
+				</div>
 			</div>
 
 			<div class="main_content">
@@ -694,7 +691,7 @@
 		<!--************End of settings************-->
 
 		<!--************ page_search_friends_sharity goes here************-->
-		<div data-role="page" id="page_search_friends_sharity" data-theme="a">
+		<div data-role="page" id="page_search_friends_sharity" data-theme="a" class"=page">
 			<div id="header_div" class="boxshadow">
 
 				<div page-role="header" class="header_top"></div>

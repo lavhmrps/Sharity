@@ -11,7 +11,7 @@ $(document).on("pageinit","#page_organization",function(){
 	});
 });
 
-$(document).delegate("#page_organization", "pagebeforeshow", function() {
+$(document).on( "pagebeforeshow","#page_organization", function() {
 	showOrganization();
 
 

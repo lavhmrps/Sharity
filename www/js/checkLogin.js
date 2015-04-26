@@ -34,7 +34,6 @@ $(document).ready(function(){
 				}else if(response == "ORG"){
 					console.log("Organisasjon-login: ok");
 					window.location.replace("pages/app_for_orgs.html#page_org_home");
-					
 					email = toTitleCase(email);
 					localStorage.setItem("orgName", email);
 				}

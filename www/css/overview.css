@@ -1,24 +1,9 @@
 
-.boxshadow {
-	box-shadow: 0pt 0pt 1pt #888;
-}
-
-.header_top {
-	width: 100%;
-	height: 25pt;
-	background-color: #0057cb;
-}
-
 .icon {
 	width: 23pt;
 	height: 23pt;
 }
 
-.main_content {
-	width: 90%;
-	margin: auto;
-	margin-top: 30pt;
-}
 
 .content_box1 {
 	position: relative;

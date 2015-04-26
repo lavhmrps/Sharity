@@ -16,26 +16,23 @@
 }
 
 #page_my_friends .li_friends{
-	margin:0;
-	padding:0;
 	line-height: 40pt;
 	border:none;
 	position:relative;
-	font-size: large;
+	font-size: medium;
 	color: #333;
 	font-family: Circular Std Book,Calibri,Sans-serif !important;
 	font-weight: normal;
+	
 }
 
 #page_my_friends .li_donations{
-	margin:0;
-	padding:0;
 	line-height: 40pt;
 	border:none;
 	position:relative;
 	font-size: large;
 	font-family: Circular Std Book,Calibri,Sans-serif !important;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 #page_my_friends .top_donations{
@@ -74,6 +71,9 @@
 	float:left;
 	box-sizing:border-box;
 	background: #fff;
+	overflow:hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
 }
 
 #page_my_friends .li_left{

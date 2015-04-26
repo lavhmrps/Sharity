@@ -41,7 +41,12 @@
 }
 
 #page_search_friends_sharity a{
-	color:white;
+	position:absolute;
+	top:0;bottom:0;
+	right:0;
+	margin:auto;
+	font-size: small;
+	height:12pt;
 }
 
 #page_search_friends_sharity .li_container{
@@ -61,7 +66,7 @@
 }
 
 #page_search_friends_sharity .li_mid{
-	width: 55%;
+	width: 56%;
 	padding:7pt 0;
 	overflow: hidden ;
 	text-overflow:ellipsis;
@@ -69,7 +74,8 @@
 }
 
 #page_search_friends_sharity .li_right{
-	width: 25%;
+	position:relative;
+	width: 24%;
 	font-size: small;
 	line-height: 18pt;
 	color:white;
@@ -94,6 +100,20 @@
 	font-weight: normal;
 
 }
+/*
+#page_search_friends_sharity .li_right_center{
+	position:absolute;
+	top:0;bottom:0;
+	left:0;	right:0;
+	margin:auto;
+	background: #20a623;
+	height:20pt;
+	text-align: center;
+	line-height: 22pt;
+	font-size: small;
+	font-weight: normal;
+}
+*/
 
 #page_search_friends_sharity .li_name{
 	font-size: large;
@@ -102,6 +122,7 @@
 
 #page_search_friends_sharity .li_email{
 	font-size: small;
+	font-weight: normal;
 	color:#9b9b9b;
 }
 

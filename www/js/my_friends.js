@@ -61,7 +61,7 @@ $(document).delegate("#page_my_friends","pagebeforeshow",function(){
 						+'<div class="li_mid_right donations">'
 						+'<span class="li_donations green">'
 						+(response[i].Donasjoner==null?0:response[i].Donasjoner+'')
-						+'</span>'
+						+' kr</span>'
 						+'</div>'
 						+'<div class="li_right">'
 						+'<img src="../img/li_arrow_r_grey.png">'

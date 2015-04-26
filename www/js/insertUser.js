@@ -180,11 +180,8 @@ function insertUser(){
 					insertCardAndUpdateUser();
 				}else if(localStorage['is_register_credit_card'] == 0){
 					
-
-					$.mobile.changePage("#page_login", {
-
-						transition : "slide"
-					});
+					alert("Bruker ble lagt til");
+					$.mobile.changePage("#page_login", {transition : "slide"});
 				}
 			}else{
 				alert(response + ", noe gikk galt, insertUser() insertUser.js");
