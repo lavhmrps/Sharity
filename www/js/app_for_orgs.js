@@ -71,7 +71,6 @@ $(document).on("pagebeforeshow","#page_org_home",function(){
 		success:function(response){
 			localStorage.setItem("orgNumDonations",response[0].numDonations);
 			localStorage.setItem("orgSumDonations",response[0].sumDonations);
-			console.log("numDonations: "+localStorage.getItem("orgNumDonations"));
 		},
 		error:function(response){
 			console.log("error in ajax, pageinit #page_org_home get orgNumDonations: "+response);
@@ -88,7 +87,6 @@ $(document).on("pagebeforeshow","#page_org_home",function(){
 		dataType:"json",
 		data:{"getSQL":sql},
 		success:function(response){
-			console.log("numNews: "+response.length);
 			var newsHTML ="";
 			for(var i =0; i < response.length;i++){
 				newsHTML += '<div class="portrait"><img src="'+response[i].backgroundimgURL+'" id="homeNewsBackgroundImage'+i+'"></div>'+
@@ -154,54 +152,7 @@ $(document).on("pagebeforeshow","#page_org_activities",function(){
 		}
 	});
 
-})
-
-$(document).on("pageshow","#page_org_activities",function(){
-	
-	$("span[name=actsNumDonations]").html(localStorage.getItem("orgNumDonations"));
-	$("span[name=actsNumFollowers]").html(localStorage.getItem("orgNumSubs"));
-
-	// When project in dropdownlist is changed
-	$("select[name=actsSelectProject]").change(function(){
-		var projectID = $("select[name=actsSelectProject] option:selected").attr("id");
-		var sql = "select count(*) as numDonations from donation where donation.projectID = "+projectID;
-		url = getURLappBackend();
-
-		$.ajax({
-			type:"post",
-			url:url,
-			dataType:"json",
-			data:{"getSQL":sql},
-			success:function(response){
-				//localStorage.setItem("projectID"+projectID+"NumDonations",response[0].numDonations);
-				$("span[name=actsNumDonations]").html(response[0].numDonations);
-			}
-		});
-
-		sql = "select count(*) as numFollowers from subscription where subscription.projectID = "+projectID;
-		$.ajax({
-			type:"post",
-			url:url,
-			dataType:"json",
-			data:{"getSQL":sql},
-			success:function(response){
-				//localStorage.setItem("projectID"+projectID+"NumDonations",response[0].numDonations);
-				$("span[name=actsNumFollowers]").html(response[0].numFollowers);
-			}
-		});
-	});
-
-	$(document).on("click","#actsProjectStats tr",function(){
-		var projectID = $("select[name=actsSelectProject] option:selected").attr("id");
-		var rowName = $(this).attr("name");
-		if(rowName== "actsRowDonations")
-			alert("Her skal det komme detaljer om donajonene");
-		else if(rowName = "actsNumFollowers")
-			alert("Her skal det komme detaljer om følgerene");
-	})
-
 });
-
 $(document).on("pagebeforeshow","#page_org_publish_news",function(){
 	var sql ="select projectID, name from project where organizationNr = "+localStorage.getItem("orgNr");
 	var url = getURLappBackend();
@@ -247,11 +198,80 @@ $(document).on("pageinit","#page_org_publish_news",function(){
 
 	});
 	$("#btnCompletePublish").click(function(){
+		var title = $("#news_title").val();
+		var content = $("#news_content").val();
+		var image = $("#selectedImage").attr("src");
+		var projectID = $(".dd_publish_input").val();
+
+		var sql = "insert into news (title,txt,backgroundimgURL,projectID) values('"+title+"','"+content+"','"+image+"','"+projectID+"')"
+		var url = getURLappBackend();
+
+		$.ajax({
+			type:"post",
+			url:url,
+			dataType:"text",
+			data:{"setSQL":sql},
+			success:function(response){
+				if(response == "OK"){
+					alert("Nyhet lagt til");
+					$(".back_btn").click();
+				}
+
+			}
+		});
 
 	});
 
 
 });
+
+$(document).on("pageshow","#page_org_activities",function(){
+	
+	$("span[name=actsNumDonations]").html(localStorage.getItem("orgNumDonations"));
+	$("span[name=actsNumFollowers]").html(localStorage.getItem("orgNumSubs"));
+
+	// When project in dropdownlist is changed
+	$("select[name=actsSelectProject]").change(function(){
+		var projectID = $("select[name=actsSelectProject] option:selected").attr("id");
+		var sql = "select count(*) as numDonations from donation where donation.projectID = "+projectID;
+		var url = getURLappBackend();
+
+		$.ajax({
+			type:"post",
+			url:url,
+			dataType:"json",
+			data:{"getSQL":sql},
+			success:function(response){
+				//localStorage.setItem("projectID"+projectID+"NumDonations",response[0].numDonations);
+				$("span[name=actsNumDonations]").html(response[0].numDonations);
+			}
+		});
+
+		sql = "select count(*) as numFollowers from subscription where subscription.projectID = "+projectID;
+		$.ajax({
+			type:"post",
+			url:url,
+			dataType:"json",
+			data:{"getSQL":sql},
+			success:function(response){
+				//localStorage.setItem("projectID"+projectID+"NumDonations",response[0].numDonations);
+				$("span[name=actsNumFollowers]").html(response[0].numFollowers);
+			}
+		});
+	});
+
+	$(document).on("click","#actsProjectStats tr",function(){
+		var projectID = $("select[name=actsSelectProject] option:selected").attr("id");
+		var rowName = $(this).attr("name");
+		if(rowName== "actsRowDonations")
+			alert("Her skal det komme detaljer om donajonene");
+		else if(rowName = "actsNumFollowers")
+			alert("Her skal det komme detaljer om følgerene");
+	})
+
+});
+
+
 
 // returns easily read date
 function formatDate(date){

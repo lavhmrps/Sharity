@@ -308,6 +308,7 @@ input#inputChooseImage{
 	border:none;
 }
 #preview{
+	background: #eee;
 	position:relative;
 	text-align: center;
 	width:50%;
@@ -335,18 +336,27 @@ input#inputChooseImage{
 	left:0;right:0;
 }
 .table_btns {
+	border:none;
+	background: inherit;
 	margin-top: 30pt;
 }
 
-.btn_blue {
-	background: #006dfe !important;
-	color: white !important;
-	font-weight: normal !important;
+.td_btn{
+	width:100pt;
 }
 
 .btn_white {
+	width:70pt;
 	background: white !important;
 	color:black;
 	font-weight: normal !important;
 	text-shadow: none !important;
 }
+.btn_blue {
+	padding:auto;
+	width:70pt;
+	background: #006dfe !important;
+	color: white !important;
+	font-weight: normal !important;
+}
+

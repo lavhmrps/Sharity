@@ -133,10 +133,10 @@
 					<option value="0">Velg Prosjekt</option>
 				</select>
 			</fieldset>
-			<input class="publish_input input_underscored" type="text" placeholder="Tittel" data-role="none">
+			<input class="publish_input input_underscored" type="text" placeholder="Tittel" data-role="none" id="news_title">
 			
 			<label for="textarea">Innhold</label>
-			<textarea class="publish_input" rows="4"></textarea>
+			<textarea class="publish_input" rows="4" id="news_content"></textarea>
 
 			<input class="publish_input" type="file" id="inputChooseImage" data-role="none">
 			<div id="preview">
@@ -147,12 +147,13 @@
 
 			<table class="table_btns">
 					<tr>
-						<td style="width: 40pt"></td><td>
+						<td style="width: 40pt"></td>
+						<td class="td_btn">
 							<a data-corners="false" data-shadow="false" class="btn_white" id="btnCancelPublish" data-role="button" data-rel="back" data-direction="reverse">
 								AVBRYT
 							</a>
 						</td>
-						<td>
+						<td class="td_btn">
 							<button data-corners="false" data-shadow="false" class="btn_blue" id="btnCompletePublish">
 								PUBLISER
 							</button>
