@@ -30,9 +30,17 @@
 	font-size: small;
 }
 
+#page_settings .listdiv{
+	margin-top:15pt;
+}
+
+#num_friend_req{
+	display:block;
+	margin-bottom: 15pt;
+}
 
 #subscription_list li,#friend_requests li{
-	max-height: 50pt;
+	height: 50pt;
 	border-bottom: thin solid #d2d2d2;
 	list-style: none;
 }
@@ -44,7 +52,7 @@
 #subscription_list .li_left, #subscription_list .li_mid, #subscription_list .li_right,#friend_requests .li_left, #friend_requests .li_mid, #friend_requests .li_right{
 	background: white;;
 	position: relative;
-	height:40pt;
+	height:50pt;
 	box-sizing: border-box;
 	float:left;
 
@@ -61,8 +69,8 @@
 	bottom:0;
 	left:0;
 	right:0;
-	height:22pt;
-	width: 22pt;
+	height:27pt;
+	width: 27pt;
 	border-radius: 50%;
 	background: #9b9b9b;
 	color:white;
@@ -91,7 +99,7 @@
 	position:relative;
 	width: 25%;
 }
-#friend_requests button{
+#friend_requests .li_right button{
 	position: absolute;
 	right:0;
 	width:50pt;
@@ -126,4 +134,60 @@
 
 #subscription_list a{
 	font-size: small;
+}
+
+.li_l{
+	position: relative;
+	float:left;
+	width:20%;
+	height:100%;
+}
+
+.li_r{
+	float:right;
+	width:80%;
+	height:100%;
+
+}
+.li_r_top{
+	height:50%;
+	line-height: 25pt;
+
+}
+.li_r_bottom{
+	position:relative;
+	height:50%;
+}
+
+.confirm{
+	float:left;
+	width:90pt;
+	height:19pt;
+	background: #006dfe;
+	opacity: 0.8;
+	color:white;
+	border:none;
+	border-radius: 3pt;
+}
+
+.dismiss{
+	float:right;
+	width:90pt;
+	height:19pt;
+	background: inherit;
+	border:thin solid #d2d2d2;
+	border-radius: 3pt;
+}
+
+#messagediv{
+	margin-top: 10pt;
+	height:20pt;
+	line-height: 20pt;
+	text-align: center;
+	color:#333;
+}
+
+#messagetext{
+	background:#F58071;
+	border-radius: 3pt;
 }
