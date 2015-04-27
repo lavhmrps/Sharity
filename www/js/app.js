@@ -1,3 +1,4 @@
+// Every time a page is shown
 $(document).delegate('.ui-page', 'pageshow', function () {
 	checkUpdates();
 });
@@ -7,11 +8,13 @@ $(document).ready(function(){
 	$(".back_btn").click(function() {
 		window.history.go(-1);
 	});
+	$('li[name=search_sharity]').click(function(){
+		window.location.href='#page_search_friends_sharity';
+	});
 });
 
 function checkUpdates(){
 	checkFriendRequests();
-
 }
 
 
