@@ -1,14 +1,4 @@
 $(document).delegate("#page_my_friends","pagebeforeshow",function(){
-	checkFriendRequests();
-
-	$('img[name=add_friend]').click(function(){
-		window.location.href = "#page_add_friend";
-	});
-
-	$(document.body).on('click', 'li[name=showFriend]', function() {
-		localStorage.setItem("userIDtoShow", this.id);
-		window.location.href="#page_show_user_profile";
-	});
 
 	if(localStorage.getItem('userID') != null){
 		var sql = "select friendEmail, name, sum(donation.sum) as Donasjoner, picURL "
@@ -79,6 +69,15 @@ $(document).delegate("#page_my_friends","pagebeforeshow",function(){
 				}
 		});
 	}
+});
+
+$(document).on("pageinit","#page_my_friends",function(){
+
+	$(document.body).on('click', 'li[name=showFriend]', function() {
+		alert("showFriend click");
+		localStorage.setItem("userIDtoShow", this.id);
+		window.location.href="#page_show_user_profile";
+	});
 });
 
 function showFriendsNotif(n){

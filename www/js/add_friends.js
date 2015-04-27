@@ -1,3 +1,9 @@
+$(document).on("pageinit","#page_add_friend",function(){
+	$('li[name=search_sharity]').click(function(){
+		window.location.href='#page_search_friends_sharity';
+	});
+})
+
 $(document).on("pageinit","#page_search_friends_sharity",function(){
 	var url = getURLappBackend();
 	var sql ="select * from friend where userEmail like '"+localStorage['userID']+"'";
@@ -59,9 +65,8 @@ $(document).on("pageinit","#page_search_friends_sharity",function(){
 												+'</div>'
 												+'<div class="li_right">'
 												  +'<div class="li_right_center">'
-													  +'<a href="#" page-role="button" class="addbtn" '+nameAttr+'>'+btnText+'</a>'
-												    //+'<a href="#" page-role="button" class="ui-btn" '+(alreadyFriend?'':'name="requestFriendship"')+'">'+(alreadyFriend?"Er venn":"Bli venn")+'</a>'
-												  +'</div>'
+													  +'<a href="#" page-role="button" class="addbtn x-small" '+nameAttr+'>'+btnText+'</a>'
+												   +'</div>'
 												+'</div>'
 											  +'</div>'
 											+'</li>';
@@ -77,7 +82,6 @@ $(document).on("pageinit","#page_search_friends_sharity",function(){
 		} // success
 	});// ajax
 }) 
-
 
 $(document).on("pageshow","#page_search_friends_sharity",function(){
 
