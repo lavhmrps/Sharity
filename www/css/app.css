@@ -143,6 +143,16 @@
 	background: #eee;
 }
 
+.large{
+	font-size:large !important;
+	font-weight: normal !important;
+}
+
+.medium{
+	font-size:medium !important;
+	font-weight: normal !important;
+}
+
 .small{
 	font-size:small !important;
 	font-weight: normal !important;
