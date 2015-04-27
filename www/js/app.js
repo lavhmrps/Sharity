@@ -1,24 +1,26 @@
-// Every time a page is shown
-$(document).delegate('.ui-page', 'pageshow', function () {
-	checkUpdates();
-});
-
-
 $(document).ready(function(){
 	$(".back_btn").click(function() {
 		window.history.go(-1);
 	});
-	$('li[name=search_sharity]').click(function(){
-		window.location.href='#page_search_friends_sharity';
+});
+
+$( document ).on( "pagecreate", function() {
+	$( ".photopopup" ).on({
+		popupbeforeposition: function() {
+			var maxHeight = $( window ).height() - 60 + "px";
+			$( ".photopopup img" ).css( "max-height", maxHeight );
+		}
 	});
+});
+
+// Every time a page is shown
+$(document).on('pagebeforeshow', function () {
+	checkUpdates();
 });
 
 function checkUpdates(){
 	checkFriendRequests();
 }
-
-
-
 // returns easily read date
 function formatDate(date){
 	// date : yyyy-mm-dd hh:mm:ss

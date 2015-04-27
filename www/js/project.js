@@ -129,7 +129,7 @@ function showProject(){
 }
 function appendNewsList(projectID){
 
-	var newsCode = "";
+	var newsCode = "",leftCode="";
 	var sql = "SELECT * FROM News WHERE projectID ='" + projectID + "'";
 	var url = getURLappBackend();
 	$.ajax({
@@ -141,15 +141,18 @@ function appendNewsList(projectID){
 			if(response.length == 0){
 				newsCode = '<li>Ingen nyheter</li>';
 			}
-
+				
 			for(var i = 0; i < response.length; i++){
+				var img = response[i].backgroundimgURL;
+				leftCode = (img==""?'<div class="circle"></div>':'<a href="#popupPhotoLandscapePageProject" data-rel="popup" data-position-to="window" '+
+					'class=""><img src="'+response[i].backgroundimgURL+'" id="'+response[i].newsID+'"></a>');
 				newsCode += 
 				'<li id="' + response[i].newsID + '" name="news_list">'+
-				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
 				'<div class="li_container">'+
 				'<div class="li_left">'+
-				'<div class="circle"></div>'+
+				leftCode+
 				'</div>'+
+				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
 				'<div class="li_mid">'+
 				'<span class="small grey">'+
 				response[i].date_added  +
@@ -165,11 +168,19 @@ function appendNewsList(projectID){
 				'</a>'+
 				'</li>';
 
-
-				$('#orgLogo').html();
-
 			}
-			$('ul[name=newsListProject]').html(newsCode);
+			$('ul[name=newsListProjectPageProject]').html(newsCode);
+			
+			$("li img").each(function(){
+				$(this).error(function(){
+					$(this).parent().html('<div class="circle"></div>');
+					$(this).remove();
+
+				});
+				$(this).off("click").click(function(){
+					$("#popupPhotoLandscapePageProject img").attr("src",$(this).attr("src"));
+				});
+			});
 		}
 	});
 }

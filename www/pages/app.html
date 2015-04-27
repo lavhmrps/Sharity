@@ -42,6 +42,10 @@
 	<!--Include the jQuery Dotdotdot library-->
 	<script src="../js/jquery.dotdotdot.min.js"></script>
 
+	<!-- This is located in <platforms/android/platform_www> in phonegap folder 
+	<script src="../js/cordova.js"></script>-->
+
+
 	<script src="../js/app.js"></script>
 	<script src="../js/getOrganizations.js"></script>
 	<script src="../js/urls.js"></script>
@@ -68,8 +72,6 @@
 			<p>Sharity</p>
 
 		</div>
-
-
 		<div class="main_content">
 			<div class="content_box1 ">
 				<div class="content_box1l box_inner">
@@ -204,10 +206,7 @@
 				<h5>Mine Kontakter</h5>			
 
 				<ul id="myContactsList" name="contactsList">
-
 				</ul>
-
-				<div id="contacts" ></div>
 
 
 			</div>
@@ -286,7 +285,7 @@
 		<div id="header_div" class="boxshadow">
 			<div class="header_top"></div>
 			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
-			<p name="project_name">Navn på prosjekt</p>
+			<p name="project_name">[Navn på prosjekt]</p>
 		</div>
 
 		<!-- For toppbilde  -->
@@ -310,10 +309,16 @@
 
 			<div class="listdiv">
 				<h3>Siste Nyheter</h3>
-				<ul data-role="none" name="newsListProject" id="newsListProject">
+				<ul data-role="none" name="newsListProjectPageProject" id="newsListProject">
 					<!--news list goes here-->
 				</ul>
+
 			</div>
+			<div data-role="popup" id="popupPhotoLandscapePageProject" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+			    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			    <img src="" alt="Photo landscape">
+			</div>
+			
 
 		</div>
 
@@ -628,11 +633,20 @@
 				<span class="block" name="ingress">[news text]</span>
 				<div class="listdiv">
 					<h3>Siste nyheter</h3>
-					<ul name="newsListProject" id="newsListProject">
+					<ul name="newsListProjectPageNews" id="newsListProject">
 					</ul>
 				</div>
+				<div data-role="popup" id="popupPhotoLandscapePageNews" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+			    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			    <img src="" alt="Photo landscape">
+			</div>
+				
 			</div>
 			<div class="somespace"></div>
+
+			<div data-role="popup" id="popupPhotoLandscape" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+		    	<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="">
+			</div>
 
 
 			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -658,6 +672,7 @@
 				<div id="div_logout"><button id="logout" name="logout" data-role="none">Logg ut</button></div>
 					
 			</div>
+			<a href="#page_test" id="#lnkPageTest">Testside</a>
 			<div class="main_content">
 				<h4>Venneforespørsler</h4>
 				<div class="listdiv">
@@ -846,6 +861,36 @@
 			</div>
 			<!--************End of Pages_show_user_profile************-->
 
+			<div data-role="page" id="page_test" data-theme="a">
+			<div id="header_div" class="boxshadow">
+				<div page-role="header" class="header_top"></div>
+				<img src="../img/arrow_left.png" class="menu_icon back_btn">
+				<p name="orgname">TESTSIDE</p>
+			</div>
+
+			<div class="main_content">
+				
+
+			<div class="somespace"></div>
+
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings footer_active"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+
+
+
 
 		</body>
-		</html>
+	<script>
+	
+	</script>
+</html>

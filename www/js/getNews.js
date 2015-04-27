@@ -17,8 +17,8 @@ function showNews(){
 	var newsID = localStorage.getItem("newsToShow");
 	var projectID = localStorage.getItem("projectToShow");
 	
-	//var sql = "select * from news where newsID = " + newsID;
-	var sql = "select news.*, org.name as orgName from news join project on (news.projectID ="+projectID+") join organization as org on (project.organizationNR like org.organizationNR) where newsID = "+newsID+" group by newsID";
+	var sql = "select n.*, o.name as orgName from news as n join project as p on n.projectID = p.projectID join organization as o on p.organizationNr = o.organizationNr where newsID ="+newsID;
+	//console.log(sql);
 	var url = getURLappBackend();
 
 	$.ajax({
@@ -47,6 +47,7 @@ function showNews(){
 
 	
 	var sql = "SELECT * FROM News WHERE projectID ='" + projectID + "'";
+	//console.log(sql);
 	var url = getURLappBackend();
 	$.ajax({
 		type : "POST",
@@ -54,14 +55,16 @@ function showNews(){
 		dataType: "JSON",
 		data : {"getSQL" : sql},
 		success : function(response){
-			var newsCode = "";
+			var newsCode = "",leftCode="";
 			for(var i = 0; i < response.length; i++){
+				var img = response[i].backgroundimgURL;
+				leftCode = (img==""?'<div class="circle"></div>':'<a href="#popupPhotoLandscapePageNews" data-rel="popup" data-position-to="window" class=""><img src="'+response[i].backgroundimgURL+'" id="'+response[i].newsID+'"></a>');
 				newsCode += 
 				'<li id="' + response[i].newsID + '" name="news_list">'+
 				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
 				'<div class="li_container">'+
 				'<div class="li_left">'+
-				'<div class="circle"></div>'+
+				leftCode+
 				'</div>'+
 				'<div class="li_mid">'+
 				'<span class="small grey">'+
@@ -78,7 +81,18 @@ function showNews(){
 				'</a>'+
 				'</li>';
 			}
-			$('ul[name=newsListProject]').html(newsCode);
+			$('ul[name=newsListProjectPageNews]').html(newsCode);
+
+
+			$("li img").each(function(){
+				$(this).error(function(){
+					$(this).parent().parent().html('<div class="circle"></div>');
+					$(this).parent().remove();
+				});
+				$(this).off("click").click(function(){
+					$("#popupPhotoLandscapePageNews img").attr("src",$(this).attr("src"));
+				});
+			});
 		}
 	});
 }
