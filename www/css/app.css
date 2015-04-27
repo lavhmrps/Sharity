@@ -158,6 +158,11 @@
 	font-weight: normal !important;
 }
 
+.x-small{
+	font-size:x-small !important;
+	font-weight: normal !important;
+}
+
 .relative{
 	position: relative !important;
 }

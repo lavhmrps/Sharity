@@ -46,7 +46,7 @@
 }
 
 #subscription_list .li_container{
-	height:40pt;
+	height:50pt;
 }
 
 #subscription_list .li_left, #subscription_list .li_mid, #subscription_list .li_right,#friend_requests .li_left, #friend_requests .li_mid, #friend_requests .li_right{
@@ -80,7 +80,6 @@
 }
 
 #friend_requests .li_mid{
-	padding:5pt;
 	width: 60%;
 	overflow:hidden;
 	white-space: nowrap;
@@ -88,11 +87,26 @@
 }
 
 #subscription_list .li_mid{
-	padding:5pt;
 	width: 65%;
-	overflow:hidden;
+}
+
+#subscription_list .li_mid .projectNameDiv{
+	position: relative;
+	overflow: hidden;
 	white-space: nowrap;
 	text-overflow:ellipsis;
+	height:50%;
+}
+
+#subscription_list .projectNameDiv .projectName{
+	position: absolute;
+	display: block;
+	bottom:0;
+}
+
+#subscription_list .li_mid .dateAddedDiv{
+	position: relative;
+	height:50%;
 }
 
 #friend_requests .li_right{
@@ -117,12 +131,7 @@
 	top:3pt;margin:auto;
 	background :#20a623;
 }
-#subscription_list .projectName{
-	color:#333;
-	display: block;
-	font-weight: bold;
-	font-size: large;
-}
+
 
 
 

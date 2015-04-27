@@ -61,21 +61,22 @@ body {
 	width: 100%;
 }
 
-#myContactsList .li_heading {
-	font-size: large;
-	display: block;
-	font-weight: normal;
+#myContactsList .li_contactNameDiv {
+	position: relative;
 	color: #333;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow:ellipsis;
+	height:50%;
+}
+#myContactsList .li_contactName{
+	display: block;
+	position: absolute;
+	bottom: 0;
 }
 
-#myContactsList .li_text {
-	font-size: small;
-	font-family: Circular Std Book, monospace, Calibri, Arial,
-		Sans-serif !important;
-	font-weight: normal;
+#myContactsList .li_contactNrDiv {
+	height:50%;
 }
 
 #myContactsList .txt_grey {
