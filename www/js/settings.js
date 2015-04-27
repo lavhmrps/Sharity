@@ -11,7 +11,8 @@ $(document).on("pageinit","#page_settings",function(){
 
 	$(document).on('click', 'button[name=accept_request]', function() {
 		var from_user = $(this).closest("li").attr("id");
-		acceptFriendRequest(from_user);
+		var name = $(this).closest("li").find(".name").html();
+		acceptFriendRequest(from_user,name);
 	});
 	$(document).on('click', 'button[name=deny_request]', function() {
 		var from_user = $(this).closest("li").attr("id");
@@ -79,7 +80,7 @@ function checkFriendRequests(){
 	});
 }
 
-function acceptFriendRequest(from_user){
+function acceptFriendRequest(from_user,name){
 	var url = getURLappBackend();
 	var my_email = localStorage['userID'];
 	var data = {"setSQL" : "INSERT INTO friend (userEmail, friendEmail) VALUES ('"+my_email+"', '"+from_user+"')"};
@@ -106,6 +107,11 @@ function acceptFriendRequest(from_user){
 			}
 		}
 	});
+
+	var message="Du ble venn med "+name;
+	$("#messagetext").html(message).css("padding","3pt");
+	$("#messagetext").fadeIn().delay(3000).fadeOut();
+
 }
 
 function denyFriendRequest(from_user,name){
@@ -122,7 +128,7 @@ function denyFriendRequest(from_user,name){
 			checkFriendRequests();
 		}
 	});
-	
+
 	var message="Du avslo "+name+" sin venneforespørsel.";
 	$("#messagetext").html(message).css("padding","3pt");
 	$("#messagetext").fadeIn().delay(3000).fadeOut();
