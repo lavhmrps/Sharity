@@ -1,4 +1,5 @@
 $(document).delegate("#page_my_friends","pagebeforeshow",function(){
+	checkFriendRequests();
 
 	$('img[name=add_friend]').click(function(){
 		window.location.href = "#page_add_friend";
@@ -79,3 +80,15 @@ $(document).delegate("#page_my_friends","pagebeforeshow",function(){
 		});
 	}
 });
+
+function showFriendsNotif(n){
+	$(".footer_friends").each(function(){
+		$(this).find(".notification").remove();
+		$("#friendRequests").html("Du har <span class='red small'>"+n+"</span> ny"+(n==1?"":"e")+" venneforespørs"+(n==1?"el":"ler")+".");
+		if(n>0){
+			$(this).append("<div class='notification'>"+n+"</div>");
+			$("#friendRequests").append(" <a href='#page_settings'>Se hvem</a>");
+		}
+		
+	});		
+}
