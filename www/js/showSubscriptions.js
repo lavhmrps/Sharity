@@ -17,7 +17,7 @@ $(document).on("pagebeforeshow","#page_settings",function(){
 					subscription_list += "<li projectID='"+json[i].projectID+"'>"
 						+"<div class='li_container'><div class='li_left'><div class='circlegrey'></div>"
 						+"</div><div class='li_mid'>"
-						+ "<span class='projectName'>"+json[i].name+"</span>"
+						+ "<span class='large projectName'>"+json[i].name+"</span>"
 						+"<span class='small grey'>"+ formatDate(json[i].date_added)+"</span>"
 						+"</div><div class='li_right'><a href='#' class='red' name='cancel_subscription'>Stopp</a>"					
 						+ "</div></div></li>";
