@@ -2,6 +2,16 @@ $(document).ready(function(){
 	$(".back_btn").click(function() {
 		window.history.go(-1);
 	});
+
+	$(".input_underscored").blur(function() {
+		var text = $(this).val();
+		if (text == "" || text.indexOf("'")!=-1) {
+			$(this).css("border-bottom", "thin solid #f63218");
+		} else	{
+			$(this).css("border-bottom", "thin solid #000")
+		};
+
+	});
 });
 
 $( document ).on( "pagecreate", function() {
@@ -56,3 +66,4 @@ function formatDate(date){
 
 	return formattedDate;
 }
+

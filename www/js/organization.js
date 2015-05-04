@@ -114,8 +114,8 @@ function appendProjectList(organizationNr){
 			}
 			$('ul[name=projectList]').html(projectCode);
 		},
-		error : function(){
-			alert("Trying to print projectList connected to: " + organizationNr + ", in organization.js but getting error in ajax request");
+		error : function(error){
+			alert("Trying to print projectList connected to: " + organizationNr + ", in organization.js but getting error in ajax request:\n"+JSON.stringify(error));
 		}
 	});
 

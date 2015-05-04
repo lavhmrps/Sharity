@@ -672,8 +672,125 @@
 				<div id="div_logout"><button id="logout" name="logout" data-role="none">Logg ut</button></div>
 					
 			</div>
-			<a href="#page_test" id="#lnkPageTest">Testside</a>
+			<div>
+				<table class="settings_btns"><tr><td>
+					<a href="#" class="ui-btn" id="btn_settings_persondata">Persondata</a></td><td>
+					<a href="#" class="ui-btn" id="btn_settings_manage_cards">Behandle kort</a></td></tr>
+				</table>
+			</div>
+				<!--<img src="../img/menu.png" class="icon"  id="settings_menu_img"/>-->
+			
+
+
+
 			<div class="main_content">
+				<div id="settings_div">
+					<div id="div_persondata">
+						<table>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored blue" data-role="none" value="" id="set_name" placeholder="Fullt navn"></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored blue" data-role="none" value="" id="set_phone" placeholder="Telefonnr"></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="phone" class="input_underscored blue" data-role="none" value="" id="set_zip" placeholder="Postnummer"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<table class="settings_btns">
+										<td><a href="#" class="ui-btn" id="btn_settings_cancel">Avbryt</a></td>
+										<td><a href="#" class="ui-btn" id="btn_settings_save">Lagre</a></td>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div id="div_manage_cards">
+						<table>
+							<tr>
+								<td class="half_width">
+									<img src="../img/accepted_payment.png" id="accepted_payment_icon"/>
+								</td>
+								<td class="half_width">
+									<select data-role="none" class="input_underscored green" id="dd_cards">
+										<option value="0">Velg kort</option>
+									</select>
+								</td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="number" class="input_underscored blue" data-role="none" value="" id="set_cardnr" placeholder="Kortnummer"></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td>
+								<td>
+									<table>
+										<td>
+											<select data-role="none" class="input_underscored blue" id="set_month">
+												<option value="0">Måned</option>
+												<option value="1">Januar</option>
+												<option value="2">Februar</option>
+												<option value="3">Mars</option>
+												<option value="4">April</option>
+												<option value="5">Mai</option>
+												<option value="6">Juni</option>
+												<option value="7">Juli</option>
+												<option value="8">August</option>
+												<option value="9">September</option>
+												<option value="10">Oktober</option>
+												<option value="11">November</option>
+												<option value="12">Desember</option>
+											</select>
+										</td>
+										<td>
+											<select data-role="none" class="input_underscored blue" id="set_year">
+												<option value="0">År</option>
+												<option value="2015">2015</option>
+												<option value="2016">2016</option>
+												<option value="2017">2017</option>
+												<option value="2018">2018</option>
+												<option value="2019">2019</option>
+												<option value="2020">2020</option>
+												<option value="2021">2021</option>
+												<option value="2022">2022</option>
+											</select>
+										</td>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="phone" class="input_underscored half_width blue" data-role="none" value="" id="set_CCV" placeholder="CCV"></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored blue" data-role="none" value="" id="set_cardname" placeholder="Korteier"></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td>
+								<td>
+									<table>
+										<td class="half_width"><input type="checkbox" id="cbMonthlyCharge" data-role="none"><label for="cbMonthlyCharge" class="small">Månedlig trekk</label></td>
+										<td class="third_width"><input type="number" id="set_charge" class="input_underscored blue centertext" data-role="none" placeholder="Beløp"></td>
+										<td>kr</td>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<table class="settings_btns">
+										<td><a href="#" class="ui-btn" id="btn_cardsettings_cancel">Avbryt</a></td>
+										<td><a href="#" class="ui-btn" id="btn_cardsettings_save">Lagre</a></td>
+									</table>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+					<div class="messagediv"><span id="messagetext1" class="small"></span></div>
+				</div>
 				<h4>Venneforespørsler</h4>
 				<div class="listdiv">
 					<span id="num_friend_req" class="grey"></span>
@@ -681,7 +798,7 @@
 					<ul id="friend_requests" name="friend_requests">
 
 					</ul>
-					<div id="messagediv"><span id="messagetext" class="small"></span></div>
+					<div class="messagediv"><span id="messagetext2" class="small"></span></div>
 					<div class="greyline"></div>
 				</div>
 				<h4>Abonnementer</h4>

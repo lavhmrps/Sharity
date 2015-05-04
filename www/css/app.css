@@ -15,6 +15,7 @@
 	margin: 0;
 	padding: 0;
 	text-shadow: none !important;
+	color:#333;
 }
 
 #header_div {
@@ -31,7 +32,7 @@
 	margin-left: 50pt;
 	font-size:x-large;
 	float:left;
-
+	color:white;
 }
 
 .portrait {
@@ -96,6 +97,11 @@
 	margin-left: 10pt;
 }
 
+.icon {
+	width: 20pt;
+	height: 20pt;
+}
+
 .main_content {
 	position: relative;
 	width: 90%;
@@ -120,6 +126,17 @@
 	color: #006dfe !important;
 }
 
+.half_width {
+	width: 50% !important;
+}
+
+.third_width {
+	width: 35% !important;
+}
+
+.centertext{
+	text-align: center;
+}
 
 .listdiv {
 	margin-top: 30pt;
@@ -217,3 +234,4 @@ textarea{
 	font-weight: normal;
 
 }
+
