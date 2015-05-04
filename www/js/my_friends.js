@@ -73,11 +73,17 @@ $(document).delegate("#page_my_friends","pagebeforeshow",function(){
 
 $(document).on("pageinit","#page_my_friends",function(){
 
-	$(document.body).on('click', 'li[name=showFriend]', function() {
+	$(".add_friend_icon").click(function(){
+		$.mobile.changePage("#page_add_friend",{"transition":"slide"});
+	});
+
+	$(document).on('click', 'li[name=showFriend]', function() {
 		alert("showFriend click");
 		localStorage.setItem("userIDtoShow", this.id);
 		window.location.href="#page_show_user_profile";
 	});
+
+
 });
 
 function showFriendsNotif(n){
