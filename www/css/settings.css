@@ -193,11 +193,17 @@
 }
 
 .messagediv{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	margin-top: 10pt;
 	height:20pt;
+	min-width: 100pt;
 	line-height: 20pt;
 	text-align: center;
 	color:#333;
+	z-index: 101;
 }
 
 #messagetext1, #messagetext2{
@@ -219,6 +225,7 @@
 }
 
 #settings_div{
+	position:relative;
 	width:80%;
 	margin:20pt auto 0 auto;
 
@@ -252,6 +259,29 @@
 	box-shadow: none;
 	height:20pt;
 }
+
+#settings_div .select_underscored{
+	width: 100%;
+	box-shadow: none;
+	/* 	-webkit-border-radius: 3pt; */
+	border: none;
+	border-bottom: thin solid #d2d2d2;
+	background: #fafafa;
+	box-shadow: none;
+	height:20pt;
+}
+
+#settings_div  .input_underscored:FOCUS, #settings_div  .select_underscored:FOCUS {
+	background: lightyellow;
+	outline: none !important;
+}
+
+#page_settings #btn_delete_card{
+	position:absolute;
+	right:0;top:5pt;
+	z-index: 100;
+}
+
 #settings_div input[type=checkbox] {
 	position:absolute;
 	left:0;right:0;top:3pt;
@@ -268,3 +298,4 @@
 #settings_div td:first-child{ 
 	min-width: 30pt;
 }
+
