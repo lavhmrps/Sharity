@@ -4,13 +4,31 @@ $(document).ready(function(){
 	});
 
 	$(".input_underscored").blur(function() {
-		var text = $(this).val();
-		if (text == "" || text.indexOf("'")!=-1) {
+		var val = $(this).val();
+		if (val == "" || val.indexOf("'")!=-1 || val == 0) {
 			$(this).css("border-bottom", "thin solid #f63218");
 		} else	{
 			$(this).css("border-bottom", "thin solid #000")
 		};
 
+	});
+
+	$(".input_creditcard").blur(function() {
+		var val = $(this).val().replace(/ /g,'');
+		if (val.length != 16) {
+			$(this).css("border-bottom", "thin solid #f63218");
+		} else	{
+			$(this).css("border-bottom", "thin solid #000")
+		};
+
+	});
+
+	$(".select_underscored").blur(function() {
+		var val = $(this).val();
+		if (val != 0) 
+			$(this).css("border-bottom", "thin solid #000");
+		else
+			$(this).css("border-bottom", "thin solid #d2d2d2");
 	});
 });
 

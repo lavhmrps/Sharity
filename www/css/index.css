@@ -86,7 +86,8 @@ body {
 }
 
 .input_underscored:FOCUS {
-	outline: none;
+	background: lightyellow;
+	outline: none !important;
 }
 
 #page_login .input_underscored {

@@ -192,13 +192,13 @@ function listDonations(){
 							if (confirm("Stoppe donasjonen?") == true) {
 							stopDonation(donationID,$(this));
 							}else{
-								exit;
+								return;
 							}	
 						}else{
 							if (confirm("Aktivere donasjonen igjen?") == true) {
 							startDonation(donationID,$(this));
 							}else{
-								exit;
+								return;
 							}
 						}
 								
@@ -238,7 +238,7 @@ function stopDonation(donationID,div){
 		}
 	});
 
-	exit;
+	return;
 }
 
 function startDonation(donationID,div){
@@ -286,6 +286,6 @@ function startDonation(donationID,div){
 
 	});
 
-	exit;
+	return;
 
 }

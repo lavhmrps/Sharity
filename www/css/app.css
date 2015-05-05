@@ -235,3 +235,41 @@ textarea{
 
 }
 
+.inputDisabled{
+	background":"#ddd" !important;
+	opacity":"0.7" !important;
+}
+
+/*Icons*/
+
+.icon-arrow-up:after{
+	background-image: url(../img/li_arrow_u_grey.png);
+	background-color: inherit !important;
+}
+
+.icon-arrow-down:after{
+	background-image: url(../img/li_arrow_d_grey.png);
+	background-color: inherit !important;
+}
+
+.icon-arrow-left:after{
+	background-image: url(../img/li_arrow_l_grey.png);
+	background-color: inherit !important;
+}
+
+.icon-arrow-right:after{
+	background-image: url(../img/li_arrow_r_grey.png);
+	background-color: inherit !important;
+}
+
+.icon-check:after{
+	background-image: url(../img/icon-check.png);
+	background-size: 20pt 20pt;
+	background-color: inherit !important;
+}
+
+.icon-cancel:after{
+	background-image: url(../img/icon-cancel.png);
+	background-size: 16pt 16pt;
+	background-color: inherit !important;
+}
