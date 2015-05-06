@@ -57,7 +57,7 @@ function listProjects(){
 			if(response.length == 0){
 				projectsCode += '<li><div class="li_container">'+
 				'<div class="li_left">'+
-				'<div class="circle">'+
+				'<div class="circlegrey">'+
 				'</div>'+
 				'</div>'+
 				'<div class="li_mid">'+
@@ -78,7 +78,7 @@ function listProjects(){
 					'<a href="#page_project" rel="external" class="show-page-loading-msg">' + 
 					'<div class="li_container">'+
 					'<div class="li_left">'+
-					'<div class="circle">'+
+					'<div class="circlegrey">'+
 					'<img src="' + (response[i].logoURL == null? "../img/no_image_avaliable.png":response[i].logoURL) + '"/>'+
 					'</div>'+
 					'</div>'+
@@ -126,7 +126,7 @@ function listOrgs(){
 			if(response.length == 0){
 				orgCode += '<li><div class="li_container">'+
 				'<div class="li_left">'+
-				'<div class="circle">'+
+				'<div class="circlegrey">'+
 				'</div>'+
 				'</div>'+
 				'<div class="li_mid">'+
@@ -147,7 +147,7 @@ function listOrgs(){
 					'<a href="#page_organization" rel="external" class="show-page-loading-msg">' + 
 					'<div class="li_container">'+
 					'<div class="li_left">'+
-					'<div class="circle">'+
+					'<div class="circlegrey">'+
 					'<img src="' + (response[i].logoURL == null? "../img/no_image_avaliable.png":response[i].logoURL) + '"/>'+
 					'</div>'+
 					'</div>'+
