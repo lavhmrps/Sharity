@@ -1,31 +1,27 @@
-$(document).on("pageinit","#page_organization",function(){
-
-	$(document).on('click', 'a[name="page_org_donation"]', function() {
-		localStorage.setItem("donateToOrganization",localStorage.getItem("organizationToShow"));
-		console.log("page_organization: "+localStorage.getItem("donateToOrganization"));
-	});
-
-	$(document).on('click', 'a[name="page_org_li_donation"]', function() {
-		localStorage.setItem("donateToProject",this.id);
-		console.log("page_organization: "+localStorage.getItem("donateToProject"));
-	});
-});
-
 $(document).on( "pagebeforeshow","#page_organization", function() {
 	showOrganization();
-
 
 	$(document).on('click', 'li[name=organization_list]', function() {
 		showOrganization();
 	});
 
-
 	$(document).on('click', 'li[name=project_list]', function() {
 		localStorage.setItem("projectToShow", this.id);
 	});
-
-
 });	
+
+$(document).on("pageinit","#page_organization",function(){
+
+	$(document).on('click', 'a[name="page_org_donation"]', function() {
+		localStorage.setItem("donateToOrganization",localStorage.getItem("organizationToShow"));
+		//console.log("page_organization: "+localStorage.getItem("donateToOrganization"));
+	});
+
+	$(document).on('click', 'a[name="page_org_li_donation"]', function() {
+		localStorage.setItem("donateToProject",this.id);
+		//console.log("page_organization: "+localStorage.getItem("donateToProject"));
+	});
+});
 
 function showOrganization(){
 
@@ -97,7 +93,7 @@ function appendProjectList(organizationNr){
 				'<li id="' + response[i].projectID +'" name="project_list">'+
 				'<div class="li_container">' +
 				'<div class="li_left">'+
-				'<div class="li_circ"><img src="'+
+				'<div class="circlegrey"><img src="'+
 				(response[i].logoURL == null? "../img/no_image_avaliable.png":response[i].logoURL)+
 				'"></div>'+
 				'</div>'+
