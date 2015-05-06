@@ -1,16 +1,13 @@
-
-$( document ).delegate("#page_mystatsDonations", "pageinit", function() {
+$( document ).on( "pagebeforeshow", "#page_mystatistics",function() {
+	showStats();
 	listDonations();
 });
 
-$( document ).delegate("#page_mystatistics", "pagebeforeshow", function() {
-	showStats();
+
+$( document ).on("pageinit","#page_mystatsDonations",  function() {
+	
 });
 
-
-$(".back_btn").click(function() {
-	window.history.go(-1);
-});
 
 $(".footer_me").click(function() {
 	showStats();
@@ -62,9 +59,6 @@ function showStats(){
 	$('div[name="user_name"]').text('Full name goes here');
 	
 }
-
-
-
 
 function getChallenges(){
 	var email = localStorage.getItem('userID');
