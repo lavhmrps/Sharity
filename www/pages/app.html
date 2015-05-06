@@ -292,7 +292,7 @@
 		<div class="portrait">
 			<img src="#" name="background">
 			<div class="logodiv_top_right">
-				<img src="#" name="logo" class="roundimage">
+				<img src="#" name="orglogo" class="roundimage">
 			</div>
 		</div>
 		<div class="space_btn">
@@ -409,13 +409,19 @@
 				</label>
 			</fieldset>
 
-			<div class="somespace"></div>
 
-			<button data-role="none" class="btn_single_project_donate" onclick="#" name="reg_donation_done">DONÉR BELØP</button>
 
 			<div class="somespace"></div>
+
+			<button data-role="none" class="btn_single_project_donate" name="reg_donation_done">DONÉR BELØP</button>
+			<a href="#page_donate_challenge" data-rel="popup">Challenge</a>
+			
+			
+
 			<div class="somespace"></div>
 			<div class="somespace"></div>
+			<div class="somespace"></div>
+
 			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
 				<div data-role="navbar">
 					<ul>
@@ -426,7 +432,11 @@
 					</ul>
 				</div>
 			</footer>
+			<div data-role="popup" id="page_donate_challenge" class="centered">
+				<p>hent venneliste og checkbox dem som skal utfordres og lag en custom melding med </p>
+				<p>lag noe til fb og</p>
 
+			</div>
 			
 		</div>
 	</div>
@@ -679,15 +689,9 @@
 					<a href="#" class="ui-btn ui-btn-icon-right icon-arrow-down"  id="btn_settings_manage_cards">Behandle kort</a></td></tr>
 				</table>
 
-			</div>
-				<!--<img src="../img/menu.png" class="icon"  id="settings_menu_img"/>-->
-			
-
-
-
-			
+			</div>			
 				<div id="settings_div">
-					<div class="messagediv"><span id="messagetext1" class="small"></span></div>
+					<div class="messagediv centered"><span id="messagetext1" class="small"></span></div>
 					<div id="div_persondata">
 						<table>
 							<tr>
@@ -814,7 +818,7 @@
 					<ul id="friend_requests" name="friend_requests">
 
 					</ul>
-					<div class="messagediv"><span id="messagetext2" class="small"></span></div>
+					<div class="messagediv centered"><span id="messagetext2" class="small"></span></div>
 					<div class="greyline"></div>
 				</div>
 				<h4>Abonnementer</h4>
@@ -823,6 +827,11 @@
 					<ul id="subscription_list" name="subscription_list">
 					</ul>
 				</div>
+			</div>
+
+			<div data-role="popup" id="popupPhotoLandscapePageSettings" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+			    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			    <img src="" alt="Photo landscape">
 			</div>
 
 
@@ -896,7 +905,7 @@
 				<div id="header_div" class="boxshadow">
 					<div class="header_top"></div>
 					<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
-					<span id="show_profile_username" name="show_profile_username" style="margin-left:50pt;font-size:large;">[Username]</span>
+					<p id="show_profile_username" name="show_profile_username">[Username]</p>
 				</div>
 			</div>
 			<div id="mystats_title">
