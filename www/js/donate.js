@@ -9,7 +9,6 @@ $(document).on("pagebeforeshow","#page_donate",function(){
 	if(projectID != undefined){
 		sql ="select p.* , o.name as orgName from project as p join organization as o on (p.organizationNr = o.organizationNr) where projectID = " + projectID;
 		projectDonation=true;
-		console.log("ProjectDonation! "+projectID);
 	}
 	else if (orgNr != undefined){
 		sql ="select * from organization where organizationNr = "+orgNr;
@@ -134,7 +133,6 @@ function completeDonation(){
 		dataType:"json",
 		data:{"getSQL":sql},
 		success:function(response){
-			console.log("funds for "+email+": "+response[0].funds);
 			funds =  response[0].funds;
 			if (funds < sum){
 				alert("ikke dekning på konto:"+funds +" < "+ sum);
@@ -152,7 +150,7 @@ function completeDonation(){
 				data : data,
 				success : function(response){
 					//alert("donate.js successful ajax request returned : " + response);
-					console.log(sql+ " "+response);
+					//console.log(sql+ " "+response);
 					$("input[name='in_donate_amount']").attr("checked", false).checkboxradio("refresh");
 					$("input[name='donation_freq']").attr("checked", false).checkboxradio("refresh");
 					$("input[name='in_donate_amount_custom']").val("");
@@ -164,10 +162,9 @@ function completeDonation(){
 						dataType : "text",
 						data : {"setSQL":sql},
 						success : function(response){
-							console.log(sql+ " "+response);
+							//console.log(sql+ " "+response);
 						}
 					});
-
 
 					window.history.go(-1);
 				},
@@ -176,9 +173,14 @@ function completeDonation(){
 				}
 			});
 
+			if(confirm("Du har donert!\nVil du utfordre noen av vennene dine til å gjøre det samme?")){
+				challenge(projectID, email, type, sum,type);
+			}else return;
+
 		}
-
 	});
+}
 
-		
+function challenge(projectID, email, type, sum,type){
+	$.mobile.changePage("#page_donate_challenge");
 }
