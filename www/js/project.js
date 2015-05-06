@@ -1,7 +1,17 @@
+$(document).on("pagebeforeshow","#page_project", function() {
+		showProject();
+});
+
 $(document).on( "pageinit","#page_project",function(){
 	var projectID = localStorage.getItem("projectToShow");
 	var email = localStorage.getItem('userID');
 	checkSubStatus(email,projectID);
+
+	$("img[name=orglogo]").click(function(){
+		var orgID = $(this).attr("orgid");
+		localStorage.setItem("organizationToShow",orgID);
+		$.mobile.changePage("#page_organization");
+	});
 	
 
 	$('a[name=follow_this_project]').click(function(){
@@ -53,7 +63,6 @@ $(document).on( "pageinit","#page_project",function(){
 
 	$(document).on('click', 'a[name="page_project_donation"]', function() {
 		localStorage.setItem("donateToProject",localStorage.getItem("projectToShow"));
-		console.log("page_project, project: "+localStorage.getItem("donateToProject"));
 	});
 
 	$(document).on('click', 'li[name=news_list]', function() {
@@ -66,11 +75,6 @@ $(document).on( "pageinit","#page_project",function(){
 		//alert("File: project.js, trying to show projectNr: " + localStorage.getItem('projectToShow'));
 		showProject();
 	});
-});
-
-
-$(document).on("pagebeforeshow","#page_project", function() {
-		showProject();
 });
 
 function checkSubStatus(email,projectID){
@@ -114,7 +118,7 @@ function showProject(){
 			$('span[name=project_country]').text(project_country);
 			$('span[name=project_city]').text(project_city);
 			$('img[name=background]').attr("src", background);
-			$('img[name=logo]').attr("src",response[0].orgLogo);
+			$('img[name=orglogo]').attr("src",response[0].orgLogo).attr("orgid",response[0].organizationNr);
 			localStorage.setItem("orgLogo",response[0].orgLogo)
 
 			appendNewsList(projectID);
@@ -144,7 +148,7 @@ function appendNewsList(projectID){
 				
 			for(var i = 0; i < response.length; i++){
 				var img = response[i].backgroundimgURL;
-				leftCode = (img==""?'<div class="circle"></div>':'<a href="#popupPhotoLandscapePageProject" data-rel="popup" data-position-to="window" '+
+				leftCode = (img==""?'<div class="circlegrey"></div>':'<a href="#popupPhotoLandscapePageProject" data-rel="popup" data-position-to="window" '+
 					'class=""><img src="'+response[i].backgroundimgURL+'" id="'+response[i].newsID+'"></a>');
 				newsCode += 
 				'<li id="' + response[i].newsID + '" name="news_list">'+
@@ -173,9 +177,7 @@ function appendNewsList(projectID){
 			
 			$("li img").each(function(){
 				$(this).error(function(){
-					$(this).parent().html('<div class="circle"></div>');
-					$(this).remove();
-
+					$(this).closest(".li_left").html('<div class="circlegrey"></div>');
 				});
 				$(this).off("click").click(function(){
 					$("#popupPhotoLandscapePageProject img").attr("src",$(this).attr("src"));
@@ -184,3 +186,7 @@ function appendNewsList(projectID){
 		}
 	});
 }
+
+$(document).on("pageinit","#page_news",function(){
+
+});
