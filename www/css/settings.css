@@ -67,20 +67,18 @@
 }
 
 #subscription_list .circlegrey,#friend_requests .circlegrey{
-	position: absolute;
-	margin:auto;
-	top:0;
-	bottom:0;
-	left:0;
-	right:0;
 	height:27pt;
 	width: 27pt;
+}
+
+#subscription_list img {
+	height: 27pt;
+	width: 27pt;
+	position: absolute;
+	bottom: 0;top: 0;
+	left:0;right:0;
+	margin: auto;
 	border-radius: 50%;
-	background: #9b9b9b;
-	color:white;
-	line-height: 35pt;
-	font-size: small;
-	text-align: center;
 }
 
 #friend_requests .li_mid{
@@ -193,10 +191,6 @@
 }
 
 .messagediv{
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	margin-top: 10pt;
 	height:20pt;
 	min-width: 100pt;

@@ -43,19 +43,6 @@ body {
 	width: 25%;
 }
 
-#projectList .li_circ {
-	position: absolute;
-	margin: auto;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 30pt;
-	height: 30pt;
-	background: #d2d2d2;
-	border-radius: 50%;
-}
-
 #projectList .li_circ img {
 	border-radius: 50%;
 	width: 100%;

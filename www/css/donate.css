@@ -92,3 +92,10 @@
 #page_donate .btn_single_project_donate:active {
 	background: #4CAF50 !important;
 }
+
+#page_donate_challenge{
+	height:90%;
+	width:90%;
+	border:thin solid red;
+	overflow-y:scroll;
+}

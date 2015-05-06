@@ -44,23 +44,6 @@
 	border-radius: 50%;
 }
 
-#orgList .circle{
-	position: absolute;
-	margin:auto;
-	top:0;
-	bottom:0;
-	left:0;
-	right:0;
-	height:30pt;
-	width: 30pt;
-	border-radius: 50%;
-	background: #b2b2b2;
-	color:white;
-	line-height: 30pt;
-	font-size: small;
-	text-align: center;
-}
-
 #orgList .li_org_name,#orgList .li_project_name{
 	display: block;
 	font-size: large;

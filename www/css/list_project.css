@@ -40,36 +40,12 @@
 }
 
 #newsListProject  img{
-	max-height: 100%;
-	max-width: 100%;
+	height: 35pt;
+	width: 35pt;
 	position:absolute;
 	bottom:0;top:0;
 	margin:auto;
-}
-
-#newsListProject .circle{
-	position: absolute;
-	margin:auto;
-	top:0;bottom:0;
-	left:0;right:0;
-	height:35pt;
-	width: 35pt;
 	border-radius: 50%;
-	background: #9b9b9b;
-	color:white;
-	line-height: 30pt;
-	font-size: small;
-	text-align: center;
-}
-
-#newsListProject .square{
-	position: absolute;
-	margin:auto;
-	top:0;bottom:0;
-	left:0;right:0;
-	height:25pt;
-	width: 35pt;
-	background: #9b9b9b;
 }
 
 #newsListProject .li_date{
