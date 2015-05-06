@@ -31,7 +31,7 @@ $(document).on("pagebeforeshow","#page_show_user_profile",function(){
 		dataType : "JSON",
 		success : function(json){
 			if(json.length == 1){
-				$('span[name=show_profile_username]').text(json[0].email);
+				$('p[name=show_profile_username]').text(json[0].email);
 				localStorage.setItem("userIDtoShow",json[0].email);
 
 				var picURL = json[0].picURL;
