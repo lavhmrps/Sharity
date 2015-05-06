@@ -123,6 +123,7 @@ function showProject(){
 
 			appendNewsList(projectID);
 			$('img[name=background]').error(function(){
+				alert("background error, removing");
 				$(this).remove();
 			});
 			$('img[name=logo]').error(function(){
@@ -148,8 +149,8 @@ function appendNewsList(projectID){
 				
 			for(var i = 0; i < response.length; i++){
 				var img = response[i].backgroundimgURL;
-				leftCode = (img==""?'<div class="circlegrey"></div>':'<a href="#popupPhotoLandscapePageProject" data-rel="popup" data-position-to="window" '+
-					'class=""><img src="'+response[i].backgroundimgURL+'" id="'+response[i].newsID+'"></a>');
+				leftCode = (img==""?'<div class="circlegrey"></div>':'<a href="#popupPhotoLandscapePageProject" data-rel="popup" data-position-to="window" class="">'
+					+'<img src="'+response[i].backgroundimgURL+'" id="'+response[i].newsID+'"></a>');
 				newsCode += 
 				'<li id="' + response[i].newsID + '" name="news_list">'+
 				'<div class="li_container">'+
@@ -159,7 +160,7 @@ function appendNewsList(projectID){
 				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
 				'<div class="li_mid">'+
 				'<span class="small grey">'+
-				response[i].date_added  +
+				formatDate(response[i].date_added) +
 				'</span>'+
 				'<div class="li_text dots">'+
 				response[i].txt +
@@ -171,22 +172,18 @@ function appendNewsList(projectID){
 				'</div>'+
 				'</a>'+
 				'</li>';
-
 			}
 			$('ul[name=newsListProjectPageProject]').html(newsCode);
 			
-			$("li img").each(function(){
+			$("ul[name=newsListProjectPageProject] li img").each(function(){
 				$(this).error(function(){
 					$(this).closest(".li_left").html('<div class="circlegrey"></div>');
 				});
 				$(this).off("click").click(function(){
+					$.mobile.popup.prototype.options.history = false;
 					$("#popupPhotoLandscapePageProject img").attr("src",$(this).attr("src"));
 				});
 			});
 		}
 	});
 }
-
-$(document).on("pageinit","#page_news",function(){
-
-});

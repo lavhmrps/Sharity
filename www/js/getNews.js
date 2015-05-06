@@ -66,11 +66,11 @@ function showNews(){
 					+'<img src="'+response[i].backgroundimgURL+'" id="'+response[i].newsID+'"></a>');
 				newsCode += 
 				'<li id="' + response[i].newsID + '" name="news_list">'+
-				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
 				'<div class="li_container">'+
 				'<div class="li_left">'+
 				leftCode+
 				'</div>'+
+				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
 				'<div class="li_mid">'+
 				'<span class="small grey">'+
 				formatDate(response[i].date_added) + 
@@ -88,8 +88,7 @@ function showNews(){
 			}
 			$('ul[name=newsListProjectPageNews]').html(newsCode);
 
-
-			$("li img").each(function(){
+			$("ul[name=newsListProjectPageNews] li img").each(function(){
 				$(this).error(function(){
 					$(this).closest(".li_left").html('<div class="circlegrey"></div>');
 				});
