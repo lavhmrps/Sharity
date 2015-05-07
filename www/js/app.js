@@ -85,3 +85,15 @@ function formatDate(date){
 	return formattedDate;
 }
 
+function showMessage(message){
+	console.log("showing message : "+message);
+	$(".messagediv span").html(message).css("padding","3pt").fadeIn().delay(3000).fadeOut();
+	//$("#messagetext").fadeIn().delay(3000).fadeOut();
+}
+
+function showMessage2(message){
+	console.log("showing message : "+message);
+	$("#messagetext_search_friends").html(message).css("padding","3pt");
+	$("#messagetext_search_friends").fadeIn().delay(3000).fadeOut();
+}
+
