@@ -45,8 +45,9 @@ $(document).on("pageinit","#page_search_friends_sharity",function(){
 								if($.inArray(response[i].email,pendingRequests) != -1){
 									requestPending = true;
 																}
-								var nameAttr = (alreadyFriend?"":"name="+(requestPending?"'cancelRequest'":"'requestFriendship'"));
-								var btnText = (alreadyFriend?"Friend":(requestPending?"Cancel":"Befriend"));
+								var nameAttr ="name="+ (alreadyFriend?"deleteFriend":(requestPending?"'cancelRequest'":"'requestFriendship'"));
+								var btnText = (alreadyFriend?"Venn":(requestPending?"Avbryt <br>forespørsel":"Bli venn"));
+								var btnClass = alreadyFriend?"btnFriend":(requestPending?"btnCancelRequest":"btnSendRequest");
 								
 								userCode +='<li id="'+response[i].email+'">'
 											  +'<div class="li_container">'
@@ -65,7 +66,7 @@ $(document).on("pageinit","#page_search_friends_sharity",function(){
 												+'</div>'
 												+'<div class="li_right">'
 												  +'<div class="li_right_center">'
-													  +'<a href="#" page-role="button" class="addbtn x-small" '+nameAttr+'>'+btnText+'</a>'
+													  +'<a href="#" page-role="button" class="addbtn x-small '+btnClass+'" '+nameAttr+' to_name="'+response[i].name+'">'+btnText+'</a>'
 												   +'</div>'
 												+'</div>'
 											  +'</div>'
@@ -93,14 +94,25 @@ $(document).on("pageshow","#page_search_friends_sharity",function(){
 
 	$("a[name=requestFriendship]").off("click").on("click",function(){
 		var to_user = $(this).closest("li").attr("id");
-		localStorage.setItem("userIDtoShow",to_user); // id of listitem
-		requestFriendship(to_user);
+		requestFriendship(to_user,$(this));
 
-	}); // a on click
+	}); // a requestFriendship
+
+	$("a[name=cancelRequest]").off("click").on("click",function(){
+		var to_user = $(this).closest("li").attr("id");
+		cancelRequest(to_user,$(this));
+
+	}); // a cancelRequest
+
+	$("a[name=deleteFriend]").off("click").on("click",function(){
+		var to_user = $(this).closest("li").attr("id");
+		deleteFriend(to_user,$(this));
+
+	}); // a deleteFriend
 
 }) // on pageshow #page_add_friend
 
-function requestFriendship(to_user){
+function requestFriendship(to_user,elem){
 	var url = getURLappBackend();
 	var from_user = localStorage['userID'];
 	var sql ="INSERT INTO friend_request (from_user, to_user) VALUES('"+from_user+"', '"+to_user+"')";
@@ -112,8 +124,72 @@ function requestFriendship(to_user){
 		dataType: "text",
 		data: {"setSQL" : sql},
 		success: function(response){
-			if(response == "OK")
-				console.log("venneforespørsel sendt til "+to_user);
+			if(response == "OK"){
+				elem.removeClass("btnSendRequest").addClass("btnCancelRequest").html("Avbryt<br>forespørsel").attr("name","cancelRequest");
+				showMessage("Venneforespørsel sendt til "+elem.attr("to_name"));
+				elem.off("click").on("click",function(){
+					var to_user = $(this).closest("li").attr("id");
+					cancelRequest(to_user,$(this));
+
+				}); // a requestFriendship
+			}
+
+
+			//alert("File: add_friends.js Trying to set friend request getting response from ajax request: : " + response);
+		}
+	});
+}
+
+function cancelRequest(to_user,elem){
+	var url = getURLappBackend();
+	var from_user = localStorage['userID'];
+	var sql ="delete from friend_request where from_user like '"+from_user+"' and to_user like '"+to_user+"'";
+	console.log(sql);
+
+	$.ajax({
+		type: "POST",
+		url: url,
+		dataType: "text",
+		data: {"setSQL" : sql},
+		success: function(response){
+			if(response == "OK"){
+				elem.removeClass("btnCancelRequest").addClass("btnSendRequest").html("Bli venn").attr("name","requestFriendship");
+				showMessage("Venneforespørsel til "+elem.attr("to_name")+" avbrutt");
+				elem.off("click").on("click",function(){
+					var to_user = $(this).closest("li").attr("id");
+					requestFriendship(to_user,$(this));
+					
+
+				}); // a requestFriendship
+			}
+
+			//alert("File: add_friends.js Trying to set friend request getting response from ajax request: : " + response);
+		}
+	});
+}
+
+function deleteFriend(to_user,elem){
+	var url = getURLappBackend();
+	var from_user = localStorage['userID'];
+	var sql ="delete from friend where friendEmail like '"+to_user+"' and userEmail like '"+from_user+"'";
+	console.log(sql);
+
+	$.ajax({
+		type: "POST",
+		url: url,
+		dataType: "text",
+		data: {"setSQL" : sql},
+		success: function(response){
+			if(response == "OK"){
+				elem.removeClass("btnFriend").addClass("btnSendRequest").html("Bli venn").attr("name","requestFriendship");
+				showMessage("Du avsluttet vennskapet med "+elem.attr("to_name"));
+				elem.off("click").on("click",function(){
+					var to_user = $(this).closest("li").attr("id");
+					requestFriendship(to_user,$(this));
+
+				}); // a requestFriendship
+			}
+
 			//alert("File: add_friends.js Trying to set friend request getting response from ajax request: : " + response);
 		}
 	});

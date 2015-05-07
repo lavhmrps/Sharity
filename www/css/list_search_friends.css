@@ -153,16 +153,30 @@ footer ul li{
 
 
 .addbtn{
-	background: #006dfe;
-	width:58pt;
+	width:55pt;
 	height:19pt;
 	line-height: 19pt;
 	text-align: center;
 	border-radius: 3pt;
-	color:white !important;
 	position:absolute;
 	top:0;bottom:0;
 	right:0;
 	margin:auto;
 	border:thin solid #d2d2d2;
+}
+
+.btnCancelRequest{
+	background: inherit;
+	color: #9b9b9b !important;
+	line-height: 10pt;
+}
+
+.btnFriend{
+	background: #20a623;
+	color: white !important;
+}
+
+.btnSendRequest{
+	background: #006dfe;
+	color: white !important;
 }
