@@ -90,7 +90,10 @@ function cancel_subscription(projectID,elem){
 		dataType:"text",
 		data:{"setSQL":sql},
 		success:function(response){
-			console.log(response);
+			if(response == "OK"){
+				var message="Abonnement avsluttet";
+				showMessage(message);
+			}
 
 		}
 	});

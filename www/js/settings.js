@@ -1,5 +1,4 @@
 $(document).on("pagebeforeshow","#page_settings",function(){
-	$("#message").hide();	
 	$("#div_persondata").hide();
 	$("#div_manage_cards").hide();
 	$("#btn_delete_card").hide();
@@ -107,8 +106,9 @@ $(document).on("pageinit","#page_settings",function(){
 				changeIconArrow(btn);
 			});
 		var message="Ingen endringer";
-		$("#messagetext1").html(message).css("padding","3pt");
-		$("#messagetext1").fadeIn().delay(3000).fadeOut();
+		showMessage(message);
+		//$("#messagetext").html(message).css("padding","3pt");
+		//$("#messagetext").fadeIn().delay(3000).fadeOut();
 
 		resetPwFields();
 	});
@@ -185,8 +185,9 @@ $(document).on("pageinit","#page_settings",function(){
 												changeIconArrow( $("#btn_settings_persondata"));
 											});
 											var message="Lagret";
-											$("#messagetext1").html(message).css("padding","3pt");
-											$("#messagetext1").fadeIn().delay(3000).fadeOut();
+											showMessage(message);
+											//$("#messagetext").html(message).css("padding","3pt");
+											//$("#messagetext").fadeIn().delay(3000).fadeOut();
 										}
 									});
 								}else
@@ -219,9 +220,9 @@ $(document).on("pageinit","#page_settings",function(){
 					$("#div_persondata").toggle("fast",function(){
 						changeIconArrow( $("#btn_settings_persondata"));
 					});
+
 					var message="Lagret";
-					$("#messagetext1").html(message).css("padding","3pt");
-					$("#messagetext1").fadeIn().delay(3000).fadeOut();
+					showMessage(message);
 				}
 			});
 		}
@@ -316,8 +317,9 @@ $(document).on("pageinit","#page_settings",function(){
 				changeIconArrow(btn);
 			});
 		var message="Ingen endringer";
-		$("#messagetext1").html(message).css("padding","3pt");
-		$("#messagetext1").fadeIn().delay(3000).fadeOut();
+		showMessage(message);
+		//$("#messagetext1").html(message).css("padding","3pt");
+		//$("#messagetext1").fadeIn().delay(3000).fadeOut();
 
 	});
 	$("#btn_cardsettings_save").click(function(){
@@ -391,8 +393,9 @@ $(document).on("pageinit","#page_settings",function(){
 						changeIconArrow(btn);
 					});
 					var message="Kortinfo lagret";
-					$("#messagetext1").html(message).css("padding","3pt");
-					$("#messagetext1").fadeIn().delay(3000).fadeOut();
+					showMessage(message);
+					//$("#messagetext1").html(message).css("padding","3pt");
+					//$("#messagetext1").fadeIn().delay(3000).fadeOut();
 				}
 			}
 		});
@@ -475,8 +478,9 @@ function acceptFriendRequest(from_user,name){
 	});
 
 	var message="Du ble venn med "+name;
-	$("#messagetext2").html(message).css("padding","3pt");
-	$("#messagetext2").fadeIn().delay(3000).fadeOut();
+	showMessage(message);
+	//$("#messagetext2").html(message).css("padding","3pt");
+	//$("#messagetext2").fadeIn().delay(3000).fadeOut();
 
 }
 
@@ -496,8 +500,9 @@ function denyFriendRequest(from_user,name){
 	});
 
 	var message="Du avslo "+name+" sin venneforespørsel.";
-	$("#messagetext2").html(message).css("padding","3pt");
-	$("#messagetext2").fadeIn().delay(3000).fadeOut();
+	showMessage(message);
+	//$("#messagetext2").html(message).css("padding","3pt");
+	//$("#messagetext2").fadeIn().delay(3000).fadeOut();
 }
 
 function getPersonData(){
@@ -642,8 +647,9 @@ function deleteCard(cardnr){
 			console.log("delete card: "+response);
 			if(response=="OK"){
 				var message="Kort slettet";
-				$("#messagetext1").html(message).css("padding","3pt");
-				$("#messagetext1").fadeIn().delay(3000).fadeOut();
+				showMessage(message);
+				//$("#messagetext1").html(message).css("padding","3pt");
+				//$("#messagetext1").fadeIn().delay(3000).fadeOut();
 				getCardsData();
 				resetCardInputs();
 			}
