@@ -1,5 +1,6 @@
 $(document).on( "pagebeforeshow","#page_organization", function() {
 	showOrganization();
+	getNews();
 
 	$(document).on('click', 'li[name=organization_list]', function() {
 		showOrganization();
@@ -11,7 +12,11 @@ $(document).on( "pagebeforeshow","#page_organization", function() {
 });	
 
 $(document).on("pageinit","#page_organization",function(){
+	$("#linkPageOrgNews").click(function(){
+		$('html, body').animate({scrollTop: $("#sectionOrgNews").offset().top}, 600);	
 
+	});
+	
 	$(document).on('click', 'a[name="page_org_donation"]', function() {
 		localStorage.setItem("donateToOrganization",localStorage.getItem("organizationToShow"));
 		//console.log("page_organization: "+localStorage.getItem("donateToOrganization"));
@@ -76,8 +81,6 @@ function showOrganization(){
 	}
 }
 
-	
-
 function appendProjectList(organizationNr){
 	var sql = "SELECT * FROM project WHERE organizationNr ='" + organizationNr + "'";
 	var url = getURLappBackend();
@@ -117,8 +120,50 @@ function appendProjectList(organizationNr){
 
 }
 
+function getNews(){
+// Getting all the news from projects
+	var sql = "select p.name as projectName, n.* from organization as o join project as p "+
+			"on o.organizationNr = p.organizationNr join news as n on n.projectID = p.projectID "+
+			"where o.organizationNr= "+localStorage.getItem("organizationToShow")+" order by date_added desc";
+	console.log(sql);
+	var url = getURLappBackend();
+	$.ajax({
+		type:"post",
+		url:url,
+		dataType:"json",
+		data:{"getSQL":sql},
+		success:function(response){
+			var newsHTML ="";
+			for(var i =0; i < response.length;i++){
+				newsHTML += '<div class="portrait"><img src="'+response[i].backgroundimgURL+'" id="homeNewsBackgroundImage'+i+'"></div>'+
+					'<article><span class="blue small project" projectID="'+response[i].projectID+'">'+response[i].projectName+
+					'</span> <span class="grey small right">'+formatDate(response[i].date_added)+'</span>'+
+					'<h2 class="blue" id="homeNewsTitle'+i+'">'+response[i].title+'</h2>'+
+					'<p id="homeNewsContent'+i+'">'+response[i].txt +'</p>'+
+					'</article><div class="article_separator"></div>';
+			}
+			if(response.length == 0)
+				newsHTML ="<span class='small grey'>Ingen nyheter</span>";
+
+			$("#pageOrgNews").html(newsHTML);
+			$("#pageOrgNews .project").click(function(){
+				localStorage.setItem("projectToShow",$(this).attr("projectID")) ;
+				$.mobile.changePage("#page_project");
+			});
 
 
+			for(var i =0; i < response.length;i++){
+				$("#homeNewsBackgroundImage"+i).error(function(){
+					$(this).remove();
+					
+				});
+			}
+		},
+		error:function(response){
+			console.log("error in ajax, pageinit #page_org_home get orgNumDonations: "+response);
+		}
+	});
 
+}
 
 
