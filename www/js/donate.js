@@ -13,7 +13,6 @@ $(document).on("pagebeforeshow","#page_donate",function(){
 	else if (orgNr != undefined){
 		sql ="select * from organization where organizationNr = "+orgNr;
 		orgDonation=true;
-		console.log("OrganizationDonation!"+orgNr);
 	}
 	else{
 		alert("feil: Hverken organisasjon eller prosjekt er valgt");
@@ -73,6 +72,77 @@ $(document).on("pageinit","#page_donate",function(){
 			return;
 		}
 		completeDonation();
+	});
+
+	$("#popup_donate_challenge").on("popupbeforeposition",function (){
+		// Disable background scrolling
+		$('body').css('overflow','hidden');
+
+		var sql = "select friendEmail, name from friend join user on friend.friendEmail = user.email where friend.userEmail like '"+localStorage.getItem("userID")+"'";
+		var url = getURLappBackend();
+
+		$.ajax({
+			type : "POST",
+			url : url,
+			dataType: "json",
+			data : {'getSQL' : sql},
+			success : function(response){
+				var listHTML = "";
+				for(var i=0; i<response.length;i++){
+					listHTML += 
+						'<li id="'+response[i].friendEmail+'">'
+							+'<div class="chall_li_container">'
+								+'<div class="chall_li_name small">'+response[i].name+'</div>'
+								+'<div class="chall_li_cb">'
+									+'<input type="checkbox"/>'
+								+'</div>'
+							+'</div>'
+						+'</li>';
+				}
+				$("#chall-content-listdiv-list").html(listHTML);
+
+				var numChallenges=0;
+				$("#chall-content-listdiv-list .chall_li_name").click(function(){
+					var isChecked = $(this).closest("li").find("input[type=checkbox]").prop("checked");
+					if(isChecked){
+						$(this).closest("li").find("input[type=checkbox]").prop("checked",false);
+						$(this).closest("li").css("background","inherit");
+						numChallenges--;
+					}else{
+						$(this).closest("li").find("input[type=checkbox]").prop("checked",true);
+						$(this).closest("li").css("background","lightgreen");
+						numChallenges++;
+					}
+					$("#chall-num-challenges").html(numChallenges);
+					$("textarea").blur();
+				});
+					
+				$("#chall-content-listdiv-list .chall_li_cb").click(function(){
+					var isChecked = $(this).find("input[type=checkbox]").prop("checked");
+					if(isChecked){
+						$(this).closest("li").css("background","lightgreen");
+						numChallenges++;
+					}
+					else{
+						$(this).closest("li").css("background","inherit");
+						numChallenges--;
+					}	
+					$("#chall-num-challenges").html(numChallenges);
+					$("textarea").blur();
+				});
+				
+				
+			}
+		});
+	});
+	$("#popup_donate_challenge").on("popupafteropen",function (){
+
+		
+	});	
+
+	$("#popup_donate_challenge").on("popupafterclose",function (){
+		// Enable scrolling after popup is closed
+		$('body').css('overflow','auto');
 	});
 });
 
@@ -184,3 +254,4 @@ function completeDonation(){
 function challenge(projectID, email, type, sum,type){
 	$.mobile.changePage("#page_donate_challenge");
 }
+

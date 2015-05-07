@@ -414,7 +414,7 @@
 			<div class="somespace"></div>
 
 			<button data-role="none" class="btn_single_project_donate" name="reg_donation_done">DONÉR BELØP</button>
-			<a href="#page_donate_challenge" data-rel="popup">Challenge</a>
+			<a href="#popup_donate_challenge" data-rel="popup">Challenge</a>
 			
 			
 
@@ -432,9 +432,55 @@
 					</ul>
 				</div>
 			</footer>
-			<div data-role="popup" id="page_donate_challenge" class="centered">
-				<p>hent venneliste og checkbox dem som skal utfordres og lag en custom melding med </p>
-				<p>lag noe til fb og</p>
+			
+
+			<div data-role="popup" id="popup_donate_challenge" class="centered">
+				
+				<div id="chall-top" class="xx-large blue">
+					<div id="chall-top-textbanner">
+						Utfordre
+					</div>
+				</div>
+				<div id="chall-content">
+					<div id="chall-content-left">
+						<div id="chall-content-donationinfo"> 
+							Du har nettopp donert <span id="chall-content-donationinfo-amount" class="red">100</span> kroner til 
+							<span id="chall-content-donationinfo-organization" class="green">Amnesty</span> og deres prosjekt 
+							<span id="chall-content-donationinfo-project" class="blue">Stopp dødsstraff!</span>
+							Velg ut hvem som skal få en utfordring til å gjøre det samme!
+
+						</div>
+						<div id="chall-content-msginfo" class="small">
+							Send en melding til dem som mottar utfordringen:
+						</div>				
+						
+					</div>
+					<div id="chall-content-right">
+						<div style="background:#eee;text-align:center;"><span class="blue small">Dine venner:</span></div>
+						<div id="chall-content-listdiv">
+							<ul id="chall-content-listdiv-list">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="chall-content-textareadiv">
+					<textarea id="chall-content-textareadiv-textarea" placeholder="Skriv din melding her" rows="3"></textarea>
+				</div>
+				<div id="chall-btns">
+					<table id="chall-btns-table">
+						<tr>
+							<td><a href="#" class="ui-btn" data-role="button" data-rel="back" id="chall-btn-cancel">AVBRYT</a></td>
+							<td><a href="#" class="ui-btn" data-role="button" id="chall-btn-challenge">UTFORDRE (<span id="chall-num-challenges">0</span>)</a></td>
+						</tr>
+					</table>
+				</div>
+
+
+
+
+
+
+
 
 			</div>
 			
@@ -633,7 +679,7 @@
 			<div class="relative">
 				<div class="top_links">
 					<a href="#">Nyheter</a>
-					<a href="#page_donate" class="btn_organization_donate" name="page_org_donation">DONÉR</a>
+					<a href="#page_donate" class="btn_organization_donate" name="page_project_donation">DONÉR</a>
 				</div>
 			</div>
 
@@ -647,16 +693,14 @@
 					</ul>
 				</div>
 				<div data-role="popup" id="popupPhotoLandscapePageNews" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
-			    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-			    <img src="" alt="Photo landscape">
-			</div>
+				    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				    <img src="" alt="Photo landscape">
+				</div>
 				
 			</div>
 			<div class="somespace"></div>
 
-			<div data-role="popup" id="popupPhotoLandscape" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
-		    	<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><img src="">
-			</div>
+			
 
 
 			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
@@ -1027,9 +1071,5 @@
 				</div>
 			</footer>
 		</div>
-
-
-
-
-		</body>
+	</body>
 </html>

@@ -93,9 +93,138 @@
 	background: #4CAF50 !important;
 }
 
-#page_donate_challenge{
-	height:90%;
+/* challenge-popup */
+
+#popup_donate_challenge *{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+#popup_donate_challenge{
+	height:100%;
 	width:90%;
-	border:thin solid red;
 	overflow-y:scroll;
+}
+
+#chall-top{
+	position: relative;
+	height:15%;
+	width:100%;
+}
+#chall-top-textbanner{
+	position: absolute;
+	top:0;
+	bottom:0;
+	margin: auto;
+	height:50%;
+	width:100%;
+	background: #006dfe;
+	color:white;
+	text-align: center;
+	line-height: 30pt;
+}
+
+#chall-content{
+	position: relative;
+	height:55%;
+	width:100%;
+}
+
+#chall-content-left{
+	position: relative;
+	float:left;
+	width:50%;
+	height:100%;
+}
+
+#chall-content-left *{
+	width:95%;
+	margin:auto;
+}
+
+#chall-content-donationinfo{
+	padding:10pt;
+	background: #eee;
+}
+
+#chall-content-msginfo{
+	position:absolute;
+	bottom:0;left:2.5%;
+	padding:10pt;
+	background:#eee;
+
+}
+
+#chall-content-right{
+	position: relative;
+	float:right;
+	width:50%;
+	height:100%;
+	border-left: thin solid #d2d2d2;
+}
+
+#chall-content-listdiv {
+	height:90%;
+	width:95%;
+	margin:auto;
+	overflow-y: scroll;
+}
+
+#chall-content-listdiv ul{
+	padding:10pt 0;
+}
+
+#chall-content-listdiv li{
+	height:40pt;
+	border-bottom: thin solid #d2d2d2;
+}
+
+.chall_li_container{
+	position:relative;
+	width:100%;
+}
+
+.chall_li_name{
+	width: 85%;
+	float:left;
+	line-height: 40pt;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+}
+.chall_li_cb{
+	position: relative;
+	width: 15%;
+	float:left;
+	background: green;
+}
+
+.chall_li_cb input[type='checkbox'] {
+  position: absolute;
+  left: 0; top: 15pt;
+  margin: auto;
+  transform: scale(1.4);
+}
+
+#chall-content-textareadiv{
+	position: relative;
+	width:95%;
+	margin:auto;
+	height:15%;
+}
+
+#chall-content-textareadiv textarea{
+	width:95%;
+	margin:5pt auto;
+}
+
+#chall-btns{
+	position: relative;
+	height:15%;
+	width:100%;
+}
+
+#chall-btns table{
+	background: inherit;
 }
