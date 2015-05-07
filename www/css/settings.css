@@ -190,20 +190,6 @@
 	border-radius: 3pt;
 }
 
-.messagediv{
-	margin-top: 10pt;
-	height:20pt;
-	min-width: 100pt;
-	line-height: 20pt;
-	text-align: center;
-	color:#333;
-	z-index: 101;
-}
-
-#messagetext1, #messagetext2{
-	background:#F58071;
-	border-radius: 3pt;
-}
 
 #page_settings table{
 	background: inherit;

@@ -266,6 +266,21 @@ textarea{
 
 }
 
+.messagediv{
+	margin-top: 10pt;
+	height:20pt;
+	min-width: 200pt;
+	line-height: 20pt;
+	text-align: center;
+	color:#333;
+	z-index: 101;
+}
+
+#messagetext, #messagetext1, #messagetext2, #messagetext_search_friends{
+	background:#F58071;
+	border-radius: 3pt;
+}
+
 .centered{
 	position: fixed !important;
 	top: 50% !important;
