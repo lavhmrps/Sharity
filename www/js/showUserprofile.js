@@ -125,7 +125,8 @@ $(document).on("pagebeforeshow","#page_showUserDonations",function(){
 function listUserDonations(userIDtoShow){
 	//alert("nå kommer\n"+userIDtoShow+"\nsine donasjoner");
 	var usernameToShow = localStorage.getItem("userToShowName");
-	$("#usernameToShow").html(usernameToShow+"'s donasjoner");
+	var firstname = usernameToShow.substring(0,usernameToShow.indexOf(" "));
+	$("#usernameToShow").html(firstname+"'s donasjoner");
 
 	
 	var list = $("#userDonationList");
