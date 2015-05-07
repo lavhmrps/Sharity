@@ -1,4 +1,4 @@
-$(document).delegate("#page_my_friends","pagebeforeshow",function(){
+$(document).on("pagebeforeshow","#page_my_friends",function(){
 
 	if(localStorage.getItem('userID') != null){
 		var sql = "select friendEmail, name, sum(donation.sum) as Donasjoner, picURL "

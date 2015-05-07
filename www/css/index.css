@@ -200,6 +200,12 @@ table tr td input {
 	text-align: center;
 }
 
+.portrait img{
+	max-height:100%;
+	max-width: 100%;
+
+}
+
 .main_content {
 	width: 90%;
 	margin: auto;
