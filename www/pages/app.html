@@ -756,7 +756,19 @@
 								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored blue" data-role="none" value="" id="set_phone" placeholder="Telefonnr"></td>
 							</tr>
 							<tr>
-								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="phone" class="input_underscored blue" data-role="none" value="" id="set_zip" placeholder="Postnummer"></td>
+								<td><img src="../img/icon_grey.png" class="icon"></td>
+								<td>
+									<table>
+										<td class="half_width" style="padding-right:5pt">
+											<input type="tel" class="input_underscored blue" data-role="none" value="" id="set_zip" placeholder="Postnummer">
+										</td>
+										<td class="half_width">
+											<select class="input_underscored"  tyle="padding-right:5pt" data-role="none" id="set_birthyear">
+												<option value="0">Fødselsår</option>
+											</select>
+										</td>								
+									</table>
+								</td>
 							</tr>
 							<tr style="height:15pt !important">
 								<td style="height:15pt !important"></td><td style="height:15pt !important" class="small" id="btn_change_pw">Endre passord?
@@ -797,7 +809,7 @@
 						</table>
 						<table>
 							<tr>
-								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored input_creditcard blue" data-role="none" value="" id="set_cardnr" placeholder="Kortnummer"  onkeypress="return isNumber(event)" maxlength="19"><img src="../img/icon-trash.png" id="btn_delete_card" class="icon"/></td>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="tel" class="input_underscored input_creditcard blue" data-role="none" value="" id="set_cardnr" placeholder="Kortnummer" maxlength="19"><img src="../img/icon-trash.png" id="btn_delete_card" class="icon"/></td>
 							</tr>
 							<tr>
 								<td><img src="../img/icon_grey.png" class="icon"></td>

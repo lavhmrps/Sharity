@@ -38,6 +38,11 @@ $(document).on("pageinit","#page_settings",function(){
 		denyFriendRequest(from_user,name);
 	});
 
+	populateYearOfBirthSelect();
+
+	/* Persondata events */
+
+	// Opens div for editing persondata, hiding card-settings divs if they are visible 
 	$("#btn_settings_persondata").click(function(){
 		var btn = $(this);
 		if($("#div_manage_cards").is(":visible")){
@@ -53,35 +58,9 @@ $(document).on("pageinit","#page_settings",function(){
 				changeIconArrow(btn);
 			});
 		}
-
-
 	});
-	$("#btn_settings_manage_cards").click(function(){
-		var btn = $(this);
-		if($("#div_persondata").is(":visible")){
-			$("#div_persondata").toggle("fast",function(){
-				changeIconArrow($("#btn_settings_persondata"));
-			});
-			$("#div_manage_cards").delay("fast").toggle("fast",function(){
-				changeIconArrow(btn);
-			});
-		}else{
-			$("#div_manage_cards").toggle("fast",function(){
-				changeIconArrow(btn);
-			});
-		}
-
-	});
-
-	$("#set_cardnr").on("keyup",function(e){
-		var realVal = $("#set_cardnr").val().replace(/ /g,'');
-		var val = $("#set_cardnr").val()
-		//if(realVal.length > 0 && realVal.length % 4 == 0 &&  realVal.length !=16 && e.which != 8 && ((e.which >= 48 && e.which < 57)||(e.which >= 96 && e.which < 106))){
-		if(realVal.length > 0 && realVal.length % 4 == 0 &&  realVal.length !=16 && e.which != 8 && !isNaN(parseInt(String.fromCharCode(e.which)))){
-			$("#set_cardnr").val(val +" ");
-		}	
-	});
-
+	
+	// Shows/hides the change-password inputfields
 	$("#btn_change_pw").click(function(){
 		$(".tr_pw_change").toggle("fast");
 
@@ -96,27 +75,29 @@ $(document).on("pageinit","#page_settings",function(){
 		}
 	});
 
+	// Closing persondata-div and resets fields to their old values
 	$("#btn_settings_cancel").click(function(){
 		var btn = $("#btn_settings_persondata");
 		$("#set_name").val(localStorage.getItem("userName")) ;
 		$("#set_phone").val(localStorage.getItem("userPhone")) ;
 		$("#set_zip").val(localStorage.getItem("userZip"));
+		$("#set_birthyear").val(localStorage.getItem("userBirthYear"));
 
 		$("#div_persondata").toggle("fast",function(){
 				changeIconArrow(btn);
 			});
 		var message="Ingen endringer";
 		showMessage(message);
-		//$("#messagetext").html(message).css("padding","3pt");
-		//$("#messagetext").fadeIn().delay(3000).fadeOut();
 
 		resetPwFields();
 	});
 
+	// Saving new data
 	$("#btn_settings_save").click(function(){
 		var name = $("#set_name").val().trim();
 		var phone = $("#set_phone").val().trim();
 		var zip = $("#set_zip").val().trim();
+		var birthyear = $("#set_birthyear").val();
 
 		if(name ==""){
 			alert("Navn kan ikke stå tomt");
@@ -168,7 +149,7 @@ $(document).on("pageinit","#page_settings",function(){
 								if(response == "OK"){
 									alert("Passordet ble endret");
 
-									var sql ="update user set name='"+name+"',phone='"+phone+"',zip='"+zip+"' where email like '"+localStorage.getItem("userID")+"'" ;
+									var sql ="update user set name='"+name+"',phone='"+phone+"',zip='"+zip+"' ,birthyear='"+birthyear+"' where email like '"+localStorage.getItem("userID")+"'" ;
 									var url = getURLappBackend();
 									// Updating personinfo
 									$.ajax({
@@ -181,6 +162,7 @@ $(document).on("pageinit","#page_settings",function(){
 											localStorage.setItem("userName",name);
 											localStorage.setItem("userPhone",phone);
 											localStorage.setItem("userZip",(zip==null)?"":zip);
+											localStorage.setItem("userBirthYear",birthyear);
 											$("#div_persondata").toggle("fast",function(){
 												changeIconArrow( $("#btn_settings_persondata"));
 											});
@@ -205,7 +187,8 @@ $(document).on("pageinit","#page_settings",function(){
 			});
 		} else{
 			// Update only persondata, not password
-			var sql ="update user set name='"+name+"',phone='"+phone+"',zip='"+zip+"' where email like '"+localStorage.getItem("userID")+"'" ;
+			var sql ="update user set name='"+name+"',phone='"+phone+"',zip='"+zip+"',birthyear='"+birthyear+"' where email like '"+localStorage.getItem("userID")+"'" ;
+			console.log(sql);
 			var url = getURLappBackend();
 			$.ajax({
 				type: "POST",
@@ -217,6 +200,7 @@ $(document).on("pageinit","#page_settings",function(){
 					localStorage.setItem("userName",name);
 					localStorage.setItem("userPhone",phone);
 					localStorage.setItem("userZip",(zip==null)?"":zip);
+					localStorage.setItem("userBirthYear",birthyear);
 					$("#div_persondata").toggle("fast",function(){
 						changeIconArrow( $("#btn_settings_persondata"));
 					});
@@ -227,6 +211,35 @@ $(document).on("pageinit","#page_settings",function(){
 			});
 		}
 
+	});
+
+
+	/* Card-settings events */
+
+	$("#btn_settings_manage_cards").click(function(){
+		var btn = $(this);
+		if($("#div_persondata").is(":visible")){
+			$("#div_persondata").toggle("fast",function(){
+				changeIconArrow($("#btn_settings_persondata"));
+			});
+			$("#div_manage_cards").delay("fast").toggle("fast",function(){
+				changeIconArrow(btn);
+			});
+		}else{
+			$("#div_manage_cards").toggle("fast",function(){
+				changeIconArrow(btn);
+			});
+		}
+
+	});
+
+	$("#set_cardnr").on("keyup",function(e){
+		var realVal = $("#set_cardnr").val().replace(/ /g,'');
+		var val = $("#set_cardnr").val()
+		//if(realVal.length > 0 && realVal.length % 4 == 0 &&  realVal.length !=16 && e.which != 8 && ((e.which >= 48 && e.which < 57)||(e.which >= 96 && e.which < 106))){
+		if(realVal.length > 0 && realVal.length % 4 == 0 &&  realVal.length !=16 && e.which != 8 && !isNaN(parseInt(String.fromCharCode(e.which)))){
+			$("#set_cardnr").val(val +" ");
+		}	
 	});
 
 /*
@@ -250,6 +263,8 @@ $(document).on("pageinit","#page_settings",function(){
 			$("#set_cardnr, #set_CCV, #set_month, #set_year, #set_cardname, #set_charge, #cbMonthlyCharge").prop("disabled",true).css({"opacity":"0.6","background":"#eee"});
 			return;
 		}
+
+		// Unlocking inputfields
 		$("#set_cardnr, #set_CCV, #set_month, #set_year, #set_cardname, #set_charge, #cbMonthlyCharge").prop("disabled",false).css({"opacity":"1","background":"inherit"});
 		if(cardnr == 1){
 			// cardnr 1 == new card
@@ -257,8 +272,7 @@ $(document).on("pageinit","#page_settings",function(){
 			return;
 		}
 		
-
-
+		// User has chosen an existing card to review/edit
 		$("#btn_delete_card").show();
 
 		var sql ="select * from card where cardnr="+cardnr ;
@@ -310,6 +324,7 @@ $(document).on("pageinit","#page_settings",function(){
 	});
 
 
+	// Closing window, making no changes to any card
 	$("#btn_cardsettings_cancel").click(function(){
 		var btn =  $("#btn_settings_manage_cards");
 		resetCardInputs();
@@ -318,10 +333,9 @@ $(document).on("pageinit","#page_settings",function(){
 			});
 		var message="Ingen endringer";
 		showMessage(message);
-		//$("#messagetext1").html(message).css("padding","3pt");
-		//$("#messagetext1").fadeIn().delay(3000).fadeOut();
-
 	});
+
+	// Save / create creditcard
 	$("#btn_cardsettings_save").click(function(){
 		var cardnr = $("#set_cardnr").val().replace(/ /g,''); // removing whitespaces
 		var ccv = $("#set_CCV").val().trim();
@@ -365,16 +379,17 @@ $(document).on("pageinit","#page_settings",function(){
 		}
 
 		var addingNewCard = $("#dd_cards").val() == 1;
-		var sql="";
+
 		if(addingNewCard){
-			sql ="insert into card (cardnr,month,year,CCV,cardname,monthly_charge,userID) "
+			var sql = "insert into card (cardnr,month,year,CCV,cardname,monthly_charge,userID) "
 				+"values ("+cardnr+","+month+","+year+","+ccv+",'"+cardname+"',"+(cb_monthly_charge?monthly_charge:null)+",'"+localStorage.getItem("userID")+"') ";
 			console.log(sql);
 		}
 		else{
-		sql ="update card set cardnr='"+cardnr+"',CCV="+ccv+",month="+month+",year="+year+",cardname='"
-				+cardname+"',monthly_charge="+(cb_monthly_charge?monthly_charge:null)+" where cardnr ="+$("#dd_cards").val() ;
-			}
+			// updating an old card
+			var sql = "update card set cardnr='"+cardnr+"',CCV="+ccv+",month="+month+",year="+year+",cardname='"
+					+cardname+"',monthly_charge="+(cb_monthly_charge?monthly_charge:null)+" where cardnr ="+$("#dd_cards").val() ;
+		}
 		console.log(sql);
 		var url = getURLappBackend();
 		$.ajax({
@@ -394,8 +409,6 @@ $(document).on("pageinit","#page_settings",function(){
 					});
 					var message="Kortinfo lagret";
 					showMessage(message);
-					//$("#messagetext1").html(message).css("padding","3pt");
-					//$("#messagetext1").fadeIn().delay(3000).fadeOut();
 				}
 			}
 		});
@@ -403,6 +416,7 @@ $(document).on("pageinit","#page_settings",function(){
 
 });
 
+// Making a list of active friend-requests
 function checkFriendRequests(){
 	var url = getURLappBackend();
 	var data = {"getSQL" : "SELECT fr.*,u.* FROM friend_request as fr join user as u on fr.from_user = u.email and fr.to_user = '"+localStorage.getItem("userID")+"'"};
@@ -421,24 +435,25 @@ function checkFriendRequests(){
 				return;
 			var friend_requests = "";
 			for(var i = 0; i < response.length; i++){
-				friend_requests 	+="<li id='"+response[i].from_user+"'>"// +0
-										+"<div class='li_container'>" 	// +1
-											+"<div class='li_l'>"	// +2
-									    		+"<div class='circlegrey'>"	//+3
-											    	+(response[i].picURL == null? '':"<img src='"+response[i].picURL+"'/>")
-												+"</div>" // -3
-											+"</div>" // -2
-											+"<div class='li_r'>"// +2
-												+"<div class='li_r_top'>"// +3
-											    	+"<span class='name'>"+response[i].name+"</span>"
-											    +"</div>"// -3
-												+"<div class='li_r_bottom'>"// +3
-												  	+"<button class='small confirm' name=accept_request>BEKREFT</button>"
-												  	+"<button class='small grey dismiss' name=deny_request>AVSLÅ</button>"
-												+"</div>"// -3
-											+"</div>"// -2
-										+"</div>"// -1
-									+"</li>";// -0
+				friend_requests +=	
+					"<li id='"+response[i].from_user+"'>"
+					+"<div class='li_container'>"
+						+"<div class='li_l'>"
+				    		+"<div class='circlegrey'>"
+						    	+(response[i].picURL == null? '':"<img src='"+response[i].picURL+"'/>")
+							+"</div>"
+						+"</div>" 
+						+"<div class='li_r'>"
+							+"<div class='li_r_top'>"
+						    	+"<span class='name'>"+response[i].name+"</span>"
+						    +"</div>"
+							+"<div class='li_r_bottom'>"
+							  	+"<button class='small confirm' name=accept_request>BEKREFT</button>"
+							  	+"<button class='small grey dismiss' name=deny_request>AVSLÅ</button>"
+							+"</div>"
+						+"</div>"
+					+"</div>"
+				+"</li>";
 			}
 			$('ul[name=friend_requests]').html(friend_requests);
 
@@ -469,7 +484,6 @@ function acceptFriendRequest(from_user,name){
 					data : data,
 					dataType : "text",
 					success : function(response){
-						//alert("File:  settings.js trying to delete friend request from table friend_request after successful friend request acceptance, response: " + response);
 						checkFriendRequests();
 					}
 				});
@@ -479,9 +493,6 @@ function acceptFriendRequest(from_user,name){
 
 	var message="Du ble venn med "+name;
 	showMessage(message);
-	//$("#messagetext2").html(message).css("padding","3pt");
-	//$("#messagetext2").fadeIn().delay(3000).fadeOut();
-
 }
 
 function denyFriendRequest(from_user,name){
@@ -501,10 +512,9 @@ function denyFriendRequest(from_user,name){
 
 	var message="Du avslo "+name+" sin venneforespørsel.";
 	showMessage(message);
-	//$("#messagetext2").html(message).css("padding","3pt");
-	//$("#messagetext2").fadeIn().delay(3000).fadeOut();
 }
 
+// Fetch userdata from database and write to inputfields
 function getPersonData(){
 	var sql = "select * from user where email like '"+localStorage.getItem("userID")+"'";
 	var url = getURLappBackend();
@@ -518,18 +528,22 @@ function getPersonData(){
 			var name = response[0].name;
 			var phone = response[0].phone;
 			var zip = response[0].zip;
+			var birthyear = response[0].birthyear;
 			$("#set_name").val(name) ;
 			$("#set_phone").val(phone);
-			$("#set_zip").val(response[0].zip);
+			$("#set_zip").val(zip);
+			$("#set_birthyear").val(birthyear);
 			localStorage.setItem("userName",name);
 			localStorage.setItem("userPhone",phone);
 			localStorage.setItem("userZip",(zip==null)?"":zip);
+			localStorage.setItem("userBirthYear",birthyear);
 		}
 
 	});
 
 }
 
+// Fetch carddata from database and write to inputfields
 function getCardsData(){
 	var sql = "select * from card where userID like '"+localStorage.getItem("userID")+"'";
 	var url = getURLappBackend();
@@ -580,6 +594,7 @@ function checkCardInfo(){
 	return true;
 }
 
+// Switching arrowicons depending on state of its div's visibility
 function changeIconArrow(elem){
 	if(elem.hasClass("icon-arrow-up")){
 		elem.removeClass("icon-arrow-up").addClass("icon-arrow-down");
@@ -593,6 +608,7 @@ function resetIconArrow(elem){
 	elem.removeClass("icon-arrow-up").addClass("icon-arrow-down");
 }
 
+// Checking password and updating if its correct
 function verifyAndUpdatePassword(old_pw, new_pw){
 
 	var userID = localStorage.getItem("userID");
@@ -622,14 +638,10 @@ function verifyAndUpdatePassword(old_pw, new_pw){
 							alert("Kunne ikke endre passordet");
 					}
 				});
-
-
 			}else{
 				alert("Du oppga feil passord");
 			}
-
 		}
-
 	});
 	return false;
 }
@@ -688,4 +700,13 @@ function isNumber(n) {
         return false;
     }
     return true;
+}
+
+function populateYearOfBirthSelect(){
+	var select = $("#set_birthyear");
+	var selectHTML  = '<option value="0000">Fødselsår</option>';
+	for (var i=new Date().getFullYear(); i > (new Date().getFullYear()-100);i--){
+		selectHTML+='<option value='+i+'>'+i+'</option>';
+	}
+	select.html(selectHTML);
 }

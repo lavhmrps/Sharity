@@ -252,7 +252,7 @@
 }
 
 #settings_div  .input_underscored:FOCUS, #settings_div  .select_underscored:FOCUS {
-	background: lightyellow;
+	background: lightyellow !important;
 	outline: none !important;
 }
 
