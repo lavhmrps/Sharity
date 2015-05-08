@@ -72,7 +72,11 @@ function getChallenges(){
 		data : data,
 		dataType : "JSON",
 		success : function(json){
-			$('#mystats_num_challenges').text(json.length);
+			var numChallenges = json.length;
+			if(numChallenges != 0){
+				showChallengeNotif(numChallenges);
+			}
+			$('#mystats_num_challenges').text(numChallenges);
 		},
 		error : function(error){
 			alert("Error i mystatistics.js bad ajax reqest getSQL from database");
@@ -136,81 +140,77 @@ function getMyDonationInformation(){
 
 function listDonations(){
 	var email = localStorage.getItem('userID');
-	console.log("listDonations() "+email);
-		//var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
-		var sql ="SELECT don.*, pro.name as projectName FROM donation as don join project as pro on (pro.projectID = don.projectID ) WHERE email = '"+email+"'";
-		var url = getURLappBackend();
-		var data = {"getSQL" : sql};
+	//var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
+	var sql ="SELECT don.*, pro.name as projectName FROM donation as don join project as pro on (pro.projectID = don.projectID ) WHERE email = '"+email+"'";
+	var url = getURLappBackend();
+	var data = {"getSQL" : sql};
 
-		$.ajax({
-			type : "POST",
-			url : url,
-			data : data,
-			dataType : "JSON",
-			success : function(json){
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : data,
+		dataType : "JSON",
+		success : function(json){
 
-				var donations = "";
+			var donations = "";
 
-				var num_donations = 0;
-				var sum_current_month = 0;
-				var sum_total = 0;
+			var num_donations = 0;
+			var sum_current_month = 0;
+			var sum_total = 0;
 
-				for(var i = 0; i < json.length; i++){
+			for(var i = 0; i < json.length; i++){
 
-					donations +=
-					'<li id="' + json[i].projectID +'"  donation="' + json[i].donationID +'" active="'+
-						(json[i].active == 1 ? 'true">':'false">')+
-						'<div class="li_container">' +
-							'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
-							'<div class="li_mid">'+
-								'<div class="li_project">' + json[i].projectName + '</div>'+
-								'<span class="li_donation grey">' + json[i].sum + ' kr</span> <span'+
-								(json[i].type == 'fast'?' class="green">fast':'>')+'</span><span style="float:right;margin-right:5pt; font-size:small" class="grey">'+
-								formatDate(json[i].date)+'</span>'+
-							'</div>'+
-							'<div class="li_right">'+
-								//(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
-								((json[i].type == 'fast' ? (json[i].active == 1 ? 'Aktiv':'Stoppet') : '' ))+
-							'</div>'+
+				donations +=
+				'<li id="' + json[i].projectID +'"  donation="' + json[i].donationID +'" active="'+
+					(json[i].active == 1 ? 'true">':'false">')+
+					'<div class="li_container">' +
+						'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
+						'<div class="li_mid">'+
+							'<div class="li_project">' + json[i].projectName + '</div>'+
+							'<span class="li_donation grey">' + json[i].sum + ' kr</span> <span'+
+							(json[i].type == 'fast'?' class="green">fast':'>')+'</span><span style="float:right;margin-right:5pt; font-size:small" class="grey">'+
+							formatDate(json[i].date)+'</span>'+
 						'</div>'+
-						'</li>';
-				}
-				$("#donationList").html(donations);
-				$("#donationList li .li_mid,#donationList li .li_left,#donationList li .li_right").click(function() {
-					var projectID =$(this).parent().parent().attr("id");
-					var donationID =$(this).parent().parent().attr("donation");
-					var active = $(this).parent().parent().attr("active");
-
-					if($(this).attr("class") == "li_right"){
-						if(active == "true"){
-							if (confirm("Stoppe donasjonen?") == true) {
-							stopDonation(donationID,$(this));
-							}else{
-								return;
-							}	
-						}else{
-							if (confirm("Aktivere donasjonen igjen?") == true) {
-							startDonation(donationID,$(this));
-							}else{
-								return;
-							}
-						}
-								
-					}else{
-						localStorage.setItem("projectToShow", projectID);
-						$.mobile.changePage("#page_project");
-						location.reload();
-						//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
-					}
-				});
-
-
-
-			},
-			error : function(error){
-				alert("Error i mystatistics.js bad ajax reqest getSQL from database");
+						'<div class="li_right">'+
+							//(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
+							((json[i].type == 'fast' ? (json[i].active == 1 ? 'Aktiv':'Stoppet') : '' ))+
+						'</div>'+
+					'</div>'+
+					'</li>';
 			}
-		});	
+			$("#donationList").html(donations);
+			$("#donationList li .li_mid,#donationList li .li_left,#donationList li .li_right").click(function() {
+				var projectID =$(this).parent().parent().attr("id");
+				var donationID =$(this).parent().parent().attr("donation");
+				var active = $(this).parent().parent().attr("active");
+
+				if($(this).attr("class") == "li_right"){
+					if(active == "true"){
+						if (confirm("Stoppe donasjonen?") == true) {
+						stopDonation(donationID,$(this));
+						}else{
+							return;
+						}	
+					}else{
+						if (confirm("Aktivere donasjonen igjen?") == true) {
+						startDonation(donationID,$(this));
+						}else{
+							return;
+						}
+					}
+							
+				}else{
+					localStorage.setItem("projectToShow", projectID);
+					$.mobile.changePage("#page_project");
+					location.reload();
+					//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
+				}
+			});
+		},
+		error : function(error){
+			alert("Error i mystatistics.js bad ajax reqest getSQL from database");
+		}
+	});	
 }
 
 function stopDonation(donationID,div){
@@ -279,7 +279,18 @@ function startDonation(donationID,div){
 		}
 
 	});
+}
 
-	return;
-
+function showChallengeNotif(n){
+	$("#challenges").hide();
+	$(".footer_me").each(function(){
+		$(this).find(".notification").remove();
+		$("#challenges").html("Du har <span class='red small'>"+n+"</span> ny"+(n==1?"":"e")+" utfordring"+(n==1?"":"er")+".");
+		if(n>0){
+			$("#challenges").show();
+			$(this).append("<div class='notification'>"+n+"</div>");
+			$("#challenges").append(" <a href='#page_challenges'>Se fra hvem</a>");
+		}
+		
+	});		
 }

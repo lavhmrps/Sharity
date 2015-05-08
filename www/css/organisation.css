@@ -1,4 +1,5 @@
 .top_links {
+	position:relative;
 	width: 60%;
 	margin-left: 40%;
 }
@@ -16,8 +17,8 @@
 .btn_organization_donate {
 	position: absolute !important;
 	top:20pt;
-	width: 45% !important;
-	right: 5% !important;
+	width: 120pt !important;
+	left: 0 !important;
 	background: #20a623 !important;
 	color: white !important;
 	padding: 10pt !important;
@@ -26,6 +27,11 @@
 	text-align:center;
 	text-decoration:none;
 	border: none;
+	font-weight: normal !important;
+}
+
+#page_news .btn_organization_donate {
+	top:10pt;
 }
 
 

@@ -48,6 +48,10 @@
 .portrait img{
 	max-width:100%;
 	max-height:100%;
+	position:absolute;
+	top:0;bottom:0;
+	left:0;right:0;
+	margin:auto;
 }
 
 .logodiv_left {
@@ -288,7 +292,18 @@ textarea{
 	-webkit-transform: translate(-50%, -50%) !important;
 	transform: translate(-50%, -50%) !important;
 }
+article {
+  margin: 15pt 0;
+}
 
+.article_separator {
+  border-bottom: thin solid #f63218;
+  margin: 10pt auto;
+  width: 60%;
+}
+.right {
+  float: right;
+}
 /*Icons*/
 
 .icon-arrow-up:after{

@@ -75,22 +75,21 @@
 	outline: none;
 }
 
-#page_donate .btn_single_project_donate {
+#page_donate .btn_complete_donation {
+	/*
 	position: absolute !important;
-	width: 45% !important;
+	width: 120pt !important;
 	right: 5% !important;
-	background: #20a623 !important;
-	color: white !important;
 	padding: 10pt !important;
 	font-size: large !important;
+	*/
+	background: #20a623 !important;
+	color: white !important;
 	outline: none !important;
-	text-align:center;
-	text-decoration:none;
+	text-align: center;
+	text-decoration: none;
 	border: none;
-}
-
-#page_donate .btn_single_project_donate:active {
-	background: #4CAF50 !important;
+	font-weight: normal !important;
 }
 
 /* challenge-popup */
@@ -151,7 +150,7 @@
 #chall-content-msginfo{
 	position:absolute;
 	bottom:0;left:2.5%;
-	padding:10pt;
+	padding:5pt;
 	background:#eee;
 
 }

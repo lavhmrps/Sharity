@@ -246,7 +246,7 @@
 		</div>
 		<div class="relative">
 			<div class="top_links">
-				<a href="#">Nyheter</a>
+				<a href="#" id="linkPageOrgNews">Nyheter</a>
 				<a href="#page_donate" class="btn_organization_donate" name="page_org_donation">DONÉR</a>
 			</div>
 		</div>
@@ -257,11 +257,18 @@
 
 
 			<div class="listdiv">
-				<h3>Pågående prosjekter</h3>
+				<div style="border-bottom:thin solid #d2d2d2;margin-bottom:5pt"><h3>Pågående prosjekter</h3></div>
 				<ul id="projectList" name="projectList">
 				<!-- List of projects goes here -->
 				</ul>
 			</div>
+
+			<section id="sectionOrgNews">
+				<div style="border-bottom:thin solid #d2d2d2;margin-bottom:5pt"><h3>Siste nytt</h3></div>
+
+				<div id="pageOrgNews"></div>
+
+			</section>
 
 			<div class="somespace"></div>
 
@@ -308,7 +315,7 @@
 			<p class="ingress" name="ingress">[about this project]</p>
 
 			<div class="listdiv">
-				<h3>Siste Nyheter</h3>
+				<div style="border-bottom:thin solid #d2d2d2;margin-bottom:5pt"><h3>Siste Nyheter</h3></div>
 				<ul data-role="none" name="newsListProjectPageProject" id="newsListProject">
 					<!--news list goes here-->
 				</ul>
@@ -412,12 +419,20 @@
 
 
 			<div class="somespace"></div>
+			<div class="relative">
+				<table>
+					<tr>
+						<td class="half_width">
+							<a href="#" data-role="none" class="ui-btn" data-rel="back">AVBRYT</a>
+						</td>
+						<td class="half_width">
+							<a href="#" data-role="none" class="ui-btn btn_complete_donation" name="reg_donation_done">DONÉR BELØP</a>
+						</td>
+					</tr>
+				</table>
+			</div>	
 
-			<button data-role="none" class="btn_single_project_donate" name="reg_donation_done">DONÉR BELØP</button>
-			<a href="#popup_donate_challenge" data-rel="popup">Challenge</a>
 			
-			
-
 			<div class="somespace"></div>
 			<div class="somespace"></div>
 			<div class="somespace"></div>
@@ -445,13 +460,13 @@
 					<div id="chall-content-left">
 						<div id="chall-content-donationinfo"> 
 							Du har nettopp donert <span id="chall-content-donationinfo-amount" class="red">100</span> kroner til 
-							<span id="chall-content-donationinfo-organization" class="green">Amnesty</span> og deres prosjekt 
-							<span id="chall-content-donationinfo-project" class="blue">Stopp dødsstraff!</span>
+							<span id="chall-content-donationinfo-organization" class="green"></span> og deres prosjekt 
+							<span id="chall-content-donationinfo-project" class="blue"></span>.
 							Velg ut hvem som skal få en utfordring til å gjøre det samme!
 
 						</div>
 						<div id="chall-content-msginfo" class="small">
-							Send en melding til dem som mottar utfordringen:
+							Send en melding til dem som får utfordringen:
 						</div>				
 						
 					</div>
@@ -493,16 +508,17 @@
 		<div id="mystats_title">
 			<div id="mystats_title_container">
 				<div class="mystats_logo">
-					<img src="#" name="logo" class ="mystats_logo roundimage"/></div>
-					<div id="mystats_title_name" name="user_name">[Full name]</div>
+					<img src="#" name="logo" class ="mystats_logo roundimage"/>
 				</div>
+				<div id="mystats_title_name" name="user_name">[Full name]</div>
 			</div>
-			<div style="height: 40pt; border-bottom: thin solid #eee;">
-				<span style="padding-left: 5%; line-height: 55pt;">Statistikk</span>
-			</div>
-			<div class="main_content">
-				<div class="content_box1 "
-				style="height: 100pt; margin-top: -20pt;">
+		</div>
+		<span class="small grey" id="challenges" style="margin-left:5%;"><span id="numChallenges" class="red"></span></span>
+		<div style="height: 40pt; border-bottom: thin solid #eee;">
+			<span style="padding-left: 5%; line-height: 55pt;">Statistikk</span>
+		</div>
+		<div class="main_content">
+			<div class="content_box1 "style="height: 100pt; margin-top: -20pt;">
 				<div class="content_box1l" style="height: 100%;">
 					<div class="content_box_top">
 						<span id="mystats_currmonth_donations" class="green" style="position: absolute; bottom: 0; left: 0; right: 0;" name="amount_current_month">[$$$]</span>
@@ -547,7 +563,8 @@
 					</tr>
 
 
-				</table></a>
+				</table>
+			</a>
 				<ul id="mystats_donationslist">
 				</ul>
 			</div>
@@ -558,24 +575,26 @@
 				</span>
 			</div>
 			<div id="mystats_challenges">
-				<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
-					<tr style="height: 50pt;">
-						<td style="position: relative; width: 25%">
-							<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
+				<a href="#page_challenges">
+					<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
+						<tr style="height: 50pt;">
+							<td style="position: relative; width: 25%">
+								<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
 
-							</div>
-						</td>
-						<td style="width: 65%; font-size: x-large;">
-							<span id="mystats_num_challenges">
-								[#]
-							</span>
-							utfordringer
-						</td>
-						<td>
-							<img src="../img/li_arrow_r_grey.png">
-						</td>
-					</tr>
-				</table>
+								</div>
+							</td>
+							<td style="width: 65%;" class="x-large">
+								<span id="mystats_num_challenges">
+									[#]
+								</span>
+								nye utfordringer
+							</td>
+							<td>
+								<img src="../img/li_arrow_r_grey.png">
+							</td>
+						</tr>
+					</table>
+				</a>
 			</div>
 
 			<div class="somespace"></div>
@@ -671,7 +690,6 @@
 			</div>
 			<div class="relative">
 				<div class="top_links">
-					<a href="#">Nyheter</a>
 					<a href="#page_donate" class="btn_organization_donate" name="page_project_donation">DONÉR</a>
 				</div>
 			</div>
@@ -681,7 +699,7 @@
 				<span class="title block" name="title">[title]</span>
 				<span class="block" name="ingress">[news text]</span>
 				<div class="listdiv">
-					<h3>Siste nyheter</h3>
+					<div style="border-bottom:thin solid #d2d2d2;margin-bottom:5pt"><h3>Siste nyheter</h3></div>
 					<ul name="newsListProjectPageNews" id="newsListProject">
 					</ul>
 				</div>

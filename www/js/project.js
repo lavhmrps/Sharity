@@ -122,6 +122,7 @@ function showProject(){
 			localStorage.setItem("orgLogo",response[0].orgLogo)
 
 			appendNewsList(projectID);
+			/*
 			$('img[name=background]').error(function(){
 				alert("background error, removing");
 				$(this).remove();
@@ -129,6 +130,7 @@ function showProject(){
 			$('img[name=logo]').error(function(){
 				$(this).remove();
 			});
+			*/
 		}
 	});
 }

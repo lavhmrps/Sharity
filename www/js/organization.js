@@ -110,8 +110,9 @@ function appendProjectList(organizationNr){
 				'</div>'+
 				'</div>'+
 				'</li>';
-			}
-			$('ul[name=projectList]').html(projectCode);
+			} if (response.length==0)
+				projectCode = "<span class='small grey'>Ingen prosjekter</span>";
+			$('ul[name=projectList]').html(projectCode).css("background",(response.length==0?"inherit":"white"));
 		},
 		error : function(error){
 			alert("Trying to print projectList connected to: " + organizationNr + ", in organization.js but getting error in ajax request:\n"+JSON.stringify(error));
