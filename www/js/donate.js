@@ -144,6 +144,7 @@ $(document).on("pageinit","#page_donate_challenge",function(){
 		$("#chall-content-listdiv-list .chall_li_cb").each(function(){
 			var isChecked = $(this).find("input[type=checkbox]").prop("checked");
 			if(isChecked){
+				console.log( $(this).closest("li").attr("id"))
 				var userID = $(this).closest("li").attr("id");
 				to_list[i++]=userID;
 			}
@@ -308,6 +309,7 @@ function sendChallenges(to_list, donationID,message){
 	for(var i=0; i<to_list.length;i++){		
 		(function (i) {
 			var sql ="insert into challenge (from_user, to_user, donationID, message) values ( '"+localStorage.getItem("userID")+"', '"+to_list[i]+"', "+donationID+", '"+message+"')";
+			console.log(sql);
 			$.ajax({
 				type : "POST",
 				url : url,
@@ -328,11 +330,12 @@ function sendChallengesCompleted(){
 	//$.mobile.changePage("#page_overview");
 	window.location.replace="#page_project";
 	clearDonationData();
-	writeLocalStorage();
+	//writeLocalStorage();
 }
 
 function getFriendList(){
 	var sql = "select friendEmail, name from friend join user on friend.friendEmail = user.email where friend.userEmail like '"+localStorage.getItem("userID")+"'";
+	console.log(sql);
 	var url = getURLappBackend();
 
 	$.ajax({
@@ -344,9 +347,9 @@ function getFriendList(){
 			//console.log(JSON.stringify(response));
 			var listHTML = "";
 			for(var i=0; i<response.length;i++){
+				console.log(response[i].friendEmail);
 				listHTML += 
-					//'<li id="'+response[i].friendEmail+'">'
-					'<li id="'+response[i].email+'">'
+					'<li id="'+response[i].friendEmail+'">'
 						+'<div class="chall_li_container">'
 							+'<div class="chall_li_name small">'+response[i].name+'</div>'
 							+'<div class="chall_li_cb">'

@@ -299,7 +299,7 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 	console.log("before");
 	var challengeList = $("#challengeList");
 	var sql="select d.*, c.*,u.name as fromName, u.picURL, p.name as projectName, o.name as orgName from donation as d join challenge as c on c.donationID = d.donationID join user as u on u.email like c.from_user join project as p on p.projectID = d.projectID join organization as o on o.organizationNr = p.organizationNr and c.to_user like '"+localStorage.getItem("userID")+"'";
-	//console.log(sql);
+	console.log(sql);
 	var url = getURLappBackend();
 	$.ajax({
 		type: "POST",
