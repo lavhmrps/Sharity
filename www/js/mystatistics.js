@@ -166,7 +166,7 @@ function listDonations(){
 					'<div class="li_container">' +
 						'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
 						'<div class="li_mid">'+
-							'<div class="li_project">' + json[i].projectName + '</div>'+
+							'<div class="li_project large">' + json[i].projectName + '</div>'+
 							'<span class="li_donation grey">' + json[i].sum + ' kr</span> <span'+
 							(json[i].type == 'fast'?' class="green">fast':'>')+'</span><span style="float:right;margin-right:5pt; font-size:small" class="grey">'+
 							formatDate(json[i].date)+'</span>'+
@@ -293,4 +293,110 @@ function showChallengeNotif(n){
 		}
 		
 	});		
+}
+
+$(document).on("pagebeforeshow","#page_challenges",function(){
+	console.log("before");
+	var challengeList = $("#challengeList");
+	var sql="select d.*, c.*,u.name as fromName, u.picURL, p.name as projectName, o.name as orgName from donation as d join challenge as c on c.donationID = d.donationID join user as u on u.email like c.from_user join project as p on p.projectID = d.projectID join organization as o on o.organizationNr = p.organizationNr and c.to_user like '"+localStorage.getItem("userID")+"'";
+	//console.log(sql);
+	var url = getURLappBackend();
+	$.ajax({
+		type: "POST",
+		url: url,
+		dataType: "json",
+		data: {"getSQL":sql},
+		success: function(response){
+			var challengeListHTML="";
+			for(var i=0;i<response.length;i++){
+				var leftCode = response[i].picURL == null?'':'<img src="'+response[i].picURL+'">';
+				console.log(response[i].picURL);
+				challengeListHTML+=
+					'<li id="'+response[i].challengeID+'">'
+						+'<div class="li_container">'
+							+'<div class="li_left">'
+								+'<div class="circlegrey">'+leftCode+'</div>'
+							+'</div>'
+							+'<div class="li_mid">'
+								+'<div class="li_mid_top">'
+									+'<span class="challenge_from" class="challenge_from small">'+response[i].fromName+'</span>'									
+								+'</div>'
+								+'<div class="li_mid_bottom">'
+									+'<span id="challenge_date" class="challenge_date x-small grey">'+formatDate(response[i].date)+'</span>'
+									+'<span id="challenge_status" class="challenge_status x-small red">'+(response[i].completed==null?"Ubesvart":"")+'</span>'
+								+'</div>'
+								+'<a href="#" class="ui-btn x-small ui-btn-icon-right caret-d-white btn_challenge_showmore">Mer info</a>'
+							+'</div>'							
+						+'</div>'
+						+'<div class="chall_dd">'
+							+'<div class="chall_dd_left">'
+								+'<div class="dd_donationinfo small">'
+									+'<span class="challenge_from" >'+response[i].fromName+'</span>'
+									+' har donert <span id="dd_challenge_amount" class="red">'+response[i].sum+'</span>'
+									+' kr til <span id="dd_challenge_org" class="green">'+response[i].orgName+'</span>'
+									+' og deres prosjekt <span id="dd_challenge_project"  class="blue">'+response[i].projectName+'</span>'
+									+' og utfordrer deg til å gjøre det samme!'
+								+'</div>'
+								+'<a href="#" class="ui-btn small grey answerbtn btn_decline" id="'+response[i].challengeID+'">Ikke denne gangen</a>'
+							+'</div>'
+							+'<div class="chall_dd_right">'
+								+'<img src="../img/quote-grey.png"/>'
+								+'<div class="div_donationmessage">'
+									+'<div class="donationmessage small">'+response[i].message+'</div>'
+									+'<span class="x-small grey right">- <span class="challenge_from grey">'+response[i].fromName+'</span></span>'
+								+'</div>'								
+								+'<a href="#" class="ui-btn small grey answerbtn btn_accept"  id="'+response[i].challengeID+'">Jeg tar utfordringen!</a>'
+							+'</div>'
+						+'</div>'
+					+'</li>';
+				challengeList.html(challengeListHTML);
+
+				// When click on 'More info'-button
+				$(".btn_challenge_showmore").off("click").click(function(){
+					var thisChallengeID = $(this).closest("li").attr("id");
+					var thisBtn = $(this).closest("li").find(".btn_challenge_showmore");
+					// Close all other infodiv and set their button-arrow to 'down'
+					$(".chall_dd").each(function(){
+						var btn = $(this).closest("li").find(".btn_challenge_showmore");
+						btn.removeClass("caret-u-white").addClass("caret-d-white");
+						var challengeID = $(this).closest("li").attr("id");
+						if(thisChallengeID!=challengeID){
+							$(this).hide();
+						}
+					});
+					// Set correct button-arrow on this button
+					$(this).closest("li").find(".chall_dd").toggle();
+					if($(this).closest("li").find(".chall_dd").is(":visible"))
+						thisBtn.removeClass("caret-d-white").addClass("caret-u-white");
+					else{
+						thisBtn.removeClass("caret-u-white").addClass("caret-d-white");
+					}
+				});
+
+				$(".btn_accept").off("click").click(function(){
+					var challengeID = $(this).attr("id");
+					acceptChallenge(challengeID);
+				});
+
+				$(".btn_decline").off("click").click(function(){
+					var challengeID = $(this).attr("id");
+					declineChallenge(challengeID);
+				});
+			}
+
+		}
+	});
+
+});
+$(document).on("pageshow","#page_challenges",function(){
+	$(".chall_dd").hide();
+});
+
+function acceptChallenge(challengeID){
+	alert("I ACCEPT YOUR PUNY CHALLENGE!");
+
+}
+
+function declineChallenge(challengeID){
+	alert("I DECLINE YOUR PATHETIC CHALLENGE!");
 }

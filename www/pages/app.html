@@ -446,52 +446,7 @@
 						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
 					</ul>
 				</div>
-			</footer>
-			
-
-			<div data-role="popup" id="popup_donate_challenge" class="centered">
-				
-				<div id="chall-top" class="xx-large blue">
-					<div id="chall-top-textbanner">
-						Utfordre
-					</div>
-				</div>
-				<div id="chall-content">
-					<div id="chall-content-left">
-						<div id="chall-content-donationinfo"> 
-							Du har nettopp donert <span id="chall-content-donationinfo-amount" class="red">100</span> kroner til 
-							<span id="chall-content-donationinfo-organization" class="green"></span> og deres prosjekt 
-							<span id="chall-content-donationinfo-project" class="blue"></span>.
-							Velg ut hvem som skal få en utfordring til å gjøre det samme!
-
-						</div>
-						<div id="chall-content-msginfo" class="small">
-							Send en melding til dem som får utfordringen:
-						</div>				
-						
-					</div>
-					<div id="chall-content-right">
-						<div style="background:#eee;text-align:center;"><span class="blue small">Dine venner:</span></div>
-						<div id="chall-content-listdiv">
-							<ul id="chall-content-listdiv-list">
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div id="chall-content-textareadiv">
-					<textarea id="chall-content-textareadiv-textarea" placeholder="Skriv din melding her" rows="3"></textarea>
-				</div>
-				<div id="chall-btns">
-					<table id="chall-btns-table">
-						<tr>
-							<td><a href="#" class="ui-btn" data-role="button" data-rel="back" id="chall-btn-cancel">AVBRYT</a></td>
-							<td><a href="#" class="ui-btn" data-role="button" id="chall-btn-challenge">UTFORDRE (<span id="chall-num-challenges">0</span>)</a></td>
-						</tr>
-					</table>
-				</div>
-
-			</div>
-			
+			</footer>		
 		</div>
 	</div>
 	<!--************End of donate************-->
@@ -640,6 +595,76 @@
 			</footer>
 		</div>
 		<!--************End of page page_mystatsDonations ************-->
+
+		<div data-role="page" id="page_challenges" data-theme="a">
+
+			<div id="header_div" class="boxshadow">
+				<div id="header_div" class="boxshadow">
+					<div class="header_top"></div>
+					<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+					<p>Utfordringer</p>
+				</div>
+			</div>
+			<div class="main_content">
+				<ul id="challengeList" name="challengeList">
+					<!--
+					<li>
+						<div class="li_container">
+							<div class="li_left">
+								<div class="circlegrey"></div>
+							</div>
+							<div class="li_mid">
+								<div class="li_mid_top">
+									<span class="challenge_from" class="challenge_from small">Kari Buskerud</span>
+									
+								</div>
+								<div class="li_mid_bottom">
+									<span id="challenge_date" class="challenge_date x-small grey">24.mai 2015</span>
+									<span id="challenge_status" class="challenge_status x-small red">Ubesvart</span>
+
+								</div>
+								<a href="#" id="btn_challenge_showmore" class="ui-btn x-small ui-btn-icon-right caret-d-white">Mer info</a>
+							</div>
+							
+						</div>
+						<div class="chall_dd">
+							<div class="chall_dd_left">
+								<div class="dd_donationinfo small">
+									<span class="challenge_from" class="">Ole Ivar Borgersrud</span> har donert <span id="dd_challenge_amount" class="red">100</span> kr til <span id="dd_challenge_org" class="green">Amnesty</span>
+									 og deres prosjekt <span id="dd_challenge_project"  class="blue">Stopp dødstraff!</span> og utfordrer deg til å gjøre det samme!
+								</div>
+								<a href="#" class="ui-btn small grey answerbtn btn_decline">Ikke denne gangen</a>
+							</div>
+							<div class="chall_dd_right">
+								<img src="../img/quote-grey.png"/>
+								<div class="div_donationmessage">
+									<div class="donationmessage small">
+										Å kommigjen a ditt gamle brød, legg frem noen laken du og davel ! :)
+										Dette her er den lengste meldingen som kan komme, altså 160 tegn!
+									</div>
+									<span class="x-small grey right">- <span class="challenge_from grey">Ole Ivar Borgersrud</span></span>
+								</div>
+								
+								<a href="#" class="ui-btn small grey answerbtn btn_accept">Jeg tar utfordringen!</a>
+							</div>
+
+						</div>
+					</li>
+					-->
+				</ul>
+			</div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
 
 		<!--************ page page_showUserDonations goes here ************-->
 		<div data-role="page" id="page_showUserDonations" data-theme="a">
@@ -1074,13 +1099,13 @@
 			<!--************End of Pages_show_user_profile************-->
 
 			<div data-role="page" id="page_test" data-theme="a">
-			<div id="header_div" class="boxshadow">
-				<div page-role="header" class="header_top"></div>
-				<img src="../img/arrow_left.png" class="menu_icon back_btn">
-				<p name="orgname">TESTSIDE</p>
-			</div>
+				<div id="header_div" class="boxshadow">
+					<div page-role="header" class="header_top"></div>
+					<img src="../img/arrow_left.png" class="menu_icon back_btn">
+					<p name="orgname">TESTSIDE</p>
+				</div>
 
-			<div class="main_content">
+			<div class="main_content"></div>
 				
 
 			<div class="somespace"></div>
@@ -1097,5 +1122,60 @@
 				</div>
 			</footer>
 		</div>
+
+		<div data-role="page" id="page_donate_challenge">
+			<div id="header_div" class="boxshadow">
+				<div class="header_top"></div>
+				<img src="../img/arrow_left.png" class="menu_icon" name="back"/>
+				<p>Utfordre</p>				
+			</div>
+
+			<div class="main_content">
+				<div style="min-height:200pt">
+					<div id="chall-content-left">
+						<div id="chall-content-donationinfo"> 
+							Du har nettopp donert <span id="chall-content-donationinfo-amount" class="red">100</span> kroner til 
+							<span id="chall-content-donationinfo-organization" class="green"></span> og deres prosjekt 
+							<span id="chall-content-donationinfo-project" class="blue"></span>.
+							Velg ut hvem som skal få en utfordring til å gjøre det samme!
+
+						</div>
+									
+						
+					</div>
+					<div id="chall-content-right">
+						<div style="background:#eee;text-align:center;"><span class="blue small">Dine venner:</span></div>
+						<div id="chall-content-listdiv">
+							<ul id="chall-content-listdiv-list">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="chall-content-msginfo" class="small">
+					Send en melding til dem som får utfordringen:
+				</div>	
+				<textarea id="chall-content-textareadiv-textarea" placeholder="Skriv din melding her" rows="3"></textarea>
+				<div id="chall-btns">
+					<table id="chall-btns-table">
+						<tr>
+							<td><a href="#page_project" class="ui-btn" data-role="button" id="chall-btn-cancel">AVBRYT</a></td>
+							<td><a href="#" class="ui-btn" data-role="button" id="chall-btn-challenge">UTFORDRE (<span id="chall-num-challenges">0</span>)</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview  footer_active"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+			</div>
+		
 	</body>
 </html>
