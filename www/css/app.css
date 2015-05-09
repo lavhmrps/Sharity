@@ -337,3 +337,15 @@ article {
 	background-size: 16pt 16pt;
 	background-color: inherit !important;
 }
+
+.caret-u-white:after{
+	background-image: url(../img/caret-u-white.png);
+	background-color: inherit !important;
+	background-size:11pt; 
+}
+
+.caret-d-white:after{
+	background-image: url(../img/caret-d-white.png);
+	background-color: inherit !important;
+	background-size:11pt;
+}

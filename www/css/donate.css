@@ -92,42 +92,12 @@
 	font-weight: normal !important;
 }
 
-/* challenge-popup */
+/* Challenge  */
 
-#popup_donate_challenge *{
+#page_donate_challenge *{
 	box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
-}
-
-#popup_donate_challenge{
-	height:100%;
-	width:90%;
-	overflow-y:scroll;
-}
-
-#chall-top{
-	position: relative;
-	height:15%;
-	width:100%;
-}
-#chall-top-textbanner{
-	position: absolute;
-	top:0;
-	bottom:0;
-	margin: auto;
-	height:50%;
-	width:100%;
-	background: #006dfe;
-	color:white;
-	text-align: center;
-	line-height: 30pt;
-}
-
-#chall-content{
-	position: relative;
-	height:55%;
-	width:100%;
 }
 
 #chall-content-left{
@@ -148,8 +118,6 @@
 }
 
 #chall-content-msginfo{
-	position:absolute;
-	bottom:0;left:2.5%;
 	padding:5pt;
 	background:#eee;
 
@@ -157,14 +125,13 @@
 
 #chall-content-right{
 	position: relative;
-	float:right;
+	float:left;
 	width:50%;
-	height:100%;
 	border-left: thin solid #d2d2d2;
 }
 
 #chall-content-listdiv {
-	height:90%;
+	max-height:180pt;
 	width:95%;
 	margin:auto;
 	overflow-y: scroll;
@@ -210,7 +177,7 @@
 	position: relative;
 	width:95%;
 	margin:auto;
-	height:15%;
+	border:thin solid blue;
 }
 
 #chall-content-textareadiv textarea{
@@ -220,7 +187,6 @@
 
 #chall-btns{
 	position: relative;
-	height:15%;
 	width:100%;
 }
 

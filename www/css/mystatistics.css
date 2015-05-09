@@ -143,11 +143,11 @@ footer ul li img{
 	box-sizing:border-box;
 }
 #donationList .li_left{
-	width: 10%;
+	width: 15%;
 }
 
 #donationList .li_mid{
-	width: 70%;
+	width: 65%;
 	padding:7pt 0;
 }
 
@@ -170,8 +170,6 @@ footer ul li img{
 }
 
 #donationList .li_project, #userDonationList .li_project{
-	font-size: large;
-	font-weight: bold;
 	text-overflow: ellipsis;
 	overflow:hidden;
 	white-space: nowrap;
@@ -183,7 +181,8 @@ footer ul li img{
 
 .donationItem{
 	position:absolute;
-	top:0;bottom:0;
+	top:7pt;
+	left:0;right:0;
 	margin:auto;
 	height:20pt;
 	width: 20pt;
@@ -203,18 +202,18 @@ footer ul li img{
 	list-style: none;
 	height: 50pt;
 }
-#userDonationList .li_left, #userDonationList .li_right, #userDonationList .li_mid{
+#userDonationList .li_left, #userDonationList .li_right, #userDonationList .li_mid,{
 	position: relative;
 	height:100%;
 	float:left;
 	box-sizing:border-box;
 }
 #userDonationList .li_left{
-	width: 10%;
+	width: 15%;
 }
 
 #userDonationList .li_mid{
-	width: 70%;
+	width: 65%;
 	padding:7pt 5pt;
 }
 
@@ -229,3 +228,109 @@ footer ul li img{
 	*/
 }
 
+#challengeList *{
+	box-sizing:border-box;
+}
+
+#challengeList li{
+	height:40pt;
+}
+
+#challengeList .li_left, #challengeList .li_mid, #challengeList .li_right{
+	background: white;;
+	position: relative;
+	height:40pt;
+	box-sizing: border-box;
+	float:left;
+}
+
+#challengeList .li_left{
+	width:15%;
+}
+
+#challengeList .li_mid{
+	width:85%;
+	padding-left: 10pt;
+}
+
+#challengeList .li_mid_top{
+}
+
+#challengeList .li_mid_top,#challengeList .li_mid_bottom{
+	position: relative;
+	height:50%;
+	
+}
+#challengeList .li_mid_top .challenge_from{
+	position: absolute;
+	bottom:0;
+}
+
+#challengeList  .challenge_status{
+	padding-left:5pt;
+}
+
+#challengeList .li_right{
+	position: relative;
+}
+#challengeList .li_right a, #challengeList .li_mid a{
+	position:absolute;
+	top:0;bottom :0;
+	right:0;
+	margin:auto;
+	width:70pt;
+	height:18pt;
+	padding:0;
+	line-height: 18pt;
+	color:white;
+	background:#006dfe;
+}
+
+#challengeList .chall_dd{
+	position:relative;
+	min-height:200pt;
+	background:white;
+	border-bottom: thin solid #d2d2d2;
+}
+
+#challengeList .chall_dd_left,#challengeList .chall_dd_right{
+	position:relative;
+	float:left;
+	width: 50%;
+	height:200pt;
+}
+#challengeList .dd_donationinfo{
+	position:absolute;
+	left:0;right:0;top:10pt;
+	margin:auto;
+	width:110pt;
+}
+
+#challengeList .div_donationmessage{
+	position:absolute;
+	left:0;right:0;top:30pt;
+	margin:auto;
+	width:100pt;
+}
+#challengeList .donationmessage{
+	font-family: monospace !important;
+
+}
+#challengeList .chall_dd_right{
+
+}
+#challengeList .answerbtn{
+	position:absolute;
+	bottom:10pt;left:0;right:0;
+	margin:auto;
+	height:23pt;
+	width:110pt;
+	padding:0;
+	line-height: 23pt;
+}
+#challengeList .btn_accept{
+	background: #20a623;
+	color:white !important;
+}
+#challengeList .btn_decline{
+}
