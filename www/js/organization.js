@@ -126,7 +126,7 @@ function getNews(){
 	var sql = "select p.name as projectName, n.* from organization as o join project as p "+
 			"on o.organizationNr = p.organizationNr join news as n on n.projectID = p.projectID "+
 			"where o.organizationNr= "+localStorage.getItem("organizationToShow")+" order by date_added desc";
-	console.log(sql);
+	
 	var url = getURLappBackend();
 	$.ajax({
 		type:"post",
