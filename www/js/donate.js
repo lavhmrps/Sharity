@@ -16,6 +16,7 @@ $(document).on("pagebeforeshow","#page_donate",function(){
 	}
 	else{
 		alert("feil: Hverken organisasjon eller prosjekt er valgt");
+		$.mobile.changePage("#page_overview");
 		return;
 	}
 
@@ -75,12 +76,13 @@ $(document).on("pageinit","#page_donate",function(){
 	});
 
 	/* Challenge-Popup */
-
+	/*
 	$("#popup_donate_challenge").on("popupbeforeposition",function (){
 		// Disable background scrolling
 		$('body').css('overflow','hidden');
 		
 		getFriendList();
+		$("#chall-content-donationinfo-amount").html(localStorage.getItem("chall-donation-sum"));
 		$("#chall-content-donationinfo-organization").html(localStorage.getItem("chall-donation-orgName"));
 		$("#chall-content-donationinfo-project").html(localStorage.getItem("chall-donation-projectName"));
 
@@ -90,7 +92,7 @@ $(document).on("pageinit","#page_donate",function(){
 	$("#popup_donate_challenge").on("popupafteropen",function (){
 		var donationID = localStorage.getItem("chall-donationID");
 
-		$("#chall-btn-challenge").click(function(){
+		$("#chall-btn-challenge").off("click").click(function(){
 			var to_list=[];
 			var i=0;
 			$("#chall-content-listdiv-list .chall_li_cb").each(function(){
@@ -106,10 +108,8 @@ $(document).on("pageinit","#page_donate",function(){
 			}
 
 			var message = $("#chall-content-textareadiv-textarea").val();
-
+			console.log(to_list);
 			sendChallenges(to_list,donationID,message);
-		
-
 		
 		});
 	});	
@@ -118,12 +118,47 @@ $(document).on("pageinit","#page_donate",function(){
 		// Enable scrolling after popup is closed
 		$('body').css('overflow','auto');
 	});
+*/
 });
+
 
  $(document).on("pagebeforehide","#page_donate",function(){
  	localStorage.removeItem("donateToProject");
  	localStorage.removeItem("donateToOrganization");
- })
+ });
+
+$(document).on("pagebeforeshow","#page_donate_challenge",function(){
+	getFriendList();
+	$("#chall-content-donationinfo-amount").html(localStorage.getItem("chall-donation-sum"));
+	$("#chall-content-donationinfo-organization").html(localStorage.getItem("chall-donation-orgName"));
+	$("#chall-content-donationinfo-project").html(localStorage.getItem("chall-donation-projectName"));
+
+});
+
+$(document).on("pageinit","#page_donate_challenge",function(){
+	var donationID = localStorage.getItem("chall-donationID");
+
+	$("#chall-btn-challenge").off("click").click(function(){
+		var to_list=[];
+		var i=0;
+		$("#chall-content-listdiv-list .chall_li_cb").each(function(){
+			var isChecked = $(this).find("input[type=checkbox]").prop("checked");
+			if(isChecked){
+				var userID = $(this).closest("li").attr("id");
+				to_list[i++]=userID;
+			}
+		});
+		if(i==0){
+			alert("Velg en eller flere mottagere");
+			return;
+		}
+
+		var message = $("#chall-content-textareadiv-textarea").val();
+		sendChallenges(to_list,donationID,message);
+	
+	});
+
+});
 
 function uncheckRadiobuttonsDonate() {
 	$("input[name='in_donate_amount']").attr("checked", false)
@@ -136,11 +171,8 @@ function completeDonation(){
 	var projectID = localStorage.getItem('donateToProject');
 	var email = localStorage.getItem('userID');
 
-	var validSum = false;
-
 	if($('input[name=in_donate_amount]:checked').length > 0){
 		sum = $('input[name=in_donate_amount]:checked').val();
-		validSum = true;
 	}
 	else if($('input[name=in_donate_amount_custom]').val().length > 0){
 		sum = $('input[name=in_donate_amount_custom]').val();
@@ -177,9 +209,8 @@ function completeDonation(){
 		dataType:"json",
 		data:{"getSQL":sql},
 		success:function(response){
-			funds =  response[0].funds;
-			if (funds < sum){
-				alert("ikke dekning på konto:"+ funds +" < "+ sum);
+			if (response[0].funds < sum){
+				alert("ikke dekning på konto:"+ response[0].funds +" < "+ sum);//+ " = " +response[0].funds < sum);
 				return;
 			}
 			var newFunds = funds - sum;
@@ -213,24 +244,23 @@ function completeDonation(){
 								success : function(response){
 									var donationID = response[0].donationID;
 									localStorage.setItem("chall-donationID",donationID);
+									if(confirm("Du har donert!\nVil du utfordre noen av vennene dine til å gjøre det samme?")){
+										localStorage.setItem("chall-donation-orgName",$(".orgName").html());
+										localStorage.setItem("chall-donation-projectName",$(".projectName").html());
+										localStorage.setItem("chall-donation-sum",sum);
+										$.mobile.changePage("#page_donate_challenge");
+										//$("#popup_donate_challenge").popup("open");									
+									}else {
+										//$.mobile.back();
+										window.location.replace="#page_project";
+									}
 								}
 							});
 						}
 					});
 
-					if(confirm("Du har donert!\nVil du utfordre noen av vennene dine til å gjøre det samme?")){
-						localStorage.setItem("chall-donation-orgName",$(".orgName").html());
-						localStorage.setItem("chall-donation-projectName",$(".projectName").html());
-						localStorage.setItem("chall-donation-projectID",projectID);
-						localStorage.setItem("chall-donation-type",type);
-						localStorage.setItem("chall-donation-sum",sum);
 
-						$("#popup_donate_challenge").popup("open");
-						
-					}else {
-						console.log("goin back");
-						$.mobile.back();
-					}
+
 				},
 				error : function(response){
 					alert("Error in: donate.js bad ajax request when insert to database");
@@ -239,8 +269,13 @@ function completeDonation(){
 		}
 	});
 }
-
+/*
 function sendChallenges(to_list, donationID,message){
+	var list ="list:\n";
+	for(var j=0;j<to_list.length;j++)
+		list+=to_list[j];
+	console.log(list);
+
 	var i = to_list.length;
 	if(i == 0){
 		alert("Utfordringene ble sendt!");
@@ -267,30 +302,34 @@ function sendChallenges(to_list, donationID,message){
 		}
 	});
 }
-
-/*
+*/
 function sendChallenges(to_list, donationID,message){
 	var url = getURLappBackend();
-	var sql="";
-	var status=[];
-	console.log(status[0]);
-	var output="";
 	for(var i=0; i<to_list.length;i++){		
-		 sql ="insert into challenge (from_user, to_user, donationID, message) values ( '"+localStorage.getItem("userID")+"', '"+to_list[i]+"', "+donationID+", '"+message+"')";
-		
 		(function (i) {
+			var sql ="insert into challenge (from_user, to_user, donationID, message) values ( '"+localStorage.getItem("userID")+"', '"+to_list[i]+"', "+donationID+", '"+message+"')";
 			$.ajax({
 				type : "POST",
 				url : url,
 				dataType: "text",
 				data : {'setSQL' : sql},
-				success : function(response){}
+				success : function(response){
+					if(i==(to_list.length-1))
+						sendChallengesCompleted();
+				}
 			});
 		})(i);
 	}
 }
-*/
 
+function sendChallengesCompleted(){
+	alert("Utfordringene ble sendt!");
+	//$("#popup_donate_challenge").popup("close");
+	//$.mobile.changePage("#page_overview");
+	window.location.replace="#page_project";
+	clearDonationData();
+	writeLocalStorage();
+}
 
 function getFriendList(){
 	var sql = "select friendEmail, name from friend join user on friend.friendEmail = user.email where friend.userEmail like '"+localStorage.getItem("userID")+"'";
@@ -302,10 +341,12 @@ function getFriendList(){
 		dataType: "json",
 		data : {'getSQL' : sql},
 		success : function(response){
+			//console.log(JSON.stringify(response));
 			var listHTML = "";
 			for(var i=0; i<response.length;i++){
 				listHTML += 
-					'<li id="'+response[i].friendEmail+'">'
+					//'<li id="'+response[i].friendEmail+'">'
+					'<li id="'+response[i].email+'">'
 						+'<div class="chall_li_container">'
 							+'<div class="chall_li_name small">'+response[i].name+'</div>'
 							+'<div class="chall_li_cb">'
@@ -314,7 +355,7 @@ function getFriendList(){
 						+'</div>'
 					+'</li>';
 			}
-			$("#chall-content-listdiv-list").html(listHTML);
+			$("#chall-content-listdiv ul").html(listHTML);
 
 			var numChallenges=0;
 			$("#chall-content-listdiv-list .chall_li_name").click(function(){
@@ -347,6 +388,8 @@ function getFriendList(){
 			});
 			
 			
+		},error:function(response){
+			console.log(JSON.stringify(response));
 		}
 	});
 }
