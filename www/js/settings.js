@@ -477,16 +477,27 @@ function acceptFriendRequest(from_user,name){
 		success : function(response){
 			//alert("File: settings.js : trying to accept friend request, response from SQL : " + response);
 			if(response == "OK"){
-				var data = {"setSQL" : "DELETE FROM friend_request WHERE from_user = '"+from_user+"' AND to_user ='"+my_email+"'"};
+				var data = {"setSQL" : "INSERT INTO friend (userEmail, friendEmail) VALUES ('"+from_user+"', '"+my_email+"')"};
 				$.ajax({
 					type: "post",
 					url : url,
 					data : data,
 					dataType : "text",
 					success : function(response){
-						checkFriendRequests();
+						var data = {"setSQL" : "DELETE FROM friend_request WHERE from_user = '"+from_user+"' AND to_user ='"+my_email+"'"};
+						$.ajax({
+							type: "post",
+							url : url,
+							data : data,
+							dataType : "text",
+							success : function(response){
+								checkFriendRequests();
+							}
+						});
+						
 					}
 				});
+
 			}
 		}
 	});
