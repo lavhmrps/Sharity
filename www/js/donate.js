@@ -210,8 +210,10 @@ function completeDonation(){
 		dataType:"json",
 		data:{"getSQL":sql},
 		success:function(response){
-			if (response[0].funds < sum){
-				alert("ikke dekning på konto:"+ response[0].funds +" < "+ sum);//+ " = " +response[0].funds < sum);
+			funds = parseInt(response[0].funds);
+			sum = parseInt(sum);
+			if (funds < sum){
+				alert("ikke dekning på konto:"+ funds +" < "+ sum);
 				return;
 			}
 			var newFunds = funds - sum;
@@ -328,7 +330,7 @@ function sendChallengesCompleted(){
 	alert("Utfordringene ble sendt!");
 	//$("#popup_donate_challenge").popup("close");
 	//$.mobile.changePage("#page_overview");
-	window.location.replace="#page_project";
+	window.history.go(-2);
 	clearDonationData();
 	//writeLocalStorage();
 }
