@@ -53,6 +53,9 @@ function checkUpdates(){
 // returns easily read date
 function formatDate(date){
 	// date : yyyy-mm-dd hh:mm:ss
+	if (date == null)
+		return "<bad dateformat>";
+
 	var formattedDate="";
 	var year,month,day,hour,minute,second;
 	year = date.substring(0,4);
