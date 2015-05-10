@@ -216,7 +216,8 @@ function insertCardAndUpdateUser(){
 }
 function updateUser(){
 
-	var sql = "UPDATE User SET cardnr = '" + globalData.visa_number + "', funds = "+globalData.monthly_amount+" WHERE email = '" + globalData.email + "'";
+	//var sql = "UPDATE User SET cardnr = '" + globalData.visa_number + "', funds = "+globalData.monthly_amount+" WHERE email = '" + globalData.email + "'";
+	var sql = "UPDATE User SET funds = "+globalData.monthly_amount+" WHERE email = '" + globalData.email + "'";
 	console.log("updateUser(): "+sql)
 	var url = getURLappBackend();
 
