@@ -228,15 +228,19 @@ footer ul li img{
 	*/
 }
 
-#challengeList *{
+.challengeList *{
+	/*
 	box-sizing:border-box;
+	*/
+
 }
 
-#challengeList li{
+.challengeList li{
+	border-top: thin solid #d2d2d2;
 	height:40pt;
 }
 
-#challengeList .li_left, #challengeList .li_mid, #challengeList .li_right{
+.challengeList .li_left, .challengeList .li_mid, .challengeList .li_right{
 	background: white;;
 	position: relative;
 	height:40pt;
@@ -244,36 +248,40 @@ footer ul li img{
 	float:left;
 }
 
-#challengeList .li_left{
+#challengeListHistory .li_left,#challengeListHistory .li_mid,#challengeListHistory .li_right{
+	background:lightyellow;
+}
+
+.challengeList .li_left{
 	width:15%;
 }
 
-#challengeList .li_mid{
+.challengeList .li_mid{
 	width:85%;
 	padding-left: 10pt;
 }
 
-#challengeList .li_mid_top{
+.challengeList .li_mid_top{
 }
 
-#challengeList .li_mid_top,#challengeList .li_mid_bottom{
+.challengeList .li_mid_top,.challengeList .li_mid_bottom{
 	position: relative;
 	height:50%;
 	
 }
-#challengeList .li_mid_top .challenge_from{
+.challengeList .li_mid_top .challenge_from{
 	position: absolute;
 	bottom:0;
 }
 
-#challengeList  .challenge_status{
+.challengeList  .challenge_status{
 	padding-left:5pt;
 }
 
-#challengeList .li_right{
+.challengeList .li_right{
 	position: relative;
 }
-#challengeList .li_right a, #challengeList .li_mid a{
+.challengeList .li_right a, .challengeList .li_mid a{
 	position:absolute;
 	top:0;bottom :0;
 	right:0;
@@ -282,55 +290,79 @@ footer ul li img{
 	height:18pt;
 	padding:0;
 	line-height: 18pt;
-	color:white;
-	background:#006dfe;
+	color:white !important;
+	background:#006dfe !important;
 }
 
-#challengeList .chall_dd{
+.challengeList .chall_dd{
 	position:relative;
 	min-height:200pt;
 	background:white;
+	box-sizing: border-box;
 	border-bottom: thin solid #d2d2d2;
 }
 
-#challengeList .chall_dd_left,#challengeList .chall_dd_right{
+#challengeListHistory .chall_dd{
+	background:lightyellow;
+}
+
+.challengeList .chall_dd_left,.challengeList .chall_dd_right{
 	position:relative;
 	float:left;
 	width: 50%;
 	height:200pt;
 }
-#challengeList .dd_donationinfo{
+.challengeList .dd_donationinfo{
 	position:absolute;
 	left:0;right:0;top:10pt;
 	margin:auto;
 	width:110pt;
 }
 
-#challengeList .div_donationmessage{
+.challengeList .div_donationmessage{
 	position:absolute;
 	left:0;right:0;top:30pt;
 	margin:auto;
 	width:100pt;
 }
-#challengeList .donationmessage{
+.challengeList .donationmessage{
 	font-family: monospace !important;
 
 }
-#challengeList .chall_dd_right{
+.challengeList .chall_dd_right{
 
 }
-#challengeList .answerbtn{
-	position:absolute;
-	bottom:10pt;left:0;right:0;
-	margin:auto;
-	height:23pt;
-	width:110pt;
-	padding:0;
-	line-height: 23pt;
+
+.answerbtn{
+	position:absolute !important;
+	bottom:10pt !important;left:0 !important;right:0 !important;
+	margin:auto !important;
+	height:23pt !important;
+	width:110pt !important;
+	padding:0  !important;
+	line-height: 23pt !important;
 }
-#challengeList .btn_accept{
-	background: #20a623;
+.btn_accept{
+	background: #20a623 !important;
 	color:white !important;
 }
-#challengeList .btn_decline{
+ .btn_decline{
+}
+.responseIndicator{
+	position:absolute;
+	right:0;
+	bottom:20pt;
+	z-index: 2;
+}
+
+.whenRespondedMsg{
+	position:absolute;
+	left:0;right:0;
+	bottom: 42pt;
+	margin:auto;
+	text-align: center;
+}
+
+.whenRespondedMsgBtm{
+position:absolute;
 }

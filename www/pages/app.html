@@ -550,9 +550,8 @@
 						</tr>
 					</table>
 				</a>
-			</div>
 
-			<div class="somespace"></div>
+			</div>
 
 			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
 				<div data-role="navbar">
@@ -606,53 +605,20 @@
 				</div>
 			</div>
 			<div class="main_content">
-				<ul id="challengeList" name="challengeList">
-					<!--
-					<li>
-						<div class="li_container">
-							<div class="li_left">
-								<div class="circlegrey"></div>
-							</div>
-							<div class="li_mid">
-								<div class="li_mid_top">
-									<span class="challenge_from" class="challenge_from small">Kari Buskerud</span>
-									
-								</div>
-								<div class="li_mid_bottom">
-									<span id="challenge_date" class="challenge_date x-small grey">24.mai 2015</span>
-									<span id="challenge_status" class="challenge_status x-small red">Ubesvart</span>
-
-								</div>
-								<a href="#" id="btn_challenge_showmore" class="ui-btn x-small ui-btn-icon-right caret-d-white">Mer info</a>
-							</div>
-							
-						</div>
-						<div class="chall_dd">
-							<div class="chall_dd_left">
-								<div class="dd_donationinfo small">
-									<span class="challenge_from" class="">Ole Ivar Borgersrud</span> har donert <span id="dd_challenge_amount" class="red">100</span> kr til <span id="dd_challenge_org" class="green">Amnesty</span>
-									 og deres prosjekt <span id="dd_challenge_project"  class="blue">Stopp dødstraff!</span> og utfordrer deg til å gjøre det samme!
-								</div>
-								<a href="#" class="ui-btn small grey answerbtn btn_decline">Ikke denne gangen</a>
-							</div>
-							<div class="chall_dd_right">
-								<img src="../img/quote-grey.png"/>
-								<div class="div_donationmessage">
-									<div class="donationmessage small">
-										Å kommigjen a ditt gamle brød, legg frem noen laken du og davel ! :)
-										Dette her er den lengste meldingen som kan komme, altså 160 tegn!
-									</div>
-									<span class="x-small grey right">- <span class="challenge_from grey">Ole Ivar Borgersrud</span></span>
-								</div>
-								
-								<a href="#" class="ui-btn small grey answerbtn btn_accept">Jeg tar utfordringen!</a>
-							</div>
-
-						</div>
-					</li>
-					-->
-				</ul>
+				<div class="listdiv">
+					<span class="listTitle">Aktive</span>
+					<ul id="challengeList" class="challengeList">
+					</ul>
+				</div>
+				<div class="greyline"></div>
+				<div class="listdiv">
+					<span class="listTitle">Historie</span>
+					<ul id="challengeListHistory" class="challengeList">
+					</ul>
+				</div>
 			</div>
+
+			<div class="somespace"></div>
 
 			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
 				<div data-role="navbar">
@@ -1154,7 +1120,7 @@
 				<div id="chall-content-msginfo" class="small">
 					Send en melding til dem som får utfordringen:
 				</div>	
-				<textarea id="chall-content-textareadiv-textarea" placeholder="Skriv din melding her" rows="3"></textarea>
+				<textarea id="chall-content-textareadiv-textarea" placeholder="Skriv din melding her (160 tegn)" rows="3" maxlength="160"></textarea>
 				<div id="chall-btns">
 					<table id="chall-btns-table">
 						<tr>

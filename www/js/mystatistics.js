@@ -62,7 +62,8 @@ function showStats(){
 
 function getChallenges(){
 	var email = localStorage.getItem('userID');
-	var sql = "SELECT * FROM challenge WHERE to_user = '"+email+"'";
+	var sql = "SELECT * FROM challenge WHERE to_user = '"+email+"' and response is null";
+	console.log(sql);
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 
@@ -297,8 +298,13 @@ function showChallengeNotif(n){
 
 $(document).on("pagebeforeshow","#page_challenges",function(){
 	console.log("before");
-	var challengeList = $("#challengeList");
-	var sql="select d.*, c.*,u.name as fromName, u.picURL, p.name as projectName, o.name as orgName from donation as d join challenge as c on c.donationID = d.donationID join user as u on u.email like c.from_user join project as p on p.projectID = d.projectID join organization as o on o.organizationNr = p.organizationNr and c.to_user like '"+localStorage.getItem("userID")+"'";
+	var challengeList = $("#challengeList"),
+		challengeListHistory = $("#challengeListHistory");
+
+	var sql="select d.*, c.*,u.name as fromName, u.picURL, p.name as projectName, o.name as orgName from donation as d "
+			+"join challenge as c on c.donationID = d.donationID join user as u on u.email like c.from_user "
+			+"join project as p on p.projectID = d.projectID join organization as o on o.organizationNr = p.organizationNr "
+			+"and c.to_user like '"+localStorage.getItem("userID")+"'";
 	console.log(sql);
 	var url = getURLappBackend();
 	$.ajax({
@@ -307,49 +313,104 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 		dataType: "json",
 		data: {"getSQL":sql},
 		success: function(response){
-			var challengeListHTML="";
+			var challengeListHTML="", challengeListHistoryHTML ="";
 			for(var i=0;i<response.length;i++){
+				
+
 				var leftCode = response[i].picURL == null?'':'<img src="'+response[i].picURL+'">';
-				console.log(response[i].picURL);
-				challengeListHTML+=
-					'<li id="'+response[i].challengeID+'">'
-						+'<div class="li_container">'
-							+'<div class="li_left">'
-								+'<div class="circlegrey">'+leftCode+'</div>'
-							+'</div>'
-							+'<div class="li_mid">'
-								+'<div class="li_mid_top">'
-									+'<span class="challenge_from" class="challenge_from small">'+response[i].fromName+'</span>'									
+				if(response[i].response == null){
+					// Challenge is neither accepted nor declined
+					challengeListHTML+=
+						'<li id="'+response[i].challengeID+'" orgName="'+response[i].orgName+'" projectName="'+response[i].projectName
+									+'" projectID="'+response[i].projectID+'" sum="'+response[i].sum+'">'
+							+'<div class="li_container">'
+								+'<div class="li_left">'
+									+'<div class="circlegrey">'+leftCode+'</div>'
 								+'</div>'
-								+'<div class="li_mid_bottom">'
-									+'<span id="challenge_date" class="challenge_date x-small grey">'+formatDate(response[i].date)+'</span>'
-									+'<span id="challenge_status" class="challenge_status x-small red">'+(response[i].completed==null?"Ubesvart":"")+'</span>'
-								+'</div>'
-								+'<a href="#" class="ui-btn x-small ui-btn-icon-right caret-d-white btn_challenge_showmore">Mer info</a>'
-							+'</div>'							
-						+'</div>'
-						+'<div class="chall_dd">'
-							+'<div class="chall_dd_left">'
-								+'<div class="dd_donationinfo small">'
-									+'<span class="challenge_from" >'+response[i].fromName+'</span>'
-									+' har donert <span id="dd_challenge_amount" class="red">'+response[i].sum+'</span>'
-									+' kr til <span id="dd_challenge_org" class="green">'+response[i].orgName+'</span>'
-									+' og deres prosjekt <span id="dd_challenge_project"  class="blue">'+response[i].projectName+'</span>'
-									+' og utfordrer deg til å gjøre det samme!'
-								+'</div>'
-								+'<a href="#" class="ui-btn small grey answerbtn btn_decline" id="'+response[i].challengeID+'">Ikke denne gangen</a>'
+								+'<div class="li_mid">'
+									+'<div class="li_mid_top">'
+										+'<span class="challenge_from" class="challenge_from small">'+response[i].fromName+'</span>'									
+									+'</div>'
+									+'<div class="li_mid_bottom">'
+										+'<span id="challenge_date" class="challenge_date x-small grey">'+formatDate(response[i].date)+'</span>'
+										+'<span id="challenge_status" class="challenge_status x-small red">'+(response[i].response==null?"Ubesvart":"")+'</span>'
+									+'</div>'
+									+'<a href="#" class="ui-btn x-small ui-btn-icon-right caret-d-white btn_challenge_showmore">Mer info</a>'
+								+'</div>'							
 							+'</div>'
-							+'<div class="chall_dd_right">'
-								+'<img src="../img/quote-grey.png"/>'
-								+'<div class="div_donationmessage">'
-									+'<div class="donationmessage small">'+response[i].message+'</div>'
-									+'<span class="x-small grey right">- <span class="challenge_from grey">'+response[i].fromName+'</span></span>'
-								+'</div>'								
-								+'<a href="#" class="ui-btn small grey answerbtn btn_accept"  id="'+response[i].challengeID+'">Jeg tar utfordringen!</a>'
+							+'<div class="chall_dd">'
+								+'<div class="chall_dd_left">'
+									+'<div class="dd_donationinfo small">'
+										+'<span class="challenge_from" >'+response[i].fromName+'</span>'
+										+' har donert <span id="dd_challenge_amount" class="red">'+response[i].sum+'</span>'
+										+' kr til <span id="dd_challenge_org" class="green">'+response[i].orgName+'</span>'
+										+' og deres prosjekt <span id="dd_challenge_project"  class="blue">'+response[i].projectName+'</span>'
+										+' og utfordrer deg til å gjøre det samme!'
+									+'</div>'
+									+'<a href="#" class="ui-btn small grey answerbtn btn_decline" id="'+response[i].challengeID+'">Ikke denne gangen</a>'
+								+'</div>'
+								+'<div class="chall_dd_right">'
+									+'<img src="../img/quote-grey.png"/>'
+									+'<div class="div_donationmessage">'
+										+'<div class="donationmessage small">'+response[i].message+'</div>'
+										+'<span class="x-small grey right">- <span class="challenge_from grey">'+response[i].fromName+'</span></span>'
+									+'</div>'								
+									+'<a href="#" class="ui-btn small grey answerbtn btn_accept"  id="'+response[i].challengeID+'">Jeg tar utfordringen!</a>'
+								+'</div>'
 							+'</div>'
-						+'</div>'
-					+'</li>';
+						+'</li>';
+					} else{
+						// Challenge has been answered
+						var responseIndicator = "<img src='../img/icon-check.png' class='responseIndicator' />";
+
+						challengeListHistoryHTML+=
+						'<li id="'+response[i].challengeID+'" orgName="'+response[i].orgName+'" projectName="'+response[i].projectName
+									+'" projectID="'+response[i].projectID+'" sum="'+response[i].sum+'">'
+							+'<div class="li_container">'
+								+'<div class="li_left">'
+									+'<div class="circlegrey">'+leftCode+'</div>'
+								+'</div>'
+								+'<div class="li_mid">'
+									+'<div class="li_mid_top">'
+										+'<span class="challenge_from" class="challenge_from small">'+response[i].fromName+'</span>'									
+									+'</div>'
+									+'<div class="li_mid_bottom">'
+										+'<span id="challenge_date" class="challenge_date x-small grey">'+formatDate(response[i].date)+'</span>'
+										+'<span id="challenge_status" class="challenge_status x-small green">'+(response[i].response==null?"Ubesvart":"Har svart")+'</span>'
+									+'</div>'
+									+'<a href="#" class="ui-btn x-small ui-btn-icon-right caret-d-white btn_challenge_showmore">Mer info</a>'
+								+'</div>'							
+							+'</div>'
+							+'<div class="chall_dd">'
+							+'<span class=" x-small grey whenRespondedMsg">Utfordringen ble besvart '+formatDate(response[i].response_date)+' </span>'
+								+'<div class="chall_dd_left">'
+									+'<div class="dd_donationinfo small">'
+										+'<span class="challenge_from" >'+response[i].fromName+'</span>'
+										+' har donert <span id="dd_challenge_amount" class="red">'+response[i].sum+'</span>'
+										+' kr til <span id="dd_challenge_org" class="green">'+response[i].orgName+'</span>'
+										+' og deres prosjekt <span id="dd_challenge_project"  class="blue">'+response[i].projectName+'</span>'
+										+' og utfordrer deg til å gjøre det samme!'
+									+'</div>'
+
+									+(response[i].response == 0 ? responseIndicator:"")
+									+'<a href="#" class="ui-btn small grey answerbtn btn_decline">Ikke denne gangen</a>'
+								+'</div>'
+								+'<div class="chall_dd_right">'
+									+'<img src="../img/quote-grey.png"/>'
+									+'<div class="div_donationmessage">'
+										+'<div class="donationmessage small">'+response[i].message+'</div>'
+										+'<span class="x-small grey right">- <span class="challenge_from grey">'+response[i].fromName+'</span></span>'
+									+'</div>'	
+									+(response[i].response == 1 ? responseIndicator:"")						
+									+'<a href="#" class="ui-btn small grey answerbtn btn_accept">Jeg tar utfordringen!</a>'
+								+'</div>'
+							+'</div>'
+						+'</li>';
+
+					}
+				} // for
 				challengeList.html(challengeListHTML);
+				challengeListHistory.html(challengeListHistoryHTML);
 
 				// When click on 'More info'-button
 				$(".btn_challenge_showmore").off("click").click(function(){
@@ -373,16 +434,20 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 					}
 				});
 
-				$(".btn_accept").off("click").click(function(){
+				$("#challengeList .btn_accept").off("click").click(function(){
 					var challengeID = $(this).attr("id");
-					acceptChallenge(challengeID);
+					var thisListItem = $(this).closest("li");
+					acceptChallenge(challengeID,thisListItem);
 				});
 
-				$(".btn_decline").off("click").click(function(){
+				$("#challengeList .btn_decline").off("click").click(function(){
 					var challengeID = $(this).attr("id");
-					declineChallenge(challengeID);
+					var thisListItem = $(this).closest("li");
+					declineChallenge(challengeID,thisListItem);
 				});
-			}
+
+				$("#challengeListHistory .answerbtn").css("opacity","0.6");
+			
 
 		}
 	});
@@ -392,11 +457,146 @@ $(document).on("pageshow","#page_challenges",function(){
 	$(".chall_dd").hide();
 });
 
-function acceptChallenge(challengeID){
-	alert("I ACCEPT YOUR PUNY CHALLENGE!");
+function acceptChallenge(challengeID,listItem){
+	var sum = listItem.attr("sum"),
+		orgName = listItem.attr("orgName"),
+		projectName = listItem.attr("projectName"),
+		projectID = listItem.attr("projectID")
+
+	;
+	var confirmMsg = "Donere "+ sum +" kr til "+orgName+", "+projectName+" ?"
+	if (confirm(confirmMsg)!=true)
+		return;
+
+	// Donation confirmed
+	var funds, email = localStorage.getItem("userID");
+	var sql = "select funds from user where email like '"+email+"'";
+	var url = getURLappBackend();
+
+	// Checking funds
+	$.ajax({
+		type:"post",
+		url:url,
+		dataType:"json",
+		data:{"getSQL":sql},
+		success:function(response){
+			funds = parseInt(response[0].funds);
+			sum = parseInt(sum);
+
+			if (funds < sum){
+				alert("ikke dekning på konto:"+ funds +" < "+ sum);
+				return;
+			}
+
+			// Fundings ok
+			var newFunds = funds - sum;
+
+			// Making a one-time donation
+			var type = "engangsdonasjon";
+			sql = "INSERT INTO Donation (projectID, email, type, sum,active) VALUES('"+projectID+"', '"+email+"', '"+type+"', '"+sum+"', '"+0+"')";
+			var data = {'setSQL' : sql};
+
+			$.ajax({
+				type :"POST",
+				url : url,
+				dataType : "text",
+				data : data,
+				success : function(response){
+					// Update funds
+					sql  = "update user set funds = "+newFunds+" where email like '"+email+"'";
+					$.ajax({
+						type :"POST",
+						url : url,
+						dataType : "text",
+						data : {"setSQL":sql},
+						success : function(response){
+							// Update challenge
+							var sql ="update challenge set response = 1, response_date = NOW() where challengeID = "+challengeID;
+							var url = getURLappBackend();
+
+							$.ajax({
+								type:"post",
+								url:url,
+								datatype:"text",
+								data:{"setSQL":sql},
+								success:function(response){
+									if (response != "OK"){
+										console.log("error: "+response);
+										return;
+									}
+									moveToHistory(listItem,1);
+
+								}
+
+							}).done(function(){
+								console.log("update challenge done!" )
+							});
+													
+						}
+					}).done(function (){
+						console.log("update funds done!");
+					});
+
+
+
+				},
+				error : function(response){
+					alert("Error in: donate.js bad ajax request when insert to database");
+				}
+			}).done(function(){
+				console.log("insert donation done!" )
+			});
+		}
+	});
+	
 
 }
 
-function declineChallenge(challengeID){
-	alert("I DECLINE YOUR PATHETIC CHALLENGE!");
+function declineChallenge(challengeID, listItem){	
+	var sql ="update challenge set response = 0, response_date = NOW() where challengeID = "+challengeID;
+	console.log(sql);
+	var url = getURLappBackend();
+
+	$.ajax({
+		type:"post",
+		url:url,
+		datatype:"text",
+		data:{"setSQL":sql},
+		success:function(response){
+			if (response != "OK"){
+				console.log("error: "+response);
+				return;
+			}
+			moveToHistory(listItem,0);
+
+		}
+
+	});
+
+}
+
+function moveToHistory(listItem,response){
+	listItem.find(".answerbtn").off("click").css("opacity","0.6");
+	listItem.find("#challenge_status").removeClass("red").addClass("green").html("Har svart");
+
+	var responseIndicator = "<img src='../img/icon-check.png' class='responseIndicator' />";
+	var whenRespondedMsg ='<span class=" x-small grey whenRespondedMsg">Utfordringen ble besvart nettopp </span>';
+
+	if (response == 0){
+		// Declined challenge
+		listItem.find(".btn_decline").before(responseIndicator);
+	}
+	else if (response == 1){
+		// Accepted challenge
+		listItem.find(".btn_accept").before(responseIndicator);
+	}
+	listItem.find(".chall_dd_left").before(responseIndicator);
+	
+
+	var challengeListHistory = $("#challengeListHistory");
+	challengeListHistory.append(listItem);
+
+	getChallenges();
+
+
 }
