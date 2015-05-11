@@ -279,3 +279,29 @@
 	min-width: 30pt;
 }
 
+.table_icon{
+	max-height:25pt;
+	position:absolute;
+	top:0;bottom:0;
+	margin:auto;
+}
+
+.available_funds{
+	text-align: right;
+}
+.available_funds_settings{
+	position: absolute;
+	top:-7pt;
+	right:0;
+}
+
+.get_more_funds{
+	text-align: center;
+	line-height:30pt;
+}
+
+#btnGetFunds{
+	background: #20a623;
+	color:white;
+	padding:.7em 0;
+}

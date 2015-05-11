@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sharity app</title>
+	<title>Sharity app</title>s
 
 	<!--************Meta goes here************-->
 	<meta charset="utf-8" />
@@ -760,6 +760,19 @@
 									</table>
 								</td>
 							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<table>
+										<td class="half_width">
+											<img src="../img/icon-wallet-grey.png" class="table_icon"/> <div class="available_funds"><span id="available_funds" class="large green"></span> kr </div>
+										</td>
+										<td class="half_width">
+											<div class="get_more_funds small ">Hente mer? <img src="../img/li_arrow_r_grey.png" class="table_icon" style="margin-left:3pt"></div>
+										</td>
+									</table>
+								</td>
+							</tr>
 							<tr style="height:15pt !important">
 								<td style="height:15pt !important"></td><td style="height:15pt !important" class="small" id="btn_change_pw">Endre passord?
 								<img src="../img/li_arrow_d_grey.png" id="img_pw_change"></td>
@@ -773,6 +786,8 @@
 								<tr class="tr_pw_change"><td></td>
 									<td><input type="password" class="input_underscored blue tr_pw_field" data-role="none" value="" id="new_pw_rep" placeholder="Gjenta nytt passord"></td>
 								</tr>
+							<tr><td style="height:15pt !important"></td>
+							</tr>
 							<tr>
 								<td></td>
 								<td>
@@ -839,7 +854,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="phone" class="input_underscored half_width blue" data-role="none" value="" id="set_CCV" placeholder="CCV" onkeypress="return isNumber(event)" maxlength="4"></td>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="tel" class="input_underscored half_width blue" data-role="none" value="" id="set_CCV" placeholder="CCV" onkeypress="return isNumber(event)" maxlength="4"></td>
 							</tr>
 							<tr>
 								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored blue" data-role="none" value="" id="set_cardname" placeholder="Korteier"></td>
@@ -849,17 +864,35 @@
 								<td>
 									<table>
 										<td class="half_width"><input type="checkbox" id="cbMonthlyCharge" data-role="none"><label for="cbMonthlyCharge" class="small">Månedlig trekk</label></td>
-										<td class="third_width"><input type="number" id="set_charge" class="input_underscored blue centertext" data-role="none" placeholder="Beløp" onkeypress="return isNumber(event)"></td>
-										<td>kr</td>
+										<td class="third_width">
+											<input type="number" id="set_charge" class="input_underscored blue centertext" data-role="none" placeholder="Beløp" onkeypress="return isNumber(event)" style="margin-left:10pt">
+										</td>
+										<td><span style="margin-left:10pt">kr</span></td>
 									</table>
 								</td>
 							</tr>
 							<tr>
 								<td></td>
 								<td>
+									<table>
+										<td class="half_width">
+											<div class="available_funds_settings small"><span id="available_funds_settings" class=" green"></span> kr </div>
+											<a class="ui-btn" id="btnGetFunds">Hent mer nå</a>
+										</td>
+										<td class="third_width">
+											<input type="number" id="getFundsAmount" class="input_underscored blue centertext" data-role="none" placeholder="Beløp" onkeypress="return isNumber(event)" style="margin-left:10pt">
+										</td>
+										<td><span style="margin-left:10pt">kr</span></td>
+									</table>
+								</td>
+							</tr>
+							<tr><td style="height:15pt !important"></td>
+							<tr>
+								<td></td>
+								<td>
 									<table class="settings_btns">
-										<td><a href="#" class="ui-btn ui-btn-icon-right icon-cancel" id="btn_cardsettings_cancel">Avbryt</a></td>
-										<td><a href="#" class="ui-btn ui-btn-icon-right icon-check" id="btn_cardsettings_save">Lagre</a></td>
+										<td class="half_width"><a href="#" class="ui-btn ui-btn-icon-right icon-cancel" id="btn_cardsettings_cancel">Avbryt</a></td>
+										<td class="half_width"><a href="#" class="ui-btn ui-btn-icon-right icon-check" id="btn_cardsettings_save">Lagre</a></td>
 									</table>
 								</td>
 							</tr>

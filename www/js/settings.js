@@ -8,16 +8,7 @@ $(document).on("pagebeforeshow","#page_settings",function(){
 	$(".tr_pw_change").hide();
 	getPersonData();
 	getCardsData();
-/*
-	$("#set_month").blur(function(){
-		if($(this).val()==0)
-			$(this).css("border-bottom","#f63218");
-	});
-	$("#set_year").blur(function(){
-		if($(this).val()==0)
-			$(this).css("border-bottom","#f63218");
-	});
-*/
+
 });
 
 $(document).on("pageinit","#page_settings",function(){
@@ -58,7 +49,15 @@ $(document).on("pageinit","#page_settings",function(){
 				changeIconArrow(btn);
 			});
 		}
+		$("#available_funds").html(localStorage.getItem("userFunds"));
 	});
+
+	$(".get_more_funds").click(function(){
+		$("#btn_settings_manage_cards").click();
+	});
+
+
+
 	
 	// Shows/hides the change-password inputfields
 	$("#btn_change_pw").click(function(){
@@ -147,7 +146,7 @@ $(document).on("pageinit","#page_settings",function(){
 							dataType: "text",
 							success:function(response){
 								if(response == "OK"){
-									alert("Passordet ble endret");
+									showMessage("Passordet ble endret");
 
 									var sql ="update user set name='"+name+"',phone='"+phone+"',zip='"+zip+"' ,birthyear='"+birthyear+"' where email like '"+localStorage.getItem("userID")+"'" ;
 									var url = getURLappBackend();
@@ -168,8 +167,6 @@ $(document).on("pageinit","#page_settings",function(){
 											});
 											var message="Lagret";
 											showMessage(message);
-											//$("#messagetext").html(message).css("padding","3pt");
-											//$("#messagetext").fadeIn().delay(3000).fadeOut();
 										}
 									});
 								}else
@@ -230,6 +227,7 @@ $(document).on("pageinit","#page_settings",function(){
 				changeIconArrow(btn);
 			});
 		}
+		$("#available_funds_settings").html(localStorage.getItem("userFunds"));
 
 	});
 
@@ -321,6 +319,20 @@ $(document).on("pageinit","#page_settings",function(){
 			$("#cbMonthlyCharge").prop("checked",false);
 			$(this).css("border-bottom","thin solid black");
 		}
+	});
+
+	$("#btnGetFunds").click(function(){
+		if($("#dd_cards").val() < 2){
+			showMessage("Velg et kort");
+			return;
+		}
+		var sum = $("#getFundsAmount").val();
+		if(isNaN(sum) || sum <= 0)
+		{
+			showMessage("Ugyldig Beløp");
+			return;
+		}
+		addFunds(sum);
 	});
 
 
@@ -540,14 +552,17 @@ function getPersonData(){
 			var phone = response[0].phone;
 			var zip = response[0].zip;
 			var birthyear = response[0].birthyear;
+			var funds = response[0].funds
 			$("#set_name").val(name) ;
 			$("#set_phone").val(phone);
 			$("#set_zip").val(zip);
 			$("#set_birthyear").val(birthyear);
+			$("#available_funds").html(funds);
 			localStorage.setItem("userName",name);
 			localStorage.setItem("userPhone",phone);
 			localStorage.setItem("userZip",(zip==null)?"":zip);
 			localStorage.setItem("userBirthYear",birthyear);
+			localStorage.setItem("userFunds",funds);
 		}
 
 	});
@@ -720,4 +735,43 @@ function populateYearOfBirthSelect(){
 		selectHTML+='<option value='+i+'>'+i+'</option>';
 	}
 	select.html(selectHTML);
+}
+
+function addFunds(sum){
+	
+	// TODO: contact bank and reserve amount to Sharity
+
+	var funds,newFunds;
+	var userID = localStorage.getItem("userID");
+	var sql = "select funds from user where email like '"+userID+"'";
+	var url = getURLappBackend();
+
+
+	$.ajax({
+		type:"post",
+		url:url,
+		dataType:"json",
+		data:{"getSQL":sql},
+		success:function(response){
+			funds = parseInt(response[0].funds);
+			sum = parseInt(sum);
+			newFunds = funds + sum;
+
+			sql = "update user set funds = "+newFunds+" where email like '"+userID+"'";
+			$.ajax({
+				type:"post",
+				url:url,
+				dataType:"text",
+				data:{"setSQL":sql},
+				success:function(response){
+					if(response=="OK"){
+						showMessage(sum+" kr lagt til konto");
+						localStorage.setItem("userFunds",newFunds);
+						 $("#getFundsAmount").val("");
+						$("#available_funds_settings").html(newFunds);
+					}
+				}
+			});
+		}
+	});
 }
