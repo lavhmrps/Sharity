@@ -406,11 +406,11 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 
 				if (challengeListHTML == ""){
 					// No active challenges
-					challengeListHTML = '<li>Ingen nye utfordringer</li>';
+					challengeListHTML = '<li id="emptylist">Ingen nye utfordringer</li>';
 				}
 				if (challengeListHistoryHTML == ""){
 					// No challenges responded to
-					challengeListHistoryHTML = '<li>Ingen besvarte utfordringer</li>'
+					challengeListHistoryHTML = '<li id="emptylist">Ingen besvarte utfordringer</li>'
 				}
 				challengeList.html(challengeListHTML);
 				challengeListHistory.html(challengeListHistoryHTML);
@@ -575,7 +575,7 @@ function acceptChallenge(challengeID,listItem){
 
 function declineChallenge(challengeID, listItem){	
 	var sql ="update challenge set response = 0, response_date = NOW() where challengeID = "+challengeID;
-	console.log(sql);
+	//console.log(sql);
 	var url = getURLappBackend();
 
 	$.ajax({
@@ -615,10 +615,17 @@ function moveToHistory(listItem,response){
 	
 
 	var challengeListHistory = $("#challengeListHistory");
+	if($("#challengeListHistory li").first().attr("id") == "emptylist"){
+		// No historyitems
+		challengeListHistory.empty();
+	}
+
+	//var noHistoryInList = $("#challengeListHistory li").first().attr("id");
+
 	challengeListHistory.append(listItem);
 	var numActiveChallenges = $("#challengeList li").length;
 	if(numActiveChallenges == 0)
-		$("#challengeList").append('<li>Ingen nye utfordringer</li>');
+		$("#challengeList").append('<li id="emptylist">Ingen nye utfordringer</li>');
 	getChallenges();
 
 
