@@ -159,7 +159,7 @@ function appendNewsList(projectID){
 				'<div class="li_left">'+
 				leftCode+
 				'</div>'+
-				'<a href="#page_news" rel="external" class="show-page-loading-msg">'+
+				'<a href="#page_news"  data-transition="slide">'+
 				'<div class="li_mid">'+
 				'<span class="small grey">'+
 				formatDate(response[i].date_added) +
