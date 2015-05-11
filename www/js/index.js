@@ -349,8 +349,7 @@ $(document).on("pageinit", "#page_reg_summaryB", function() {
 });
 
 function reloadPage() {
-	$.mobile.changePage("#page_login");
-	location.reload();
+	$.mobile.changePage("#page_login",{"transition":"flip"});
 }
 
 function back(){

@@ -230,7 +230,7 @@ function updateUser(){
 			//clearInput()
 			console.log("updateUser(): success, response: "+response);
 			$.mobile.changePage("#page_login", {
-				transition : "slide"
+				transition : "flip"
 			});
 		},
 		error:function(response){

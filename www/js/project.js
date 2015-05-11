@@ -10,7 +10,7 @@ $(document).on( "pageinit","#page_project",function(){
 	$("img[name=orglogo]").click(function(){
 		var orgID = $(this).attr("orgid");
 		localStorage.setItem("organizationToShow",orgID);
-		$.mobile.changePage("#page_organization");
+		$.mobile.changePage("#page_organization",{"transition":"flip"});
 	});
 	
 

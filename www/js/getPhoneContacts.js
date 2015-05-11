@@ -76,7 +76,7 @@ function onSuccess(contacts) {
 				var email = $(this).closest("li").attr("email");
 				if(email != "null"){
 					localStorage.setItem("userIDtoShow",email);
-					$.mobile.changePage("#page_show_user_profile");
+					$.mobile.changePage("#page_show_user_profile",{"transition":"flip"});
 				}
 
 			}); 					

@@ -88,7 +88,7 @@ $(document).on("pageshow","#page_search_friends_sharity",function(){
 
 	$(".li_left, .li_mid").off("click").on("click",function(){
 		localStorage.setItem("userIDtoShow",$(this).closest("li").attr("id"));
-		$.mobile.changePage("#page_show_user_profile");
+		$.mobile.changePage("#page_show_user_profile",{"transition":"slideup"});
 		
 	});// li left/mid on click
 

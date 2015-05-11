@@ -17,7 +17,7 @@ $(document).on("pagebeforeshow","#page_my_friends",function(){
 			data : {'getSQL' : sql},
 			success : function(response){
 				if(response.length == 0){
-					var html = '<li><a href="#" rel="external" class="show-page-loading-msg">'
+					var html = '<li>'
 					+'<div class="li_container">'
 					+'<div class="li_left">'
 					+'<div class="circlegrey">'
@@ -31,14 +31,13 @@ $(document).on("pagebeforeshow","#page_my_friends",function(){
 					+'<div class="li_right">'
 					+'</div>'
 					+'</div>'
-					+'</a>'
 					+'</li>';
 					$("#friendList").html(html);
 				}else{
 					var friends="";
 					for(var i = 0 ; i < response.length; i++){		
 						
-						friends+='<li id="'+response[i].friendEmail+'" name="showFriend"><a href="#" rel="external" class="show-page-loading-msg">'
+						friends+='<li id="'+response[i].friendEmail+'" name="showFriend">'
 						+'<div class="li_container">'
 						+'<div class="li_left">'
 						+'<div class="circlegrey">'
@@ -58,31 +57,29 @@ $(document).on("pagebeforeshow","#page_my_friends",function(){
 						+'<img src="../img/li_arrow_r_grey.png">'
 						+'</div>'
 						+'</div>'
-						+'</a>'
 						+'</li>';
-						$("#friendList").html(friends);
+
 					}
-					}
-				},
-				error: function(){
-					alert("error in my_friends.js error in ajax_request trying to print friend list");
+					$("#friendList").html(friends);
+					
+					$("#page_my_friends li[name=showFriend]").off("click").click(function(){
+						var friendID = $(this).attr("id");
+						localStorage.setItem("userIDtoShow",friendID);
+						$.mobile.changePage("#page_show_user_profile",{"transition":"slide"});
+					});
 				}
+			},
+			error: function(){
+				alert("error in my_friends.js error in ajax_request trying to print friend list");
+			}
 		});
 	}
 });
 
 $(document).on("pageinit","#page_my_friends",function(){
-
 	$(".add_friend_icon").click(function(){
 		$.mobile.changePage("#page_add_friend",{"transition":"slide"});
 	});
-
-	$(document).on('click', 'li[name=showFriend]', function() {
-		localStorage.setItem("userIDtoShow", this.id);
-		window.location.href="#page_show_user_profile";
-	});
-
-
 });
 
 function showFriendsNotif(n){

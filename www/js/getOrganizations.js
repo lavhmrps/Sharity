@@ -72,10 +72,7 @@ function listProjects(){
 			else{
 				projectsCode = "";
 				for(var i = 0 ; i < response.length; i++){	
-					projectsCode += '<li name="project_list"'+
-					'class="result" '+
-					'id="'+ response[i].projectID +'">' +
-					'<a href="#page_project" rel="external" class="show-page-loading-msg">' + 
+					projectsCode += '<li name="project_list" class="result" id="'+ response[i].projectID +'">' +
 					'<div class="li_container">'+
 					'<div class="li_left">'+
 					'<div class="circlegrey">'+
@@ -94,10 +91,15 @@ function listProjects(){
 					'<img src="../img/li_arrow_r_grey.png"/>'+
 					'</div>'+
 					'</div>'+
-					'</a>' +
 					'</li>';
 				}
 				$("#orgList").html(projectsCode);
+
+				$("#page_overview li[name=project_list]").off("click").click(function(){
+					var projectID = $(this).attr("id");
+					localStorage.setItem("projectToShow",projectID);
+					$.mobile.changePage("#page_project",{"transition":"slide"});
+				});
 			}
 		},
 		error: function(){
@@ -141,10 +143,7 @@ function listOrgs(){
 			else{
 				orgCode = "";
 				for(var i = 0 ; i < response.length; i++){	
-					orgCode += '<li name="organization_list"'+
-					'class="result" '+
-					'id="'+ response[i].organizationNr +'">' +
-					'<a href="#page_organization" rel="external" class="show-page-loading-msg">' + 
+					orgCode += '<li name="organization_list" class="result" id="'+ response[i].organizationNr +'">' + 
 					'<div class="li_container">'+
 					'<div class="li_left">'+
 					'<div class="circlegrey">'+
@@ -164,10 +163,15 @@ function listOrgs(){
 					'<img src="../img/li_arrow_r_grey.png"/>'+
 					'</div>'+
 					'</div>'+
-					'</a>' +
 					'</li>';
 				}
 				$("#orgList").html(orgCode);
+
+				$("#page_overview li[name=organization_list]").off("click").click(function(){
+					var orgNr = $(this).attr("id");
+					localStorage.setItem("organizationToShow",orgNr);
+					$.mobile.changePage("#page_organization",{"transition":"slide"});
+				});
 			}
 		},
 		error: function(){

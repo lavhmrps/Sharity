@@ -47,7 +47,7 @@ $(document).on("pagebeforeshow","#page_settings",function(){
 			$("#subscription_list .li_mid").off("click").click(function(){
 				var projectID =$(this).closest("li").attr("projectid");
 				localStorage.setItem("projectToShow",projectID);
-				$.mobile.changePage("#page_project");
+				$.mobile.changePage("#page_project",{"transition":"slidedown"});
 			});
 
 			$(document).on("click","a[name='cancel_subscription']",function(){

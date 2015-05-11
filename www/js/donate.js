@@ -16,7 +16,7 @@ $(document).on("pagebeforeshow","#page_donate",function(){
 	}
 	else{
 		alert("feil: Hverken organisasjon eller prosjekt er valgt");
-		$.mobile.changePage("#page_overview");
+		$.mobile.changePage("#page_overview",{"transition":"pop"});
 		return;
 	}
 
@@ -251,11 +251,12 @@ function completeDonation(){
 										localStorage.setItem("chall-donation-orgName",$(".orgName").html());
 										localStorage.setItem("chall-donation-projectName",$(".projectName").html());
 										localStorage.setItem("chall-donation-sum",sum);
-										$.mobile.changePage("#page_donate_challenge");
+										$.mobile.changePage("#page_donate_challenge",{"transition":"slide"});
 										//$("#popup_donate_challenge").popup("open");									
 									}else {
 										//$.mobile.back();
-										window.location.replace="#page_project";
+										clearChallengeFields();
+										window.history.go(-2);
 									}
 								}
 							});
@@ -272,40 +273,7 @@ function completeDonation(){
 		}
 	});
 }
-/*
-function sendChallenges(to_list, donationID,message){
-	var list ="list:\n";
-	for(var j=0;j<to_list.length;j++)
-		list+=to_list[j];
-	console.log(list);
 
-	var i = to_list.length;
-	if(i == 0){
-		alert("Utfordringene ble sendt!");
-		clearDonationData();
-		$("#popup_donate_challenge").popup("close");
-		$.mobile.changePage("#page_project",{"transition":"reverse"});
-		return;
-	}
-	var url = getURLappBackend();
-	var sql = sql ="insert into challenge (from_user, to_user, donationID, message) values ( '"+localStorage.getItem("userID")+"', '"+to_list[i]+"', "+donationID+", '"+message+"')";
-	console.log(sql);
-	$.ajax({
-		type : "POST",
-		url : url,
-		dataType: "text",
-		data : {'setSQL' : sql},
-		success : function(response){
-			if(response == "OK"){
-				to_list.pop();
-				sendChallenges(to_list, donationID,message);
-			}else{
-				alert("Error sendChallenges(): "+response);
-			}
-		}
-	});
-}
-*/
 function sendChallenges(to_list, donationID,message){
 	var url = getURLappBackend();
 	for(var i=0; i<to_list.length;i++){		
@@ -328,8 +296,7 @@ function sendChallenges(to_list, donationID,message){
 
 function sendChallengesCompleted(){
 	alert("Utfordringene ble sendt!");
-	//$("#popup_donate_challenge").popup("close");
-	//$.mobile.changePage("#page_overview");
+	clearChallengeFields();
 	window.history.go(-2);
 	clearDonationData();
 	//writeLocalStorage();
@@ -411,4 +378,8 @@ function writeLocalStorage(){
 	for ( var i = 0, len = localStorage.length; i < len; ++i ) 
 		console.log(localStorage.key(i)+" : "+localStorage.getItem(localStorage.key(i)));
 	
+}
+
+function clearChallengeFields(){
+	$("#chall-content-textareadiv-textarea").val("");
 }

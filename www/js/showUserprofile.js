@@ -117,8 +117,7 @@ $(document).on("pagebeforeshow","#page_showUserDonations",function(){
 	$(document).on("click","#userDonationList .li_mid",function(){
 		//console.log("userDonation,projectID: "+$(this).closest("li").attr("projectID"));
 		localStorage.setItem("projectToShow", $(this).closest("li").attr("projectID"));
-		$.mobile.changePage("#page_project");
-		location.reload();
+		$.mobile.changePage("#page_project",{"transition":"slideup"});
 	});
 });
 

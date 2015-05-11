@@ -1,11 +1,10 @@
 $( document ).on( "pagebeforeshow", "#page_mystatistics",function() {
 	showStats();
-	listDonations();
 });
 
 
-$( document ).on("pageinit","#page_mystatsDonations",  function() {
-	
+$( document ).on("pagebeforeshow","#page_mystatsDonations",  function() {
+	listDonations();
 });
 
 
@@ -63,7 +62,7 @@ function showStats(){
 function getChallenges(){
 	var email = localStorage.getItem('userID');
 	var sql = "SELECT * FROM challenge WHERE to_user = '"+email+"' and response is null";
-	console.log(sql);
+	//console.log(sql);
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 
@@ -74,10 +73,9 @@ function getChallenges(){
 		dataType : "JSON",
 		success : function(json){
 			var numChallenges = json.length;
-			if(numChallenges != 0){
-				showChallengeNotif(numChallenges);
-			}
-			$('#mystats_num_challenges').text(numChallenges);
+			showChallengeNotif(numChallenges);
+			
+			$('#mystats_num_challenges').html(numChallenges + (numChallenges == 1?" ny ":" nye ")+"utfordring" + (numChallenges==1?"":"er"));
 		},
 		error : function(error){
 			alert("Error i mystatistics.js bad ajax reqest getSQL from database");
@@ -173,7 +171,6 @@ function listDonations(){
 							formatDate(json[i].date)+'</span>'+
 						'</div>'+
 						'<div class="li_right">'+
-							//(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
 							((json[i].type == 'fast' ? (json[i].active == 1 ? 'Aktiv':'Stoppet') : '' ))+
 						'</div>'+
 					'</div>'+
@@ -181,9 +178,9 @@ function listDonations(){
 			}
 			$("#donationList").html(donations);
 			$("#donationList li .li_mid,#donationList li .li_left,#donationList li .li_right").click(function() {
-				var projectID =$(this).parent().parent().attr("id");
-				var donationID =$(this).parent().parent().attr("donation");
-				var active = $(this).parent().parent().attr("active");
+				var projectID =$(this).closest("li").attr("id");
+				var donationID =$(this).closest("li").attr("donation");
+				var active = $(this).closest("li").attr("active");
 
 				if($(this).attr("class") == "li_right"){
 					if(active == "true"){
@@ -202,8 +199,8 @@ function listDonations(){
 							
 				}else{
 					localStorage.setItem("projectToShow", projectID);
-					$.mobile.changePage("#page_project");
-					location.reload();
+					$.mobile.changePage("#page_project",{"transition":"slideup"});
+					//$.mobile.changePage("#page_project", {"transition":"slideup"});
 					//alert("file: organization.js: projectList is clicked, setting projectIDto Show: " + localStorage.getItem('projectToShow'));		
 				}
 			});
@@ -297,15 +294,14 @@ function showChallengeNotif(n){
 }
 
 $(document).on("pagebeforeshow","#page_challenges",function(){
-	console.log("before");
 	var challengeList = $("#challengeList"),
 		challengeListHistory = $("#challengeListHistory");
 
-	var sql="select d.*, c.*,u.name as fromName, u.picURL, p.name as projectName, o.name as orgName from donation as d "
+	var sql="select d.*, c.*,u.name as fromName, u.picURL, p.name as projectName,o.organizationNr as orgNr, o.name as orgName from donation as d "
 			+"join challenge as c on c.donationID = d.donationID join user as u on u.email like c.from_user "
 			+"join project as p on p.projectID = d.projectID join organization as o on o.organizationNr = p.organizationNr "
 			+"and c.to_user like '"+localStorage.getItem("userID")+"'";
-	console.log(sql);
+	//console.log(sql);
 	var url = getURLappBackend();
 	$.ajax({
 		type: "POST",
@@ -315,8 +311,6 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 		success: function(response){
 			var challengeListHTML="", challengeListHistoryHTML ="";
 			for(var i=0;i<response.length;i++){
-				
-
 				var leftCode = response[i].picURL == null?'':'<img src="'+response[i].picURL+'">';
 				if(response[i].response == null){
 					// Challenge is neither accepted nor declined
@@ -329,7 +323,7 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 								+'</div>'
 								+'<div class="li_mid">'
 									+'<div class="li_mid_top">'
-										+'<span class="challenge_from" class="challenge_from small">'+response[i].fromName+'</span>'									
+										+'<span class="challenge_from small" fromID="'+response[i].from_user+'">'+response[i].fromName+'</span>'
 									+'</div>'
 									+'<div class="li_mid_bottom">'
 										+'<span id="challenge_date" class="challenge_date x-small grey">'+formatDate(response[i].date)+'</span>'
@@ -341,10 +335,10 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 							+'<div class="chall_dd">'
 								+'<div class="chall_dd_left">'
 									+'<div class="dd_donationinfo small">'
-										+'<span class="challenge_from" >'+response[i].fromName+'</span>'
+										+'<span class="challenge_from" fromID="'+response[i].from_user+'" >'+response[i].fromName+'</span>'
 										+' har donert <span id="dd_challenge_amount" class="red">'+response[i].sum+'</span>'
-										+' kr til <span id="dd_challenge_org" class="green">'+response[i].orgName+'</span>'
-										+' og deres prosjekt <span id="dd_challenge_project"  class="blue">'+response[i].projectName+'</span>'
+										+' kr til <span class="challenge_to_org green" orgNr="'+response[i].orgNr+'">'+response[i].orgName+'</span>'
+										+' og deres prosjekt <span class="challenge_to_project blue" projectID="'+response[i].projectID+'">'+response[i].projectName+'</span>'
 										+' og utfordrer deg til å gjøre det samme!'
 									+'</div>'
 									+'<a href="#" class="ui-btn small grey answerbtn btn_decline" id="'+response[i].challengeID+'">Ikke denne gangen</a>'
@@ -372,7 +366,7 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 								+'</div>'
 								+'<div class="li_mid">'
 									+'<div class="li_mid_top">'
-										+'<span class="challenge_from" class="challenge_from small">'+response[i].fromName+'</span>'									
+										+'<span class="challenge_from small" fromID="'+response[i].from_user+'">'+response[i].fromName+'</span>'
 									+'</div>'
 									+'<div class="li_mid_bottom">'
 										+'<span id="challenge_date" class="challenge_date x-small grey">'+formatDate(response[i].date)+'</span>'
@@ -385,10 +379,10 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 							+'<span class=" x-small grey whenRespondedMsg">Utfordringen ble besvart '+formatDate(response[i].response_date)+' </span>'
 								+'<div class="chall_dd_left">'
 									+'<div class="dd_donationinfo small">'
-										+'<span class="challenge_from" >'+response[i].fromName+'</span>'
+										+'<span class="challenge_from" fromID="'+response[i].from_user+'" >'+response[i].fromName+'</span>'
 										+' har donert <span id="dd_challenge_amount" class="red">'+response[i].sum+'</span>'
-										+' kr til <span id="dd_challenge_org" class="green">'+response[i].orgName+'</span>'
-										+' og deres prosjekt <span id="dd_challenge_project"  class="blue">'+response[i].projectName+'</span>'
+										+' kr til <span class="challenge_to_org green" orgNr="'+response[i].orgNr+'">'+response[i].orgName+'</span>'
+										+' og deres prosjekt <span class="challenge_to_project blue" projectID="'+response[i].projectID+'">'+response[i].projectName+'</span>'
 										+' og utfordrer deg til å gjøre det samme!'
 									+'</div>'
 
@@ -409,6 +403,15 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 
 					}
 				} // for
+
+				if (challengeListHTML == ""){
+					// No active challenges
+					challengeListHTML = '<li>Ingen nye utfordringer</li>';
+				}
+				if (challengeListHistoryHTML == ""){
+					// No challenges responded to
+					challengeListHistoryHTML = '<li>Ingen besvarte utfordringer</li>'
+				}
 				challengeList.html(challengeListHTML);
 				challengeListHistory.html(challengeListHistoryHTML);
 
@@ -432,6 +435,24 @@ $(document).on("pagebeforeshow","#page_challenges",function(){
 					else{
 						thisBtn.removeClass("caret-u-white").addClass("caret-d-white");
 					}
+				});
+
+				$(".challenge_from").off("click").click(function(){
+					var fromID = $(this).attr("fromID");
+					localStorage.setItem("userIDtoShow",fromID);
+					$.mobile.changePage("#page_show_user_profile", {"transition":"slideup"});
+				});
+
+				$(".challenge_to_org").off("click").click(function(){
+					var orgNr = $(this).attr("orgNr");
+					localStorage.setItem("organizationToShow",orgNr);
+					$.mobile.changePage("#page_organization", {"transition":"slideup"});
+				});
+
+				$(".challenge_to_project").off("click").click(function(){
+					var projectID = $(this).attr("projectID");
+					localStorage.setItem("projectToShow",projectID);
+					$.mobile.changePage("#page_project", {"transition":"slideup"});
 				});
 
 				$("#challengeList .btn_accept").off("click").click(function(){
@@ -590,12 +611,14 @@ function moveToHistory(listItem,response){
 		// Accepted challenge
 		listItem.find(".btn_accept").before(responseIndicator);
 	}
-	listItem.find(".chall_dd_left").before(responseIndicator);
+	listItem.find(".chall_dd_left").before(whenRespondedMsg);
 	
 
 	var challengeListHistory = $("#challengeListHistory");
 	challengeListHistory.append(listItem);
-
+	var numActiveChallenges = $("#challengeList li").length;
+	if(numActiveChallenges == 0)
+		$("#challengeList").append('<li>Ingen nye utfordringer</li>');
 	getChallenges();
 
 

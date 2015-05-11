@@ -9,7 +9,7 @@ $(document).on("pageinit","#page_news",function(){
 	$("img[name=orglogo]").click(function(){
 		var orgID = $(this).attr("orgid");
 		localStorage.setItem("organizationToShow",orgID);
-		$.mobile.changePage("#page_organization");
+		$.mobile.changePage("#page_organization",{"transition":"flip"});
 	});
 });
 

@@ -73,8 +73,8 @@ function showOrganization(){
 				});
 
 			},
-			error: function(){
-				alert("Error in organization.js trying to print projectlist for: "+ organizationNr +"  ajax bad request");
+			error: function(response){
+				alert("Error in organization.js trying to print projectlist for: "+ organizationNr +"  ajax bad request:\n"+JSON.stringify(response));
 			}
 		});
 
@@ -100,11 +100,9 @@ function appendProjectList(organizationNr){
 				(response[i].logoURL == null? "../img/no_image_avaliable.png":response[i].logoURL)+
 				'"></div>'+
 				'</div>'+
-				'<a href="#page_project" rel="external" class="show-page-loading-msg">'+
 				'<div class="li_mid dots">'+
 				'<div class="li_heading">' + response[i].name + '</div>'+
 				'</div>'+
-				'</a>'+
 				'<div class="li_right">'+
 				'<a href="#page_donate" rel="external" class="li_btn_donate show-page-loading-msg" id="' + response[i].projectID +'" name="page_org_li_donation">DONÉR</a>'+
 				'</div>'+
@@ -113,6 +111,12 @@ function appendProjectList(organizationNr){
 			} if (response.length==0)
 				projectCode = "<span class='small grey'>Ingen prosjekter</span>";
 			$('ul[name=projectList]').html(projectCode).css("background",(response.length==0?"inherit":"white"));
+
+			$("#page_organization li[name=project_list]").off("click").click(function(){
+				var projectID = $(this).attr("id");
+				localStorage.setItem("projectToShow",projectID);
+				$.mobile.changePage("#page_project",{"transition":"slide"});
+			})
 		},
 		error : function(error){
 			alert("Trying to print projectList connected to: " + organizationNr + ", in organization.js but getting error in ajax request:\n"+JSON.stringify(error));
@@ -149,7 +153,7 @@ function getNews(){
 			$("#pageOrgNews").html(newsHTML);
 			$("#pageOrgNews .project").click(function(){
 				localStorage.setItem("projectToShow",$(this).attr("projectID")) ;
-				$.mobile.changePage("#page_project");
+				$.mobile.changePage("#page_project",{"transition":"slide"});
 			});
 
 
