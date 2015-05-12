@@ -1,0 +1,63 @@
+
+#page_org_activities .menu_projects_icon {
+	position: absolute;
+	height: 12pt;
+	margin-top: 20pt;
+	right: 10pt;
+}
+#page_org_activities .input_underscored {
+	width: 100%;
+	box-shadow: none;
+	/* 	-webkit-border-radius: 3pt; */
+	border: none;
+	border-bottom: thin solid #d2d2d2;
+	background: #fafafa;
+	box-shadow: none;
+}
+
+#page_org_activities .input_underscored:FOCUS {
+	outline: none;
+}
+
+#page_org_activities table {
+	width: 100%;
+	border: thin solid #eee;
+	background: #f2f2f2;
+	border-collapse: collapse;
+}
+
+#page_org_activities .border-bottom{
+	border-bottom: thin solid #d2d2d2;
+}
+
+#page_org_activities table tr td {
+	position: relative;
+	height: 40pt;
+}
+
+#page_org_activities .red_notif {
+	width: 18pt;
+	height: 18pt;
+	border-radius: 50%;
+	background: #f63218;
+	color: white;
+	text-align: center;
+	line-height: 18pt;
+	font-size: small;
+	padding: 0 1pt;
+}
+
+#page_org_activities .red_notif_footer {
+	top: 20pt;
+	float: right;
+	width: 18pt;
+	height: 18pt;
+	border-radius: 50%;
+	background: #f63218;
+	color: white;
+	text-align: center;
+	line-height: 18pt;
+	font-size: small;
+	padding: 0 1pt;
+	z-index: 10;
+}

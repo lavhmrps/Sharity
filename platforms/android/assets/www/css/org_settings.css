@@ -1,0 +1,50 @@
+
+#header_div {
+	width: 100%;
+	height: 75pt;
+	line-height: 50pt;
+	background: #006dfe;
+	color: white;
+}
+
+#header_div p {
+	margin-left: 25pt;
+	color: white;
+	font-size: x-large;
+}
+
+.menu_projects_icon {
+	position: absolute;
+	height: 12pt;
+	margin-top: 20pt;
+	right: 10pt;
+}
+
+.boxshadow {
+	box-shadow: 0pt 0pt 1pt #888;
+}
+
+.header_top {
+	width: 100%;
+	height: 25pt;
+	background-color: #0057cb;
+}
+
+footer ul li {
+	position: relative;
+	height :40pt;
+	background: white;
+}
+
+footer ul li img{
+	position:absolute;
+	bottom:0;top:0;
+	left:0;right:0;
+	margin:auto;
+	height:30pt;
+}
+
+
+.footer_active {
+	background: #eee;
+}

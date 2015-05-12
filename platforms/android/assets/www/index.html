@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<!--Original meta for view-->
+<!--	
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+-->
+
+	<!--  -->
+	<meta name="viewport" content="target-densitydpi=medium-dpi, user-scalable=no, initial-scale=1, minimum-scale=1, width=device-width" />
+
+	<!-- Lokalt stilark -->
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+
+	<!-- Include jQuery Mobile stylesheets -->
+	<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+	<!-- Include the jQuery library -->
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+	<!-- Include the jQuery Mobile library -->
+	<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+	<!-- Local Javascripts -->
+	<!-- <script src="js/register_user.js"></script> -->
+	<script src="js/checkLogin.js"></script>
+	<script src="js/insertUser.js"></script>
+	<script src="js/urls.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+		//if($("#cb_accept_user_contidions").checked()==false)
+		//	$("#register_user").this().input.disabled=true;
+	</script>
+
+
+
+</head>
+<body>
+	<div data-role="page" id="page_login" data-theme="a">
+		<div id="header_div">
+			<div class="header_top"></div>
+			<span style="font-size: xx-large; color: white; margin-left: 5%;">Logg inn</span>
+		</div>
+		<div class="main_content">
+			<table>
+				<tr>
+					<td>
+						<img class="icon" alt="" src="img/icon_white.png">
+					</td>
+					<td>
+						<input data-role="none" class="input_underscored" type="email" name="login_username" placeholder="Epost" id="username" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<img class="icon" alt="" src="img/icon_white.png">
+					</td>
+					<td>
+						<input data-role="none" class="input_underscored" type="password" name="login_password" placeholder="Passord" id="password">
+					</td>
+				</tr>
+			</table>
+			<table class="table_btns">
+				<tr>
+					<td style="width: 40pt"></td>
+					<td>
+						<button data-corners="false" data-shadow="false" name="loginUser" style="width: 100pt; font-weight: bold" class="btn_white blue">LOGG INN</button>
+					</td>
+					<td>
+						<button data-corners="false" data-shadow="false" onclick="toRegister1()" data-transition="slide" style="width: 100pt; font-weight: bold" class="btn_white blue">
+							NY BRUKER
+						</button>
+					</td>
+				</tr>
+
+			</table>
+
+			<div class="somespace"></div>
+			<div class="somespace"></div>
+		<div class="somespace"></div>
+	</div>
+</div>
+
+
+
+<div data-role="page" id="page_register1">
+	<div id="header_div">
+		<div class="header_top"></div>
+		<p>
+			Registrering
+			<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+				steg 1/<span id="stepstogo"></span>
+			</span>
+		</p>
+	</div>
+	<div data-role="tabs" id="tabs" style="margin: 0; padding: 0">
+		<div data-role="navbar" style="margin: 0; padding: 0;">
+			<ul>
+				<li>
+					<a href="#register1a" id="nav_register1a" class="navlink ui-btn-active">Ny bruker</a>
+				</li>
+				<li>
+					<a href="#register1b" id="nav_register1b" class="navlink">Ny organisasjon</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="portrait">
+			<img src="img/default.png" alt="Portrettbilde" name="preview"/>
+			<input type="file" name="reg_user_image" style="display:none"/>
+			<div class="logodiv_right" name="trigger_pick_image">
+				<p>Velg bilde</p>
+			</div>
+		</div>
+		<div id="register1a">
+			<div class="main_content">
+				<table>
+					<tr>
+						<td style="width: 40pt">
+							<img class="icon" alt="" src="img/icon_grey.png">
+						</td>
+						<td>
+							<input data-role="none" class="input_underscored" type="text" name="reg_user_name" placeholder="Fullt navn" id="in_fullname">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img class="icon" alt="" src="img/icon_grey.png">
+						</td>
+						<td>
+							<input data-role="none" class="input_underscored" type="tel" name="reg_user_phone" placeholder="Telefon" id="in_phone">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img class="icon" alt="" src="img/icon_grey.png">
+						</td>
+						<td>
+							<div id ="email_error"><span id="email_error_message"></span></div>
+							<input data-role="none" class="input_underscored" type="email" name="reg_user_email" placeholder="Epost" id="in_email">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img class="icon" alt="" src="img/icon_grey.png">
+						</td>
+						<td>
+							<input data-role="none" class="input_underscored" type="password" name="reg_user_password" placeholder="Passord" id="in_password">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img class="icon" alt="" src="img/icon_grey.png">
+						</td>
+						<td>
+							<input data-role="none" class="input_underscored" type="password" name="reg_user_password_repeat"placeholder="Gjenta passord" id="in_password_repeat">
+						</td>
+					</tr>
+				</table>
+				<table class="table_btns">
+					<tr>
+						<td style="width: 40pt"></td><td>
+							<button data-corners="false" data-shadow="false" onclick="reloadPage()" style="width: 100pt;" class="btn_white">
+								AVBRYT
+							</button>
+						</td>
+						<td>
+							<button data-corners="false" data-shadow="false" name="reg_user_personalia_done" style="width: 100pt" class="btn_blue">NESTE
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div id="register1b">
+			<div class="main_content">
+				<table>
+					<tr>
+						<td style="width: 40pt;">
+							<img alt="grey dot" src="img/icon_grey.png" class="icon">
+						</td>
+						<td>
+							<input data-role="none" class="input_underscored" type="text" name="org_owner" placeholder="Eier" id="in_org_owner">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img alt="grey dot" src="img/icon_grey.png" class="icon">
+						</td>
+						<td>
+							<span style="line-height: 25pt">
+								sharityapp.no/
+							</span>
+							<input data-role="none" class="input_underscored" style="width: 58%; padding-left: 5pt; float: right;" type="text" name="org_name" placeholder="din organisasjon" id="in_org_name" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img alt="grey dot" src="img/icon_grey.png" class="icon">
+						</td>
+						<td>
+							<input data-role="none" class="input_underscored" type="email" name="org_email" placeholder="Epost" id="in_org_email">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img alt="grey dot" src="img/icon_grey.png" class="icon">
+						</td>
+						<td>
+							<input data-role="none" class="input_underscored" type="password" name="org_pw" placeholder="Passord" id="in_org_pw">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img alt="grey dot" src="img/icon_grey.png" class="icon">
+						</td>
+						<td>
+							<input data-role="none" class="input_underscored" type="password" name="org_pw_rep" placeholder="Gjenta passord" id="in_org_pw_rep">
+						</td>
+					</tr>
+				</table>
+				<table class="table_btns">
+					<tr>
+						<td style="width: 40pt"></td><td>
+							<button data-corners="false" data-shadow="false" onclick="reloadPage()" class="btn_white">
+								AVBRYT
+							</button>
+						</td>
+						<td>
+							<button data-corners="false" data-shadow="false" onclick="toRegister2b()" class="btn_blue">
+								NESTE
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" id="page_register2">
+	<div id="header_div">
+		<div class="header_top"></div>
+		<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon back_icon" />
+		<p>
+			Månedlige trekk
+			<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+				steg 2/4
+			</span>
+		</p>
+	</div>
+
+	<div class="main_content">
+		<p>
+			Velg et beløp som skal trekkes månedlig fra bankkontoen din.
+		</p>
+		<fieldset data-role="controlgroup" >
+			<table >
+				<tr>
+					<td>
+						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount1" value="20" onclick="blurDeleteCustomInput()"/>
+						<label for="amount1">
+							20 kr
+						</label>
+					</td>
+					<td>
+						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount2" value="50" onclick="blurDeleteCustomInput()"/>
+						<label for="amount2">
+							50 kr
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount3" value="100" onclick="blurDeleteCustomInput()"/>
+						<label for="amount3">
+							100 kr
+						</label>
+					</td>
+					<td>
+						<input class="radio_amount" type="radio" name="in_monthly_amount" id="amount4" value="200" onclick="blurDeleteCustomInput()"/>
+						<label for="amount4">
+							200 kr
+						</label>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+		<br/>
+		<table>
+			<tr>
+				<td style="width: 50%">
+					<input data-role="none" class="input_underscored" style="width: 90%" type="tel"
+					id="in_custom_amount" name="in_monthly_amount" placeholder="Egendefinert" onfocus="uncheckRadiobuttons()">
+				</td>
+				<td style="text-align: left">
+					kr
+				</td>
+			</tr>
+		</table>
+		<table class="table_btns">
+			<tr>
+				<td style="width: 40pt">
+				</td>
+				<td>
+					<button data-corners="false" data-shadow="false" name="reg_user_skip_creditcard" class="btn_white">
+						HOPP OVER
+					</button>
+				</td>
+				<td>
+					<button data-corners="false" data-shadow="false" name="reg_user_donation_done" data-transition="slide" class="btn_blue">
+						NESTE
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div data-role="page" id="page_register2b">
+	<div id="header_div">
+		<div class="header_top"></div>
+		<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon back_icon" />
+		<p>
+			Registrering
+			<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+				steg 2/3
+			</span>
+		</p>
+	</div>
+	<div class="main_content">
+		<fieldset class="ui-field-contain">
+			<select name="org_category" id="in_org_category" data-role="none" class="input_underscored grey">
+				<option>Velg område</option>
+				<option value="Barn">Barn</option>
+				<option value="Fattige">Fattige</option>
+				<option value="Krig">Krig</option>
+			</select>
+		</fieldset>
+		<textarea type="text" rows="4" name="org_about" id="in_org_about" placeholder="Fortell kort om hva organisasjonen din gjør...">
+		</textarea>
+		<table>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td>
+					<input type="text" data-role="none" class="input_underscored" placeholder="Nettside" id="in_org_website"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td>
+					<input type="text" data-role="none" class="input_underscored" placeholder="Organisasjonsnr (valgfritt)" id="in_org_nr">
+				</td>
+			</tr>
+		</table>
+		<table class="table_btns">
+			<tr>
+				<td style="width: 40pt"></td>
+				<td>
+					<button data-corners="false" data-shadow="false" onclick="reloadPage()" style="width: 100pt; font-weight: bold" class="btn_white">
+						AVBRYT
+					</button>
+				</td>
+				<td>
+					<button data-corners="false" data-shadow="false" onclick="toSummaryB()" data-transition="slide" style="width: 100pt; font-weight: bold" class="btn_blue">
+						NESTE
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div data-role="page" id="page_register3">
+	<div id="header_div">
+		<div class="header_top"></div>
+		<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon back_icon" />
+		<p>
+			Kredittinformasjon
+			<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+				steg 3/4
+			</span>
+		</p>
+	</div>
+	<div class="main_content">
+		<table>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td>
+					<input data-role="none" class="input_underscored" type="tel" name="reg_user_visa_number" placeholder="Kortnummer" id="in_visa_number"/>
+				</td>
+			</tr>
+		</table>
+
+		<table>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon">
+				</td>
+				<td>
+					<select name="reg_user_visa_expire_month" id="in_visa_expire_month">
+						<optgroup label="Utløpsmåned">
+							<option value="1">Januar</option>
+							<option value="2">Februar</option>
+							<option value="3">Mars</option>
+							<option value="4">April</option>
+							<option value="5">Mai</option>
+							<option value="6">Juni</option>
+							<option value="7">Juli</option>
+							<option value="8">August</option>
+							<option value="9">September</option>
+							<option value="10">Oktober</option>
+							<option value="11">November</option>
+							<option value="12">Desember</option>
+						</optgroup>
+					</select>
+				</td>
+				<td>
+					<select name="reg_user_visa_expire_year" id="in_visa_expire_year">
+						<optgroup label="Utløpsår">
+							<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+						</optgroup>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<br/>
+		<table>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td>
+					<input data-role="none" class="input_underscored half_width" type="tel" name="reg_user_visa_ccv" placeholder="CCV" id="in_visa_ccv"/>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td>
+					<input data-role="none" class="input_underscored" type="text" name="reg_user_visa_name" placeholder="Korteier" id="in_visa_name"/>
+				</td>
+			</tr>
+		</table>
+		<br/>
+
+		<table class="table_btns">
+			<tr>
+				<td style="width: 40pt;"></td>
+				<td>
+					<button data-corners="false" data-shadow="false" class="back_icon" data-transition="slide" data-direction="reverse" style="width: 100pt;">
+						Tilbake
+					</button>
+				</td>
+				<td>
+					<button data-corners="false" data-shadow="false" name="reg_user_credit_card_done" class="btn_blue" style="width: 100pt;">
+						Neste
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+<div data-role="page" id="page_reg_summary">
+	<!--<header data-role="header"></header> -->
+	<div id="header_div">
+		<div class="header_top"></div>
+		<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon back_icon"/>
+		<p>
+			Oppsummering
+			<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+				steg 4/4
+			</span>
+		</p>
+	</div>
+	<div class="portrait"><img src="img/default.png" alt="Portrettbilde" style="height:100%; width:100%" name="preview"/></div>
+	<div class="main_content">
+		<table>
+			<tr>
+				<td style="width: 50pt">
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td id="reg_summary_name" name="reg_user_sumary_name"></td>
+			</tr>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td id="reg_summary_phone" name="reg_user_sumary_phone"></td>
+			</tr>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon">
+				</td>
+				<td id="reg_summary_email" name="reg_user_sumary_email"></td>
+			</tr>
+		</table>
+		<div class="greyline"></div>
+		<table>
+			<tr>
+				<td style="width: 50pt">
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td id="reg_summary_monthly_amount" name="reg_user_sumary_monthly_amount"></td>
+			</tr>
+		</table>
+
+		<div class="greyline"></div>
+
+		<table>
+			<tr>
+				<td style="width: 50pt">
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td id="reg_summary_visanr" name="reg_user_sumary_visa_number" >
+				<!--
+					<div style="position:relative;display:inline-block;min-width:70pt">
+						<span style="position:absolute;font-size:9pt;left:0;top:20pt">Utløper: 
+							<span style="display:inline-block;background:yellow;" id="reg_summary_card_expiredate" name="reg_summary_card_expiredate"></span>
+						</span>
+						<span style="position:absolute;font-size:9pt;right:0;top:20pt">CCV: 
+							<span id="reg_summary_card_ccv" name="reg_summary_card_ccv"></span>
+						</span>
+					</div>
+				-->
+				</td>
+			</tr>
+			<tr>
+				<td style="width: 50pt">
+					<img alt="" src="img/icon_grey.png" class="icon"/>
+				</td>
+				<td id="reg_summary_cardname" name="reg_user_summary_cardname"></td>
+			</tr>
+			
+		</table>
+
+		<input type="checkbox" name="cb_send_receipts" id="cb_send_receipts"/>
+
+		<label for="cb_send_receipts">
+			Send meg kvitteringer
+		</label>
+		<input type="checkbox" name="cb_accept_user_conditions" id="cb_accept_user_conditions" onClick="enableSubmit(this)"/>
+		<label for="cb_accept_user_conditions">
+			Godkjenn brukervilkår
+		</label>
+		<a href="#" style="margin-left: 31pt">
+			Les brukervilkår
+		</a>
+
+		<table class="table_btns">
+			<tr>
+				<td style="width: 40pt;"></td>
+				<td>
+					<button data-corners="false" data-shadow="false" onclick="reloadPage()" style="width: 100pt;">
+						AVBRYT
+					</button>
+				</td>
+				<td>
+					<button data-corners="false" data-shadow="false" id="register_user" name="reg_user_complete" style="width: 130pt;" class="btn_blue">
+						OPPRETT BRUKER
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div data-role="page" id="page_reg_summaryB">
+	<!--<header data-role="header"></header> -->
+	<div id="header_div">
+		<div class="header_top"></div>
+		<a data-rel="back">
+			<img src="img/arrow_left.png" class="show-page-loading-msg menu_icon">
+		</a>
+		<p>
+			Oppsummering
+			<span style="float: right; margin-right: 5%; font-size: small; font-weight: normal">
+				steg 3/3
+			</span>
+		</p>
+	</div>
+	<div class="main_content">
+		<table>
+			<tr>
+				<td style="width: 50pt">
+					<img alt="" src="img/icon_grey.png" class="icon">
+				</td>
+				<td id="org_summary_owner"></td>
+			</tr>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon">
+				</td>
+				<td id="org_summary_orgname"></td>
+			</tr>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon">
+				</td>
+				<td id="org_summary_email"></td>
+			</tr>
+		</table>
+		<div class="greyline"></div>
+		<table>
+			<tr>
+				<td style="width: 50pt">
+					<img alt="" src="img/icon_grey.png" class="icon">
+				</td>
+				<td id="org_summary_category">
+				</td>
+			</tr>
+			<tr>
+				<td style="position: relative">
+					<img alt="" src="img/icon_grey.png" class="icon" style="position: absolute; top: 5pt;">
+				</td>
+				<td id="org_summary_org_about">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon">
+				</td>
+				<td id="org_summary_website">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<img alt="" src="img/icon_grey.png" class="icon">
+				</td>
+				<td id="org_summary_orgnr">
+				</td>
+			</tr>
+		</table>
+
+		<div class="greyline"></div>
+
+		<input type="checkbox" name="cb_accept_conditions" id="cb_accept_conditions" onclick="enableSubmit(this)"/>
+		<label for="cb_accept_conditions">
+			Godkjenn brukervilkår
+		</label>
+		<a href="#" style="margin-left: 31pt">
+			Les brukervilkår
+		</a>
+		<table class="table_btns">
+			<tr>
+				<td style="width: 40pt;"></td>
+				<td>
+					<button data-corners="false" data-shadow="false" onclick="reloadPage()" data-transition="slide" data-direction="reverse" style="width: 100pt;">
+						AVBRYT
+					</button>
+				</td>
+				<td>
+					<button data-corners="false" data-shadow="false" onclick="#" id="register_org" class="btn_blue" style="width: 100pt;">
+						OPPRETT
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
