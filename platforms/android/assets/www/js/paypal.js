@@ -81,14 +81,9 @@ var app = {
     return config;
   },
   onPrepareRender: function() {
-    // buttons defined in index.html
-    //  <button id="buyNowBtn"> Buy Now !</button>
-    //  <button id="buyInFutureBtn"> Pay in Future !</button>
-    //  <button id="profileSharingBtn"> ProfileSharing !</button>
     var buyNowBtn = document.getElementById("buyNowBtn");
     var buyInFutureBtn = document.getElementById("buyInFutureBtn");
     var profileSharingBtn = document.getElementById("profileSharingBtn");
-	alert("Blir trykket ned!");
 
     buyNowBtn.onclick = function(e) {
       // single payment
