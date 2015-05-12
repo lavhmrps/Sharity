@@ -530,3 +530,7 @@ section h4 {
 textarea{
 	height: auto !important;
 }
+
+::selection{
+	background:orange;
+}

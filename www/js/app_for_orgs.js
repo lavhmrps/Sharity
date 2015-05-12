@@ -89,22 +89,37 @@ $(document).on("pagebeforeshow","#page_org_home",function(){
 		success:function(response){
 			var newsHTML ="";
 			for(var i =0; i < response.length;i++){
-				newsHTML += '<div class="portrait"><img src="'+response[i].backgroundimgURL+'" id="homeNewsBackgroundImage'+i+'"></div>'+
-					'<article><span class="blue small">'+response[i].projectName+
-					'</span> <span class="grey small right">'+formatDate(response[i].date_added)+'</span>'+
-					'<h2 class="blue" id="homeNewsTitle'+i+'">'+response[i].title+'</h2>'+
-					'<p id="homeNewsContent'+i+'">'+response[i].txt +'</p>'+
-					'</article><div class="article_separator"></div>';
+				newsHTML += 
+					'<div class="portrait">'
+						+'<img src="'+response[i].backgroundimgURL+'" id="homeNewsBackgroundImage'+i+'">'
+					+'</div>'
+					+'<article>'
+						+'<span class="blue small">'+response[i].projectName+'</span>'
+						+'<span class="grey small right">'+formatDate(response[i].date_added)+'</span>'
+						+'<h2 class="blue" id="homeNewsTitle'+i+'">'+response[i].title+'</h2>'
+						+'<p id="homeNewsContent'+i+'">'+response[i].txt 
+							+'<span id="'+response[i].newsID+'" class="editnews small blue" style="float:right">Rediger</span>'
+						+'</p>'
+					+'</article>'
+					+'<div class="article_separator"></div>';
 			}
 			if(response.length == 0)
 				newsHTML ="<span class='small grey'>Ingen nyheter</span>";
+
 			$("#homeOrgNews").html(newsHTML);
+
 			for(var i =0; i < response.length;i++){
 				$("#homeNewsBackgroundImage"+i).error(function(){
 					$(this).remove();
 					
 				});
 			}
+
+			$(".editnews").off("click").click(function(){
+				var newsID = $(this).attr("id");
+				localStorage.setItem("newsIDtoEdit",newsID);
+				$.mobile.changePage("#page_org_edit_news",{"transition":"slide"});
+			});
 		},
 		error:function(response){
 			console.log("error in ajax, pageinit #page_org_home get orgNumDonations: "+response);
@@ -128,47 +143,6 @@ $(document).on("pageshow","#page_org_home",function(){
 	var numDonations = localStorage.getItem("orgNumDonations");
 	$("span[name=homeOrgNumDonations]").html(numDonations);
 	$("span[name=homeOrgSingularPluarDonations]").html((numDonations==1?"donasjon":"donasjoner"));
-
-});
-
-$(document).on("pagebeforeshow","#page_org_activities",function(){
-	var sql = "select * from project where project.organizationNr = "+localStorage.getItem("orgNr");
-	url = getURLappBackend();
-
-	$.ajax({
-		type:"post",
-		url:url,
-		dataType:"json",
-		data:{"getSQL":sql},
-		success:function(response){
-			var projectSelectOptions ='<option value="0">Alle Prosjekter</option>';
-			for(var i = 0; i < response.length;i++){
-				projectSelectOptions += '<option value="'+(i+1)+'" id="'+response[i].projectID+'">'+response[i].name+'</option>';
-			}
-			$("select[name=actsSelectProject]").html(projectSelectOptions);
-		},
-		error:function(response){
-			console.log("error in ajax, pageinit #page_org_activities get projects: "+response);
-		}
-	});
-
-});
-$(document).on("pagebeforeshow","#page_org_publish_news",function(){
-	var sql ="select projectID, name from project where organizationNr = "+localStorage.getItem("orgNr");
-	var url = getURLappBackend();
-
-	$.ajax({
-		type:"post",
-		url:url,
-		dataType:"json",
-		data:{"getSQL":sql},
-		success:function(response){
-			var ddHTML ="<option value='0'>Velg Prosjekt</option>";
-			for(var i=0; i < response.length;i++)
-				ddHTML+="<option value='"+response[i].projectID+"'>"+response[i].name+"</option>";
-			$(".dd_publish_input").html(ddHTML);
-		}
-	});
 
 });
 
@@ -246,12 +220,14 @@ $(document).on("pageinit","#page_org_publish_news",function(){
 			data:{"setSQL":sql},
 			success:function(response){
 				if(response == "OK"){
-					alert("Nyhet lagt til");
 					$(".dd_publish_input").val(0);
 					$(".publish_input").val("");
 					$("#selectedImage").hide();
 					resetPreview();
 					$("#inputUrl").val("");
+
+					showMessage("Nyhet lagret");
+
 
 					$(".back_btn").click();
 				}
@@ -263,6 +239,266 @@ $(document).on("pageinit","#page_org_publish_news",function(){
 
 
 });
+
+$(document).on("pagebeforeshow","#page_org_publish_news",function(){
+	var sql ="select projectID, name from project where organizationNr = "+localStorage.getItem("orgNr");
+	var url = getURLappBackend();
+
+	$.ajax({
+		type:"post",
+		url:url,
+		dataType:"json",
+		data:{"getSQL":sql},
+		success:function(response){
+			var ddHTML ="<option value='0'>Velg Prosjekt</option>";
+			for(var i=0; i < response.length;i++)
+				ddHTML+="<option value='"+response[i].projectID+"'>"+response[i].name+"</option>";
+			$("#dd_projects").html(ddHTML);
+		}
+	});
+
+});
+
+$(document).on("pageinit","#page_org_edit_news",function(){
+
+	$("#dd_news_e").change(function(e){
+
+		var newsID = $(this).val();
+		if(newsID == 0){
+			$(".dd_publish_input").val(0);
+			$(".publish_input").val("").prop("disabled","true");
+			$("#selectedImage_e").hide();
+			$("#inputUrl_e").val("").prop("disabled","true");
+			resetPreview_e();
+			return;
+		}
+
+		var sql = "select * from news where newsID =" +newsID;
+		console.log(sql);
+		$.ajax({
+			type:"post",
+			dataType:"json",
+			data:{"getSQL":sql},
+			url:getURLappBackend(),
+			success: function (response) {
+				$("#dd_projects_e").val(response[0].projectID);
+				$("#news_title_e").val(response[0].title);
+				$("#news_content_e").val(response[0].txt);
+				$("#deleteImage_e").css("visibility","visible");
+				$('#preview_e').html('<img src="'+response[0].backgroundimgURL+'" id="selectedImage_e">').show();
+				//$("#selectedImage_e").attr("src",(response[0].backgroundimgURL));
+				$("#inputUrl_e").val(response[0].backgroundimgURL);
+				$("#selectedImage_e").error(function(){
+					$("#deleteImage_e").css("visibility","hidden");
+					console.log("error");
+					$(this).remove();
+					resetPreview_e_e();
+				});
+			}
+		});
+	});
+
+
+	$('#add_image_icon_e').click(function(e) {
+		$('#inputChooseImage_e').click();
+	});
+	$("#inputChooseImage_e").change(function (e) {
+
+	    if(this.disabled) 
+	    	return alert('File upload not supported!');
+	    var F = this.files;
+	    if(F && F[0]) 
+	    	for(var i=0; i<F.length; i++) 
+	    		readImage_e( F[i] );
+	});
+
+	$("#btnGetImgFromUrl_e").click(function(){
+
+		var imgUrl = $("#inputUrl_e").val();
+		var imageOK = false;
+
+		$("#deleteImage_e").css("visibility","visible");
+		$('#preview_e').html('<img src="'+imgUrl+'" id="selectedImage_e">').show();
+		$("#selectedImage_e").error(function(){
+			$("#deleteImage_e").css("visibility","hidden");
+			alert("Feil på bilde");
+			$(this).remove();
+			resetPreview_e();
+		});
+
+		$('#preview_e img').off("click").click(function(){
+			$('#inputChooseImage_e').click();
+		});
+	});
+
+	$("#deleteImage_e").click(function(){
+		resetPreview_e();
+		$(this).css("visibility","hidden");
+	});
+
+
+	$("#btnCancelEdit").click(function(){
+
+		$(".dd_publish_input").val(0);
+		$(".publish_input").val("");
+		$("#selectedImage_e").hide();
+		resetPreview_e();
+
+	});
+
+	$("#btnCompleteEdit").click(function(){
+		var newsID = $("#dd_news_e").val();
+		var title = $("#news_title_e").val();
+		var content = $("#news_content_e").val();
+		var image = $("#selectedImage_e").attr("src");
+		var projectID = $("#dd_projects_e").val();
+
+		if(newsID == 0){
+			alert("Velg en nyhet å redigere");
+			return;
+		}
+
+		if(title == ""){
+			alert("Vennligst lag en tittel til nyheten");
+			return;
+		}
+		if(content == ""){
+			alert("Nyheten har ikke innhold ennå");
+			return;
+		}
+		if(projectID == "0"){
+			alert("Velg et prosjekt til nyheten");
+			return;
+		}
+
+		var sql = "update news set title = '"+title+"',txt ='"+content+"',backgroundimgURL = '"+image+"'where newsID = "+newsID;
+		var url = getURLappBackend();
+
+		$.ajax({
+			type:"post",
+			url:url,
+			dataType:"text",
+			data:{"setSQL":sql},
+			success:function(response){
+				if(response == "OK"){
+					$(".dd_publish_input").val(0);
+					$(".publish_input").val("");
+					$("#selectedImage_e").hide();
+					resetPreview_e();
+					$("#inputUrl_e").val("");
+
+					showMessage("Nyhet oppdatert");
+
+					$(".back_btn").click();
+				}
+
+			}
+		});
+
+	});
+});
+
+$(document).on("pagebeforeshow","#page_org_edit_news",function(){
+	var sql ="select * from news where newsID = "+localStorage.getItem("newsIDtoEdit");
+	sql = "select p.name as projectName, n.* from organization as o join project as p "+
+			"on o.organizationNr = p.organizationNr join news as n on n.projectID = p.projectID "+
+			"where o.name like '"+localStorage.getItem("orgName")+"' order by date_added desc";
+	console.log(sql);
+	var url = getURLappBackend();
+
+	$.ajax({
+		type:"post",
+		url:url,
+		dataType:"json",
+		data:{"getSQL":sql},
+		success:function(response){
+			var dd_news_HTML ="<option value='0'>Velg nyhet</option>";
+			var dd_projects_HTML = "<option value='0'>Velg prosjekt</option>";
+			var projects=[],
+				numProjects=0;
+			for(var i=0; i < response.length;i++){
+				dd_news_HTML+="<option value='"+response[i].newsID+"'>"+response[i].title+"</option>";
+				if (projects.indexOf(response[i].projectID) == -1){
+					// Project not already in list
+					projects[numProjects++]=response[i].projectID;
+					console.log(projects.indexOf(response[i].projectID));
+					dd_projects_HTML += "<option value='"+response[i].projectID+"'>"+response[i].projectName+"</option>";
+				}
+			}
+			$("#dd_news_e").html(dd_news_HTML);
+			$("#dd_projects_e").html(dd_projects_HTML);
+		}
+	});
+
+	
+
+});
+
+$(document).on("pageshow","#page_org_edit_news",function(){
+	var newsID = localStorage.getItem("newsIDtoEdit");
+	if(newsID == null){
+		$(".dd_publish_input").val(0);
+		$(".publish_input").val("");
+		$("#selectedImage_e").hide();
+		$("#inputUrl_e").val("");
+		resetPreview();
+		return;
+	}
+	$("#dd_news_e").val(newsID);
+	var sql = "select * from news where newsID =" +newsID;
+		console.log(sql);
+		$.ajax({
+			type:"post",
+			dataType:"json",
+			data:{"getSQL":sql},
+			url:getURLappBackend(),
+			success: function (response) {
+				$("#dd_projects_e").val(response[0].projectID);
+				$("#news_title_e").val(response[0].title);
+				$("#news_content_e").val(response[0].txt);
+				$("#deleteImage_e").css("visibility","visible");
+				$('#preview_e').html('<img src="'+response[0].backgroundimgURL+'" id="selectedImage_e">').show();
+				//$("#selectedImage_e").attr("src",(response[0].backgroundimgURL));
+				$("#inputUrl_e").val(response[0].backgroundimgURL);
+				$("#selectedImage_e").error(function(){
+					$("#deleteImage_e").css("visibility","hidden");
+					console.log("error");
+					$(this).remove();
+					resetPreview_e();
+				});
+			}
+		});
+});
+
+$(document).on("pagehide","#page_org_edit_news",function(){
+	localStorage.removeItem("newsIDtoEdit");
+});
+
+
+
+$(document).on("pagebeforeshow","#page_org_activities",function(){
+	var sql = "select * from project where project.organizationNr = "+localStorage.getItem("orgNr");
+	url = getURLappBackend();
+
+	$.ajax({
+		type:"post",
+		url:url,
+		dataType:"json",
+		data:{"getSQL":sql},
+		success:function(response){
+			var projectSelectOptions ='<option value="0">Alle Prosjekter</option>';
+			for(var i = 0; i < response.length;i++){
+				projectSelectOptions += '<option value="'+(i+1)+'" id="'+response[i].projectID+'">'+response[i].name+'</option>';
+			}
+			$("select[name=actsSelectProject]").html(projectSelectOptions);
+		},
+		error:function(response){
+			console.log("error in ajax, pageinit #page_org_activities get projects: "+response);
+		}
+	});
+
+});
+
 
 $(document).on("pageshow","#page_org_activities",function(){
 	
@@ -377,9 +613,55 @@ function readImage(file) {
     
 }
 
+function readImage_e(file) {
+  
+    var reader = new FileReader();
+    var image  = new Image();
+  
+    reader.readAsDataURL(file);  
+    reader.onload = function(_file) {
+        image.src    = _file.target.result;              // url.createObjectURL(file);
+        image.onload = function() {
+        	/*
+            var w = this.width,
+                h = this.height,
+                t = file.type,                           // ext only: // file.type.split('/')[1],
+                n = file.name,
+                s = ~~(file.size/1024) +'KB';
+			*/
+            $('#preview_e').html('<img src="'+ this.src +'" id="selectedImage_e"> ');	//+w+'x'+h+' '+s+' '+t+' '+n+'<br>');
+			$('#preview_e img').click(function(){
+				$('#inputChooseImage_e').click();
+			});
+			$("#deleteImage_e").css("visibility","visible");
+		};
+        image.onerror= function() {
+            alert('Ugyldig filtype: '+ file.type);
+        };      
+    };
+    
+}
+
 function resetPreview(){
 	$("#preview").html(	'<img src="../img/add-image-icon-grey2.png" id="add_image_icon" >');
+	$("#deleteImage").css("visibility","hidden");
 	$('#add_image_icon').off("click").click(function(){
 		$('#inputChooseImage').click();
 	});
+	$("#inputUrl").val("");
+}
+
+function resetPreview_e(){
+	$("#preview_e").html(	'<img src="../img/add-image-icon-grey2.png" id="add_image_icon_e" >');
+	$("#deleteImage_e").css("visibility","hidden");
+	$('#add_image_icon_e').off("click").click(function(){
+		$('#inputChooseImage_e').click();
+	});
+	$("#inputUrl_e").val("");
+}
+
+function showMessage(message){
+	console.log("showing message : "+message);
+	$(".messagediv span").html(message).css("padding","3pt").fadeIn().delay(3000).fadeOut();
+	//$("#messagetext").fadeIn().delay(3000).fadeOut();
 }
