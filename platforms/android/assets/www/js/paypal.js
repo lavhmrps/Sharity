@@ -66,8 +66,31 @@ var app = {
   createPayment: function() {
 	//Hente ut hvor mye som blir donert!
 	
-    var paymentDetails = new PayPalPaymentDetails("50.00", "0.00", "0.00");
-    var payment = new PayPalPayment("50.00", "NOK", "Awesome Sauce", "Sale",
+	var sum;
+	
+	if($('input[name=in_donate_amount]:checked').length > 0){
+		sum = $('input[name=in_donate_amount]:checked').val();
+	}
+	else if($('input[name=in_donate_amount_custom]').val().length > 0){
+		sum = $('input[name=in_donate_amount_custom]').val();
+		if(isNaN(sum)){
+			alert("Sjekk at beløpet er et tall");
+			return;
+		}else if(sum <= 0){
+			alert("Ugyldig beløp (0 eller mindre)");
+			return;
+		}
+		else if(sum % 1 != 0){
+			alert("Kun tillatt med beløp i hele kroner");
+			return;
+		}
+	}else{
+		alert("Velg beløp");
+		return;
+	}
+	
+    var paymentDetails = new PayPalPaymentDetails(sum, "0.00", "0.00");
+    var payment = new PayPalPayment(sum, "NOK", "Awesome Sauce", "Sale",
       paymentDetails);
     return payment;
   },
@@ -84,7 +107,8 @@ var app = {
     var buyNowBtn = document.getElementById("buyNowBtn");
     var buyInFutureBtn = document.getElementById("buyInFutureBtn");
     var profileSharingBtn = document.getElementById("profileSharingBtn");
-
+	alert("Blir trykket ned!");
+	
     buyNowBtn.onclick = function(e) {
       // single payment
 	  alert("Blir trykket ned!");
