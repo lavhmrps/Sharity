@@ -84,7 +84,6 @@ $('button[name=reg_user_donation_done]').click(function(){
 
 	var radio_val;
 	radio_val = $(" input[name='in_monthly_amount']:checked").val();
-	var custom_val = "default2"
 	custom_val = $("#in_custom_amount").val();
 
 	if (radio_val == undefined && custom_val == "") {
@@ -101,7 +100,7 @@ $('button[name=reg_user_donation_done]').click(function(){
 		globalData.monthly_amount = radio_val;
 	
 
-	$('td[name=reg_user_sumary_monthly_amount]').text(globalData.monthly_amount);
+	$('#reg_summary_monthly_amount').html(globalData.monthly_amount);
 
 	$.mobile.changePage("#page_register3", {
 		transition : "slide"
@@ -136,6 +135,7 @@ $('button[name=reg_user_skip_creditcard]').click(function(){
 	$('td[name= reg_user_sumary_name]').text(globalData.name);
 	$('td[name= reg_user_sumary_email]').text(globalData.email);
 	$('td[name= reg_user_sumary_phone]').text(globalData.phone);
+	$('#reg_summary_monthly_amount').html(globalData.monthly_amount);
 
 
 	$('td[name=reg_user_sumary_visa_number]').text("Ingen VISA lagt til");
@@ -292,7 +292,7 @@ function insertImage(image){
 			
 		},
 		error : function(response){
-			alert(" insertProject.js : insertBackground ajax request ERROR: " + response);
+			alert(" insertUser.js : insertBackground ajax request ERROR: " + response);
 			console.log(response.message);
 		}
 	});

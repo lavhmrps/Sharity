@@ -169,7 +169,7 @@ function appendNewsList(projectID){
 				'</div>'+
 				'</div>'+
 				'<div class="li_right">'+
-				'<img src="../img/li_arrow_r_grey.png">'+
+				'<img src="../img/li_arrow_r_grey.png"  class="icon" >'+
 				'</div>'+
 				'</div>'+
 				'</a>'+

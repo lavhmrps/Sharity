@@ -349,3 +349,8 @@ article {
 	background-color: inherit !important;
 	background-size:11pt;
 }
+
+.imgInputHidden{
+	display:none;
+	border:none
+}

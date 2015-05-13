@@ -31,11 +31,7 @@
 	<script src="js/checkLogin.js"></script>
 	<script src="js/insertUser.js"></script>
 	<script src="js/urls.js"></script>
-	<script src="js/index.js"></script>
-	<script>
-		//if($("#cb_accept_user_contidions").checked()==false)
-		//	$("#register_user").this().input.disabled=true;
-	</script>
+	<script src="js/index.js"></script>>
 
 
 
@@ -111,12 +107,13 @@
 		</div>
 
 		<div class="portrait">
+			<input class ="imgInputHidden" type="file" name="reg_user_image" data-role="none"/>
 			<img src="img/default.png" alt="Portrettbilde" name="preview"/>
-			<input type="file" name="reg_user_image" style="display:none"/>
 			<div class="logodiv_right" name="trigger_pick_image">
 				<p>Velg bilde</p>
 			</div>
 		</div>
+		<span class="x-small red" id="deleteImage" style="margin-left:5%">Fjern</span>
 		<div id="register1a">
 			<div class="main_content">
 				<table>
@@ -408,37 +405,41 @@
 				<td>
 					<img alt="" src="img/icon_grey.png" class="icon">
 				</td>
-				<td>
-					<select name="reg_user_visa_expire_month" id="in_visa_expire_month">
-						<optgroup label="Utløpsmåned">
-							<option value="1">Januar</option>
-							<option value="2">Februar</option>
-							<option value="3">Mars</option>
-							<option value="4">April</option>
-							<option value="5">Mai</option>
-							<option value="6">Juni</option>
-							<option value="7">Juli</option>
-							<option value="8">August</option>
-							<option value="9">September</option>
-							<option value="10">Oktober</option>
-							<option value="11">November</option>
-							<option value="12">Desember</option>
-						</optgroup>
-					</select>
-				</td>
-				<td>
-					<select name="reg_user_visa_expire_year" id="in_visa_expire_year">
-						<optgroup label="Utløpsår">
-							<option value="2015">2015</option>
-								<option value="2016">2016</option>
-								<option value="2017">2017</option>
-								<option value="2018">2018</option>
-								<option value="2019">2019</option>
-								<option value="2020">2020</option>
-								<option value="2021">2021</option>
-								<option value="2022">2022</option>
-						</optgroup>
-					</select>
+				<td >
+					<table>
+						<td class="half_width"  style="padding-right:5pt">
+							<select name="reg_user_visa_expire_month" id="in_visa_expire_month" class="input_underscored" data-role="none">
+								<optgroup label="Utløpsmåned">
+									<option value="1">Januar</option>
+									<option value="2">Februar</option>
+									<option value="3">Mars</option>
+									<option value="4">April</option>
+									<option value="5">Mai</option>
+									<option value="6">Juni</option>
+									<option value="7">Juli</option>
+									<option value="8">August</option>
+									<option value="9">September</option>
+									<option value="10">Oktober</option>
+									<option value="11">November</option>
+									<option value="12">Desember</option>
+								</optgroup>
+							</select>
+						</td>
+						<td class="half_width"  style="padding-right:5pt">
+							<select name="reg_user_visa_expire_year" id="in_visa_expire_year" class="input_underscored" data-role="none">
+								<optgroup label="Utløpsår">
+									<option value="2015">2015</option>
+										<option value="2016">2016</option>
+										<option value="2017">2017</option>
+										<option value="2018">2018</option>
+										<option value="2019">2019</option>
+										<option value="2020">2020</option>
+										<option value="2021">2021</option>
+										<option value="2022">2022</option>
+								</optgroup>
+							</select>
+						</td>
+					</table>
 				</td>
 			</tr>
 		</table>
@@ -469,7 +470,7 @@
 			<tr>
 				<td style="width: 40pt;"></td>
 				<td>
-					<button data-corners="false" data-shadow="false" class="back_icon" data-transition="slide" data-direction="reverse" style="width: 100pt;">
+					<button data-corners="false" data-shadow="false" class="back_icon" data-transition="slide" data-rel="back" style="width: 100pt;">
 						Tilbake
 					</button>
 				</td>
@@ -496,7 +497,7 @@
 			</span>
 		</p>
 	</div>
-	<div class="portrait"><img src="img/default.png" alt="Portrettbilde" style="height:100%; width:100%" name="preview"/></div>
+	<div class="portrait"><img src="img/default.png" alt="Portrettbilde" name="preview"/></div>
 	<div class="main_content">
 		<table>
 			<tr>
@@ -524,7 +525,7 @@
 				<td style="width: 50pt">
 					<img alt="" src="img/icon_grey.png" class="icon"/>
 				</td>
-				<td id="reg_summary_monthly_amount" name="reg_user_sumary_monthly_amount"></td>
+				<td  name="reg_user_sumary_monthly_amount"><span id="reg_summary_monthly_amount"></span><span> kr månedlig</span></td>
 			</tr>
 		</table>
 
@@ -536,16 +537,6 @@
 					<img alt="" src="img/icon_grey.png" class="icon"/>
 				</td>
 				<td id="reg_summary_visanr" name="reg_user_sumary_visa_number" >
-				<!--
-					<div style="position:relative;display:inline-block;min-width:70pt">
-						<span style="position:absolute;font-size:9pt;left:0;top:20pt">Utløper: 
-							<span style="display:inline-block;background:yellow;" id="reg_summary_card_expiredate" name="reg_summary_card_expiredate"></span>
-						</span>
-						<span style="position:absolute;font-size:9pt;right:0;top:20pt">CCV: 
-							<span id="reg_summary_card_ccv" name="reg_summary_card_ccv"></span>
-						</span>
-					</div>
-				-->
 				</td>
 			</tr>
 			<tr>
@@ -579,8 +570,8 @@
 					</button>
 				</td>
 				<td>
-					<button data-corners="false" data-shadow="false" id="register_user" name="reg_user_complete" style="width: 130pt;" class="btn_blue">
-						OPPRETT BRUKER
+					<button data-corners="false" data-shadow="false" id="register_user" name="reg_user_complete" class="btn_blue">
+						FULLFØR
 					</button>
 				</td>
 			</tr>

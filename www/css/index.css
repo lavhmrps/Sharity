@@ -201,8 +201,14 @@ table tr td input {
 }
 
 .portrait img{
-	max-height:100%;
-	max-width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 
 }
 
@@ -533,4 +539,65 @@ textarea{
 
 ::selection{
 	background:orange;
+}
+
+.imgInputHidden{
+	display:none !important;
+	border:none !important;
+	outline:none  !important;
+}
+
+
+.xx-large{
+	font-size:xx-large !important;
+	font-weight: normal !important;
+}
+
+.x-large{
+	font-size:x-large !important;
+	font-weight: normal !important;
+}
+
+.large{
+	font-size:large !important;
+	font-weight: normal !important;
+}
+
+.medium{
+	font-size:medium !important;
+	font-weight: normal !important;
+}
+
+.small{
+	font-size:small !important;
+	font-weight: normal !important;
+}
+
+.x-small{
+	font-size:x-small !important;
+	font-weight: normal !important;
+}
+
+.green{
+	color: #20a623 !important;
+}
+
+.red{
+	color:#f63218 !important;
+}
+
+
+.grey {
+	color: #9b9b9b !important;
+}
+
+.blue {
+	color: #006dfe !important;
+}
+.half_width {
+	width: 50% !important;
+}
+
+.third_width {
+	width: 35% !important;
 }
