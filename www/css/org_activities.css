@@ -40,7 +40,7 @@
 	height: 18pt;
 	border-radius: 50%;
 	background: #f63218;
-	color: white;
+	color: white !important;
 	text-align: center;
 	line-height: 18pt;
 	font-size: small;
@@ -60,4 +60,58 @@
 	font-size: small;
 	padding: 0 1pt;
 	z-index: 10;
+}
+
+#subtitle{
+	position :absolute;
+	bottom :5pt;
+	margin-left: 75pt;
+	line-height: normal;
+	font-size: small;
+}
+#detailsTable{
+
+	border-collapse: collapse;
+}
+
+#detailsTable th{
+	background: #333;
+	color:white;
+	height:20pt;
+	line-height: 20pt;
+	text-align: left;
+
+}
+
+#detailsTable tr{
+	box-sizing:border-box;
+	border-bottom:thin solid #9b9b9b;
+}
+
+#detailsTable tr:nth-child(2n){
+	background: lightyellow;
+}
+#detailsTable tr:nth-child(2n+1){
+}
+
+#detailsTable td{
+	height:25pt;
+	border-right:thin solid #9b9b9b;
+
+}
+
+.rowTop{
+	position: absolute;
+	top:3pt;
+
+}
+.rowBottom{
+	position: absolute;
+	bottom:0;
+}
+
+.ellipsis{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 }

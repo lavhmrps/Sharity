@@ -62,7 +62,8 @@ $(document).on("pagebeforeshow","#page_org_home",function(){
 	});
 
 	// Getting total number of donations from all projects and the total sum
-	sql = "select o.name, count(*) as numDonations ,sum(d.sum) as sumDonations from donation as d join project as p on d.projectID = p.projectID join organization as o on o.organizationNr = p.organizationNr where o.name like '"+localStorage.getItem("orgName")+"'";
+	sql = "select o.name, count(*) as numDonations ,sum(d.sum) as sumDonations from donation as d join project as p on d.projectID = p.projectID "
+		+"join organization as o on o.organizationNr = p.organizationNr where o.name like '"+localStorage.getItem("orgName")+"'";
 	$.ajax({
 		type:"post",
 		url:url,
@@ -486,7 +487,7 @@ $(document).on("pagebeforeshow","#page_org_activities",function(){
 		dataType:"json",
 		data:{"getSQL":sql},
 		success:function(response){
-			var projectSelectOptions ='<option value="0">Alle Prosjekter</option>';
+			var projectSelectOptions ='<option value="0" id="0">Alle Prosjekter</option>';
 			for(var i = 0; i < response.length;i++){
 				projectSelectOptions += '<option value="'+(i+1)+'" id="'+response[i].projectID+'">'+response[i].name+'</option>';
 			}
@@ -535,16 +536,180 @@ $(document).on("pageshow","#page_org_activities",function(){
 		});
 	});
 
-	$(document).on("click","#actsProjectStats tr",function(){
+	$(document).off("click").on("click","#actsProjectStats tr",function(){
 		var projectID = $("select[name=actsSelectProject] option:selected").attr("id");
 		var rowName = $(this).attr("name");
 		if(rowName== "actsRowDonations")
-			alert("Her skal det komme detaljer om donajonene");
+			openDonationList(projectID);
 		else if(rowName = "actsNumFollowers")
-			alert("Her skal det komme detaljer om følgerene");
+			openFollowerList(projectID);
 	})
 
 });
+
+function openDonationList (projectID) {
+	$("#detailsTitle").html("Donasjoner");
+	var sql ="";
+	if(projectID == 0){
+		$("#forWho").html("Alle prosjekter");
+
+		sql ="select d.*, p.name as projectName, u.name as userName from donation as d join project as p on d.projectID = p.projectID "
+			+"join organization as o on p.organizationNr = o.organizationNr join user as u on u.email like d.email "
+			+"where o.organizationNr = " +localStorage.getItem("orgNr")+" order by date desc";
+	}
+	else{
+		sql =  "select d.*, p.name as projectName, u.name as userName from donation as d join project as p on d.projectID = p.projectID "
+			+"join organization as o on p.organizationNr = o.organizationNr join user as u on u.email like d.email "
+			+"where p.projectID = " +projectID+" order by date desc";
+	}
+		$.ajax({
+			type:"post",
+			url:getURLappBackend(),
+			dataType:"json",
+			data:{"getSQL":sql},
+			success:function(response){
+				$("#forWho").html(response[0].projectName);
+				var detailsTable = $("#detailsTable");
+				var tableHTML = "";
+				var row="<thead><th>Nr</th><th>Prosjekt/Fra</th><th>Sum</th><th>Når</th></thead><tbody>";
+
+				tableHTML+=row;
+				
+				for(var i=0; i< response.length;i++){
+					row = '<tr><td>'+response[i].donationID+'</td>';
+					row += '<td style="width:130pt"><div class="ellipsis"><span class="rowTop">'+response[i].projectName
+						+'</span><span class="rowBottom grey x-small">fra '+response[i].userName+'</span></div></td>';
+					row += '<td style="width:50pt" data-kroner="'+response[i].sum+'">'+response[i].sum+' kr</td>';
+					row += '<td style="width:40pt" class="x-small" data-time="'+getMillis(response[i].date)+'" >'+calcTime(response[i].date)+' siden</td>';
+					row += '</tr>';
+					tableHTML+=row;
+				}
+				tableHTML+="</tbody>";
+				detailsTable.html(tableHTML);
+				
+			}
+		}).done(function(){
+		    // add parser through the tablesorter addParser method 
+		    $.tablesorter.addParser({
+		        // set a unique id 
+		        id: 'timesort',
+		        is: function (s) {
+		            // return false so this parser is not auto detected 
+		            return false;
+		        },
+		        format: function (s, table, cell, cellIndex) {
+		            // get data attributes from $(cell).attr('data-something');
+		            // check specific column using cellIndex
+		            return $(cell).attr('data-time');
+		        },
+		        // set type, either numeric or text 
+		        type: 'numeric'
+	    	});
+
+		     $.tablesorter.addParser({
+		        // set a unique id 
+		        id: 'kronersort',
+		        is: function (s) {
+		            // return false so this parser is not auto detected 
+		            return false;
+		        },
+		        format: function (s, table, cell, cellIndex) {
+		            // get data attributes from $(cell).attr('data-something');
+		            // check specific column using cellIndex
+		            return $(cell).attr('data-kroner');
+		        },
+		        // set type, either numeric or text 
+		        type: 'numeric'
+	    	});
+
+			$("#detailsTable").tablesorter({ 
+		        headers: {
+		        	2:{
+		        		sorter:'kronersort'
+		        	},
+			        3: {
+			            sorter: 'timesort'
+			        }
+		        }
+		    });
+		});
+	
+
+	$.mobile.changePage("#page_org_activities_details",{"transition":"turn"});
+
+}
+
+function getDonationStats(projectID) {
+	
+}
+
+function openFollowerList(projectID) {
+	$.mobile.changePage("#page_org_activities_details");
+	$("#detailsTitle").html("Følgere");
+
+	var sql="";
+	if(projectID == 0){
+		$("#forWho").html("Alle prosjekter");
+		sql = "select u.email as email, u.name as userName, s.date_added as fromDate from subscription as s join project as p on s.projectID = p.projectID join user as u on s.email like u.email "
+			+" join organization as o on o.organizationNr = p.organizationNr where o.organizationNr = "+localStorage.getItem("orgNr");
+	}else{
+		sql = "select u.email as email, p.name as projectName, u.name as userName, s.date_added as fromDate from subscription as s join project as p on s.projectID = p.projectID join user as u on s.email like u.email "
+			+" join organization as o on o.organizationNr = p.organizationNr where p.projectID = "+projectID;
+	}
+
+	$.ajax({
+		type:"post",
+		url:getURLappBackend(),
+		dataType:"json",
+		data:{"getSQL":sql},
+		success:function(response){
+			$("#forWho").html(response[0].projectName);
+			var detailsTable = $("#detailsTable");
+			var tableHTML = "";
+			var row="<thead><th>Nr</th><th>Navn</th><th>Hvor lenge</th></thead><tbody>";
+
+			tableHTML+=row;
+			
+			for(var i=0; i< response.length;i++){
+				row = '<tr><td style="width:20pt">'+(i+1)+'</td>';
+				row += '<td style="width:130pt"><div><span class="rowTop">'+response[i].userName+'</span>'
+					+'<span class="rowBottom grey x-small">'+response[i].email+'</span></div></td>';
+				row += '<td style="width:40pt" class="x-small" data-time="'+getMillis(response[i].fromDate)+'">'+calcTime(response[i].fromDate)+' siden</td>';
+				row += '</tr>';
+				tableHTML+=row;
+			}
+			tableHTML+="</tbody>";
+			detailsTable.html(tableHTML);
+		}
+	}).done(function () {
+
+	    // add parser through the tablesorter addParser method 
+	    $.tablesorter.addParser({
+	        // set a unique id 
+	        id: 'timesort',
+	        is: function (s) {
+	            // return false so this parser is not auto detected 
+	            return false;
+	        },
+	        format: function (s, table, cell, cellIndex) {
+	            // get data attributes from $(cell).attr('data-something');
+	            // check specific column using cellIndex
+	            return $(cell).attr('data-time');
+	        },
+	        // set type, either numeric or text 
+	        type: 'numeric'
+    	});
+		$("#detailsTable").tablesorter({ 
+	        headers: {
+		        2: {
+		            sorter: 'timesort'
+		        }
+	        }
+	    });
+	});
+
+}
+
 
 
 
@@ -582,6 +747,35 @@ function formatDate(date){
 	formattedDate = day+". "+month+"-"+year+" "+hour+":"+minute;
 
 	return formattedDate;
+}
+
+function getMillis (date) {
+	// Split timestamp into [ Y, M, D, h, m, s ]
+	var t = date.split(/[- :]/);
+	// Apply each element to the Date function
+	return new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]).getTime();
+}
+
+function calcTime (date) {
+	// Split timestamp into [ Y, M, D, h, m, s ]
+	var t = date.split(/[- :]/);
+	// Apply each element to the Date function
+	var then = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]).getTime();
+	var now = new Date().getTime();
+
+	var secs = (now - then)/1000;
+	if(secs < 60)
+		return Math.floor(secs)+ " sekund"+(Math.floor(secs)==1?"":"er");
+
+	var mins = secs/(60);
+	if(mins < 60 )
+		return Math.floor(mins) + " minutt" +(Math.floor(mins)==1?"":"er");
+
+	var hrs = mins / 60;
+	if( hrs < 24)
+		return Math.floor(hrs) + " time"+(Math.floor(hrs)==1?"":"r");
+
+	return  Math.floor(hrs / 24) +" dag"+(Math.floor(hrs / 24)==1?"":"er");
 }
 
 function readImage(file) {
