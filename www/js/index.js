@@ -81,6 +81,16 @@ $(document).ready(function(){
 
 });
 
+// Pressing enter in one of the login-input-fields attempts to login
+$(document).on("pageinit","#page_login",function(){
+	$("#username, #password").keyup(function(e){
+		if(e.keyCode==13){
+			// Enter is pressed
+			$("#btnLogin").click();			
+		}
+	});
+});
+
 //Goes to register NewUser and activating the correct tab
 function toRegister1() {
 	$.mobile.changePage("#page_register1", {

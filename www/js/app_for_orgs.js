@@ -571,7 +571,7 @@ function openDonationList (projectID) {
 				$("#forWho").html(response[0].projectName);
 				var detailsTable = $("#detailsTable");
 				var tableHTML = "";
-				var row="<thead><th>Nr</th><th>Prosjekt/Fra</th><th>Sum</th><th>Når</th></thead><tbody>";
+				var row="<thead><th>ID</th><th>Prosjekt/Fra</th><th>Sum</th><th>Når</th></thead><tbody>";
 
 				tableHTML+=row;
 				
@@ -635,7 +635,7 @@ function openDonationList (projectID) {
 		});
 	
 
-	$.mobile.changePage("#page_org_activities_details",{"transition":"turn"});
+	$.mobile.changePage("#page_org_activities_details",{"transition":"slide"});
 
 }
 
@@ -644,7 +644,7 @@ function getDonationStats(projectID) {
 }
 
 function openFollowerList(projectID) {
-	$.mobile.changePage("#page_org_activities_details");
+	$.mobile.changePage("#page_org_activities_details",{"transition":"slide"});
 	$("#detailsTitle").html("Følgere");
 
 	var sql="";

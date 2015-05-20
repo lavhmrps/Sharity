@@ -28,14 +28,29 @@ $(document).ready(function(){
 			data : {"userLoginApp" : json},
 			success: function(response){
 				if(response == "OK"){
-					console.log("Bruker-login");
 					window.location.replace("pages/app.html#page_overview");
 					localStorage.setItem("userID", email);
 				}else if(response == "ORG"){
-					console.log("Organisasjon-login: ok");
-					window.location.replace("pages/app_for_orgs.html#page_org_home");
 					email = toTitleCase(email);
 					localStorage.setItem("orgName", email);
+					window.location.replace("pages/app_for_orgs.html#page_org_home");
+				}else if(response == "ORG2"){
+					var orgNr = email;
+					var sql ="select name from organization where organizationNr = "+parseInt(orgNr);
+					$.ajax({
+						type:"post",
+						url:getURLappBackend(),
+						dataType:"json",
+						data:{"getSQL":sql},
+						success:function (res){
+							var orgName = res[0].name;
+							orgName = toTitleCase(orgName);
+							localStorage.setItem("orgName", orgName);
+							window.location.replace("pages/app_for_orgs.html#page_org_home");
+						}
+
+					});
+					
 				}
 
 				else{
@@ -51,6 +66,7 @@ $(document).ready(function(){
 		event.preventDefault();
 	});
 });
+
 
 // Each word gets capitalized letter
 function toTitleCase(str)
