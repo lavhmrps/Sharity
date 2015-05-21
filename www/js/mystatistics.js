@@ -559,12 +559,12 @@ function acceptChallenge(challengeID,listItem){
 								}
 
 							}).done(function(){
-								console.log("update challenge done!" )
+								//console.log("update challenge done!" )
 							});
 													
 						}
 					}).done(function (){
-						console.log("update funds done!");
+						//console.log("update funds done!");
 					});
 
 
@@ -574,7 +574,7 @@ function acceptChallenge(challengeID,listItem){
 					alert("Error in: donate.js bad ajax request when insert to database");
 				}
 			}).done(function(){
-				console.log("insert donation done!" )
+				//console.log("insert donation done!" )
 			});
 		}
 	});
@@ -594,7 +594,7 @@ function declineChallenge(challengeID, listItem){
 		data:{"setSQL":sql},
 		success:function(response){
 			if (response != "OK"){
-				console.log("error: "+response);
+				showMessage("error: "+response);
 				return;
 			}
 			moveToHistory(listItem,0);

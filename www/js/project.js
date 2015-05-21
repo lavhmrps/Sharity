@@ -127,6 +127,8 @@ function showProject(){
 			localStorage.setItem("orgLogo",response[0].orgLogo)
 
 			appendNewsList(projectID);
+
+			updateBreadCrumbProject();
 		}
 	});
 }
@@ -183,5 +185,24 @@ function appendNewsList(projectID){
 				});
 			});
 		}
+	});
+}
+
+function updateBreadCrumbProject(){
+	var orgName = localStorage.getItem("orgName");
+	var projectName = localStorage.getItem("projectName");
+	var bcHTML = '<span id="bcOverview" class="white">Oversikt</span>';
+	bcHTML += '<span class="green"> > </span>';
+	bcHTML +=  '<span id="bcOrganization" class="white">'+orgName+'</span>';
+	bcHTML += '<span class="green"> > </span>';
+	bcHTML +=  '<span id="bcProject" class="white">'+projectName+'</span>';
+
+	$(".breadcrumb").html(bcHTML);
+
+	$("#bcOverview").off("click").click(function(){
+		$.mobile.changePage("#page_overview");
+	});
+	$("#bcOrganization").off("click").click(function(){
+		$.mobile.changePage("#page_organization");
 	});
 }

@@ -1,16 +1,3 @@
-$(document).on( "pagebeforeshow","#page_organization", function() {
-	showOrganization();
-	getNews();
-
-	$(document).on('click', 'li[name=organization_list]', function() {
-		showOrganization();
-	});
-
-	$(document).on('click', 'li[name=project_list]', function() {
-		localStorage.setItem("projectToShow", this.id);
-	});
-});	
-
 $(document).on("pageinit","#page_organization",function(){
 	$("#linkPageOrgNews").click(function(){
 		$('html, body').animate({scrollTop: $("#sectionOrgNews").offset().top}, 600);	
@@ -27,6 +14,21 @@ $(document).on("pageinit","#page_organization",function(){
 		//console.log("page_organization: "+localStorage.getItem("donateToProject"));
 	});
 });
+
+$(document).on( "pagebeforeshow","#page_organization", function() {
+	showOrganization();
+	getNews();
+	
+
+	$(document).on('click', 'li[name=organization_list]', function() {
+		showOrganization();
+	});
+
+	$(document).on('click', 'li[name=project_list]', function() {
+		localStorage.setItem("projectToShow", this.id);
+	});
+});	
+
 
 function showOrganization(){
 
@@ -53,6 +55,8 @@ function showOrganization(){
 				var organizationNr = response[0].organizationNr;
 				
 				localStorage.setItem("orgName", organization_name);
+
+				updateBreadcrumbOrganization();
 
 				$('p[name=organization_name]').text(organization_name); 
 				$('span[name=category]').text(category);
@@ -171,4 +175,15 @@ function getNews(){
 
 }
 
+function updateBreadcrumbOrganization(){
+	var orgName = localStorage.getItem("orgName");
+	var bcHTML = '<span id="bcOverview" class="white">Oversikt</span>';
+	bcHTML += '<span class="green"> > </span>';
+	bcHTML +=  '<span id="bcOrganization" class="white">'+orgName+'</span>';
 
+	$(".breadcrumb").html(bcHTML);
+
+	$("#bcOverview").off("click").click(function(){
+		$.mobile.changePage("#page_overview");
+	})
+}

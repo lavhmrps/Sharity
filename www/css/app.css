@@ -113,6 +113,10 @@
 	margin-top: 30pt;
 }
 
+.white {
+	color:white !important;
+}
+
 .green{
 	color: #20a623 !important;
 }
@@ -356,4 +360,14 @@ article {
 .imgInputHidden{
 	display:none;
 	border:none
+}
+
+.breadcrumb{
+	line-height: normal;
+	font-size: x-small;
+	font-weight: normal;
+	color:white;
+	margin-left: 10pt;
+	position:absolute;
+	bottom:0;
 }
