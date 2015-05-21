@@ -547,6 +547,20 @@ $(document).on("pageshow","#page_org_activities",function(){
 
 });
 
+$(document).on("pagebeforeshow","#page_org_statistics",function(){
+	var sql ="SELECT COUNT(*) as numSubs FROM subscription INNER JOIN project ON subscription.projectID = project.projectID "
+			+"WHERE project.organizationNr = '"+ localStorage.getItem("orgNr") +"'";
+
+	handlenumSubs(getData(sql));
+});
+
+function handlenumSubs(promise, str){
+	var numSubs;
+	promise.success(function(response){
+		numSubs = response[0].numSubs;
+	});
+}
+
 function openDonationList (projectID) {
 	$("#detailsTitle").html("Donasjoner");
 	var sql ="";
