@@ -140,7 +140,9 @@ function getMyDonationInformation(){
 function listDonations(){
 	var email = localStorage.getItem('userID');
 	//var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
-	var sql ="SELECT don.*, pro.name as projectName FROM donation as don join project as pro on (pro.projectID = don.projectID ) WHERE email = '"+email+"'";
+	var sql ="SELECT d.*, p.name as projectName, p.logoURL as logoURL FROM donation as d join project as p on (p.projectID = d.projectID ) "
+			+"WHERE email = '"+email+"' order by date desc";
+	console.log(sql);
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 
@@ -158,20 +160,27 @@ function listDonations(){
 			var sum_total = 0;
 
 			for(var i = 0; i < json.length; i++){
+				var img = json[i].logoURL;
+				var imgHTML ="";
+				if (img != null)
+					imgHTML = '<img src="'+img+'">';
 
 				donations +=
 				'<li id="' + json[i].projectID +'"  donation="' + json[i].donationID +'" active="'+
 					(json[i].active == 1 ? 'true">':'false">')+
 					'<div class="li_container">' +
-						'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
+						//'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
+						'<div class="li_left"><div class="circlegrey">'+imgHTML+'</div></div>'+
 						'<div class="li_mid">'+
 							'<div class="li_project large">' + json[i].projectName + '</div>'+
 							'<span class="li_donation grey">' + json[i].sum + ' kr</span> <span'+
-							(json[i].type == 'fast'?' class="green">fast':'>')+'</span><span style="float:right;margin-right:5pt; font-size:small" class="grey">'+
-							formatDate(json[i].date)+'</span>'+
+							(json[i].type == 'fast'?' class="green">fast':'>')+'</span><span  class="grey x-small right" style="line-height:15pt">'+
+							//formatDate(json[i].date)+
+							calcTime(json[i].date)+
+							' siden</span>'+
 						'</div>'+
 						'<div class="li_right">'+
-							((json[i].type == 'fast' ? (json[i].active == 1 ? 'Aktiv':'Stoppet') : '' ))+
+							((json[i].type == 'fast' ? (json[i].active == 1 ? '<img src="../img/ongoing.png" class="icon">':'<img src="../img/cancelled.png" class="icon">') : '' ))+
 						'</div>'+
 					'</div>'+
 					'</li>';
@@ -222,7 +231,7 @@ function stopDonation(donationID,div){
 		data:{"setSQL":sql},
 		success: function(response){
 			//alert("Donasjon stoppet!");
-			div.html("Stoppet");
+			div.find("img").attr("src","../img/cancelled.png");
 			div.closest("li").attr("active","false");
 		},
 		error: function(response){
@@ -262,7 +271,7 @@ function startDonation(donationID,div){
 				data : {'setSQL' : sql},
 				success : function(response){
 					//alert("Donasjon aktivert!");
-					div.html("Aktiv");
+					div.find("img").attr("src","../img/ongoing.png");
 					div.closest("li").attr("active","true");
 					//window.location.reload();
 

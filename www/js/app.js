@@ -89,16 +89,38 @@ function formatDate(date){
 	return formattedDate;
 }
 
-function showMessage(message){
-	console.log("showing message : "+message);
-	$(".messagediv span").html(message).css("padding","3pt").fadeIn().delay(3000).fadeOut();
-	//$("#messagetext").fadeIn().delay(3000).fadeOut();
+function getMillis (date) {
+	// Split timestamp into [ Y, M, D, h, m, s ]
+	var t = date.split(/[- :]/);
+	// Apply each element to the Date function
+	return new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]).getTime();
 }
-/*
-function showMessage2(message){
-	console.log("showing message : "+message);
-	$("#messagetext_search_friends").html(message).css("padding","3pt");
-	$("#messagetext_search_friends").fadeIn().delay(3000).fadeOut();
-}*/
+
+function calcTime (date) {
+	// Split timestamp into [ Y, M, D, h, m, s ]
+	var t = date.split(/[- :]/);
+	// Apply each element to the Date function
+	var then = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]).getTime();
+	var now = new Date().getTime();
+
+	var secs = (now - then)/1000;
+	if(secs < 60)
+		return Math.floor(secs)+ " sekund"+(Math.floor(secs)==1?"":"er");
+
+	var mins = secs/(60);
+	if(mins < 60 )
+		return Math.floor(mins) + " minutt" +(Math.floor(mins)==1?"":"er");
+
+	var hrs = mins / 60;
+	if( hrs < 24)
+		return Math.floor(hrs) + " time"+(Math.floor(hrs)==1?"":"r");
+
+	return  Math.floor(hrs / 24) +" dag"+(Math.floor(hrs / 24)==1?"":"er");
+}
+
+function showMessage(message){
+	$(".messagediv span").html(message).css("padding","3pt").fadeIn().delay(2000).fadeOut();
+	
+}
 
 

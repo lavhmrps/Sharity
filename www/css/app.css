@@ -301,6 +301,9 @@ article {
   margin: 10pt auto;
   width: 60%;
 }
+.left {
+  float: left;
+}
 .right {
   float: right;
 }

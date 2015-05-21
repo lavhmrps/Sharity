@@ -1,5 +1,6 @@
 $(document).on("pagebeforeshow","#page_project", function() {
 		showProject();
+		checkSubStatus(localStorage.getItem("userID"),localStorage.getItem("projectToShow"))
 });
 
 $(document).on( "pageinit","#page_project",function(){
@@ -14,7 +15,7 @@ $(document).on( "pageinit","#page_project",function(){
 	});
 	
 
-	$('a[name=follow_this_project]').click(function(){
+	$('span[name=follow_this_project]').click(function(){
 		var projectID = localStorage.getItem("projectToShow");
 		var email = localStorage.getItem('userID');
 
@@ -35,7 +36,9 @@ $(document).on( "pageinit","#page_project",function(){
 						data : data,
 						dataType : "text",
 						success : function(response){
-							$('a[name=follow_this_project]').html("Stopp abonnement");
+							$("#followerstatus").html("Følger");
+							$("#changeFollowerstatus").html("Ikke følg");
+							//$('span[name=follow_this_project]').html("Ikke følg");
 
 						},
 						error : function(){
@@ -52,7 +55,8 @@ $(document).on( "pageinit","#page_project",function(){
 						dataType:"text",
 						data:{"setSQL":sql},
 						success:function(response){
-							$('a[name=follow_this_project]').html("Følg prosjekt");
+							$("#followerstatus").html("Følger ikke");
+							$("#changeFollowerstatus").html("Følg prosjekt");
 						}
 					});
 					
@@ -87,8 +91,9 @@ function checkSubStatus(email,projectID){
 		data : {"getSQL":sql},
 		dataType : "json",
 		success : function(response){
-			var subText = (response.length == 0?"Følg Prosjekt":"Stopp abonnement");
-			$('a[name=follow_this_project]').html(subText);
+			var subText = (response.length == 0?"Følg Prosjekt":"Ikke følg");
+			$("#followerstatus").html(response.length == 0?"Følger ikke":"Følger");
+			$("#changeFollowerstatus").html(subText);
 		}
 	});
 }
@@ -122,15 +127,6 @@ function showProject(){
 			localStorage.setItem("orgLogo",response[0].orgLogo)
 
 			appendNewsList(projectID);
-			/*
-			$('img[name=background]').error(function(){
-				alert("background error, removing");
-				$(this).remove();
-			});
-			$('img[name=logo]').error(function(){
-				$(this).remove();
-			});
-			*/
 		}
 	});
 }

@@ -231,7 +231,9 @@ function listUserDonations(userIDtoShow){
 
 	
 	var list = $("#userDonationList");
-	var sql = "select project.projectID as projectID, project.name as name, donation.sum as sum, donation.type as type, donation.active as active, donation.date as date from donation join project on (project.projectID = donation.projectID) where donation.email like '"+userIDtoShow+"'";
+	//var sql = "select project.projectID as projectID, project.name as name, donation.sum as sum, donation.type as type, donation.active as active, donation.date as date from donation join project on (project.projectID = donation.projectID) where donation.email like '"+userIDtoShow+"'";
+	var sql ="SELECT d.*, p.name as projectName, p.logoURL as logoURL FROM donation as d join project as p on (p.projectID = d.projectID ) "
+			+"WHERE email = '"+userIDtoShow+"' order by date desc";
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 
@@ -240,31 +242,39 @@ function listUserDonations(userIDtoShow){
 		url: url,
 		dataType: "json",
 		data: data,
-		success:function(response){
+		success:function(json){
 			var listHTML="";
 			var listItem="";
-			if(response.length == 0){
+			if(json.length == 0){
 				listItem = 	"<li>"+usernameToShow+" har ikke donert ennå </li>";
 				listHTML = listItem;
 				list.html(listHTML);
 			}else{
 				
-				for(var i = 0; i < response.length; i++){
-					listItem = '<li name="userDonation" projectID="'+response[i].projectID+'">'+
-						'<div class="li_container">' +
-							'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
-							'<div class="li_mid">'+
-								'<div class="li_project">' +response[i].name+ '</div>'+
-								'<span class="li_donation red">' + response[i].sum + ' kr</span> <span'+
-								(response[i].type == 'fast'?' class="green">fast':'>')/*+response[i].type*/+'</span><span class="grey" style="float:right;font-size:small">'+
-								formatDate(response[i].date)+'</span>'+
+				for(var i = 0; i < json.length; i++){
+					var img = json[i].logoURL;
+					var imgHTML ="";
+					if (img != null)
+						imgHTML = '<img src="'+img+'">';
+
+					listItem =
+						'<li projectID="' + json[i].projectID +'"  donation="' + json[i].donationID +'" active="'+
+							(json[i].active == 1 ? 'true">':'false">')+
+							'<div class="li_container">' +
+								//'<div class="li_left"><div class="donationItem">'+(i+1)+'</div></div>'+
+								'<div class="li_left"><div class="circlegrey">'+imgHTML+'</div></div>'+
+								'<div class="li_mid">'+
+									'<div class="li_project large">' + json[i].projectName + '</div>'+
+									'<span class="li_donation grey">' + json[i].sum + ' kr</span> <span'+
+									(json[i].type == 'fast'?' class="green">fast':'>')+'</span><span  class="grey x-small right" style="line-height:15pt">'+
+									//formatDate(json[i].date)+
+									calcTime(json[i].date)+
+									' siden</span>'+
+								'</div>'+
+								'<div class="li_right">'+
+									((json[i].type == 'fast' ? (json[i].active == 1 ? '<img src="../img/ongoing.png" class="icon">':'<img src="../img/cancelled.png" class="icon">') : '' ))+
+								'</div>'+
 							'</div>'+
-							'<div class="li_right">'+
-								//(json[i].type == 'fast'?'<img src="donation_cancel.png"':'')+
-								((response[i].type == 'fast' ? (response[i].active == 1 ? 'Aktiv':'Stoppet') : '' ))+
-								
-							'</div>'+
-						'</div>'+
 						'</li>';
 				
 					listHTML+=listItem;

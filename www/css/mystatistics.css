@@ -148,7 +148,7 @@ footer ul li img{
 
 #donationList .li_mid{
 	width: 65%;
-	padding:7pt 0;
+	padding:7pt 5pt;
 }
 
 #donationList .li_right{
@@ -165,8 +165,9 @@ footer ul li img{
 }
 
 #donationList img{
-	height: 40%;
 	position:absolute;
+	top:0;bottom:0;left:0;right:0;
+	margin:auto;
 }
 
 #donationList .li_project, #userDonationList .li_project{
@@ -198,11 +199,15 @@ footer ul li img{
 	font-weight: normal;
 }
 /* UserDonationList */
-#userDonationList li{
-	list-style: none;
-	height: 50pt;
+
+#userDonationList{
+	list-style: none;	
 }
-#userDonationList .li_left, #userDonationList .li_right, #userDonationList .li_mid,{
+
+#userDonationList li{
+	height: 40pt;
+}
+#userDonationList .li_left, #userDonationList .li_right, #userDonationList .li_mid{
 	position: relative;
 	height:100%;
 	float:left;
