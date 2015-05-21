@@ -87,8 +87,54 @@ $(document).on("pageinit","#page_search_friends_sharity",function(){
 $(document).on("pageshow","#page_search_friends_sharity",function(){
 
 	$(".li_left, .li_mid").off("click").on("click",function(){
-		localStorage.setItem("userIDtoShow",$(this).closest("li").attr("id"));
-		$.mobile.changePage("#page_show_user_profile",{"transition":"slideup"});
+		var userIDtoShow = $(this).closest("li").attr("id");
+		var weAreFriends = $(this).closest("li").find("a").hasClass("btnFriend");
+
+		// Get user's privacyinfo
+		var sql = "select * from privacy where userID like '"+userIDtoShow+"'";
+		$.ajax({
+			type:"post",
+			url :getURLappBackend(),
+			dataType:"json",
+			data:{"getSQL":sql},
+			success:function(response){
+				var privacy_page, privacy_donations;
+				if (response.length == 0){
+					// User has yet to customize privacyinfo, using defaults : visibility to friends
+					privacy_page=1;
+					privacy_donations=1;
+				}
+				else{
+					privacy_page = response[0].page;
+					privacy_donations = response[0].donations;
+				}
+				if(privacy_page == 0){
+					showMessage("Ingen tilgang");
+					return;
+				}
+				if(privacy_page == 1){
+					if(weAreFriends){
+						localStorage.setItem("userIDtoShow",userIDtoShow);
+						$.mobile.changePage("#page_show_user_profile",{"transition":"slideup"});
+					}
+					else{
+						showMessage("Ingen tilgang");
+						return;
+					}
+				}
+				if(privacy_page == 2){
+					localStorage.setItem("userIDtoShow",userIDtoShow);
+					localStorage.setItem("userIDtoShowPrivacyPage",privacy_page);
+					localStorage.setItem("userIDtoShowPrivacyDonations",privacy_donations);
+					$.mobile.changePage("#page_show_user_profile",{"transition":"slideup"});
+				}
+
+
+			}
+		});
+
+
+		
 		
 	});// li left/mid on click
 
@@ -106,7 +152,8 @@ $(document).on("pageshow","#page_search_friends_sharity",function(){
 
 	$("a[name=deleteFriend]").off("click").on("click",function(){
 		var to_user = $(this).closest("li").attr("id");
-		deleteFriend(to_user,$(this));
+		if(confirm("Fjerne som venn?") == true)
+			deleteFriend(to_user,$(this));
 
 	}); // a deleteFriend
 

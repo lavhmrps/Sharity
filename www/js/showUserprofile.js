@@ -18,6 +18,86 @@ $(document).on("pageinit","#page_show_user_profile",function(){
 // Everytime page is shown
 $(document).on("pagebeforeshow","#page_show_user_profile",function(){
 	var userIDtoShow = localStorage.getItem("userIDtoShow");
+	$('a[name=show_user_donationlist]').attr("href","#page_show_user_profile");
+
+	// get user's privacy settings
+	var sql = "select * from privacy where userID like '"+userIDtoShow+"'";
+	var privacy_page, privacy_donations, weAreFriends=false;
+		$.ajax({
+			type:"post",
+			url :getURLappBackend(),
+			dataType:"json",
+			data:{"getSQL":sql},
+			success:function(response){
+				if (response.length == 0){
+					// User has yet to customize privacysettings, using defaults: visibility to friends
+					privacy_page=1;
+					privacy_donations=1;
+				}
+				else{
+					privacy_page = response[0].page;
+					privacy_donations = response[0].donations;
+				}
+				if(privacy_page == 0){
+					showMessage("Access denied");
+					window.history.go(-1);
+					return;
+				}else if (privacy_page == 1){
+					sql = "select * from friend where userEmail like '"+localStorage.getItem("userID")+"' and friendEmail like '"+userIDtoShow+"'";
+					console.log(sql);
+					$.ajax({
+						type:"post",
+						url :getURLappBackend(),
+						dataType:"json",
+						data:{"getSQL":sql},
+						success:function(response){
+							if(response.length == 0){
+								// Not friends
+								showMessage("Access denied");
+								window.history.go(-1);
+								return;
+							}else{
+								weAreFriends = true;
+							}
+							if(privacy_donations == 2 || (privacy_donations == 1 && weAreFriends)){
+								$('a[name=show_user_donationlist]').attr("href","#page_showUserDonations");
+								getUserDonationInformation(userIDtoShow);
+							}else{
+								denyUserDonationInfo(userIDtoShow);
+							}
+							
+						}
+					});
+				}else {
+					// privacy_page == 2
+					sql = "select * from friend where userEmail like '"+localStorage.getItem("userID")+"' and friendEmail like '"+userIDtoShow+"'";
+					console.log(sql);
+					$.ajax({
+						type:"post",
+						url :getURLappBackend(),
+						dataType:"json",
+						data:{"getSQL":sql},
+						success:function(response){
+							if(response.length == 0){
+								// Not friends
+							}else{
+								weAreFriends = true;
+							}
+							if(privacy_donations == 2 || (privacy_donations == 1 && weAreFriends)){
+								getUserDonationInformation(userIDtoShow);
+								$('a[name=show_user_donationlist]').attr("href","#page_showUserDonations");
+							}else{
+								denyUserDonationInfo(userIDtoShow);
+							}
+
+						}
+					});
+				}
+
+			}
+		});
+
+
 	//console.log("pagebeforeshow - userIDtoShow: "+userIDtoShow);
 
 	var url = getURLappBackend();
@@ -39,7 +119,7 @@ $(document).on("pagebeforeshow","#page_show_user_profile",function(){
 				$('img[name=user_logo]').attr("src",picURL);
 				$('span[name=show_user_fullname]').text(json[0].name);
 				localStorage.setItem("userToShowName",json[0].name);
-				getUserDonationInformation(json[0].email);
+				
 
 				
 			}
@@ -50,7 +130,29 @@ $(document).on("pagebeforeshow","#page_show_user_profile",function(){
 	}); // ajax
 }); // on pagebeforeshow
 
+function denyUserDonationInfo(userIDtoShow){
+	var current_date = new Date();
+			var month = new Array();
+			month[0] = "Januar";
+			month[1] = "Februar";
+			month[2] = "Mars";
+			month[3] = "April";
+			month[4] = "Mai";
+			month[5] = "Juni";
+			month[6] = "Juli";
+			month[7] = "August";
+			month[8] = "September";
+			month[9] = "Oktober";
+			month[10] = "November";
+			month[11] = "Desember";
 
+	var current_month = month[current_date.getMonth()];
+	$('span[name=show_user_amount_current_month]').text("X");
+	$('span[name=show_user_total_amount]').text("Y");
+	$('span[name=current_month]').text(current_month);
+	$('span[name=show_user_num_donations]').html("Ingen");
+	$('span[name=is_pluar]').html("Tilgang");
+}
 
 function getUserDonationInformation(userIDtoShow){
 	var sql = "SELECT * FROM Donation WHERE email = '"+userIDtoShow+"'";
@@ -114,7 +216,7 @@ $(document).on("pagebeforeshow","#page_showUserDonations",function(){
 	var userIDtoShow = localStorage.getItem("userIDtoShow");
 	listUserDonations(userIDtoShow);
 
-	$(document).on("click","#userDonationList .li_mid",function(){
+	$(document).off("click").on("click","#userDonationList .li_mid",function(){
 		//console.log("userDonation,projectID: "+$(this).closest("li").attr("projectID"));
 		localStorage.setItem("projectToShow", $(this).closest("li").attr("projectID"));
 		$.mobile.changePage("#page_project",{"transition":"slideup"});
