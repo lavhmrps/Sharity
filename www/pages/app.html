@@ -729,15 +729,28 @@
 			</div>
 			<div class="main_content">
 			<div>
-				<table class="settings_btns"><tr><td>
-					<a href="#" class="ui-btn ui-btn-icon-right icon-arrow-down" id="btn_settings_persondata">Persondata</a></td><td>
-					<a href="#" class="ui-btn ui-btn-icon-right icon-arrow-down"  id="btn_settings_manage_cards">Behandle kort</a></td></tr>
+				<table id="settings_links">
+					<tr>
+						<td>
+							<a href="#" class="x-small" id="btn_settings_persondata">Persondata</a>
+							<img src="../img/li_arrow_d_grey.png" class="table-icon">
+						</td>
+						<td>
+							<a href="#" class="x-small"  id="btn_settings_manage_cards">Behandle kort</a>
+							<img src="../img/li_arrow_d_grey.png" class="table-icon">
+						</td>
+						<td>
+							<a href="#" class="x-small"  id="btn_settings_privacy">Privatinnstillinger</a>
+							<img src="../img/li_arrow_d_grey.png" class="table-icon">
+						</td>
+					</tr>
 				</table>
+			
 
 			</div>			
+				<div class="messagediv centered"><span id="messagetext" class="small"></span></div>
 				<div id="settings_div">
-					<div class="messagediv centered"><span id="messagetext" class="small"></span></div>
-					<div id="div_persondata">
+					<div id="div_persondata" class="div_in_settings">
 						<table>
 							<tr>
 								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored blue" data-role="none" value="" id="set_name" placeholder="Fullt navn"></td>
@@ -799,7 +812,7 @@
 							</tr>
 						</table>
 					</div>
-					<div id="div_manage_cards">
+					<div id="div_manage_cards" class="div_in_settings">
 						<table>
 							<tr>
 								<td class="half_width">
@@ -820,7 +833,7 @@
 								<td><img src="../img/icon_grey.png" class="icon"></td>
 								<td>
 									<table>
-										<td>
+										<td class="half_width">
 											<select data-role="none" class="input_underscored blue" id="set_month">
 												<option value="0">Måned</option>
 												<option value="1">Januar</option>
@@ -837,7 +850,7 @@
 												<option value="12">Desember</option>
 											</select>
 										</td>
-										<td>
+										<td class="half_width">
 											<select data-role="none" class="input_underscored blue" id="set_year">
 												<option value="0">År</option>
 												<option value="2015">2015</option>
@@ -898,6 +911,63 @@
 							</tr>
 						</table>
 
+					</div>
+					<div id="div_privacy" class="div_in_settings">
+						<h5 class="settingsheader">Hvem skal kunne besøke siden min?</h5>
+						
+						<div class="listdiv">
+							<fieldset data-role="none">
+								<table>
+									<tr>
+										<td>
+											<input type="radio" name="radio_privacy_page" id="radio_privacy_page_0" value="0" data-role="none">
+											<label for="#cb_privacy" class="small">Bare jeg</label>
+										</td>
+										<td>
+											<input type="radio" name="radio_privacy_page" id="radio_privacy_page_1" value="1" data-role="none">
+											<label for="#cb_privacy" class="small">Venner</label>
+										</td>
+									
+										<td>
+											<input type="radio" name="radio_privacy_page" id="radio_privacy_page_2" value="2" data-role="none">
+											<label for="#cb_privacy" class="small">Alle</label>
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+
+							
+						</div>
+						<h5 class="settingsheader">Hvem skal kunne se donasjonene mine?</h5>
+						<div class="listdiv">
+							<fieldset data-role="none">
+								<table>
+									<tr>
+										<td>
+											<input type="radio" name="radio_privacy_donations" id="radio_privacy_donations_0" value="0" data-role="none">
+											<label for="#cb_privacy" class="small">Bare jeg</label>
+										</td>
+										<td>
+											<input type="radio" name="radio_privacy_donations" id="radio_privacy_donations_1" value="1" data-role="none">
+											<label for="#cb_privacy" class="small">Venner</label>
+										</td>
+									
+										<td>
+											<input type="radio" name="radio_privacy_donations" id="radio_privacy_donations_2" value="2" data-role="none">
+											<label for="#cb_privacy" class="small">Alle</label>
+										</td>
+									</tr>
+								</table>
+							</fieldset>
+						
+							<table class="settings_btns">
+								
+								<table>
+									<td class="half_width"><a href="#" class="ui-btn ui-btn-icon-right icon-cancel" id="btn_privacy_cancel">Avbryt</a></td>
+										<td class="half_width"><a href="#" class="ui-btn ui-btn-icon-right icon-check" id="btn_privacy_save">Lagre</a></td>
+								</table>
+							</table>
+						</div>	
 					</div>
 					
 				</div>

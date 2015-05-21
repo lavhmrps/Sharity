@@ -1,9 +1,12 @@
 $(document).on("pagebeforeshow","#page_settings",function(){
+	$("#settings_div").hide();
 	$("#div_persondata").hide();
 	$("#div_manage_cards").hide();
 	$("#btn_delete_card").hide();
+	$("#div_privacy").hide();
 	resetIconArrow($("#btn_settings_persondata"));	
 	resetIconArrow($("#btn_settings_manage_cards"));
+	resetIconArrow($("#btn_settings_privacy"));
 	$("#img_pw_change").attr("src","../img/li_arrow_d_grey.png");
 	$(".tr_pw_change").hide();
 	getPersonData();
@@ -36,6 +39,9 @@ $(document).on("pageinit","#page_settings",function(){
 	// Opens div for editing persondata, hiding card-settings divs if they are visible 
 	$("#btn_settings_persondata").click(function(){
 		var btn = $(this);
+		var div = $("#div_persondata");
+		closeOtherOpenThis(btn, div);
+		/*
 		if($("#div_manage_cards").is(":visible")){
 			$("#div_manage_cards").toggle("fast",function(){
 				changeIconArrow($("#btn_settings_manage_cards"));
@@ -43,12 +49,13 @@ $(document).on("pageinit","#page_settings",function(){
 			$("#div_persondata").delay("fast").toggle("fast",function(){
 				changeIconArrow(btn);
 			});
-		}
-		else{
-			$("#div_persondata").toggle("fast",function(){
+		}else{
+			$("#div_persondata").delay("fast").toggle("fast",function(){
 				changeIconArrow(btn);
 			});
 		}
+		*/
+		
 		$("#available_funds").html(localStorage.getItem("userFunds"));
 	});
 
@@ -81,14 +88,18 @@ $(document).on("pageinit","#page_settings",function(){
 		$("#set_phone").val(localStorage.getItem("userPhone")) ;
 		$("#set_zip").val(localStorage.getItem("userZip"));
 		$("#set_birthyear").val(localStorage.getItem("userBirthYear"));
-
+		/*
 		$("#div_persondata").toggle("fast",function(){
-				changeIconArrow(btn);
-			});
+			changeIconArrow(btn);
+		});
 		var message="Ingen endringer";
 		showMessage(message);
-
+		*/
 		resetPwFields();
+		var btn = $("#btn_settings_persondata");
+		var div = $("#div_persondata");
+		closeOtherOpenThis(btn, div);
+		showMessage("Ingen endringer");
 	});
 
 	// Saving new data
@@ -162,25 +173,24 @@ $(document).on("pageinit","#page_settings",function(){
 											localStorage.setItem("userPhone",phone);
 											localStorage.setItem("userZip",(zip==null)?"":zip);
 											localStorage.setItem("userBirthYear",birthyear);
+											/*
 											$("#div_persondata").toggle("fast",function(){
 												changeIconArrow( $("#btn_settings_persondata"));
 											});
+											*/
 											var message="Lagret";
 											showMessage(message);
 										}
 									});
-								}else
+								}else{
 									alert("Kunne ikke endre passordet");
+								}
 							}
 						});
-
-
 					}else{
 						alert("Du oppga feil passord");
 					}
-
 				}
-
 			});
 		} else{
 			// Update only persondata, not password
@@ -198,9 +208,11 @@ $(document).on("pageinit","#page_settings",function(){
 					localStorage.setItem("userPhone",phone);
 					localStorage.setItem("userZip",(zip==null)?"":zip);
 					localStorage.setItem("userBirthYear",birthyear);
+					/*
 					$("#div_persondata").toggle("fast",function(){
 						changeIconArrow( $("#btn_settings_persondata"));
 					});
+					*/
 
 					var message="Lagret";
 					showMessage(message);
@@ -215,6 +227,9 @@ $(document).on("pageinit","#page_settings",function(){
 
 	$("#btn_settings_manage_cards").click(function(){
 		var btn = $(this);
+		var div = $("#div_manage_cards");
+		closeOtherOpenThis(btn, div);
+		/*
 		if($("#div_persondata").is(":visible")){
 			$("#div_persondata").toggle("fast",function(){
 				changeIconArrow($("#btn_settings_persondata"));
@@ -227,6 +242,8 @@ $(document).on("pageinit","#page_settings",function(){
 				changeIconArrow(btn);
 			});
 		}
+		*/
+		
 		$("#available_funds_settings").html(localStorage.getItem("userFunds"));
 
 	});
@@ -338,13 +355,18 @@ $(document).on("pageinit","#page_settings",function(){
 
 	// Closing window, making no changes to any card
 	$("#btn_cardsettings_cancel").click(function(){
-		var btn =  $("#btn_settings_manage_cards");
 		resetCardInputs();
+		/*
 		$("#div_manage_cards").toggle("fast",function(){
 				changeIconArrow(btn);
 			});
 		var message="Ingen endringer";
 		showMessage(message);
+		*/
+		var btn = $("#btn_settings_manage_cards");
+		var div = $("#div_manage_cards");
+		closeOtherOpenThis(btn, div);
+		showMessage("Ingen endringer");
 	});
 
 	// Save / create creditcard
@@ -413,12 +435,14 @@ $(document).on("pageinit","#page_settings",function(){
 
 				console.log((addingNewCard?"insert: ":"update: ")+response);
 				if(response=="OK"){
+					/*
 					resetCardInputs();
 					getCardsData();
 					$("#div_manage_cards").toggle("fast",function(){
 						var btn = $("#btn_settings_manage_cards");
 						changeIconArrow(btn);
 					});
+					*/
 					var message="Kortinfo lagret";
 					showMessage(message);
 				}
@@ -426,7 +450,128 @@ $(document).on("pageinit","#page_settings",function(){
 		});
 	});
 
+	$("#btn_settings_privacy").click(function(){
+		var btn = $(this);
+		var div = $("#div_privacy");
+		closeOtherOpenThis(btn, div);
+
+		var priv_page, priv_donations;
+		var userID = localStorage.getItem("userID");
+
+		// visibile to: 0 = me, 1 = friends, 2 = everyone
+		var sql ="select * from privacy where userID = '"+userID+"'";
+		var url = getURLappBackend();
+
+		$.ajax({
+			type: "POST",
+			url : url, 
+			data: {"getSQL":sql},
+			dataType: "json",
+			success : function(response){
+				if(response.length == 0){
+					// No privacysettings, creating defaults
+					sql ="insert into privacy (userID, page,donations) values('"+userID+"',1,1) ";
+					$.ajax({
+						type: "POST",
+						url : url, 
+						data: {"setSQL":sql},
+						dataType: "text",
+						success : function(response){
+							console.log("insert privacysettings:" +response);
+							$("#radio_privacy_page_1").prop("checked","checked");
+							$("#radio_privacy_donations_1").prop("checked","checked");
+						}
+					});
+				}else{
+					priv_page = response[0].page;
+					priv_donations = response[0].donations;
+					var radio_page = "#radio_privacy_page_"+priv_page;
+					var radio_donations = "#radio_privacy_donations_"+priv_donations;
+					$(radio_page).prop("checked","checked");
+					$(radio_donations).prop("checked","checked");
+				}
+			}
+
+		});
+
+
+		
+	});
+
+	$("#btn_privacy_cancel").click(function(){
+		var btn = $("#btn_settings_privacy");
+		var div = $("#div_privacy");
+		closeOtherOpenThis(btn, div);
+		showMessage("Ingen endringer");
+	});
+
+	$("#btn_privacy_save").click(function () {
+		var privacy_page = $("input[name=radio_privacy_page]:checked").val();
+		var privacy_donations = $("input[name=radio_privacy_donations]:checked").val();
+
+		var sql ="update privacy set page = "+privacy_page+", donations = "+privacy_donations+" where userID like '"+localStorage.getItem("userID")+"'";
+		$.ajax({
+			type: "POST",
+			url : getURLappBackend(), 
+			data: {"setSQL":sql},
+			dataType: "text",
+			success : function(response){
+				console.log("update privacysettings: "+response);
+				showMessage("Privatinnstillinger lagret");
+			}
+		});
+	})
 });
+
+
+function closeOtherOpenThis(btn, div) {
+	if ($("#settings_div").is(":hidden")){
+		$("#settings_div").show();
+	}
+	var windowsWereOpen = false;
+	if($("#btn_settings_persondata").attr("id") != btn.attr("id")){
+		if($("#div_persondata").is(":visible")){
+			windowsWereOpen = true;
+			$("#div_persondata").toggle("fast",function(){
+				changeIconArrow($("#btn_settings_persondata"));
+			});
+		}
+	}
+	if($("#btn_settings_manage_cards").attr("id") != btn.attr("id")){
+		if($("#div_manage_cards").is(":visible")){
+			windowsWereOpen = true;
+			$("#div_manage_cards").toggle("fast",function(){
+				changeIconArrow($("#btn_settings_manage_cards"));
+			});
+		}
+	}
+	if($("#btn_settings_privacy").attr("id") != btn.attr("id")){
+		if($("#div_privacy").is(":visible")){
+			windowsWereOpen = true;
+			$("#div_privacy").toggle("fast",function(){
+				changeIconArrow($("#btn_settings_privacy"));
+			});
+		}
+	}
+	if(windowsWereOpen){
+		div.delay("fast").toggle("fast",function(){
+			changeIconArrow(btn);
+		});
+
+
+	}else{
+		div.toggle("fast",function(){
+			changeIconArrow(btn);
+		});
+	}
+	
+	// wait for toggleanimation and check if any div in settings is open, if not hide settingsdiv
+	setTimeout(function(){
+		if($("div.div_in_settings:visible").length ===0)
+			$("#settings_div").hide();
+
+	},200);
+}
 
 // Making a list of active friend-requests
 function checkFriendRequests(){
@@ -622,6 +767,17 @@ function checkCardInfo(){
 
 // Switching arrowicons depending on state of its div's visibility
 function changeIconArrow(elem){
+	// elem is link in td, img in same td is changing
+	var img = elem.parent().find("img");
+	if(img.attr("src") == "../img/li_arrow_d_grey.png")
+		img.attr("src","../img/li_arrow_u_grey.png");
+	else
+		img.attr("src","../img/li_arrow_d_grey.png");
+
+}
+
+// Switching arrowicons depending on state of its div's visibility
+function changeIconArrow2(elem){
 	if(elem.hasClass("icon-arrow-up")){
 		elem.removeClass("icon-arrow-up").addClass("icon-arrow-down");
 	}
@@ -631,6 +787,11 @@ function changeIconArrow(elem){
 }
 
 function resetIconArrow(elem){
+	var img = elem.parent().find("img");
+	img.attr("src","../img/li_arrow_d_grey.png");
+}
+
+function resetIconArrow2(elem){
 	elem.removeClass("icon-arrow-up").addClass("icon-arrow-down");
 }
 
