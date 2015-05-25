@@ -74,51 +74,6 @@ $(document).on("pageinit","#page_donate",function(){
 		}
 		completeDonation();
 	});
-
-	/* Challenge-Popup */
-	/*
-	$("#popup_donate_challenge").on("popupbeforeposition",function (){
-		// Disable background scrolling
-		$('body').css('overflow','hidden');
-		
-		getFriendList();
-		$("#chall-content-donationinfo-amount").html(localStorage.getItem("chall-donation-sum"));
-		$("#chall-content-donationinfo-organization").html(localStorage.getItem("chall-donation-orgName"));
-		$("#chall-content-donationinfo-project").html(localStorage.getItem("chall-donation-projectName"));
-
-
-
-	});
-	$("#popup_donate_challenge").on("popupafteropen",function (){
-		var donationID = localStorage.getItem("chall-donationID");
-
-		$("#chall-btn-challenge").off("click").click(function(){
-			var to_list=[];
-			var i=0;
-			$("#chall-content-listdiv-list .chall_li_cb").each(function(){
-				var isChecked = $(this).find("input[type=checkbox]").prop("checked");
-				if(isChecked){
-					var userID = $(this).closest("li").attr("id");
-					to_list[i++]=userID;
-				}
-			});
-			if(i==0){
-				alert("Velg en eller flere mottagere");
-				return;
-			}
-
-			var message = $("#chall-content-textareadiv-textarea").val();
-			console.log(to_list);
-			sendChallenges(to_list,donationID,message);
-		
-		});
-	});	
-
-	$("#popup_donate_challenge").on("popupafterclose",function (){
-		// Enable scrolling after popup is closed
-		$('body').css('overflow','auto');
-	});
-*/
 });
 
 
@@ -274,11 +229,12 @@ function completeDonation(){
 	});
 }
 
-function sendChallenges(to_list, donationID,message){
+function sendChallenges(to_list, donationID, message){
 	var url = getURLappBackend();
 	for(var i=0; i<to_list.length;i++){		
 		(function (i) {
-			var sql ="insert into challenge (from_user, to_user, donationID, message) values ( '"+localStorage.getItem("userID")+"', '"+to_list[i]+"', "+donationID+", '"+message+"')";
+			var sql ="insert into challenge (from_user, to_user, donationID, message) values "
+					+"( '"+localStorage.getItem("userID")+"', '"+to_list[i]+"', "+donationID+", '"+message+"')";
 			console.log(sql);
 			$.ajax({
 				type : "POST",

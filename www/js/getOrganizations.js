@@ -10,7 +10,6 @@ $(document).on("pageinit","#page_overview",function(){
 		}else{
 			console.log("nowShowing= "+nowShowing);
 		}
-
 	});
 	
 	$(document).on('click', 'li[name=organization_list]', function() {
@@ -19,15 +18,6 @@ $(document).on("pageinit","#page_overview",function(){
 	$(document).on('click', 'li[name=project_list]', function() {;
 		localStorage.setItem('projectToShow', this.id);
 	});
-
-	$('.footer_overview').click(function(){
-		if(localStorage.getItem('userID') != null){
-			listOrgs();
-		}else{
-			window.location.replace("../index.html");
-			alert("Vennligst logg inn");
-		}
-	});	
 
 	$('button[name=logut]').click(function(){
 		localStorage.clear();

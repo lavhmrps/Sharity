@@ -41,6 +41,16 @@ $( document ).on( "pagecreate", function() {
 	});
 });
 
+// Hiding footer when typing (for phones)
+$(document).on("focus", "input", function() {
+	$.mobile.activePage.find("footer").hide();
+});
+
+// Show footer when finished typing
+$(document).on("blur", "input", function() {
+	$.mobile.activePage.find("footer").show();
+});
+
 // Every time a page is shown
 $(document).on('pagebeforeshow', function () {
 	checkUpdates();
@@ -117,10 +127,7 @@ function calcTime (date) {
 
 	return  Math.floor(hrs / 24) +" dag"+(Math.floor(hrs / 24)==1?"":"er");
 }
-
+var message = "Ingen tilgang";
 function showMessage(message){
-	$(".messagediv span").html(message).css("padding","3pt").fadeIn().delay(2000).fadeOut();
-	
+	$(".messagediv div").html(message).css("padding","3pt").fadeIn().delay(2000).fadeOut();	
 }
-
-

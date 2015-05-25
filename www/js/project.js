@@ -91,9 +91,8 @@ function checkSubStatus(email,projectID){
 		data : {"getSQL":sql},
 		dataType : "json",
 		success : function(response){
-			var subText = (response.length == 0?"Følg Prosjekt":"Ikke følg");
 			$("#followerstatus").html(response.length == 0?"Følger ikke":"Følger");
-			$("#changeFollowerstatus").html(subText);
+			$("#changeFollowerstatus").html(response.length == 0?"Følg Prosjekt":"Ikke følg");
 		}
 	});
 }

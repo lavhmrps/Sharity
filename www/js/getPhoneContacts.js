@@ -1,23 +1,4 @@
  $( document ).delegate("#page_add_friend", "pageinit", function() {
- 	/*
-	var contact = '<li email="maglunde@gmail.com">'+
-		'<div class="li_container">'+
-		'<div class="li_left">'+
-		'<div class="li_circ">'+
-		'</div>'+
-		'</div>'+
-		'<div class="li_mid">'+
-		'<span class="li_heading">Magnus Lunde</span>'+
-		'<span class="li_text">97106869</span>'+
-		'</div>'+
-		'<div class="li_right">'+
-		'<a href="#" rel="external" class="li_btn invite show-page-loading-msg" >Inviter</a>'+
-		'</div>'+
-		'</div>'+
-		'</li>';
- 	console.log(contact);
-	*/
-	//alert("paageinit");
 	document.addEventListener('deviceready', onDeviceReady, false);
 });
 		

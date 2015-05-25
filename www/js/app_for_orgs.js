@@ -539,8 +539,9 @@ $(document).on("pageshow","#page_org_activities",function(){
 	$(document).off("click").on("click","#actsProjectStats tr",function(){
 		var projectID = $("select[name=actsSelectProject] option:selected").attr("id");
 		var rowName = $(this).attr("name");
-		if(rowName== "actsRowDonations")
+		if(rowName== "actsRowDonations"){
 			openDonationList(projectID);
+		}
 		else if(rowName = "actsNumFollowers")
 			openFollowerList(projectID);
 	})
@@ -564,9 +565,8 @@ function handlenumSubs(promise, str){
 function openDonationList (projectID) {
 	$("#detailsTitle").html("Donasjoner");
 	var sql ="";
+	
 	if(projectID == 0){
-		$("#forWho").html("Alle prosjekter");
-
 		sql ="select d.*, p.name as projectName, u.name as userName from donation as d join project as p on d.projectID = p.projectID "
 			+"join organization as o on p.organizationNr = o.organizationNr join user as u on u.email like d.email "
 			+"where o.organizationNr = " +localStorage.getItem("orgNr")+" order by date desc";
@@ -582,7 +582,10 @@ function openDonationList (projectID) {
 			dataType:"json",
 			data:{"getSQL":sql},
 			success:function(response){
-				$("#forWho").html(response[0].projectName);
+				if(projectID == 0)
+					$("#forWho").html("Alle prosjekter");
+				else
+					$("#forWho").html(response[0].projectName);
 				var detailsTable = $("#detailsTable");
 				var tableHTML = "";
 				var row="<thead><th>ID</th><th>Prosjekt/Fra</th><th>Sum</th><th>Når</th></thead><tbody>";
@@ -801,13 +804,7 @@ function readImage(file) {
     reader.onload = function(_file) {
         image.src    = _file.target.result;              // url.createObjectURL(file);
         image.onload = function() {
-        	/*
-            var w = this.width,
-                h = this.height,
-                t = file.type,                           // ext only: // file.type.split('/')[1],
-                n = file.name,
-                s = ~~(file.size/1024) +'KB';
-			*/
+
             $('#preview').html('<img src="'+ this.src +'" id="selectedImage"> ');	//+w+'x'+h+' '+s+' '+t+' '+n+'<br>');
 			$('#preview img').click(function(){
 				$('#inputChooseImage').click();

@@ -8,10 +8,6 @@ $( document ).on("pagebeforeshow","#page_mystatsDonations",  function() {
 });
 
 
-$(".footer_me").click(function() {
-	showStats();
-});
-
 function showStats(){
 	var current_date = new Date();
 	var month = new Array();

@@ -86,7 +86,7 @@ $(document).on("pageinit","#page_search_friends_sharity",function(){
 
 $(document).on("pageshow","#page_search_friends_sharity",function(){
 
-	$(".li_left, .li_mid").off("click").on("click",function(){
+	$("#page_search_friends_sharity .li_left,#page_search_friends_sharity .li_mid").off("click").on("click",function(){
 		var userIDtoShow = $(this).closest("li").attr("id");
 		var weAreFriends = $(this).closest("li").find("a").hasClass("btnFriend");
 
@@ -157,7 +157,7 @@ $(document).on("pageshow","#page_search_friends_sharity",function(){
 
 	}); // a deleteFriend
 
-}) // on pageshow #page_add_friend
+}) // on pageshow #page_search_friends_sharity
 
 function requestFriendship(to_user,elem){
 	var url = getURLappBackend();

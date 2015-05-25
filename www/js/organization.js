@@ -1,17 +1,17 @@
 $(document).on("pageinit","#page_organization",function(){
+	// Clicking on newslink will scroll automatically down to newssection
 	$("#linkPageOrgNews").click(function(){
 		$('html, body').animate({scrollTop: $("#sectionOrgNews").offset().top}, 600);	
 
 	});
 	
+	// Saving information on who to donate to
 	$(document).on('click', 'a[name="page_org_donation"]', function() {
 		localStorage.setItem("donateToOrganization",localStorage.getItem("organizationToShow"));
-		//console.log("page_organization: "+localStorage.getItem("donateToOrganization"));
 	});
 
 	$(document).on('click', 'a[name="page_org_li_donation"]', function() {
 		localStorage.setItem("donateToProject",this.id);
-		//console.log("page_organization: "+localStorage.getItem("donateToProject"));
 	});
 });
 

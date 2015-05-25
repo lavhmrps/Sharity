@@ -8,12 +8,14 @@ $(document).ready(function(){
 	// Setting steps-to-go to 4 if register NewUser
 	$("#nav_register1a").click(function() {
 		$(".portrait").show();
+		$("#deleteImage").show();
 		$("#stepstogo").empty().append("4");
 	});
 
 	//Setting steps-to-go to 3 if register NewOrganisation
 	$("#nav_register1b").click(function() {
 		$(".portrait").hide();
+		$("#deleteImage").hide();
 		$("#stepstogo").empty().append("3");
 	});
 
@@ -44,7 +46,7 @@ $(document).ready(function(){
 
 	// Checking database for existing userID (email)
 	$(document).on("blur","input[name='reg_user_email']",function(){
-		var patt = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+		var patt = new RegExp("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
 		var emailTest = $("input[name='reg_user_email']").val();
 
 		if(emailTest.indexOf("'")!=-1){
@@ -139,11 +141,6 @@ $(document).on(	"click", ".show-page-loading-msg", function() {
 
 // Hiding footer when typing (for phones)
 $(document).on("focus", "input", function() {
-	var pageID = $.mobile.activePage.attr('id');
-	//.. but not when on search-pages
-	if (pageID == "page_search_friends_sharity"){
-		return;
-	}
 	$.mobile.activePage.find("footer").hide();
 });
 
@@ -151,6 +148,7 @@ $(document).on("focus", "input", function() {
 $(document).on("blur", "input", function() {
 	$.mobile.activePage.find("footer").show();
 });
+
 
 function validate() {
 

@@ -557,8 +557,6 @@ function closeOtherOpenThis(btn, div) {
 		div.delay("fast").toggle("fast",function(){
 			changeIconArrow(btn);
 		});
-
-
 	}else{
 		div.toggle("fast",function(){
 			changeIconArrow(btn);
