@@ -33,7 +33,7 @@ function showStats(){
 	$('span[name=current_month]').text(current_month);
 
 	var email = localStorage.getItem('userID');
-	var sql = "SELECT * FROM User WHERE email = '"+email+"'";
+	var sql = "SELECT * FROM user WHERE email = '"+email+"'";
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 
@@ -87,7 +87,7 @@ function getChallenges(){
 function getMyDonationInformation(){
 
 	var email = localStorage.getItem('userID');
-	var sql = "SELECT * FROM Donation WHERE email = '"+email+"'";
+	var sql = "SELECT * FROM donation WHERE email = '"+email+"'";
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 
@@ -514,7 +514,7 @@ function acceptChallenge(challengeID,listItem){
 
 			// Making a one-time donation
 			var type = "engangsdonasjon";
-			sql = "INSERT INTO Donation (projectID, email, type, sum,active) VALUES('"+projectID+"', '"+email+"', '"+type+"', '"+sum+"', '"+0+"')";
+			sql = "INSERT INTO donation (projectID, email, type, sum,active) VALUES('"+projectID+"', '"+email+"', '"+type+"', '"+sum+"', '"+0+"')";
 			var data = {'setSQL' : sql};
 
 			$.ajax({

@@ -153,7 +153,7 @@ $('button[name=reg_user_complete]').click(function(){
 function insertUser(){
 	//console.log(globalData.name+"', '"+globalData.phone+"', '"+globalData.email+"','"+globalData.password);
 
-	var sql = "INSERT INTO User (name, phone, email, password) VALUES ('"+globalData.name+"', '"+globalData.phone+"', '"+globalData.email+"','"+globalData.password+"')";
+	var sql = "INSERT INTO user (name, phone, email, password) VALUES ('"+globalData.name+"', '"+globalData.phone+"', '"+globalData.email+"','"+globalData.password+"')";
 	var data = {"setSQL" : sql};
 	var url = getURLappBackend();	
 
@@ -196,7 +196,7 @@ function insertUser(){
 
 function insertCardAndUpdateUser(){
 
-	var sql = "INSERT INTO Card (cardnr, month, year, CCV, cardname, monthly_charge) VALUES('"+globalData.visa_number+"', '"+globalData.visa_expire_month+"', '"+globalData.visa_expire_year+"', '"+globalData.ccv+"', '"+globalData.cardname+"', '"+globalData.monthly_amount+"')";
+	var sql = "INSERT INTO card (cardnr, month, year, CCV, cardname, monthly_charge) VALUES('"+globalData.visa_number+"', '"+globalData.visa_expire_month+"', '"+globalData.visa_expire_year+"', '"+globalData.ccv+"', '"+globalData.cardname+"', '"+globalData.monthly_amount+"')";
 	console.log(sql);
 	var url = getURLappBackend();	
 	var data = {"setSQL" : sql};

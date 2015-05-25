@@ -137,7 +137,7 @@ function showProject(){
 function appendNewsList(projectID){
 
 	var newsCode = "",leftCode="";
-	var sql = "SELECT * FROM News WHERE projectID ='" + projectID + "'";
+	var sql = "SELECT * FROM news WHERE projectID ='" + projectID + "'";
 	var url = getURLappBackend();
 	$.ajax({
 		type : "POST",

@@ -53,7 +53,7 @@ $(document).on("pagebeforeshow","#page_show_user_profile",function(){
 
 
 function getUserDonationInformation(userIDtoShow){
-	var sql = "SELECT * FROM Donation WHERE email = '"+userIDtoShow+"'";
+	var sql = "SELECT * FROM donation WHERE email = '"+userIDtoShow+"'";
 	var url = getURLappBackend();
 	var data = {"getSQL" : sql};
 

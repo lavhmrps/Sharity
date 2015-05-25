@@ -50,7 +50,7 @@ function showNews(){
 	});
 
 	
-	var sql = "SELECT * FROM News WHERE projectID ='" + projectID + "'";
+	var sql = "SELECT * FROM news WHERE projectID ='" + projectID + "'";
 	//console.log(sql);
 	var url = getURLappBackend();
 	$.ajax({
