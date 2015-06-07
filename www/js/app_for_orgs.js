@@ -351,7 +351,8 @@ $(document).on("pageinit","#page_org_edit_news",function(){
 		var newsID = $("#dd_news_e").val();
 		var title = $("#news_title_e").val();
 		var content = $("#news_content_e").val();
-		var image = $("#selectedImage_e").attr("src");
+		//var image = $("#selectedImage_e").attr("src");
+		var image = $("#selectedImage_e").prop('files')[0];
 		var projectID = $("#dd_projects_e").val();
 
 		if(newsID == 0){
@@ -825,16 +826,10 @@ function readImage_e(file) {
   
     reader.readAsDataURL(file);  
     reader.onload = function(_file) {
-        image.src    = _file.target.result;              // url.createObjectURL(file);
+        image.src    = _file.target.result;              
         image.onload = function() {
-        	/*
-            var w = this.width,
-                h = this.height,
-                t = file.type,                           // ext only: // file.type.split('/')[1],
-                n = file.name,
-                s = ~~(file.size/1024) +'KB';
-			*/
-            $('#preview_e').html('<img src="'+ this.src +'" id="selectedImage_e"> ');	//+w+'x'+h+' '+s+' '+t+' '+n+'<br>');
+
+            $('#preview_e').html('<img src="'+ this.src +'" id="selectedImage_e"> ');	
 			$('#preview_e img').click(function(){
 				$('#inputChooseImage_e').click();
 			});
@@ -869,4 +864,50 @@ function showMessage(message){
 	console.log("showing message : "+message);
 	$(".messagediv span").html(message).css("padding","3pt").fadeIn().delay(3000).fadeOut();
 	//$("#messagetext").fadeIn().delay(3000).fadeOut();
+}
+
+
+function insertImage(image){
+	var urlLocalstorage = getURLphpBackendlocalStorageJStoPHP();
+	$.ajax({
+		type : "POST",
+		url : urlLocalstorage,
+		dataType : "text",
+		data : {"userEmailToInsertImage" : globalData.email},
+		success : function(response){
+			if(response != "OK"){
+				alert("insertUser.js insertImage: " + response);
+			}
+		},
+		error : function(response){
+			alert("insertUser.js : insertImage() : ajax request error: "  +  response.message);
+		}
+	});
+	
+
+	var urlInsertImage = getURLappBackendInsertImageUser();
+	
+	var form_data_image = new FormData();
+	form_data_image.append('image', image);
+	$.ajax({
+		url: urlInsertImage, // point to server-side PHP script
+		datatype: 'text', // what to expect back from the PHP script, if anything
+		cache: false,
+		contentType: false,
+		processData: false,
+		data: form_data_image,
+		type: 'POST',
+		success: function(response){
+			if(response == "OK"){
+
+			}else{
+				alert("insertUser.js insertImage: " + response);
+			}
+			
+		},
+		error : function(response){
+			alert(" insertUser.js : insertBackground ajax request ERROR: " + response);
+			console.log(response.message);
+		}
+	});
 }

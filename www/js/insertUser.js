@@ -15,7 +15,7 @@ $(document).ready(function(){
 		password : ''
 	};
 	
-	$("img[name=preview]").hide();
+	$("#deleteImage").hide();
 
 	$('#clear').click(function(){
 		var image = $("#file_background");
@@ -24,11 +24,18 @@ $(document).ready(function(){
 
 	$("input[name=reg_user_image]").change(function(){
 		previewImage(this);
+
+		$("#deleteImage").show();
 	});
 
 	$("div[name=trigger_pick_image]").click(function(){
 		$("input[name=reg_user_image]").trigger('click');
 	});
+
+	$("#deleteImage").off("click").click(function(){
+		$('img[name=preview]').attr('src',"img/default.png").show();
+		$("#deleteImage").hide();
+	})
 
 
 	$('button[name=reg_user_personalia_done]').click(function(){
@@ -170,8 +177,7 @@ function insertUser(){
 					var image = $('input[name=reg_user_image]').prop('files')[0];
 				}catch(error){
 				}
-				if(image != undefined){
-					console.log("image not undefined");
+				if(image != undefined && image.src != "../img/default.png"){
 					insertImage(image);
 				}
 				//alert("USER SATT INN!  insertUser.js button[name=reg_user_complete.click]");
@@ -243,13 +249,23 @@ function updateUser(){
 function previewImage(input) {
 	if (input.files && input.files[0]) {
 		var fileReader = new FileReader();
+		var image = new Image();
+		fileReader.readAsDataURL(input.files[0]);
 
 		fileReader.onload = function (e) {
-			$('img[name=preview]').attr('src', e.target.result);
-			$("img[name=preview]").show();
+			image.src = e.target.result;
+			image.onload = function(){
+				$('img[name=preview]').attr('src', this.src);
+				$("img[name=preview]").show();
+				$("#deleteImage").show();
+			}
+			image.onerror = function(){
+				console.log("error in file:" +input.type);
+				$('img[name=preview]').attr('src',"img/default.png").show();
+				$("#deleteImage").hide();
+			}
 		}
 
-		fileReader.readAsDataURL(input.files[0]);
 	}
 }
 
