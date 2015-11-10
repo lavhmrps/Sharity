@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sharity app</title>s
+
+	<!--************Meta goes here************-->
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<!--************End of meta************-->
+
+	<!--************CSS goes here************-->
+	<link rel="stylesheet" type="text/css" href="../css/app.css" />
+	<link rel="stylesheet" type="text/css" href="../css/overview.css" />
+	<link rel="stylesheet" type="text/css" href="../css/list_overview.css">
+	<link rel="stylesheet" type="text/css" href="../css/my_friends.css" />
+	<link rel="stylesheet" type="text/css" href="../css/list_my_friends.css">
+	<link rel="stylesheet" type="text/css" href="../css/add_friend.css" />
+	<link rel="stylesheet" type="text/css" href="../css/list_add_friend.css">
+	<link rel="stylesheet" type="text/css" href="../css/list_add_friend_my_contacts.css">
+	<link rel="stylesheet" type="text/css" href="../css/organisation.css" />
+	<link rel="stylesheet" type="text/css" href="../css/list_organisation.css">
+	<link rel="stylesheet" type="text/css" href="../css/project.css" />
+	<link rel="stylesheet" type="text/css" href="../css/list_project.css">
+	<link rel="stylesheet" type="text/css" href="../css/donate.css" />
+	<link rel="stylesheet" type="text/css" href="../css/mystatistics.css" />
+	<link rel="stylesheet" type="text/css" href="../css/list_project.css">
+	<link rel="stylesheet" type="text/css" href="../css/list_search_friends.css">
+	<link rel="stylesheet" type="text/css" href="../css/settings.css">
+	<!-- Include jQuery Mobile stylesheets -->
+	<link rel="stylesheet" type="text/css" href="../css/mobile.css">
+	<!--************End of stylesheets************-->
+
+	
+	<!--************Scripts goes here************-->
+	<!-- Include the jQuery library -->
+	<script src="../js/jquery.js"></script>
+	<!-- Include the jQuery Mobile library -->
+	<script src="../js/mobile.js"></script>
+
+	<!--Include the jQuery Dotdotdot library-->
+	<script src="../js/jquery.dotdotdot.min.js"></script>
+
+	<!-- This is located in <platforms/android/platform_www> in phonegap folder 
+	<script src="../js/cordova.js"></script>-->
+	<script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="../js/paypal-mobile-js-helper.js"></script>
+    <script type="text/javascript" src="../js/paypal.js"></script>
+
+
+	<script src="../js/app.js"></script>
+	<script src="../js/getOrganizations.js"></script>
+	<script src="../js/urls.js"></script>
+	<script src="../js/getPhoneContacts.js"></script>
+	<script src="../js/organization.js"></script>
+	<script src="../js/my_friends.js"></script>
+	<script src="../js/add_friends.js"></script>
+	<script src="../js/project.js"></script>
+	<script src="../js/donate.js"></script>
+	<script src="../js/mystatistics.js"></script>
+	<script src="../js/footer_nav.js"></script>
+	<script src="../js/settings.js"></script>
+	<script	src="../js/getNews.js"></script>
+	<script src="../js/showSubscriptions.js"></script>
+	<script src="../js/showUserprofile.js"></script>
+	<!--************End of scripts************-->
+
+</head>
+<body>
+	<!-- ************page_overview goes here************-->
+	<div data-role="page" id="page_overview" class="page">
+		<div id="header_div" class="boxshadow">
+			<div page-role="header" class="header_top"></div>
+			<p>Sharity</p>
+
+		</div>
+		<div class="main_content">
+			<div class="content_box1 ">
+				<div class="content_box1l box_inner">
+					<h6 class="box_text small grey">Sorter</h6>
+					<h5 class="box_text blue" id="showOrgsOrProjects">Organisasjoner</h5>
+				</div>
+				<div class="content_box1r box_inner">
+					<h6 class="box_text small grey">Område</h6>
+					<h5 class="box_text blue">Alle</h5>
+				</div>
+				<div class="content_box1b">
+					<div class="content_box1b_icon">
+						<img src="../img/icon_search.png" class="icon"/>
+					</div>
+					<div>
+						<!--<h6 class="grey">Søk blandt alle organisasjoner og prosjekter</h6>-->
+						<form class="ui-filterable">
+							<input id="orgFilter" data-type="search" data-role="none" class="search" placeholder="Søk organisasjoner og prosjekter"/>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="listdiv">
+				<span class="small red" id="listTitle">Alle organisasjoner</span>
+				<ul name="organizationList" id="orgList" data-filter="true" data-input="#orgFilter">
+					<!--Organization list goes here, append-->
+				</ul>
+			</div>
+		</div>
+		<div class="somespace"></div>
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_me"><img  alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_overview  footer_active"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<!--************End of overview goes here************-->
+
+
+	<!--************Friends pages goes here************-->
+	<div data-role="page" id="page_my_friends" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div page-role="header" class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
+			<img src="../img/icon_add_friend.png" class="add_friend_icon" name="add_friend">
+			<p>Mine venner</p>
+		</div>
+		<div class="main_content">
+			<span class="small grey" id="friendRequests"></span>
+			<div class="top_container">
+				<span class="top_donations">Donasjoner</span>
+			</div>
+			<div class="listdiv">
+				<ul id="friendList">
+					
+				</ul>
+			</div>
+		</div>	
+
+		<div class="somespace"></div>
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<!--************End of friends page************-->
+	
+
+	<!--************Add friends	/Find friends goes here************-->
+	<div data-role="page" id="page_add_friend" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div page-role="header" class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
+			<p>Legg til venner</p>
+		</div>
+
+		<div class="main_content">
+			<div class="listdiv">
+				<ul data-role="none" >
+					<li>
+						<a href="#" rel="external" class="show-page-loading-msg">
+							<div class="li_container">
+								<div class="li_left">
+									<div class="circleblue">
+										F
+									</div>
+								</div>
+								<div class="li_mid dots">
+									<span class="li_friends">Vis Facebook-venner</span>
+								</div>
+								<div class="li_right">
+								</div>
+							</div>
+						</a>
+					</li>
+					<li name="search_sharity">
+						<a href="" rel="external" class="show-page-loading-msg">
+							<div class="li_container">
+								<div class="li_left">
+									<div class="circleblue">
+										S
+									</div>
+								</div>
+								<div class="li_mid dots">
+									<span class="li_friends" >
+										Søk Sharity
+									</span>
+								</div>
+								<div class="li_right">
+									<img src="../img/li_arrow_r_grey.png">
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="listdiv">
+				<h5>Mine Kontakter</h5>			
+
+				<ul id="myContactsList" name="contactsList">
+				</ul>
+
+
+			</div>
+		</div>
+
+		<!-- Lager litt plass før footer -->
+		<div class="somespace"></div>
+
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_me"><img  alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<!--************End of add/find frineds************-->
+
+
+	<!--************Page organization goes here************-->
+	<div data-role="page" id="page_organization" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+			<p name="organization_name">Org.navn</p>
+		</div>
+		<div class="portrait">
+			<img src="#" name="background">
+			<div class="logodiv_left" >
+				<img src="#" name="logo" class="roundimage"/>
+			</div>
+
+		</div>
+		<div class="relative">
+			<div class="top_links">
+				<a href="#" id="linkPageOrgNews">Nyheter</a>
+				<a href="#page_donate" class="btn_organization_donate" name="page_org_donation">DONÉR</a>
+			</div>
+		</div>
+		<div class="main_content">
+			<span class="grey small block" name="category">Kategori: </span>
+			<span class="title block" name="organization_name">[Navn på Org]</span>
+			<span class="block" name="ingress">[about this organization]</span>
+
+
+			<div class="listdiv">
+				<div style="border-bottom:thin solid #d2d2d2;margin-bottom:5pt"><h3>Pågående prosjekter</h3></div>
+				<ul id="projectList" name="projectList">
+				<!-- List of projects goes here -->
+				</ul>
+			</div>
+
+			<section id="sectionOrgNews">
+				<div style="border-bottom:thin solid #d2d2d2;margin-bottom:5pt"><h3>Siste nytt</h3></div>
+
+				<div id="pageOrgNews"></div>
+
+			</section>
+		</div>
+		<div class="somespace"></div>
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_me"><img  alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_overview footer_active"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+		
+	</div>
+	<!--************End of page organization************-->
+
+
+	<!--************Page project goes here************-->
+	<div data-role="page" id="page_project" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+			<p name="project_name">[Navn på prosjekt]</p>
+		</div>
+
+		<!-- For toppbilde  -->
+		<div class="portrait">
+			<img src="#" name="background">
+			<div class="logodiv_top_right">
+				<img src="#" name="orglogo" class="roundimage">
+			</div>
+		</div>
+		<div class="space_btn">
+			<a href="#" name="follow_this_project" id="sublink"></a>
+			<a href="#page_donate" rel="external" class="btn_single_project_donate show-page-loading-msg" name="page_project_donation">DONÉR</a>
+		</div>
+		<div class="main_content">
+
+			<span style="text-decoration: underline;" class="small grey" name="project_country">[country]</span>,
+			<span style="text-decoration: underline;" class="small grey" name="project_city">[city]</span>
+
+			<span id="project_title" name="project_title">[project title]</span>
+			<p class="ingress" name="ingress">[about this project]</p>
+
+			<div class="listdiv">
+				<div style="border-bottom:thin solid #d2d2d2;margin-bottom:5pt"><h3>Siste Nyheter</h3></div>
+				<ul data-role="none" name="newsListProjectPageProject" id="newsListProject">
+					<!--news list goes here-->
+				</ul>
+
+			</div>
+			<div data-role="popup" id="popupPhotoLandscapePageProject" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+			    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			    <img src="" alt="Photo landscape">
+			</div>
+			
+
+		</div>
+
+		<!-- Lager litt plass før footer -->
+		<div class="somespace"></div>
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_me"><img  alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_overview footer_active"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+	<!--************End of project************-->
+	
+	<!--************Page donate goes here************-->
+	<div data-role="page" id="page_donate" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon" name="back"/>
+			<p>Donér</p>
+			
+		</div>
+
+		<div class="main_content">
+			<!--<span style="display:block;margin-top:-25pt;font-size:large;">Mottager</span>-->
+			<div id="donationRecieverInfo">
+				<div class="relative recieverOrg"><span class="placeholderOrg green">Organisasjon:</span><span class="orgName">[organisasjonsnavn]</span></div>
+				<div class="relative recieverProject"><span class="placeholderProject green">Prosjekt:</span><span class="projectName">[prosjektnavn]</span></div>
+
+			</div>
+			<fieldset data-role="none">
+				<table>
+					<tr>
+						<td>
+							<input class="radio_amount" type="radio" name="in_donate_amount" id="donate_amount1" value="20">
+							<label for="donate_amount1">
+								20 kr
+							</label>
+						</td>
+						<td>
+							<input class="radio_amount" type="radio" name="in_donate_amount" id="donate_amount2" value="50">
+							<label for="donate_amount2">
+								50 kr
+							</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input class="radio_amount" type="radio" name="in_donate_amount" id="donate_amount3" value="100">
+							<label for="donate_amount3">
+								100 kr
+							</label>
+						</td>
+						<td>
+							<input class="radio_amount" type="radio" name="in_donate_amount" id="donate_amount4" value="200">
+							<label for="donate_amount4">
+								200 kr
+							</label>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<table>
+				<tr>
+					<td style="width: 40%;">
+						<input data-role="none" class="input_underscored" style="width: 80%; margin-left: 10pt;" type="tel" id="in_custom_amount" name="in_donate_amount_custom" placeholder="Velg"><!-- onfocus="uncheckRadiobuttonsDonate()">-->
+					</td>
+					<td style="text-align: left">
+						NOK
+					</td>
+				</tr>
+			</table>
+			<div class="somespace"></div>
+			<h5>Betalingsfrekvens</h5>
+			<fieldset data-role="none" style="border-bottom: thin solid #d2d2d2; border-top: thin solid #d2d2d2; margin-top: 10pt;">
+				<input type="radio" name="donation_freq" id="donation_freq_once" value="engangsdonasjon"/>
+				<label for="donation_freq_once">
+					Engangsbeløp
+				</label>
+				<input type="radio" name="donation_freq" id="donation_freq_monthly" value="fast"/>
+				<label for="donation_freq_monthly">
+					Fast trekk
+				</label>
+			</fieldset>
+
+
+
+			<div class="somespace"></div>
+			<div class="relative">
+				<table>
+					<tr>
+						<td class="half_width">
+							<a href="#" data-role="none" class="ui-btn" data-rel="back">AVBRYT</a>
+						</td>
+						<td class="half_width">
+							<!--<a href="#" data-role="none" class="ui-btn btn_complete_donation" name="reg_donation_done">DONÉR BELØP</a>-->
+							<div class="app">
+						        <div id="deviceready" class="blink">
+						            <p class="event listening"></p>
+						            <p class="event received"></p>
+						            <button id="buyNowBtn" data-role="none"  class="ui-btn btn_complete_donation" name="reg_donation_done">DONÉR BELØP</button>
+						        </div>
+						    </div>
+						</td>
+					</tr>
+				</table>
+			</div>	
+		</div>
+			
+		<div class="somespace"></div>
+		<div class="somespace"></div>
+		<div class="somespace"></div>
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_me"><img  alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_overview footer_active"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>		
+	</div>
+	
+	<!--************End of donate************-->
+
+	<!--************page_mystatistics goes here************-->
+	<div data-role="page" id="page_mystatistics" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div id="header_div" class="boxshadow">
+				<div class="header_top"></div>
+				<img src="../img/arrow_left.png" class="menu_icon back_btn">
+				<p>Min statistikk</p>
+			</div>
+		</div>
+		<div id="mystats_title">
+			<div id="mystats_title_container">
+				<div class="mystats_logo">
+					<img src="#" name="logo" class ="mystats_logo roundimage"/>
+				</div>
+				<div id="mystats_title_name" name="user_name">[Full name]</div>
+			</div>
+		</div>
+		<span class="small grey" id="challenges" style="margin-left:5%;"><span id="numChallenges" class="red"></span></span>
+		<div style="height: 40pt; border-bottom: thin solid #eee;">
+			<span style="padding-left: 5%; line-height: 55pt;">Statistikk</span>
+		</div>
+		<div class="main_content">
+			<div class="content_box1 "style="height: 100pt; margin-top: -20pt;">
+				<div class="content_box1l" style="height: 100%;">
+					<div class="content_box_top">
+						<span id="mystats_currmonth_donations" class="green" style="position: absolute; bottom: 0; left: 0; right: 0;" name="amount_current_month">[$$$]</span>
+					</div>
+					<div id="mystats_currmonth" class="content_box_bottom">
+						<span name="current_month">[Current month]</span>
+					</div>
+				</div>
+				<div class="content_box1r" style="height: 100%;">
+					<div class="content_box_top">
+						<span id="mystats_total_donations" class="green" style="position: absolute; bottom: 0; left: 0; right: 0;" name="total_amount">[$$$]</span>
+					</div>
+					<div class="content_box_bottom">
+						<span>Total</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="height: 40pt;">
+			<span style="padding-left: 5%; line-height: 55pt;">Aktiviteter</span>
+		</div>
+		<div id="mystats_activities">
+			<a href="#page_mystatsDonations">
+				<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
+
+					<tr style="height: 50pt;">
+						<td style="position: relative; width: 25%">
+							<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
+							</div>
+						</td>
+						<td style="width: 65%; font-size: x-large;">
+							<span id="mystats_num_donations" name = "num_donations">
+								[#donations]
+							</span>
+							<span name="is_pluar">
+								[...]
+							</span>
+						</td>
+						<td>
+							<img src="../img/li_arrow_r_grey.png">
+						</td>
+					</tr>
+
+
+				</table>
+			</a>
+				<ul id="mystats_donationslist">
+				</ul>
+			</div>
+
+			<div style="height: 55pt;" id="chl">
+				<span style="padding-left: 5%; line-height: 85pt;">
+					Utfordringer
+				</span>
+			</div>
+			<div id="mystats_challenges">
+				<a href="#page_challenges">
+					<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
+						<tr style="height: 50pt;">
+							<td style="position: relative; width: 25%">
+								<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
+
+								</div>
+							</td>
+							<td style="width: 65%;" class="x-large">
+								<span id="mystats_num_challenges">
+									[#]
+								</span>
+							</td>
+							<td>
+								<img src="../img/li_arrow_r_grey.png">
+							</td>
+						</tr>
+					</table>
+				</a>
+
+			</div>
+			<div class="somespace"></div>
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of page_mystatistics************-->
+
+		<!--************ page page_mystatsDonations goes here ************-->
+		<div data-role="page" id="page_mystatsDonations" data-theme="a">
+
+			<div id="header_div" class="boxshadow">
+				<div id="header_div" class="boxshadow">
+					<div class="header_top"></div>
+					<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+					<p>Mine donasjoner</p>
+
+				</div>
+			</div>
+			<div class="main_content">
+				<ul id="donationList" name="donationList"></ul>
+			</div>
+			<div class="somespace"></div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of page page_mystatsDonations ************-->
+
+		<div data-role="page" id="page_challenges" data-theme="a">
+
+			<div id="header_div" class="boxshadow">
+				<div id="header_div" class="boxshadow">
+					<div class="header_top"></div>
+					<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+					<p>Utfordringer</p>
+				</div>
+			</div>
+			<div class="main_content">
+				<div class="listdiv">
+					<span class="large red">Aktive</span>
+					<ul id="challengeList" class="challengeList">
+					</ul>
+				</div>
+				<div class="greyline"></div>
+				<div class="listdiv">
+					<span class="large red">Historie</span>
+					<ul id="challengeListHistory" class="challengeList">
+					</ul>
+				</div>
+			</div>
+
+			<div class="somespace"></div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me footer_active"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+
+		<!--************ page page_showUserDonations goes here ************-->
+		<div data-role="page" id="page_showUserDonations" data-theme="a">
+
+			<div id="header_div" class="boxshadow">
+				<div id="header_div" class="boxshadow">
+					<div class="header_top"></div>
+					<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+					<p id="usernameToShow">[show users donation]</p>
+
+				</div>
+			</div>
+			<div class="main_content">
+				<ul id="userDonationList" name="userDonationList">
+					
+				</ul>
+			</div>
+			<div class="somespace"></div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of page page_showUserDonations ************-->
+
+		<!--************Page news goes here************-->
+
+		<div data-role="page" id="page_news" data-theme="a">
+			<div id="header_div" class="boxshadow">
+				<div page-role="header" class="header_top"></div>
+				<img src="../img/arrow_left.png" class="menu_icon back_btn">
+				<p name="orgname">[Org.name]</p>
+			</div>
+			<div class="portrait">
+				<img src="#" name="backgroundImg">
+
+				<div class="logodiv_left">
+					<img src="#" name="orglogo">
+				</div>
+
+			</div>
+			<div class="relative">
+				<div class="top_links">
+					<a href="#page_donate" class="btn_organization_donate" name="page_project_donation">DONÉR</a>
+				</div>
+			</div>
+
+			<div class="main_content">
+				<span class="small grey" name="date">[date]</span>
+				<span class="title block" name="title">[title]</span>
+				<span class="block" name="ingress">[news text]</span>
+				<div class="listdiv">
+					<div style="border-bottom:thin solid #d2d2d2;margin-bottom:5pt"><h3>Siste nyheter</h3></div>
+					<ul name="newsListProjectPageNews" id="newsListProject">
+					</ul>
+				</div>
+				<div data-role="popup" id="popupPhotoLandscapePageNews" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+				    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				    <img src="" alt="Photo landscape">
+				</div>
+				
+			</div>
+			<div class="somespace"></div>
+
+			
+
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings footer_active"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of page_news************-->
+
+
+		<!--************Page settings goes here************-->
+		<div id="page_settings" data-role="page">
+			<div id="header_div" class="boxshadow">
+				<div class="header_top"></div>
+				<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
+				<p>Innstillinger</p>
+				<div id="div_logout"><button id="logout" name="logout" data-role="none">Logg ut</button></div>
+					
+			</div>
+			<div class="main_content">
+			<div>
+				<table class="settings_btns"><tr><td>
+					<a href="#" class="ui-btn ui-btn-icon-right icon-arrow-down" id="btn_settings_persondata">Persondata</a></td><td>
+					<a href="#" class="ui-btn ui-btn-icon-right icon-arrow-down"  id="btn_settings_manage_cards">Behandle kort</a></td></tr>
+				</table>
+
+			</div>			
+				<div id="settings_div">
+					<div class="messagediv centered"><span id="messagetext" class="small"></span></div>
+					<div id="div_persondata">
+						<table>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored blue" data-role="none" value="" id="set_name" placeholder="Fullt navn"></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored blue" data-role="none" value="" id="set_phone" placeholder="Telefonnr"></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td>
+								<td>
+									<table>
+										<td class="half_width" style="padding-right:5pt">
+											<input type="tel" class="input_underscored blue" data-role="none" value="" id="set_zip" placeholder="Postnummer">
+										</td>
+										<td class="half_width">
+											<select class="input_underscored"  tyle="padding-right:5pt" data-role="none" id="set_birthyear">
+												<option value="0">Fødselsår</option>
+											</select>
+										</td>								
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<table>
+										<td class="half_width">
+											<img src="../img/icon-wallet-grey.png" class="table_icon"/> <div class="available_funds"><span id="available_funds" class="large green"></span> kr </div>
+										</td>
+										<td class="half_width">
+											<div class="get_more_funds small ">Hente mer? <img src="../img/li_arrow_r_grey.png" class="table_icon" style="margin-left:3pt"></div>
+										</td>
+									</table>
+								</td>
+							</tr>
+							<tr style="height:15pt !important">
+								<td style="height:15pt !important"></td><td style="height:15pt !important" class="small" id="btn_change_pw">Endre passord?
+								<img src="../img/li_arrow_d_grey.png" id="img_pw_change"></td>
+							</tr>
+								<tr id="tr_pw_change" class="tr_pw_change"><td></td>
+								<td><input type="password" class="input_underscored blue tr_pw_field" data-role="none" value="" id="old_pw" placeholder="Gammelt passord"></td>
+								</tr>
+								<tr class="tr_pw_change"><td></td>
+									<td><input type="password" class="input_underscored blue tr_pw_field" data-role="none" value="" id="new_pw" placeholder="Nytt passord"></td>
+								</tr>
+								<tr class="tr_pw_change"><td></td>
+									<td><input type="password" class="input_underscored blue tr_pw_field" data-role="none" value="" id="new_pw_rep" placeholder="Gjenta nytt passord"></td>
+								</tr>
+							<tr><td style="height:15pt !important"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<table class="settings_btns">
+										<td><a href="#" class="ui-btn ui-btn-icon-right icon-cancel" id="btn_settings_cancel">Avbryt</a></td>
+										<td><a href="#" class="ui-btn ui-btn-icon-right icon-check" id="btn_settings_save">Lagre</a></td>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div id="div_manage_cards">
+						<table>
+							<tr>
+								<td class="half_width">
+									<img src="../img/accepted_payment.png" id="accepted_payment_icon"/>
+								</td>
+								<td class="half_width">
+									<select data-role="none" class="select_underscored green" id="dd_cards">
+
+									</select>
+								</td>
+							</tr>
+						</table>
+						<table>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="tel" class="input_underscored input_creditcard blue" data-role="none" value="" id="set_cardnr" placeholder="Kortnummer" maxlength="19"><img src="../img/icon-trash.png" id="btn_delete_card" class="icon"/></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td>
+								<td>
+									<table>
+										<td>
+											<select data-role="none" class="input_underscored blue" id="set_month">
+												<option value="0">Måned</option>
+												<option value="1">Januar</option>
+												<option value="2">Februar</option>
+												<option value="3">Mars</option>
+												<option value="4">April</option>
+												<option value="5">Mai</option>
+												<option value="6">Juni</option>
+												<option value="7">Juli</option>
+												<option value="8">August</option>
+												<option value="9">September</option>
+												<option value="10">Oktober</option>
+												<option value="11">November</option>
+												<option value="12">Desember</option>
+											</select>
+										</td>
+										<td>
+											<select data-role="none" class="input_underscored blue" id="set_year">
+												<option value="0">År</option>
+												<option value="2015">2015</option>
+												<option value="2016">2016</option>
+												<option value="2017">2017</option>
+												<option value="2018">2018</option>
+												<option value="2019">2019</option>
+												<option value="2020">2020</option>
+												<option value="2021">2021</option>
+												<option value="2022">2022</option>
+											</select>
+										</td>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="tel" class="input_underscored half_width blue" data-role="none" value="" id="set_CCV" placeholder="CCV" onkeypress="return isNumber(event)" maxlength="4"></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td><td><input type="text" class="input_underscored blue" data-role="none" value="" id="set_cardname" placeholder="Korteier"></td>
+							</tr>
+							<tr>
+								<td><img src="../img/icon_grey.png" class="icon"></td>
+								<td>
+									<table>
+										<td class="half_width"><input type="checkbox" id="cbMonthlyCharge" data-role="none"><label for="cbMonthlyCharge" class="small">Månedlig trekk</label></td>
+										<td class="third_width">
+											<input type="number" id="set_charge" class="input_underscored blue centertext" data-role="none" placeholder="Beløp" onkeypress="return isNumber(event)" style="margin-left:10pt">
+										</td>
+										<td><span style="margin-left:10pt">kr</span></td>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<table>
+										<td class="half_width">
+											<div class="available_funds_settings small"><span id="available_funds_settings" class=" green"></span> kr </div>
+											<a class="ui-btn" id="btnGetFunds">Hent mer nå</a>
+										</td>
+										<td class="third_width">
+											<input type="number" id="getFundsAmount" class="input_underscored blue centertext" data-role="none" placeholder="Beløp" onkeypress="return isNumber(event)" style="margin-left:10pt">
+										</td>
+										<td><span style="margin-left:10pt">kr</span></td>
+									</table>
+								</td>
+							</tr>
+							<tr><td style="height:15pt !important"></td>
+							<tr>
+								<td></td>
+								<td>
+									<table class="settings_btns">
+										<td class="half_width"><a href="#" class="ui-btn ui-btn-icon-right icon-cancel" id="btn_cardsettings_cancel">Avbryt</a></td>
+										<td class="half_width"><a href="#" class="ui-btn ui-btn-icon-right icon-check" id="btn_cardsettings_save">Lagre</a></td>
+									</table>
+								</td>
+							</tr>
+						</table>
+
+					</div>
+					
+				</div>
+				<h4>Venneforespørsler</h4>
+				<div class="listdiv">
+					<span id="num_friend_req" class="grey"></span>
+					
+					<ul id="friend_requests" name="friend_requests">
+
+					</ul>
+					<!--<div class="messagediv centered"><span id="messagetext2" class="small"></span></div>-->
+					<div class="greyline"></div>
+				</div>
+				<h4>Abonnementer</h4>
+				<div class="listdiv">
+					<span id="subscription_message" class="grey"></span>
+					<ul id="subscription_list" name="subscription_list">
+					</ul>
+				</div>
+			</div>
+
+			<div data-role="popup" id="popupPhotoLandscapePageSettings" class="photopopup" data-overlay-theme="a" data-corners="false" data-tolerance="30,15">
+			    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+			    <img src="" alt="Photo landscape">
+			</div>
+
+
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings footer_active"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of settings************-->
+
+		<!--************ page_search_friends_sharity goes here************-->
+		<div data-role="page" id="page_search_friends_sharity" data-theme="a" class"=page">
+			<div id="header_div" class="boxshadow">
+
+				<div page-role="header" class="header_top"></div>
+				<!--<button name="logut">Logg ut</button>-->
+				<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back"/>
+				<p id = "header_check">Sharity</p>
+
+			</div>
+			<div class="main_content">
+				<div class="content_box">
+					<div class="content_box_search ">
+						<div class="content_box1b_icon">
+							<img src="../img/icon_search.png" class="icon"/>
+						</div>
+						<div>
+							<!--<h6 class="grey">Søk blandt alle organisasjoner og prosjekter</h6>-->
+							<form class="ui-filterable">
+								<input id="friendFilter" data-type="search" data-role="none" class="search" placeholder="Søk etter venner"/>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="messagediv centered"><span id="messagetext_search_friends" class="small"></span></div>
+				<div class="listdiv" style="min-height:800pt">
+
+					<ul name="user_list" id="user_list" data-filter="true" data-input="#friendFilter">
+						<!--User list goes here, append-->
+
+					</ul>
+				</div>
+			</div>
+			
+
+			<div class="somespace"></div>
+
+			<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+				<div data-role="navbar">
+					<ul>
+						<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+						<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+						<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+						<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<!--************End of page_search_friends_sharity************-->
+
+
+
+		<!--************Pages_show_user_profile goes here************-->
+
+<div data-role="page" id="page_show_user_profile" data-theme="a">
+	<div id="header_div" class="boxshadow">
+		<div id="header_div" class="boxshadow">
+			<div class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn" name="back_btn">
+			<p id="show_profile_username" name="show_profile_username">[Username]</p>
+		</div>
+	</div>
+	<div id="mystats_title">
+		<div id="mystats_title_container">
+			<div class="mystats_logo">
+				<img src="#" name="user_logo" class ="mystats_logo"/></div>
+				<span id="mystats_title_name" name="show_user_fullname">[Full name]</span>
+			</div>
+		</div>
+		<div style="height: 40pt; border-bottom: thin solid #eee;">
+			<span style="padding-left: 5%; line-height: 55pt;">Statistikk</span>
+		</div>
+		<div class="main_content">
+			<div class="content_box1 "
+			style="height: 100pt; margin-top: -20pt;">
+			<div class="content_box1l" style="height: 100%;">
+				<div class="content_box_top">
+					<span id="mystats_currmonth_donations" class="green" style="position: absolute; bottom: 0; left: 0; right: 0;" name="show_user_amount_current_month">[$$$]</span>
+				</div>
+				<div id="mystats_currmonth" class="content_box_bottom">
+					<span name="current_month">[Current month]</span>
+				</div>
+			</div>
+			<div class="content_box1r" style="height: 100%;">
+				<div class="content_box_top">
+					<span id="mystats_total_donations" class="green" style="position: absolute; bottom: 0; left: 0; right: 0;" name="show_user_total_amount">[$$$]</span>
+				</div>
+				<div class="content_box_bottom">
+					<span>Total</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="height: 40pt;">
+		<span style="padding-left: 5%; line-height: 55pt;">Aktiviteter</span>
+	</div>
+	<div id="mystats_activities">
+		<a href="#page_showUserDonations" name="show_user_donationlist">
+			<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
+
+				<tr style="height: 50pt;">
+					<a ></a>
+					<td style="position: relative; width: 25%">
+						<div class="mystats_logo" style="height: 25pt; width: 25pt; position: absolute; margin: auto; bottom: 0; top: 0; left: 0; right: 0;">
+						</div>
+					</td>
+					<td style="width: 65%; font-size: x-large;">
+						<span id="mystats_num_donations" name = "show_user_num_donations">
+							[#donations]
+						</span>
+						<span name="is_pluar">
+							[...]
+						</span>
+					</td>
+					<td>
+						<img src="../img/li_arrow_r_grey.png">
+					</td>
+				</tr>
+
+
+			</table></a>
+			<ul id="mystats_donationslist">
+			</ul>
+		</div>
+
+		<div style="height: 55pt;" id="chl">
+			
+		</div>
+		<div id="mystats_challenges">
+			<table class="clickable" style="border-top: thin solid #eee; border-bottom: thin solid #eee">
+				<tr style="height: 50pt;">
+					
+					<td style="width: 65%; font-size: x-large;">
+						<button id="challenge_user" name="challenge_user">Send utfordring</button>
+					</td>
+					<td>
+						<img src="../img/li_arrow_r_grey.png">
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="somespace"></div>
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_friends footer_active"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+			<!--************End of Pages_show_user_profile************-->
+
+	<div data-role="page" id="page_test" data-theme="a">
+		<div id="header_div" class="boxshadow">
+			<div page-role="header" class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon back_btn">
+			<p name="orgname">TESTSIDE</p>
+		</div>
+
+		<div class="main_content"></div>
+			
+
+		<div class="somespace"></div>
+
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_overview"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+					<li class="footer_settings footer_active"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+
+	<div data-role="page" id="page_donate_challenge">
+		<div id="header_div" class="boxshadow">
+			<div class="header_top"></div>
+			<img src="../img/arrow_left.png" class="menu_icon" name="back"/>
+			<p>Utfordre</p>				
+		</div>
+
+		<div class="main_content">
+			<div style="min-height:200pt">
+				<div id="chall-content-left">
+					<div id="chall-content-donationinfo"> 
+						Du har nettopp donert <span id="chall-content-donationinfo-amount" class="red">100</span> kroner til 
+						<span id="chall-content-donationinfo-organization" class="green"></span> og deres prosjekt 
+						<span id="chall-content-donationinfo-project" class="blue"></span>.
+						Velg ut hvem som skal få en utfordring til å gjøre det samme!
+
+					</div>
+								
+					
+				</div>
+				<div id="chall-content-right">
+					<div style="background:#eee;text-align:center;"><span class="blue small">Dine venner:</span></div>
+					<div id="chall-content-listdiv">
+						<ul id="chall-content-listdiv-list">
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="chall-content-msginfo" class="small">
+				Send en melding til dem som får utfordringen:
+			</div>	
+			<textarea id="chall-content-textareadiv-textarea" placeholder="Skriv din melding her (160 tegn)" rows="3" maxlength="160"></textarea>
+			<div id="chall-btns">
+				<table id="chall-btns-table">
+					<tr>
+						<td><a href="#page_project" class="ui-btn" data-role="button" id="chall-btn-cancel">AVBRYT</a></td>
+						<td><a href="#" class="ui-btn" data-role="button" id="chall-btn-challenge">UTFORDRE (<span id="chall-num-challenges">0</span>)</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<footer data-role="footer" data-position="fixed" data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li class="footer_me"><img alt="" src="../img/icon_menu_footer_me_holo.png"></li>
+					<li class="footer_overview  footer_active"><img alt="" src="../img/icon_menu_footer_overview_holo.png"></li>
+					<li class="footer_friends"><img alt="" src="../img/icon_menu_footer_friends_holo.png"></li>
+					<li class="footer_settings"><img alt="" src="../img/icon_menu_footer_settings_holo.png"></li>
+				</ul>
+			</div>
+		</footer>
+	</div>
+		
+</body>
+</html>

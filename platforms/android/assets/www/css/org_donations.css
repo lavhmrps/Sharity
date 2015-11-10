@@ -1,0 +1,181 @@
+
+#header_div {
+	position:relative;
+	width: 100%;
+	height: 75pt;
+	line-height: 50pt;
+	background: #006dfe;
+	color: white;
+}
+
+
+#header_div p {
+	margin-left: 45pt;
+	color: white;
+	font-size: x-large
+}
+
+.menu_projects_icon {
+	position: absolute;
+	height: 12pt;
+	margin-top: 20pt;
+	right: 10pt;
+}
+
+.boxshadow {
+	box-shadow: 0pt 0pt 1pt #888;
+}
+
+. {
+	box-shadow: 0pt 0pt 1pt 0pt #d2d2d2;
+}
+
+
+.header_top {
+	width: 100%;
+	height: 25pt;
+	background-color: #0057cb;
+}
+
+.menu_icon {
+	position: absolute;
+	top:25pt;bottom:0;left:5pt;
+	margin:auto;
+	width: 25pt;
+	height: 25pt;
+}
+
+
+
+.footer_menu_icon {
+	width: 100%;
+}
+
+.footer_menu_icon_holo {
+	background: white;
+	width: 99%;
+}
+
+.main_content {
+	width: 90%;
+	margin: auto;
+	margin-top: 30pt;
+}
+
+.somespace {
+	min-height: 20pt;
+}
+
+.clickable:ACTIVE {
+	background: #eee;
+}
+
+.footer_active {
+	background: #eee;
+}
+
+
+/*The list*/
+
+
+#list_donations {
+	width: 100%;
+	background: #fff;
+	list-style: none;
+	border-bottom: none;
+}
+
+#list_donations li {
+	height: 60pt;
+}
+
+.li_container {
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	box-sizing: border-box;
+	border-bottom: thin solid #f2f2f2;
+}
+
+.li_left,.li_mid,.li_right {
+	background: #fff;
+	position: relative;
+	height: 100%;
+	float: left;
+	box-sizing: border-box;
+}
+
+.li_left {
+	width: 15%;
+}
+
+.li_mid {
+	width: 55%;
+	padding: 15pt 3pt 5pt 5pt;
+	color: #000;
+}
+
+.li_right {
+	width: 30%;
+}
+
+
+.li_circ {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 30pt;
+	height: 30pt;
+	background: #d2d2d2;
+	border-radius: 50%;
+}
+
+.li_circ img {
+	border-radius: 50%;
+	width: 100%;
+}
+
+.li_right_top{
+	position:relative;
+	height:70%;
+	text-align:center;
+	font-size: x-large;
+	font-weight: bold;
+}
+
+.li_right_bottom{
+	position:relative;
+	height:30%;
+	text-align:center;
+	font-size: small;
+}
+
+.li_right_top span{
+	position:absolute;
+	bottom:0; left:0;right:0;
+	margin:auto;
+}
+
+
+.grey {
+	color: #9b9b9b !important;
+}
+
+
+.green {
+	color: #20a623 !important;
+}
+
+.li_name{
+	display:block;
+	
+}
+
+.li_date{
+	color: #9b9b9b !important;
+	font-size: small;	
+}
+

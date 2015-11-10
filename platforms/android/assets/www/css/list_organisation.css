@@ -1,0 +1,105 @@
+body {
+	margin-top: 100pt;
+}
+
+#projectList {
+	width: 100%;
+	background: #fff;
+	list-style: none;
+	border-bottom: none;
+}
+
+#projectList  li {
+	height: 60pt ;
+}
+
+#projectList .li_container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: #abc;
+	box-sizing: border-box;
+	border-bottom: thin solid #f2f2f2;
+}
+
+#projectList .li_left,#projectList .li_mid,#projectList .li_right {
+	background: #fff;
+	min-height: 100%;
+	float:left;
+}
+
+#projectList .li_left {
+	position: relative;
+	min-height: 100%;
+	width: 15%;
+}
+
+#projectList .li_mid {
+	width: 60%;
+	padding: 15pt 3pt 5pt 5pt;
+}
+
+#projectList .li_right {
+	width: 25%;
+}
+
+#projectList .li_circ img {
+	border-radius: 50%;
+	width: 100%;
+}
+
+#projectList .li_heading {
+	font-size: large;
+	line-height:26pt;
+	display: block;
+	font-weight: normal;
+	color: #333;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow:ellipsis;
+}
+
+#projectList .li_text {
+	font-size: small;
+	font-family: Circular Std Book, monospace, Calibri, Arial,
+		Sans-serif !important;
+	font-weight: normal;
+}
+
+#projectList .txt_grey {
+	color: #9b9b9b;
+}
+
+/* li_right */
+#projectList .li_btn_donate {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	border: none;
+	width: 60pt;
+	height: 20pt;
+	margin: auto;
+	background: #20a623;
+	color: white;
+	font-size: small;
+	box-shadow: 0 0 2pt 0 #777;
+}
+
+#projectList a.li_btn_donate {
+	text-decoration: none !important;
+	color: white !important;
+	font-weight: normal !important;
+	font-family: Circular Std Book, monospace, Calibri, Arial,
+		Sans-serif !important;
+	text-shadow: none;
+	line-height: 20pt;
+	text-align: center;
+}
+
+#projectList .li_btn_donate:focus {
+	outline: none;
+}
+
+#projectList .li_btn_donate:active {
+	background: #4CAF50;
+}
